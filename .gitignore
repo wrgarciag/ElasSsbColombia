@@ -1,0 +1,13 @@
+.Rhistory
+*.html
+!docs/*.html
+*.
+
+/data-raw/
+!data-raw/**/*.md
+
+
+.Rproj.user
+
+# Claude Code worktrees
+.claude/worktrees/

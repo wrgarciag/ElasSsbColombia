@@ -1,0 +1,1727 @@
+------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\William\Universidad Icesi (@icesi.edu.co)\Proesa - 22-1002-PahoElasSsb\Resu\SSBElasticityPap
+> erRevised_fuera_log.log
+  log type:  text
+ opened on:  17 Feb 2023, 10:21:06
+
+. 
+. *log using "C:\Users\wgarcia\Universidad Icesi (@icesi.edu.co)\Proesa - *22-1002-PahoElasSsb\Resu\SSBElasticityP
+> aperrevised_log.log", append
+. 
+. clear all
+
+. macro drop _all
+
+. set more off
+
+. 
+. global path "C:\Users\William\Universidad Icesi (@icesi.edu.co)\Proesa - 22-1002-PahoElasSsb\Data\Output"
+
+. *global path "C:\Users\wgarcia\Universidad Icesi (@icesi.edu.co)\Proesa - 22-1002-PahoElasSsb\Data\Output"
+. 
+. use "$path\DataEstimates4.dta",clear
+
+. 
+. drop Gasto*
+
+. drop Precio*
+
+. 
+. merge m:1 REGION DOMINIO TercilIngr using "$path\MeanUnitValuesTercil_Fuera.dta"
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             1
+        from master                         0  (_merge==1)
+        from using                          1  (_merge==2)
+
+    Matched                            82,934  (_merge==3)
+    -----------------------------------------
+
+. keep if _merge==3
+(1 observation deleted)
+
+. drop _merge
+
+. 
+. merge 1:1 DIRECTORIO using "$path\Gasto_Fuera.dta"
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                            82,934  (_merge==3)
+    -----------------------------------------
+
+. 
+. keep if _merge==3
+(0 observations deleted)
+
+. drop _merge
+
+. 
+end of do-file
+
+------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\William\Universidad Icesi (@icesi.edu.co)\Proesa - 22-1002-PahoElasSsb\Resu\SSBElasticityPap
+> erRevised_fuera_log.log
+  log type:  text
+ opened on:  20 Feb 2023, 08:27:26
+
+. 
+. *log using "C:\Users\wgarcia\Universidad Icesi (@icesi.edu.co)\Proesa - *22-1002-PahoElasSsb\Resu\SSBElasticityP
+> aperrevised_log.log", append
+. 
+. clear all
+
+. macro drop _all
+
+. set more off
+
+. 
+. global path "C:\Users\William\Universidad Icesi (@icesi.edu.co)\Proesa - 22-1002-PahoElasSsb\Data\Output"
+
+. *global path "C:\Users\wgarcia\Universidad Icesi (@icesi.edu.co)\Proesa - 22-1002-PahoElasSsb\Data\Output"
+. 
+. use "$path\DataEstimates4.dta",clear
+
+. 
+. drop Gasto*
+
+. drop Precio*
+
+. 
+. merge m:1 REGION DOMINIO TercilIngr using "$path\MeanUnitValuesTercil_Fuera.dta"
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             1
+        from master                         0  (_merge==1)
+        from using                          1  (_merge==2)
+
+    Matched                            82,934  (_merge==3)
+    -----------------------------------------
+
+. keep if _merge==3
+(1 observation deleted)
+
+. drop _merge
+
+. 
+. merge 1:1 DIRECTORIO using "$path\Gasto_Fuera.dta"
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                            82,934  (_merge==3)
+    -----------------------------------------
+
+. 
+. keep if _merge==3
+(0 observations deleted)
+
+. drop _merge
+
+. 
+. tab xeduc,gen(xeduc_)
+
+           xeduc |      Freq.     Percent        Cum.
+-----------------+-----------------------------------
+         Ninguno |      3,818        4.60        4.60
+        Primaria |     23,012       27.75       32.35
+Secundaria/Media |     35,718       43.07       75.42
+        Superior |     20,386       24.58      100.00
+-----------------+-----------------------------------
+           Total |     82,934      100.00
+
+. * Summary
+. summarize xsexo xedad xrural xtamanioh xuniper xninios xeduc_1 xeduc_2 xeduc_3 xeduc_4 IT ITPC IT ITPC 
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+       xsexo |     82,934    .5921817     .491432          0          1
+       xedad |     82,934    48.55144    15.78316         11        107
+      xrural |     82,934    .0694649    .2542445          0          1
+   xtamanioh |     82,934    3.379651    1.748752          1         22
+     xuniper |     82,934    .1320809    .3385808          0          1
+-------------+---------------------------------------------------------
+     xninios |     82,934    .2535028    .4350189          0          1
+     xeduc_1 |     82,934    .0460366    .2095657          0          1
+     xeduc_2 |     82,934    .2774737    .4477549          0          1
+     xeduc_3 |     82,934    .4306798    .4951744          0          1
+     xeduc_4 |     82,934    .2458099     .430569          0          1
+-------------+---------------------------------------------------------
+          IT |     82,934     2096905     3888241          0   6.06e+08
+        ITPC |     82,934    760146.8     1582573          0   1.45e+08
+          IT |     82,934     2096905     3888241          0   6.06e+08
+        ITPC |     82,934    760146.8     1582573          0   1.45e+08
+
+. 
+. 
+. ** QUAIDS libreria
+. egen totalexp = rowtotal(Gasto_HotDrinks Gasto_MilkDerivatives Gasto_SSB Gasto_Water Gasto_Beer Gasto_Spirits Ga
+> sto_Wine)
+
+. 
+. /*
+> egen totalexptext = rowtotal(GastoTexto_SSB GastoTexto_HotDrinks GastoTexto_MilkDerivatives GastoTexto_Beer Gast
+> oTexto_Wine GastoTexto_Water GastoTexto_Spirits)
+> 
+> egen totalexpcodi = rowtotal(GastoCodi_HotDrinks GastoCodi_SSB GastoCodi_MilkDerivatives GastoCodi_Beer GastoCod
+> i_Spirits GastoCodi_Water GastoCodi_Wine)
+> 
+> *generar consumo texto > 0 
+> 
+> gen consumotexto = 0
+> replace consumotexto = 1 if totalexptext > 0
+> */
+. 
+. local expe "Gasto_HotDrinks Gasto_MilkDerivatives Gasto_SSB Gasto_Water Gasto_Beer Gasto_Spirits Gasto_Wine"
+
+.  
+. foreach i of local expe {
+  2.         replace `i' =0 if mi(`i')
+  3. }
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+
+.   
+. gen w1= Gasto_SSB/totalexp
+(26,375 missing values generated)
+
+. gen w2= Gasto_HotDrinks/totalexp
+(26,375 missing values generated)
+
+. gen w3= Gasto_MilkDerivatives/totalexp
+(26,375 missing values generated)
+
+. gen w4= Gasto_Water/totalexp
+(26,375 missing values generated)
+
+. 
+. gen w5= Gasto_Beer/totalexp
+(26,375 missing values generated)
+
+. gen w6= Gasto_Spirits/totalexp
+(26,375 missing values generated)
+
+. gen w7= Gasto_Wine/totalexp
+(26,375 missing values generated)
+
+. 
+. rename PrecioM_SSB p1
+
+. rename PrecioM_HotDrinks p2
+
+. rename PrecioM_MilkDerivatives p3
+
+. rename PrecioM_Water p4
+
+. 
+. rename PrecioM_Beer p5
+
+. rename PrecioM_Spirits p6
+
+. rename PrecioM_Wine p7
+
+. 
+. order p1 p2 p3 p4 p5 p6 p7
+
+. 
+. * dummies de consumo
+. gen di1= (Gasto_SSB>0)
+
+. gen di2= (Gasto_HotDrinks>0)
+
+. gen di3= (Gasto_MilkDerivatives>0)
+
+. gen di4= (Gasto_Water>0)
+
+. 
+. gen di5= (Gasto_Beer>0)
+
+. gen di6= (Gasto_Spirits>0)
+
+. gen di7= (Gasto_Wine>0)
+
+. 
+. sum di*
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+         di1 |     82,934    .4966238    .4999916          0          1
+         di2 |     82,934    .3610341    .4803033          0          1
+         di3 |     82,934    .0901681    .2864241          0          1
+         di4 |     82,934    .0002532    .0159108          0          1
+         di5 |     82,934    .0568404    .2315388          0          1
+-------------+---------------------------------------------------------
+         di6 |     82,934    .0558637    .2296597          0          1
+         di7 |     82,934    .0021945    .0467945          0          1
+
+. 
+end of do-file
+
+. sum p*
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+          p1 |     82,904    4865.024    2127.216   1117.639   10018.62
+          p2 |     82,904    6244.801     2333.28   1417.682   22036.88
+          p3 |     82,325    4912.418    2057.546        200   13850.12
+          p4 |      6,437    3229.973    3970.272   1133.333      16000
+          p5 |     82,934    13162.32    34079.89   1428.169   264832.1
+-------------+---------------------------------------------------------
+          p6 |     82,889    9286.773    6494.621   1733.964   37343.47
+          p7 |     82,411    30474.36     27680.9        750     145000
+  percentile |     82,934    .5017409    .2871003   .0050573          1
+    primaria |     82,934    .2774737    .4477549          0          1
+
+. do "C:\Users\William\AppData\Local\Temp\STD2428_000000.tmp"
+
+. rename xsexo x1
+
+. rename xedad x2
+
+. rename xrural x3
+
+. rename xtamanioh x4
+
+. rename xuniper x5
+
+. rename xninios x6
+
+. rename primaria x7
+
+. rename secundaria x8
+
+. rename superior x9
+
+. rename ningunaed x10
+
+. 
+. 
+. * Logaritmos
+. * logaritmos de precios
+. 
+. forvalues i=1/7 {
+  2. gen lnp`i'=log(p`i')
+  3. }
+(30 missing values generated)
+(30 missing values generated)
+(609 missing values generated)
+(76,497 missing values generated)
+(45 missing values generated)
+(523 missing values generated)
+
+. 
+. *logaritmo gasto
+. gen lnexp=log(totalexp)
+(26,375 missing values generated)
+
+. 
+. 
+. ****************************
+. * Probit regressions
+. ****************************
+. 
+. global X  x2 x4 x6 x7 x8 x9
+
+. global P lnp1 lnp2 lnp3 lnp4 lnp5 lnp6 lnp7
+
+. 
+. * Se excluye el sexo para no sobreidentificar
+. 
+. *genera variables auxiliares
+. 
+. 
+. set more off
+
+. forvalues i=1/7 {
+  2. probit di`i' $X
+  3. predict f_d`i', xb
+  4. label var f_d`i' "Valor ajustado para el bien `i'"
+  5. generate pdf`i'=normalden(f_d`i')
+  6. generate cdf`i'=normal(f_d`i')
+  7. generate mills`i'=(di`i'*(pdf`i'/cdf`i'))+ ((1-di`i')*(pdf`i'/1-cdf`i'))
+  8. }
+
+Iteration 0:   log likelihood = -57483.578  
+Iteration 1:   log likelihood = -55156.742  
+Iteration 2:   log likelihood = -55151.309  
+Iteration 3:   log likelihood = -55151.309  
+
+Probit regression                                      Number of obs =  82,934
+                                                       LR chi2(6)    = 4664.54
+                                                       Prob > chi2   =  0.0000
+Log likelihood = -55151.309                            Pseudo R2     =  0.0406
+
+------------------------------------------------------------------------------
+         di1 | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+          x2 |   -.005615   .0003221   -17.43   0.000    -.0062464   -.0049837
+          x4 |   .1613667   .0029262    55.14   0.000     .1556314     .167102
+          x6 |  -.2699674   .0118136   -22.85   0.000    -.2931216   -.2468132
+          x7 |   .1817535   .0231105     7.86   0.000     .1364577    .2270493
+          x8 |   .4064693   .0231822    17.53   0.000     .3610331    .4519055
+          x9 |   .5864705   .0240403    24.40   0.000     .5393524    .6335886
+       _cons |  -.5838201   .0309392   -18.87   0.000    -.6444598   -.5231804
+------------------------------------------------------------------------------
+
+Iteration 0:   log likelihood = -54239.735  
+Iteration 1:   log likelihood = -54007.737  
+Iteration 2:   log likelihood = -54007.698  
+Iteration 3:   log likelihood = -54007.698  
+
+Probit regression                                       Number of obs = 82,934
+                                                        LR chi2(6)    = 464.08
+                                                        Prob > chi2   = 0.0000
+Log likelihood = -54007.698                             Pseudo R2     = 0.0043
+
+------------------------------------------------------------------------------
+         di2 | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+          x2 |   .0035063   .0003241    10.82   0.000     .0028711    .0041416
+          x4 |   .0278305   .0028509     9.76   0.000     .0222428    .0334182
+          x6 |    -.14643   .0120108   -12.19   0.000    -.1699708   -.1228893
+          x7 |   .1971343   .0230625     8.55   0.000     .1519326     .242336
+          x8 |   .2398731   .0231903    10.34   0.000     .1944209    .2853253
+          x9 |   .2833114   .0240374    11.79   0.000     .2361989    .3304239
+       _cons |   -.812238   .0310594   -26.15   0.000    -.8731134   -.7513626
+------------------------------------------------------------------------------
+
+Iteration 0:   log likelihood =  -25122.91  
+Iteration 1:   log likelihood = -24670.782  
+Iteration 2:   log likelihood = -24667.705  
+Iteration 3:   log likelihood = -24667.705  
+
+Probit regression                                       Number of obs = 82,934
+                                                        LR chi2(6)    = 910.41
+                                                        Prob > chi2   = 0.0000
+Log likelihood = -24667.705                             Pseudo R2     = 0.0181
+
+------------------------------------------------------------------------------
+         di3 | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+          x2 |   -.000564   .0004549    -1.24   0.215    -.0014555    .0003275
+          x4 |   .1068014   .0037396    28.56   0.000     .0994719     .114131
+          x6 |  -.1260239   .0160444    -7.85   0.000    -.1574704   -.0945774
+          x7 |   .1461208   .0346006     4.22   0.000     .0783048    .2139368
+          x8 |   .2244319   .0346275     6.48   0.000     .1565633    .2923005
+          x9 |   .3345548   .0356122     9.39   0.000     .2647561    .4043535
+       _cons |  -1.882941   .0450881   -41.76   0.000    -1.971312    -1.79457
+------------------------------------------------------------------------------
+
+Iteration 0:   log likelihood = -194.90418  
+Iteration 1:   log likelihood = -186.47862  
+Iteration 2:   log likelihood = -184.05151  
+Iteration 3:   log likelihood = -183.92743  
+Iteration 4:   log likelihood = -183.91024  
+Iteration 5:   log likelihood = -183.90659  
+Iteration 6:   log likelihood = -183.90577  
+Iteration 7:   log likelihood = -183.90561  
+Iteration 8:   log likelihood = -183.90558  
+Iteration 9:   log likelihood = -183.90557  
+
+Probit regression                                       Number of obs = 82,934
+                                                        LR chi2(6)    =  22.00
+                                                        Prob > chi2   = 0.0012
+Log likelihood = -183.90557                             Pseudo R2     = 0.0564
+
+------------------------------------------------------------------------------
+         di4 | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+          x2 |   .0079447   .0044259     1.80   0.073    -.0007298    .0166192
+          x4 |   .0825172   .0319393     2.58   0.010     .0199173    .1451171
+          x6 |  -.0863441   .1619245    -0.53   0.594    -.4037102    .2310221
+          x7 |   2.847952   170.6829     0.02   0.987    -331.6844    337.3803
+          x8 |   2.788153   170.6829     0.02   0.987    -331.7443    337.3206
+          x9 |   3.292369    170.683     0.02   0.985    -331.2401    337.8248
+       _cons |  -7.158751   170.6834    -0.04   0.967    -341.6921    327.3746
+------------------------------------------------------------------------------
+Note: 3658 failures and 0 successes completely determined.
+
+Iteration 0:   log likelihood = -18094.848  
+Iteration 1:   log likelihood =  -17952.38  
+Iteration 2:   log likelihood = -17951.668  
+Iteration 3:   log likelihood = -17951.668  
+
+Probit regression                                       Number of obs = 82,934
+                                                        LR chi2(6)    = 286.36
+                                                        Prob > chi2   = 0.0000
+Log likelihood = -17951.668                             Pseudo R2     = 0.0079
+
+------------------------------------------------------------------------------
+         di5 | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+          x2 |  -.0012682   .0005212    -2.43   0.015    -.0022898   -.0002467
+          x4 |   .0687523   .0043148    15.93   0.000     .0602954    .0772091
+          x6 |  -.1029342   .0186916    -5.51   0.000     -.139569   -.0662994
+          x7 |   .0771602   .0381436     2.02   0.043     .0024002    .1519203
+          x8 |   .0900144   .0382414     2.35   0.019     .0150627    .1649661
+          x9 |   .1972874   .0393305     5.02   0.000      .120201    .2743739
+       _cons |  -1.846229   .0502648   -36.73   0.000    -1.944746   -1.747712
+------------------------------------------------------------------------------
+
+Iteration 0:   log likelihood = -17866.578  
+Iteration 1:   log likelihood = -17711.425  
+Iteration 2:   log likelihood = -17710.453  
+Iteration 3:   log likelihood = -17710.453  
+
+Probit regression                                       Number of obs = 82,934
+                                                        LR chi2(6)    = 312.25
+                                                        Prob > chi2   = 0.0000
+Log likelihood = -17710.453                             Pseudo R2     = 0.0087
+
+------------------------------------------------------------------------------
+         di6 | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+          x2 |  -.0017059   .0005249    -3.25   0.001    -.0027347    -.000677
+          x4 |   .0758821   .0043136    17.59   0.000     .0674277    .0843366
+          x6 |  -.1291425   .0187983    -6.87   0.000    -.1659865   -.0922985
+          x7 |   .0785174   .0380178     2.07   0.039     .0040038     .153031
+          x8 |   .0890795    .038135     2.34   0.019     .0143363    .1638227
+          x9 |   .1299397   .0394262     3.30   0.001     .0526657    .2072137
+       _cons |  -1.835484   .0502924   -36.50   0.000    -1.934056   -1.736913
+------------------------------------------------------------------------------
+
+Iteration 0:   log likelihood = -1295.9666  
+Iteration 1:   log likelihood = -1212.2244  
+Iteration 2:   log likelihood =  -1194.831  
+Iteration 3:   log likelihood = -1194.7177  
+Iteration 4:   log likelihood = -1194.7176  
+
+Probit regression                                       Number of obs = 82,934
+                                                        LR chi2(6)    = 202.50
+                                                        Prob > chi2   = 0.0000
+Log likelihood = -1194.7176                             Pseudo R2     = 0.0781
+
+------------------------------------------------------------------------------
+         di7 | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+          x2 |    .008998    .001756     5.12   0.000     .0055563    .0124396
+          x4 |  -.0532345   .0187149    -2.84   0.004     -.089915    -.016554
+          x6 |  -.1377535   .0809911    -1.70   0.089    -.2964932    .0209862
+          x7 |   .1457481   .2176082     0.67   0.503    -.2807561    .5722523
+          x8 |    .443027    .211858     2.09   0.037     .0277929    .8582611
+          x9 |   .9531611   .2099581     4.54   0.000     .5416508    1.364671
+       _cons |  -3.707904   .2421855   -15.31   0.000    -4.182579   -3.233229
+------------------------------------------------------------------------------
+
+. 
+. 
+. forvalues i=1/7 {
+  2. rename mills`i' xm`i'
+  3. }
+
+. 
+. save "$path\DataPaperTotal.dta",replace
+file C:\Users\William\Universidad Icesi (@icesi.edu.co)\Proesa -
+    22-1002-PahoElasSsb\Data\Output\DataPaperTotal.dta saved
+
+. set more on
+
+. 
+. set more off
+
+. drop FEX_C
+
+. forvalues i=1/7 {
+  2. replace w`i' = pdf`i' if w`i' == 0
+  3. }
+(15,372 real changes made)
+(26,617 real changes made)
+(49,081 real changes made)
+(56,538 real changes made)
+(51,845 real changes made)
+(51,926 real changes made)
+(56,377 real changes made)
+
+. 
+. set more on
+
+. 
+. 
+. ******
+. ** Model 1 Full
+. *****
+. 
+end of do-file
+
+. do "C:\Users\William\AppData\Local\Temp\STD2428_000000.tmp"
+
+. aidsills w1-w7, prices(p1-p7) expenditure(totalexp) quadratic intercept(x1 x2 x3 x4 x5 x6 x7 x8 x9 xm1 xm2 xm3 x
+> m4 xm5 xm6 xm7) symmetry alpha_0(10)
+
+Iteration = 1       Criterion = .22043371
+Iteration = 2       Criterion = .04281087
+Iteration = 3       Criterion = .00374995
+Iteration = 4       Criterion = .00017322
+Iteration = 5       Criterion = 5.918e-06
+estimates repost: matrix has missing values
+r(504);
+
+end of do-file
+
+r(504);
+
+. exit, clear
+------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\William\Universidad Icesi (@icesi.edu.co)\Proesa - 22-1002-PahoElasSsb\Resu\SSBElasticityPap
+> erRevised_fuera_log.log
+  log type:  text
+ opened on:  20 Feb 2023, 11:46:52
+
+. 
+. *log using "C:\Users\wgarcia\Universidad Icesi (@icesi.edu.co)\Proesa - *22-1002-PahoElasSsb\Resu\SSBElasticityP
+> aperrevised_log.log", append
+. 
+. clear all
+
+. macro drop _all
+
+. set more off
+
+. 
+. global path "C:\Users\William\Universidad Icesi (@icesi.edu.co)\Proesa - 22-1002-PahoElasSsb\Data\Output"
+
+. *global path "C:\Users\wgarcia\Universidad Icesi (@icesi.edu.co)\Proesa - 22-1002-PahoElasSsb\Data\Output"
+. 
+. use "$path\DataEstimates4.dta",clear
+
+. 
+. drop Gasto*
+
+. drop Precio*
+
+. 
+. merge m:1 REGION DOMINIO TercilIngr using "$path\MeanUnitValuesTercil_Fuera.dta"
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             1
+        from master                         0  (_merge==1)
+        from using                          1  (_merge==2)
+
+    Matched                            82,934  (_merge==3)
+    -----------------------------------------
+
+. keep if _merge==3
+(1 observation deleted)
+
+. drop _merge
+
+. 
+. merge 1:1 DIRECTORIO using "$path\Gasto_Fuera.dta"
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                            82,934  (_merge==3)
+    -----------------------------------------
+
+. 
+. keep if _merge==3
+(0 observations deleted)
+
+. drop _merge
+
+. 
+. tab xeduc,gen(xeduc_)
+
+           xeduc |      Freq.     Percent        Cum.
+-----------------+-----------------------------------
+         Ninguno |      3,818        4.60        4.60
+        Primaria |     23,012       27.75       32.35
+Secundaria/Media |     35,718       43.07       75.42
+        Superior |     20,386       24.58      100.00
+-----------------+-----------------------------------
+           Total |     82,934      100.00
+
+. * Summary
+. summarize xsexo xedad xrural xtamanioh xuniper xninios xeduc_1 xeduc_2 xeduc_3 xeduc_4 IT ITPC IT ITPC 
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+       xsexo |     82,934    .5921817     .491432          0          1
+       xedad |     82,934    48.55144    15.78316         11        107
+      xrural |     82,934    .0694649    .2542445          0          1
+   xtamanioh |     82,934    3.379651    1.748752          1         22
+     xuniper |     82,934    .1320809    .3385808          0          1
+-------------+---------------------------------------------------------
+     xninios |     82,934    .2535028    .4350189          0          1
+     xeduc_1 |     82,934    .0460366    .2095657          0          1
+     xeduc_2 |     82,934    .2774737    .4477549          0          1
+     xeduc_3 |     82,934    .4306798    .4951744          0          1
+     xeduc_4 |     82,934    .2458099     .430569          0          1
+-------------+---------------------------------------------------------
+          IT |     82,934     2096905     3888241          0   6.06e+08
+        ITPC |     82,934    760146.8     1582573          0   1.45e+08
+          IT |     82,934     2096905     3888241          0   6.06e+08
+        ITPC |     82,934    760146.8     1582573          0   1.45e+08
+
+. 
+. 
+. ** QUAIDS libreria
+. egen totalexp = rowtotal(Gasto_HotDrinks Gasto_MilkDerivatives Gasto_SSB Gasto_Water Gasto_Beer Gasto_Spirits Ga
+> sto_Wine)
+
+. 
+. /*
+> egen totalexptext = rowtotal(GastoTexto_SSB GastoTexto_HotDrinks GastoTexto_MilkDerivatives GastoTexto_Beer Gast
+> oTexto_Wine GastoTexto_Water GastoTexto_Spirits)
+> 
+> egen totalexpcodi = rowtotal(GastoCodi_HotDrinks GastoCodi_SSB GastoCodi_MilkDerivatives GastoCodi_Beer GastoCod
+> i_Spirits GastoCodi_Water GastoCodi_Wine)
+> 
+> *generar consumo texto > 0 
+> 
+> gen consumotexto = 0
+> replace consumotexto = 1 if totalexptext > 0
+> */
+. 
+. local expe "Gasto_HotDrinks Gasto_MilkDerivatives Gasto_SSB Gasto_Water Gasto_Beer Gasto_Spirits Gasto_Wine"
+
+.  
+. foreach i of local expe {
+  2.         replace `i' =0 if mi(`i')
+  3. }
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+
+.   
+. gen w1= Gasto_SSB/totalexp
+(27,446 missing values generated)
+
+. gen w2= Gasto_HotDrinks/totalexp
+(27,446 missing values generated)
+
+. gen w3= Gasto_MilkDerivatives/totalexp
+(27,446 missing values generated)
+
+. gen w4= Gasto_Water/totalexp
+(27,446 missing values generated)
+
+. 
+. gen w5= Gasto_Beer/totalexp
+(27,446 missing values generated)
+
+. gen w6= Gasto_Spirits/totalexp
+(27,446 missing values generated)
+
+. gen w7= Gasto_Wine/totalexp
+(27,446 missing values generated)
+
+. 
+. rename PrecioM_SSB p1
+
+. rename PrecioM_HotDrinks p2
+
+. rename PrecioM_MilkDerivatives p3
+
+. rename PrecioM_Water p4
+
+. 
+. rename PrecioM_Beer p5
+
+. rename PrecioM_Spirits p6
+
+. rename PrecioM_Wine p7
+
+. 
+. order p1 p2 p3 p4 p5 p6 p7
+
+. 
+. * dummies de consumo
+. gen di1= (Gasto_SSB>0)
+
+. gen di2= (Gasto_HotDrinks>0)
+
+. gen di3= (Gasto_MilkDerivatives>0)
+
+. gen di4= (Gasto_Water>0)
+
+. 
+. gen di5= (Gasto_Beer>0)
+
+. gen di6= (Gasto_Spirits>0)
+
+. gen di7= (Gasto_Wine>0)
+
+. 
+. sum di*
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+         di1 |     82,934    .4966238    .4999916          0          1
+         di2 |     82,934    .3610341    .4803033          0          1
+         di3 |     82,934    .0901681    .2864241          0          1
+         di4 |     82,934    .0002532    .0159108          0          1
+         di5 |     82,934    .0063424    .0793867          0          1
+-------------+---------------------------------------------------------
+         di6 |     82,934    .0558637    .2296597          0          1
+         di7 |     82,934    .0021945    .0467945          0          1
+
+. 
+end of do-file
+
+. sum p*
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+          p1 |     82,904    4865.024    2127.216   1117.639   10018.62
+          p2 |     82,904    6244.801     2333.28   1417.682   22036.88
+          p3 |     82,325    4912.418    2057.546        200   13850.12
+          p4 |      6,437    3229.973    3970.272   1133.333      16000
+          p5 |     82,779    15736.56    7192.414       3000      38000
+-------------+---------------------------------------------------------
+          p6 |     82,889    9286.773    6494.621   1733.964   37343.47
+          p7 |     82,411    30474.36     27680.9        750     145000
+  percentile |     82,934    .5017409    .2871003   .0050573          1
+    primaria |     82,934    .2774737    .4477549          0          1
+
+. sum di
+di ambiguous abbreviation
+r(111);
+
+. sum di*
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+         di1 |     82,934    .4966238    .4999916          0          1
+         di2 |     82,934    .3610341    .4803033          0          1
+         di3 |     82,934    .0901681    .2864241          0          1
+         di4 |     82,934    .0002532    .0159108          0          1
+         di5 |     82,934    .0063424    .0793867          0          1
+-------------+---------------------------------------------------------
+         di6 |     82,934    .0558637    .2296597          0          1
+         di7 |     82,934    .0021945    .0467945          0          1
+
+. do "C:\Users\William\AppData\Local\Temp\STD1bd8_000000.tmp"
+
+. 
+. clear all
+
+. macro drop _all
+
+. set more off
+
+. 
+. global path "C:\Users\William\Universidad Icesi (@icesi.edu.co)\Proesa - 22-1002-PahoElasSsb\Data\Output"
+
+. *global path "C:\Users\wgarcia\Universidad Icesi (@icesi.edu.co)\Proesa - 22-1002-PahoElasSsb\Data\Output"
+. 
+. use "$path\DataEstimates4.dta",clear
+
+. 
+. drop Gasto*
+
+. drop Precio*
+
+. 
+. merge m:1 REGION DOMINIO TercilIngr using "$path\MeanUnitValuesTercil_Hogar.dta"
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             1
+        from master                         0  (_merge==1)
+        from using                          1  (_merge==2)
+
+    Matched                            82,934  (_merge==3)
+    -----------------------------------------
+
+. keep if _merge==3
+(1 observation deleted)
+
+. drop _merge
+
+. 
+. merge 1:1 DIRECTORIO using "$path\Gasto_Fuera.dta"
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                            82,934  (_merge==3)
+    -----------------------------------------
+
+. 
+. keep if _merge==3
+(0 observations deleted)
+
+. drop _merge
+
+. 
+. tab xeduc,gen(xeduc_)
+
+           xeduc |      Freq.     Percent        Cum.
+-----------------+-----------------------------------
+         Ninguno |      3,818        4.60        4.60
+        Primaria |     23,012       27.75       32.35
+Secundaria/Media |     35,718       43.07       75.42
+        Superior |     20,386       24.58      100.00
+-----------------+-----------------------------------
+           Total |     82,934      100.00
+
+. * Summary
+. summarize xsexo xedad xrural xtamanioh xuniper xninios xeduc_1 xeduc_2 xeduc_3 xeduc_4 IT ITPC IT ITPC 
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+       xsexo |     82,934    .5921817     .491432          0          1
+       xedad |     82,934    48.55144    15.78316         11        107
+      xrural |     82,934    .0694649    .2542445          0          1
+   xtamanioh |     82,934    3.379651    1.748752          1         22
+     xuniper |     82,934    .1320809    .3385808          0          1
+-------------+---------------------------------------------------------
+     xninios |     82,934    .2535028    .4350189          0          1
+     xeduc_1 |     82,934    .0460366    .2095657          0          1
+     xeduc_2 |     82,934    .2774737    .4477549          0          1
+     xeduc_3 |     82,934    .4306798    .4951744          0          1
+     xeduc_4 |     82,934    .2458099     .430569          0          1
+-------------+---------------------------------------------------------
+          IT |     82,934     2096905     3888241          0   6.06e+08
+        ITPC |     82,934    760146.8     1582573          0   1.45e+08
+          IT |     82,934     2096905     3888241          0   6.06e+08
+        ITPC |     82,934    760146.8     1582573          0   1.45e+08
+
+. 
+. 
+. ** QUAIDS libreria
+. egen totalexp = rowtotal(Gasto_HotDrinks Gasto_MilkDerivatives Gasto_SSB Gasto_Water Gasto_Beer Gasto_Spirits Ga
+> sto_Wine)
+
+. 
+. /*
+> egen totalexptext = rowtotal(GastoTexto_SSB GastoTexto_HotDrinks GastoTexto_MilkDerivatives GastoTexto_Beer Gast
+> oTexto_Wine GastoTexto_Water GastoTexto_Spirits)
+> 
+> egen totalexpcodi = rowtotal(GastoCodi_HotDrinks GastoCodi_SSB GastoCodi_MilkDerivatives GastoCodi_Beer GastoCod
+> i_Spirits GastoCodi_Water GastoCodi_Wine)
+> 
+> *generar consumo texto > 0 
+> 
+> gen consumotexto = 0
+> replace consumotexto = 1 if totalexptext > 0
+> */
+. 
+. local expe "Gasto_HotDrinks Gasto_MilkDerivatives Gasto_SSB Gasto_Water Gasto_Beer Gasto_Spirits Gasto_Wine"
+
+.  
+. foreach i of local expe {
+  2.         replace `i' =0 if mi(`i')
+  3. }
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+
+.   
+. gen w1= Gasto_SSB/totalexp
+(27,446 missing values generated)
+
+. gen w2= Gasto_HotDrinks/totalexp
+(27,446 missing values generated)
+
+. gen w3= Gasto_MilkDerivatives/totalexp
+(27,446 missing values generated)
+
+. gen w4= Gasto_Water/totalexp
+(27,446 missing values generated)
+
+. 
+. gen w5= Gasto_Beer/totalexp
+(27,446 missing values generated)
+
+. gen w6= Gasto_Spirits/totalexp
+(27,446 missing values generated)
+
+. gen w7= Gasto_Wine/totalexp
+(27,446 missing values generated)
+
+. 
+. rename PrecioM_SSB p1
+
+. rename PrecioM_HotDrinks p2
+
+. rename PrecioM_MilkDerivatives p3
+
+. rename PrecioM_Water p4
+
+. 
+. rename PrecioM_Beer p5
+
+. rename PrecioM_Spirits p6
+
+. rename PrecioM_Wine p7
+
+. 
+. order p1 p2 p3 p4 p5 p6 p7
+
+. 
+. * dummies de consumo
+. gen di1= (Gasto_SSB>0)
+
+. gen di2= (Gasto_HotDrinks>0)
+
+. gen di3= (Gasto_MilkDerivatives>0)
+
+. gen di4= (Gasto_Water>0)
+
+. 
+. gen di5= (Gasto_Beer>0)
+
+. gen di6= (Gasto_Spirits>0)
+
+. gen di7= (Gasto_Wine>0)
+
+. 
+. sum di*
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+         di1 |     82,934    .4966238    .4999916          0          1
+         di2 |     82,934    .3610341    .4803033          0          1
+         di3 |     82,934    .0901681    .2864241          0          1
+         di4 |     82,934    .0002532    .0159108          0          1
+         di5 |     82,934    .0063424    .0793867          0          1
+-------------+---------------------------------------------------------
+         di6 |     82,934    .0558637    .2296597          0          1
+         di7 |     82,934    .0021945    .0467945          0          1
+
+. rename xsexo x1
+
+. rename xedad x2
+
+. rename xrural x3
+
+. rename xtamanioh x4
+
+. rename xuniper x5
+
+. rename xninios x6
+
+. rename primaria x7
+
+. rename secundaria x8
+
+. rename superior x9
+
+. rename ningunaed x10
+
+. 
+. 
+. * Logaritmos
+. * logaritmos de precios
+. 
+. forvalues i=1/7 {
+  2. gen lnp`i'=log(p`i')
+  3. }
+
+. 
+. *logaritmo gasto
+. gen lnexp=log(totalexp)
+(27,446 missing values generated)
+
+. 
+. 
+. ****************************
+. * Probit regressions
+. ****************************
+. 
+. global X  x2 x4 x6 x7 x8 x9
+
+. global P lnp1 lnp2 lnp3 lnp4 lnp5 lnp6 lnp7
+
+. 
+. * Se excluye el sexo para no sobreidentificar
+. 
+. *genera variables auxiliares
+. 
+. 
+. set more off
+
+. forvalues i=1/7 {
+  2. probit di`i' $X
+  3. predict f_d`i', xb
+  4. label var f_d`i' "Valor ajustado para el bien `i'"
+  5. generate pdf`i'=normalden(f_d`i')
+  6. generate cdf`i'=normal(f_d`i')
+  7. generate mills`i'=(di`i'*(pdf`i'/cdf`i'))+ ((1-di`i')*(pdf`i'/1-cdf`i'))
+  8. }
+
+Iteration 0:   log likelihood = -57483.578  
+Iteration 1:   log likelihood = -55156.742  
+Iteration 2:   log likelihood = -55151.309  
+Iteration 3:   log likelihood = -55151.309  
+
+Probit regression                                      Number of obs =  82,934
+                                                       LR chi2(6)    = 4664.54
+                                                       Prob > chi2   =  0.0000
+Log likelihood = -55151.309                            Pseudo R2     =  0.0406
+
+------------------------------------------------------------------------------
+         di1 | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+          x2 |   -.005615   .0003221   -17.43   0.000    -.0062464   -.0049837
+          x4 |   .1613667   .0029262    55.14   0.000     .1556314     .167102
+          x6 |  -.2699674   .0118136   -22.85   0.000    -.2931216   -.2468132
+          x7 |   .1817535   .0231105     7.86   0.000     .1364577    .2270493
+          x8 |   .4064693   .0231822    17.53   0.000     .3610331    .4519055
+          x9 |   .5864705   .0240403    24.40   0.000     .5393524    .6335886
+       _cons |  -.5838201   .0309392   -18.87   0.000    -.6444598   -.5231804
+------------------------------------------------------------------------------
+
+Iteration 0:   log likelihood = -54239.735  
+Iteration 1:   log likelihood = -54007.737  
+Iteration 2:   log likelihood = -54007.698  
+Iteration 3:   log likelihood = -54007.698  
+
+Probit regression                                       Number of obs = 82,934
+                                                        LR chi2(6)    = 464.08
+                                                        Prob > chi2   = 0.0000
+Log likelihood = -54007.698                             Pseudo R2     = 0.0043
+
+------------------------------------------------------------------------------
+         di2 | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+          x2 |   .0035063   .0003241    10.82   0.000     .0028711    .0041416
+          x4 |   .0278305   .0028509     9.76   0.000     .0222428    .0334182
+          x6 |    -.14643   .0120108   -12.19   0.000    -.1699708   -.1228893
+          x7 |   .1971343   .0230625     8.55   0.000     .1519326     .242336
+          x8 |   .2398731   .0231903    10.34   0.000     .1944209    .2853253
+          x9 |   .2833114   .0240374    11.79   0.000     .2361989    .3304239
+       _cons |   -.812238   .0310594   -26.15   0.000    -.8731134   -.7513626
+------------------------------------------------------------------------------
+
+Iteration 0:   log likelihood =  -25122.91  
+Iteration 1:   log likelihood = -24670.782  
+Iteration 2:   log likelihood = -24667.705  
+Iteration 3:   log likelihood = -24667.705  
+
+Probit regression                                       Number of obs = 82,934
+                                                        LR chi2(6)    = 910.41
+                                                        Prob > chi2   = 0.0000
+Log likelihood = -24667.705                             Pseudo R2     = 0.0181
+
+------------------------------------------------------------------------------
+         di3 | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+          x2 |   -.000564   .0004549    -1.24   0.215    -.0014555    .0003275
+          x4 |   .1068014   .0037396    28.56   0.000     .0994719     .114131
+          x6 |  -.1260239   .0160444    -7.85   0.000    -.1574704   -.0945774
+          x7 |   .1461208   .0346006     4.22   0.000     .0783048    .2139368
+          x8 |   .2244319   .0346275     6.48   0.000     .1565633    .2923005
+          x9 |   .3345548   .0356122     9.39   0.000     .2647561    .4043535
+       _cons |  -1.882941   .0450881   -41.76   0.000    -1.971312    -1.79457
+------------------------------------------------------------------------------
+
+Iteration 0:   log likelihood = -194.90418  
+Iteration 1:   log likelihood = -186.47862  
+Iteration 2:   log likelihood = -184.05151  
+Iteration 3:   log likelihood = -183.92743  
+Iteration 4:   log likelihood = -183.91024  
+Iteration 5:   log likelihood = -183.90659  
+Iteration 6:   log likelihood = -183.90577  
+Iteration 7:   log likelihood = -183.90561  
+Iteration 8:   log likelihood = -183.90558  
+Iteration 9:   log likelihood = -183.90557  
+
+Probit regression                                       Number of obs = 82,934
+                                                        LR chi2(6)    =  22.00
+                                                        Prob > chi2   = 0.0012
+Log likelihood = -183.90557                             Pseudo R2     = 0.0564
+
+------------------------------------------------------------------------------
+         di4 | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+          x2 |   .0079447   .0044259     1.80   0.073    -.0007298    .0166192
+          x4 |   .0825172   .0319393     2.58   0.010     .0199173    .1451171
+          x6 |  -.0863441   .1619245    -0.53   0.594    -.4037102    .2310221
+          x7 |   2.847952   170.6829     0.02   0.987    -331.6844    337.3803
+          x8 |   2.788153   170.6829     0.02   0.987    -331.7443    337.3206
+          x9 |   3.292369    170.683     0.02   0.985    -331.2401    337.8248
+       _cons |  -7.158751   170.6834    -0.04   0.967    -341.6921    327.3746
+------------------------------------------------------------------------------
+Note: 3658 failures and 0 successes completely determined.
+
+Iteration 0:   log likelihood =  -3186.151  
+Iteration 1:   log likelihood = -3099.6904  
+Iteration 2:   log likelihood = -3094.5555  
+Iteration 3:   log likelihood = -3094.5389  
+Iteration 4:   log likelihood = -3094.5389  
+
+Probit regression                                       Number of obs = 82,934
+                                                        LR chi2(6)    = 183.22
+                                                        Prob > chi2   = 0.0000
+Log likelihood = -3094.5389                             Pseudo R2     = 0.0288
+
+------------------------------------------------------------------------------
+         di5 | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+          x2 |   .0020614   .0011222     1.84   0.066     -.000138    .0042608
+          x4 |  -.0492395   .0113225    -4.35   0.000    -.0714311   -.0270479
+          x6 |  -.1171233   .0469767    -2.49   0.013    -.2091959   -.0250507
+          x7 |   .2071153   .1171063     1.77   0.077    -.0224088    .4366394
+          x8 |   .3445391   .1158327     2.97   0.003     .1175111    .5715671
+          x9 |   .6272868   .1159381     5.41   0.000     .4000522    .8545214
+       _cons |  -2.812379   .1358861   -20.70   0.000    -3.078711   -2.546048
+------------------------------------------------------------------------------
+
+Iteration 0:   log likelihood = -17866.578  
+Iteration 1:   log likelihood = -17711.425  
+Iteration 2:   log likelihood = -17710.453  
+Iteration 3:   log likelihood = -17710.453  
+
+Probit regression                                       Number of obs = 82,934
+                                                        LR chi2(6)    = 312.25
+                                                        Prob > chi2   = 0.0000
+Log likelihood = -17710.453                             Pseudo R2     = 0.0087
+
+------------------------------------------------------------------------------
+         di6 | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+          x2 |  -.0017059   .0005249    -3.25   0.001    -.0027347    -.000677
+          x4 |   .0758821   .0043136    17.59   0.000     .0674277    .0843366
+          x6 |  -.1291425   .0187983    -6.87   0.000    -.1659865   -.0922985
+          x7 |   .0785174   .0380178     2.07   0.039     .0040038     .153031
+          x8 |   .0890795    .038135     2.34   0.019     .0143363    .1638227
+          x9 |   .1299397   .0394262     3.30   0.001     .0526657    .2072137
+       _cons |  -1.835484   .0502924   -36.50   0.000    -1.934056   -1.736913
+------------------------------------------------------------------------------
+
+Iteration 0:   log likelihood = -1295.9666  
+Iteration 1:   log likelihood = -1212.2244  
+Iteration 2:   log likelihood =  -1194.831  
+Iteration 3:   log likelihood = -1194.7177  
+Iteration 4:   log likelihood = -1194.7176  
+
+Probit regression                                       Number of obs = 82,934
+                                                        LR chi2(6)    = 202.50
+                                                        Prob > chi2   = 0.0000
+Log likelihood = -1194.7176                             Pseudo R2     = 0.0781
+
+------------------------------------------------------------------------------
+         di7 | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+          x2 |    .008998    .001756     5.12   0.000     .0055563    .0124396
+          x4 |  -.0532345   .0187149    -2.84   0.004     -.089915    -.016554
+          x6 |  -.1377535   .0809911    -1.70   0.089    -.2964932    .0209862
+          x7 |   .1457481   .2176082     0.67   0.503    -.2807561    .5722523
+          x8 |    .443027    .211858     2.09   0.037     .0277929    .8582611
+          x9 |   .9531611   .2099581     4.54   0.000     .5416508    1.364671
+       _cons |  -3.707904   .2421855   -15.31   0.000    -4.182579   -3.233229
+------------------------------------------------------------------------------
+
+. 
+. 
+. forvalues i=1/7 {
+  2. rename mills`i' xm`i'
+  3. }
+
+. 
+. save "$path\DataPaperTotal.dta",replace
+file C:\Users\William\Universidad Icesi (@icesi.edu.co)\Proesa -
+    22-1002-PahoElasSsb\Data\Output\DataPaperTotal.dta saved
+
+. set more on
+
+. 
+. set more off
+
+. drop FEX_C
+
+. forvalues i=1/7 {
+  2. replace w`i' = pdf`i' if w`i' == 0
+  3. }
+(14,301 real changes made)
+(25,546 real changes made)
+(48,010 real changes made)
+(55,467 real changes made)
+(54,962 real changes made)
+(50,855 real changes made)
+(55,306 real changes made)
+
+. 
+. set more on
+
+. 
+. 
+. ******
+. ** Model 1 Full
+. *****
+. 
+end of do-file
+
+. do "C:\Users\William\AppData\Local\Temp\STD1bd8_000000.tmp"
+
+. 
+. set more off
+
+. aidsills w1-w7 [fweight = FEX_C_2], prices(p1-p7) expenditure(totalexp) quadratic intercept(x1 x2 x3 x4 x5 x6 x7
+>  x8 x9 xm1 xm2 xm3 xm4 xm5 xm6 xm7) symmetry alpha_0(10)
+weights not allowed
+r(101);
+
+end of do-file
+
+r(101);
+
+. ssc install aidsills
+ssc install: "aidsills" not found at SSC, type search aidsills
+(To find all packages at SSC that start with a, type ssc describe a)
+r(601);
+
+. search aidsills
+
+. search aidsills
+
+. do "C:\Users\William\AppData\Local\Temp\STD1bd8_000000.tmp"
+
+. 
+. set more off
+
+. aidsills w1-w7 [fweight = FEX_C_2], prices(p1-p7) expenditure(totalexp) quadratic intercept(x1 x2 x3 x4 x5 x6 x7
+>  x8 x9 xm1 xm2 xm3 xm4 xm5 xm6 xm7) symmetry alpha_0(10)
+weights not allowed
+r(101);
+
+end of do-file
+
+r(101);
+
+. ssc install estabout
+ssc install: "estabout" not found at SSC, type search estabout
+(To find all packages at SSC that start with e, type ssc describe e)
+r(601);
+
+. ssc install estout
+checking estout consistency and verifying not already installed...
+
+the following files already exist and are different:
+    c:\ado\plus\e\estadd.ado
+    c:\ado\plus\e\estadd.hlp
+    c:\ado\plus\e\estout.ado
+    c:\ado\plus\e\estout.hlp
+    c:\ado\plus\e\eststo.hlp
+    c:\ado\plus\e\estpost.ado
+    c:\ado\plus\e\estpost.hlp
+    c:\ado\plus\e\esttab.ado
+    c:\ado\plus\e\esttab.hlp
+
+no files installed or copied
+(no action taken)
+r(602);
+
+. do "C:\Users\William\AppData\Local\Temp\STD1bd8_000000.tmp"
+
+. 
+. set more off
+
+. aidsills w1-w7 [fweight = FEX_C_2], prices(p1-p7) expenditure(totalexp) quadratic intercept(x1 x2 x3 x4 x5 x6 x7
+>  x8 x9 xm1 xm2 xm3 xm4 xm5 xm6 xm7) symmetry alpha_0(10)
+weights not allowed
+r(101);
+
+end of do-file
+
+r(101);
+
+. do "C:\Users\William\AppData\Local\Temp\STD1bd8_000000.tmp"
+
+. 
+. set more off
+
+. aidsills w1-w7 [fweight = FEX_C_2], prices(p1-p7) expenditure(totalexp) quadratic intercept(x1 x2 x3 x4 x5 x6 x7
+>  x8 x9 xm1 xm2 xm3 xm4 xm5 xm6 xm7) symmetry alpha_0(10)
+weights not allowed
+r(101);
+
+end of do-file
+
+r(101);
+
+. h aidsills
+
+. do "C:\Users\William\AppData\Local\Temp\STD1bd8_000000.tmp"
+
+. set more off
+
+. aidsills w1-w7 , prices(p1-p7) expenditure(totalexp) quadratic intercept(x1 x2 x3 x4 x5 x6 x7 x8 x9 xm1 xm2 xm3 
+> xm4 xm5 xm6 xm7) symmetry alpha_0(10)
+
+Iteration = 1       Criterion = .2244434
+Iteration = 2       Criterion = .03086538
+Iteration = 3       Criterion = .00070131
+Iteration = 4       Criterion = .00002927
+Iteration = 5       Criterion = 9.388e-07
+
+QUAIDS - PROPER ESTIMATION WITH FIXED ALPHA_0 = 10
+HOMOGENEITY AND SYMMETRY CONSTRAINED ESTIMATES
+
+------------------------------------------------------------------------------
+Equation          Obs  Parms        RMSE    "R-sq"    F( 25, 55462)   Prob > F
+------------------------------------------------------------------------------
+w1              55488     25    .1744066    0.6658         4604.41      0.0000
+w2              55488     25    .1795685    0.6296         3927.45      0.0000
+w3              55488     25    .1122419    0.3409         1195.47      0.0000
+w4              55488     25    .0061876    0.3765         1395.64      0.0000
+w5              55488     25    .0289399    0.6581         4447.78      0.0000
+w6              55488     25    .0916615    0.6884         5104.72      0.0000
+w7              55488     25    .0186519    0.7487         6885.41      0.0000
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+             | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+w1           |
+  gamma_lnp1 |    .022947   .0049239     4.66   0.000     .0132964    .0325976
+  gamma_lnp2 |  -.0002967   .0020579    -0.14   0.885    -.0043301    .0037368
+  gamma_lnp3 |  -.0155886   .0033049    -4.72   0.000    -.0220661   -.0091111
+  gamma_lnp4 |  -.0005974   .0012127    -0.49   0.622    -.0029741    .0017794
+  gamma_lnp5 |  -.0008222   .0008989    -0.91   0.360    -.0025841    .0009397
+  gamma_lnp6 |  -.0091522   .0032449    -2.82   0.005     -.015512   -.0027923
+  gamma_lnp7 |     .00351   .0014762     2.38   0.017     .0006167    .0064033
+    beta_lnx |   .0570012    .003638    15.67   0.000      .049871    .0641315
+ lambda_lnx2 |    .002766   .0002166    12.77   0.000     .0023415    .0031905
+    alpha_x1 |  -.0053108   .0014994    -3.54   0.000    -.0082497    -.002372
+    alpha_x2 |  -.0017357   .0000546   -31.80   0.000    -.0018427   -.0016287
+    alpha_x3 |  -.0016551   .0057411    -0.29   0.773    -.0129075    .0095973
+    alpha_x4 |   .0209844   .0005606    37.44   0.000     .0198858    .0220831
+    alpha_x5 |  -.0232655   .0026567    -8.76   0.000    -.0284725   -.0180586
+    alpha_x6 |  -.0225427   .0019479   -11.57   0.000    -.0263604   -.0187249
+    alpha_x7 |   -.003107   .0041276    -0.75   0.452     -.011197     .004983
+    alpha_x8 |   .0322221   .0041861     7.70   0.000     .0240175    .0404268
+    alpha_x9 |     .05946   .0043994    13.52   0.000     .0508373    .0680826
+   alpha_xm1 |   .2559924   .0022023   116.24   0.000      .251676    .2603088
+   alpha_xm2 |  -.2933376   .0015845  -185.13   0.000    -.2964431   -.2902321
+   alpha_xm3 |  -.1013068   .0012471   -81.23   0.000     -.103751   -.0988625
+   alpha_xm4 |  -.0270668   .0101484    -2.67   0.008    -.0469572   -.0071764
+   alpha_xm5 |   -.081516   .0027073   -30.11   0.000    -.0868223   -.0762097
+   alpha_xm6 |  -.1494544   .0013686  -109.20   0.000    -.1521369   -.1467719
+   alpha_xm7 |  -.0771293   .0042496   -18.15   0.000    -.0854583   -.0688003
+  alpha_cons |   1.059746   .0192767    54.98   0.000     1.021964    1.097528
+-------------+----------------------------------------------------------------
+w2           |
+  gamma_lnp1 |  -.0002967   .0049053    -0.06   0.952    -.0099109    .0093176
+  gamma_lnp2 |   .0093565   .0018985     4.93   0.000     .0056355    .0130774
+  gamma_lnp3 |  -.0090038   .0033415    -2.69   0.007    -.0155531   -.0024545
+  gamma_lnp4 |   .0000842    .001253     0.07   0.946    -.0023716    .0025401
+  gamma_lnp5 |  -.0005136   .0009171    -0.56   0.575    -.0023111     .001284
+  gamma_lnp6 |   -.000514   .0032933    -0.16   0.876    -.0069687    .0059407
+  gamma_lnp7 |   .0008873   .0015116     0.59   0.557    -.0020753      .00385
+    beta_lnx |  -.0162473   .0038731    -4.19   0.000    -.0238384   -.0086562
+ lambda_lnx2 |  -.0001641   .0002396    -0.68   0.493    -.0006338    .0003055
+    alpha_x1 |   .0067133   .0015562     4.31   0.000     .0036632    .0097634
+    alpha_x2 |   .0021049   .0000566    37.17   0.000     .0019939    .0022159
+    alpha_x3 |  -.0548292   .0058761    -9.33   0.000    -.0663461   -.0433123
+    alpha_x4 |   -.044632   .0005821   -76.68   0.000    -.0457728   -.0434911
+    alpha_x5 |   .0154847   .0027522     5.63   0.000     .0100906    .0208789
+    alpha_x6 |    .064047    .002023    31.66   0.000      .060082     .068012
+    alpha_x7 |  -.0188989    .004258    -4.44   0.000    -.0272443   -.0105534
+    alpha_x8 |  -.0830917   .0043205   -19.23   0.000    -.0915596   -.0746237
+    alpha_x9 |  -.1364348   .0045444   -30.02   0.000    -.1453417   -.1275278
+   alpha_xm1 |  -.4918868   .0022767  -216.05   0.000    -.4963491   -.4874244
+   alpha_xm2 |   .0381921   .0016481    23.17   0.000      .034962    .0414222
+   alpha_xm3 |  -.0845312   .0012966   -65.20   0.000    -.0870724     -.08199
+   alpha_xm4 |  -.0214786    .010716    -2.00   0.045    -.0424816   -.0004756
+   alpha_xm5 |  -.0485007   .0028462   -17.04   0.000    -.0540791   -.0429223
+   alpha_xm6 |  -.1201341   .0014174   -84.76   0.000    -.1229121    -.117356
+   alpha_xm7 |  -.0757671    .004436   -17.08   0.000    -.0844615   -.0670726
+  alpha_cons |   .7765463   .0200452    38.74   0.000     .7372585    .8158341
+-------------+----------------------------------------------------------------
+w3           |
+  gamma_lnp1 |  -.0155886   .0031851    -4.89   0.000    -.0218314   -.0093459
+  gamma_lnp2 |  -.0090038   .0013741    -6.55   0.000     -.011697   -.0063106
+  gamma_lnp3 |   .0103478   .0022806     4.54   0.000     .0058778    .0148177
+  gamma_lnp4 |   .0004007   .0007932     0.51   0.613    -.0011539    .0019553
+  gamma_lnp5 |   .0005269   .0005926     0.89   0.374    -.0006345    .0016884
+  gamma_lnp6 |   .0138229   .0021182     6.53   0.000     .0096712    .0179745
+  gamma_lnp7 |  -.0005058   .0009772    -0.52   0.605    -.0024212    .0014095
+    beta_lnx |  -.0508418    .002422   -20.99   0.000    -.0555888   -.0460948
+ lambda_lnx2 |  -.0026206    .000153   -17.13   0.000    -.0029205   -.0023207
+    alpha_x1 |   -.002583   .0009964    -2.59   0.010    -.0045358   -.0006301
+    alpha_x2 |   .0000446   .0000363     1.23   0.219    -.0000265    .0001157
+    alpha_x3 |  -.0071482   .0037339    -1.91   0.056    -.0144664    .0001701
+    alpha_x4 |   .0113734    .000373    30.49   0.000     .0106424    .0121045
+    alpha_x5 |   -.005074    .001759    -2.88   0.004    -.0085216   -.0016264
+    alpha_x6 |  -.0060913   .0012955    -4.70   0.000    -.0086304   -.0035521
+    alpha_x7 |   .0124278   .0027166     4.57   0.000     .0071034    .0177522
+    alpha_x8 |   .0179579   .0027575     6.51   0.000     .0125533    .0233625
+    alpha_x9 |   .0313921   .0029018    10.82   0.000     .0257047    .0370795
+   alpha_xm1 |  -.0881249   .0014529   -60.66   0.000    -.0909725   -.0852774
+   alpha_xm2 |  -.0673251    .001056   -63.76   0.000    -.0693948   -.0652554
+   alpha_xm3 |   .1009503   .0008306   121.53   0.000     .0993223    .1025783
+   alpha_xm4 |  -.0013914   .0069607    -0.20   0.842    -.0150341    .0122513
+   alpha_xm5 |   .0006869   .0018334     0.37   0.708    -.0029065    .0042802
+   alpha_xm6 |  -.0243093   .0009066   -26.82   0.000    -.0260862   -.0225325
+   alpha_xm7 |  -.0132155   .0028488    -4.64   0.000     -.018799   -.0076319
+  alpha_cons |  -.0698294   .0125765    -5.55   0.000     -.094479   -.0451799
+-------------+----------------------------------------------------------------
+w4           |
+  gamma_lnp1 |  -.0005974   .0001681    -3.55   0.000    -.0009268   -.0002679
+  gamma_lnp2 |   .0000842   .0000643     1.31   0.190    -.0000418    .0002103
+  gamma_lnp3 |   .0004007   .0001164     3.44   0.001     .0001725    .0006289
+  gamma_lnp4 |   .0000194   .0000435     0.45   0.656    -.0000659    .0001046
+  gamma_lnp5 |  -.0000228   .0000318    -0.72   0.474    -.0000851    .0000395
+  gamma_lnp6 |   .0001136   .0001145     0.99   0.321    -.0001108    .0003381
+  gamma_lnp7 |   2.17e-06   .0000524     0.04   0.967    -.0001006    .0001049
+    beta_lnx |  -.0003454   .0001336    -2.59   0.010    -.0006073   -.0000836
+ lambda_lnx2 |  -.0000225   8.28e-06    -2.72   0.007    -.0000387   -6.28e-06
+    alpha_x1 |   8.63e-06   .0000545     0.16   0.874    -.0000981    .0001154
+    alpha_x2 |    .000028   1.98e-06    14.13   0.000     .0000241    .0000319
+    alpha_x3 |   .0002072   .0002052     1.01   0.313     -.000195    .0006094
+    alpha_x4 |   .0002867   .0000204    14.07   0.000     .0002468    .0003266
+    alpha_x5 |   .0001846   .0000962     1.92   0.055    -4.03e-06    .0003732
+    alpha_x6 |  -.0002087   .0000708    -2.95   0.003    -.0003474   -.0000699
+    alpha_x7 |   .0009695   .0001489     6.51   0.000     .0006776    .0012614
+    alpha_x8 |   .0010344   .0001511     6.85   0.000     .0007382    .0013306
+    alpha_x9 |   .0027573   .0001589    17.35   0.000     .0024457    .0030688
+   alpha_xm1 |  -.0003121   .0000796    -3.92   0.000    -.0004681   -.0001561
+   alpha_xm2 |  -.0001389   .0000577    -2.41   0.016    -.0002519   -.0000259
+   alpha_xm3 |  -.0000738   .0000454    -1.63   0.104    -.0001627    .0000151
+   alpha_xm4 |   .0670735    .000376   178.39   0.000     .0663366    .0678104
+   alpha_xm5 |  -.0001267   .0000996    -1.27   0.203    -.0003218    .0000685
+   alpha_xm6 |  -.0001203   .0000496    -2.42   0.015    -.0002175   -.0000231
+   alpha_xm7 |  -.0000131   .0001552    -0.08   0.933    -.0003172     .000291
+  alpha_cons |  -.0044761   .0006932    -6.46   0.000    -.0058347   -.0031175
+-------------+----------------------------------------------------------------
+w5           |
+  gamma_lnp1 |  -.0008222    .000787    -1.04   0.296    -.0023646    .0007202
+  gamma_lnp2 |  -.0005136   .0003017    -1.70   0.089    -.0011049    .0000777
+  gamma_lnp3 |   .0005269   .0005449     0.97   0.334    -.0005411     .001595
+  gamma_lnp4 |  -.0000228   .0002035    -0.11   0.911    -.0004215     .000376
+  gamma_lnp5 |   .0001161    .000149     0.78   0.436    -.0001759    .0004082
+  gamma_lnp6 |   .0014253    .000536     2.66   0.008     .0003747    .0024758
+  gamma_lnp7 |  -.0007098   .0002453    -2.89   0.004    -.0011907    -.000229
+    beta_lnx |  -.0022691   .0006244    -3.63   0.000    -.0034929   -.0010454
+ lambda_lnx2 |   -.000172   .0000387    -4.44   0.000    -.0002478   -.0000961
+    alpha_x1 |   8.84e-06   .0002547     0.03   0.972    -.0004904    .0005081
+    alpha_x2 |   .0001156   9.27e-06    12.47   0.000     .0000975    .0001338
+    alpha_x3 |   .0004699   .0009612     0.49   0.625    -.0014139    .0023538
+    alpha_x4 |  -.0020209   .0000953   -21.20   0.000    -.0022078   -.0018341
+    alpha_x5 |   .0017508   .0004502     3.89   0.000     .0008685    .0026332
+    alpha_x6 |  -.0027993   .0003311    -8.45   0.000    -.0034483   -.0021503
+    alpha_x7 |   .0038013   .0006966     5.46   0.000     .0024359    .0051667
+    alpha_x8 |   .0079176   .0007069    11.20   0.000      .006532    .0093032
+    alpha_x9 |   .0214555   .0007436    28.85   0.000     .0199981    .0229129
+   alpha_xm1 |  -.0060387   .0003724   -16.22   0.000    -.0067686   -.0053089
+   alpha_xm2 |   -.003348   .0002697   -12.41   0.000    -.0038766   -.0028193
+   alpha_xm3 |   -.000821   .0002122    -3.87   0.000    -.0012368   -.0004051
+   alpha_xm4 |  -.0012619   .0017584    -0.72   0.473    -.0047082    .0021845
+   alpha_xm5 |   .1446301   .0004656   310.61   0.000     .1437175    .1455428
+   alpha_xm6 |  -.0022801    .000232    -9.83   0.000    -.0027349   -.0018253
+   alpha_xm7 |  -.0032133   .0007258    -4.43   0.000    -.0046358   -.0017907
+  alpha_cons |   .0047339   .0032414     1.46   0.144    -.0016192     .011087
+-------------+----------------------------------------------------------------
+w6           |
+  gamma_lnp1 |  -.0091522   .0025044    -3.65   0.000    -.0140606   -.0042437
+  gamma_lnp2 |   -.000514    .000963    -0.53   0.594    -.0024015    .0013735
+  gamma_lnp3 |   .0138229   .0017408     7.94   0.000      .010411    .0172347
+  gamma_lnp4 |   .0001136   .0006506     0.17   0.861    -.0011614    .0013887
+  gamma_lnp5 |   .0014253   .0004753     3.00   0.003     .0004936    .0023569
+  gamma_lnp6 |   -.003095   .0016939    -1.83   0.068    -.0064149    .0002249
+  gamma_lnp7 |  -.0026006   .0007837    -3.32   0.001    -.0041367   -.0010645
+    beta_lnx |   .0036513   .0019739     1.85   0.064    -.0002175    .0075202
+ lambda_lnx2 |  -.0002261   .0001218    -1.86   0.063    -.0004647    .0000126
+    alpha_x1 |    .000672   .0008217     0.82   0.414    -.0009386    .0022825
+    alpha_x2 |  -.0001588   .0000299    -5.31   0.000    -.0002174   -.0001002
+    alpha_x3 |   .0624525   .0030927    20.19   0.000     .0563909    .0685141
+    alpha_x4 |   .0056307   .0003074    18.32   0.000     .0050283    .0062332
+    alpha_x5 |   .0038151   .0014531     2.63   0.009      .000967    .0066632
+    alpha_x6 |  -.0065211    .001068    -6.11   0.000    -.0086143   -.0044279
+    alpha_x7 |  -.0007509   .0022477    -0.33   0.738    -.0051563    .0036546
+    alpha_x8 |  -.0120037    .002281    -5.26   0.000    -.0164743   -.0075331
+    alpha_x9 |  -.0157891   .0023993    -6.58   0.000    -.0204916   -.0110867
+   alpha_xm1 |  -.0715119    .001202   -59.49   0.000    -.0738677    -.069156
+   alpha_xm2 |  -.0371652     .00087   -42.72   0.000    -.0388704   -.0354601
+   alpha_xm3 |   -.011065   .0006844   -16.17   0.000    -.0124065   -.0097236
+   alpha_xm4 |  -.0141848   .0056629    -2.50   0.012     -.025284   -.0030857
+   alpha_xm5 |  -.0198268   .0015006   -13.21   0.000    -.0227679   -.0168857
+   alpha_xm6 |   .2374606   .0007485   317.23   0.000     .2359935    .2389277
+   alpha_xm7 |  -.0153507   .0023414    -6.56   0.000    -.0199397   -.0107617
+  alpha_cons |   .2141648   .0103141    20.76   0.000     .1939495    .2343802
+-------------+----------------------------------------------------------------
+w7           |
+  gamma_lnp1 |     .00351   .0010578     3.32   0.001     .0014367    .0055833
+  gamma_lnp2 |   .0008873   .0004254     2.09   0.037     .0000536     .001721
+  gamma_lnp3 |  -.0005058   .0007362    -0.69   0.492    -.0019488    .0009371
+  gamma_lnp4 |   2.17e-06   .0002723     0.01   0.994    -.0005315    .0005359
+  gamma_lnp5 |  -.0007098   .0002001    -3.55   0.000    -.0011021   -.0003176
+  gamma_lnp6 |  -.0026006     .00072    -3.61   0.000    -.0040119   -.0011894
+  gamma_lnp7 |  -.0005832   .0003341    -1.75   0.081    -.0012381    .0000717
+    beta_lnx |   .0090511   .0008254    10.97   0.000     .0074333    .0106688
+ lambda_lnx2 |   .0004392   .0000514     8.54   0.000     .0003384      .00054
+    alpha_x1 |    .000491   .0003413     1.44   0.150     -.000178      .00116
+    alpha_x2 |  -.0003986   .0000124   -32.09   0.000     -.000423   -.0003743
+    alpha_x3 |   .0005028   .0012844     0.39   0.695    -.0020145    .0030202
+    alpha_x4 |   .0083776   .0001277    65.60   0.000     .0081273    .0086279
+    alpha_x5 |   .0071043   .0006031    11.78   0.000     .0059222    .0082864
+    alpha_x6 |  -.0258839   .0004437   -58.34   0.000    -.0267536   -.0250143
+    alpha_x7 |   .0055581   .0009324     5.96   0.000     .0037307    .0073855
+    alpha_x8 |   .0359633   .0009462    38.01   0.000     .0341087    .0378179
+    alpha_x9 |   .0371591   .0009955    37.33   0.000     .0352079    .0391103
+   alpha_xm1 |    .401882   .0004985   806.17   0.000      .400905    .4028591
+   alpha_xm2 |   .3631227   .0003615  1004.53   0.000     .3624142    .3638312
+   alpha_xm3 |   .0968475   .0002844   340.54   0.000     .0962901    .0974049
+   alpha_xm4 |  -.0016901   .0023647    -0.71   0.475    -.0063249    .0029447
+   alpha_xm5 |   .0046531   .0006256     7.44   0.000      .003427    .0058793
+   alpha_xm6 |   .0588376   .0003108   189.34   0.000     .0582286    .0594467
+   alpha_xm7 |   .1846889   .0009742   189.58   0.000     .1827795    .1865983
+  alpha_cons |  -.9808854   .0043111  -227.53   0.000     -.989335   -.9724358
+------------------------------------------------------------------------------
+
+. 
+end of do-file
+
+. do "C:\Users\William\AppData\Local\Temp\STD1bd8_000000.tmp"
+
+. aidsills_elas
+
+PREDICTED SHARES, BUDGET AND (UN)COMPENSATED OWN-PRICE ELASTICITIES
+--------------------------------------------------------------
+              shares       budget      u_price      c_price   
+                b/se         b/se         b/se         b/se   
+--------------------------------------------------------------
+w1             0.675***     1.021***    -1.000***    -0.310***
+             (0.001)      (0.001)      (0.007)      (0.007)   
+w2             0.487***     0.972***    -0.971***    -0.497***
+             (0.001)      (0.001)      (0.004)      (0.004)   
+w3             0.194***     0.946***    -0.989***    -0.805***
+             (0.001)      (0.002)      (0.011)      (0.011)   
+w4             0.001***     1.002***    -0.983***    -0.982***
+             (0.000)      (0.020)      (0.038)      (0.038)   
+w5             0.022***     1.018***    -0.996***    -0.974***
+             (0.000)      (0.005)      (0.007)      (0.007)   
+w6             0.154***     1.046***    -1.029***    -0.868***
+             (0.001)      (0.002)      (0.011)      (0.011)   
+w7            -0.533***     0.996***    -1.001***    -1.531***
+             (0.000)      (0.000)      (0.001)      (0.001)   
+--------------------------------------------------------------
+* p<0.1, ** p<0.05, *** p<0.01
+
+UNCOMPENSATED CROSS-PRICE ELASTICITIES
+-----------------------------------------------------------------------------------------------------
+                  p1           p2           p3           p4           p5           p6           p7   
+                b/se         b/se         b/se         b/se         b/se         b/se         b/se   
+-----------------------------------------------------------------------------------------------------
+w1            -1.000***    -0.004*      -0.010**     -0.001       -0.001       -0.019***     0.013***
+             (0.007)      (0.003)      (0.005)      (0.002)      (0.001)      (0.005)      (0.002)   
+w2             0.027***    -0.971***    -0.021***     0.000       -0.001        0.004       -0.012***
+             (0.010)      (0.004)      (0.007)      (0.003)      (0.002)      (0.007)      (0.003)   
+w3             0.015       -0.039***    -0.989***     0.002        0.002        0.085***    -0.022***
+             (0.015)      (0.006)      (0.011)      (0.004)      (0.003)      (0.011)      (0.005)   
+w4            -0.464***     0.055        0.296***    -0.983***    -0.023        0.105        0.013   
+             (0.147)      (0.056)      (0.101)      (0.038)      (0.028)      (0.102)      (0.045)   
+w5            -0.028       -0.037***     0.001       -0.001       -0.996***     0.063***    -0.020*  
+             (0.035)      (0.014)      (0.024)      (0.009)      (0.007)      (0.025)      (0.011)   
+w6            -0.099***    -0.022***     0.087***     0.001        0.008***    -1.029***     0.007   
+             (0.016)      (0.006)      (0.011)      (0.004)      (0.003)      (0.011)      (0.005)   
+w7             0.000       -0.001       -0.002       -0.000        0.001***     0.006***    -1.001***
+             (0.002)      (0.001)      (0.001)      (0.001)      (0.000)      (0.001)      (0.001)   
+-----------------------------------------------------------------------------------------------------
+* p<0.1, ** p<0.05, *** p<0.01
+
+COMPENSATED CROSS-PRICE ELASTICITIES
+-----------------------------------------------------------------------------------------------------
+                  p1           p2           p3           p4           p5           p6           p7   
+                b/se         b/se         b/se         b/se         b/se         b/se         b/se   
+-----------------------------------------------------------------------------------------------------
+w1            -0.310***     0.493***     0.188***     0.000        0.021***     0.138***    -0.531***
+             (0.007)      (0.003)      (0.005)      (0.002)      (0.001)      (0.005)      (0.002)   
+w2             0.683***    -0.497***     0.168***     0.001        0.021***     0.154***    -0.530***
+             (0.010)      (0.004)      (0.007)      (0.003)      (0.002)      (0.007)      (0.003)   
+w3             0.654***     0.422***    -0.805***     0.003        0.022***     0.230***    -0.526***
+             (0.015)      (0.006)      (0.011)      (0.004)      (0.003)      (0.011)      (0.005)   
+w4             0.212        0.543***     0.490***    -0.982***    -0.001        0.259**     -0.521***
+             (0.146)      (0.056)      (0.101)      (0.038)      (0.028)      (0.101)      (0.046)   
+w5             0.659***     0.458***     0.199***    -0.000       -0.974***     0.220***    -0.562***
+             (0.035)      (0.014)      (0.024)      (0.009)      (0.007)      (0.025)      (0.011)   
+w6             0.608***     0.488***     0.290***     0.002        0.031***    -0.868***    -0.551***
+             (0.016)      (0.006)      (0.011)      (0.004)      (0.003)      (0.011)      (0.005)   
+w7             0.672***     0.484***     0.191***     0.001**      0.023***     0.159***    -1.531***
+             (0.002)      (0.001)      (0.001)      (0.001)      (0.000)      (0.001)      (0.001)   
+-----------------------------------------------------------------------------------------------------
+* p<0.1, ** p<0.05, *** p<0.01
+
+. 
+end of do-file
+
+. ed
+
+. sort DIRECTORIO
+
+. ed
+
+. keep if DOMINIO=="CARTAGENA"
+(82,934 observations deleted)
+
+. do "C:\Users\William\AppData\Local\Temp\STD1bd8_000000.tmp"
+
+. 
+. clear all
+
+. macro drop _all
+
+. set more off
+
+. 
+. global path "C:\Users\wrgar\Universidad Icesi (@icesi.edu.co)\Proesa - 22-1002-PahoElasSsb\Data\Output"
+
+. *global path "C:\Users\wgarcia\Universidad Icesi (@icesi.edu.co)\Proesa - 22-1002-PahoElasSsb\Data\Output"
+. 
+. use "$path\DataEstimates4.dta",clear
+file C:\Users\wrgar\Universidad Icesi (@icesi.edu.co)\Proesa -
+    22-1002-PahoElasSsb\Data\Output\DataEstimates4.dta not found
+r(601);
+
+end of do-file
+
+r(601);
+
+. do "C:\Users\William\AppData\Local\Temp\STD1bd8_000000.tmp"
+
+. clear all
+
+. macro drop _all
+
+. set more off
+
+. 
+. global path "C:\Users\William\Universidad Icesi (@icesi.edu.co)\Proesa - 22-1002-PahoElasSsb\Data\Output"
+
+. *global path "C:\Users\wgarcia\Universidad Icesi (@icesi.edu.co)\Proesa - 22-1002-PahoElasSsb\Data\Output"
+. 
+. use "$path\DataEstimates4.dta",clear
+
+. 
+end of do-file
+
+. ed
+
+. sort DOMINIO
+
+. ED
+command ED is unrecognized
+r(199);
+
+. ed
+
+. sort DOMINIO VIVIENDA
+
+. ed
+
+. exit, clear
