@@ -1,0 +1,84 @@
+# Single configuration source for the beverage-elasticity pipeline (R and Stata).
+# All paths are relative to the repository root. Machine-specific values (executables)
+# go in config/local.yml (git-ignored; see config/local.example.yml).
+
+project:
+  name: ElasSsbColombia
+  survey: "ENPH 2016-2017 (DANE)"
+  manuscript_source_version: "docs/Paper_20_1012_ElasticiBeverages.pdf (dated 2026-11-12, 25 pages; Tables 1-6 on printed pages 18-23)"
+
+paths:
+  raw_enph: data-raw/enph
+  questionnaires: data-raw/enph-cuadernillos
+  interim: data/interim
+  processed: data/processed
+  metadata: metadata
+  output: output
+  stata_ado: code/stata/ado
+
+seeds:
+  r_master: 20261117        # any stochastic R step
+  stata_bootstrap: 20261117 # external cluster bootstrap around duvm
+  stata_welcom_native: 20261117 # duvm's internal boot() draws
+
+# ---- Data construction parameters ----
+recall:
+  days_per_month: 30
+  urban_household_diary_days: 14   # Cuadernillo 2 urbano, household purchases
+  urban_shopper_pocket_days: 7     # Cuadernillo 2 urbano, pocket spending of the main shopper (first 7 days)
+  urban_personal_diary_days: 7     # Cuadernillo 4
+  rural_week_days: 7               # Cuadernillo 2 rural
+  less_frequent_month_factor: 1    # Cuadernillo 3 previous-month sections: base factor; DANE Tabla 3 divisors apply for bimonthly or rarer purchases
+
+units:
+  ml_per_us_fl_oz: 29.5735
+  g_per_lb: 500        # Colombian "libra" used by DANE questionnaires = 500 g
+  g_per_kg: 1000
+  g_per_arroba: 12500  # 25 libras
+  min_plausible_litres_per_record: 0.05
+  max_plausible_litres_per_record: 400
+  min_plausible_kg_per_record: 0.001
+  max_plausible_kg_per_record: 100
+
+money:
+  min_valid_value_cop: 100   # records below this are treated as invalid amounts (legacy rule, kept and reported)
+  usd_reporting: false       # USD columns are produced only if an exchange rate with a documented source is set
+  cop_per_usd: null
+  cop_per_usd_source: null
+
+categories:               # order used in every table and matrix
+  ids:    [sb, beer, spirits, water, dairy, hot]
+  labels: ["SB", "Beer", "Spirits and wine", "Water", "Dairy drinks", "Hot drinks"]
+  quantity_unit: [litre, litre, litre, litre, litre, kilogram]
+
+outliers:
+  unit_value_log_mad_k: 3.5      # |log uv - median| > k * 1.4826*MAD within category x market -> unit value flagged, not used
+  expenditure_share_max: 1.0     # category spending above total household expenditure -> household flagged
+  expenditure_log_mad_k: 5       # extreme monthly category spending flag (reported; used only in the outlier sensitivity)
+
+sample:
+  child_age_max: 5               # "presence of children": any member aged 0-5 (legacy definition, kept)
+  min_total_expenditure_cop: 1   # households need positive DANE total expenditure for a budget share
+
+price_clusters:
+  primary: market                # municipality x area x quarter; see metadata/price_cluster_definitions.csv
+  min_households: 2
+
+estimation:
+  estimator: welcom_duvm
+  min_clusters_with_unit_value: 30   # a good enters a model only with unit values in at least this many clusters
+  min_within_cluster_df: 50          # ... and at least this many within-cluster degrees of freedom (unit values minus clusters)
+  boot_reps_final: 500           # external cluster bootstrap replications for main and tercile models (>= 500 for reported results)
+  boot_reps_first_pass: 100      # main/tercile replications run before the sensitivity models start (scheduling only)
+  boot_reps_sensitivity: 100     # replications for the supplementary sensitivity models (S1-S6)
+  boot_reps_minimum_report: 90   # below this many completed replications the reporting stage prints no SEs (allows a few failed replications in a first pass of 100)
+  welcom_native_boot: 100        # duvm boot(); exported for reference only (see docs/welcom_method.md)
+  parallel_workers: 12           # Stata instances launched by the root wrapper for the bootstrap
+  stata_processors_per_worker: 1
+  ci_level: 0.95
+  price_matrix: C_SY_ep          # quality-corrected, symmetry-restricted (what duvm returns in e(elprice))
+
+markets:
+  home:     {label: "Off-trade (at home)"}
+  combined: {label: "Combined market (at home + away from home)"}
+  away:     {label: "On-trade (away from home)", estimated: false}

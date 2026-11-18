@@ -1,0 +1,50 @@
+\begin{table}[!htbp]
+\centering
+\begin{threeparttable}
+\caption{Model summary}
+\label{tab:models}
+\scriptsize
+\begin{tabular}{lp{5.2cm}rrrrr}
+\toprule
+Model & Specification & Households & Clusters & Replications & Failed & Target \\
+\midrule
+M1\_combined & Primary specification & 87,197 & 483 & 100 & 0 & 500 \\
+M2\_combined & Without the selection term & 87,197 & 483 & 100 & 0 & 500 \\
+M3\_combined & Without sampling weights & 87,197 & 483 & 100 & 0 & 500 \\
+M4\_combined & Without regional controls & 87,197 & 483 & 100 & 0 & 500 \\
+M5\_combined & Coded purchases only & 87,198 & 483 & 100 & 0 & 500 \\
+M6\_combined & Urban households only & 81,437 & 338 & 100 & 0 & 500 \\
+S1\_combined & Classification: broad SB definition & 87,197 & 483 & 4 & 0 & 100 \\
+S2\_combined & Quantities: directly recorded units only & 87,197 & 483 & 4 & 0 & 100 \\
+S3\_combined & Recall: reference-period scaling & 87,196 & 483 & 4 & 0 & 100 \\
+S4\_combined & Outliers: extreme spenders excluded & 87,191 & 483 & 4 & 0 & 100 \\
+S5\_combined & Price clusters: survey segments & 87,197 & 8,457 & 4 & 0 & 100 \\
+S6\_combined & Weights: raw household expansion factors & 87,197 & 483 & 4 & 0 & 100 \\
+S7\_combined & System without beer & 87,197 & 483 & 4 & 0 & 100 \\
+T1\_combined & Income tercile 1 (lowest) & 25,654 & 476 & 100 & 0 & 500 \\
+T2\_combined & Income tercile 2 & 30,586 & 474 & 100 & 0 & 500 \\
+T3\_combined & Income tercile 3 (highest) & 30,957 & 460 & 100 & 0 & 500 \\
+M1\_home & Primary specification & 87,198 & 483 & 100 & 0 & 500 \\
+M2\_home & Without the selection term & 87,198 & 483 & 100 & 0 & 500 \\
+M3\_home & Without sampling weights & 87,198 & 483 & 99 & 1 & 500 \\
+M4\_home & Without regional controls & 87,198 & 483 & 100 & 0 & 500 \\
+M5\_home & Coded purchases only & 87,198 & 483 & 100 & 0 & 500 \\
+M6\_home & Urban households only & 81,438 & 338 & 100 & 0 & 500 \\
+S1\_home & Classification: broad SB definition & 87,198 & 483 & 4 & 0 & 100 \\
+S2\_home & Quantities: directly recorded units only & 87,198 & 483 & 4 & 0 & 100 \\
+S3\_home & Recall: reference-period scaling & 87,197 & 483 & 4 & 0 & 100 \\
+S4\_home & Outliers: extreme spenders excluded & 87,187 & 483 & 4 & 0 & 100 \\
+S5\_home & Price clusters: survey segments & 87,198 & 8,457 & 4 & 0 & 100 \\
+S6\_home & Weights: raw household expansion factors & 87,198 & 483 & 4 & 0 & 100 \\
+S7\_home & System without beer & 87,198 & 483 & 4 & 0 & 100 \\
+T1\_home & Income tercile 1 (lowest) & 25,654 & 476 & 100 & 0 & 500 \\
+T2\_home & Income tercile 2 & 30,586 & 474 & 100 & 0 & 500 \\
+T3\_home & Income tercile 3 (highest) & 30,958 & 460 & 100 & 0 & 500 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item All models are estimated with WELCOM 3.60 \texttt{duvm}. Replications: completed external cluster-bootstrap replications.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}

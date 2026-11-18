@@ -1,0 +1,92 @@
+Warning messages:
+1: package 'readstata13' was built under R version 4.5.3 
+2: package 'ggplot2' was built under R version 4.5.3 
+3: package 'fixest' was built under R version 4.5.3 
+4: package 'fastDummies' was built under R version 4.5.3 
+Package versions:
+  data.table 1.17.8 
+  foreign 0.8.90 
+  readstata13 0.11.0 
+  dplyr 1.1.4 
+  tidyr 1.3.1 
+  fixest 0.14.2 
+  fastDummies 1.7.6 
+  mice 3.18.0 
+  haven 2.5.5 
+  survey 4.4.8 
+[1] TRUE
+[1] TRUE
+
+### [0.1 mins] source fclasicoicop.R
+   -> ok 
+
+### [0.1 mins] source SSBDInput.R
+re-encoding from CP1252
+re-encoding from CP1252
+re-encoding from CP1252
+re-encoding from CP1252
+re-encoding from CP1252
+re-encoding from CP1252
+re-encoding from CP1252
+re-encoding from CP1252
+re-encoding from CP1252
+re-encoding from CP1252
+re-encoding from CP1252
+re-encoding from CP1252
+re-encoding from CP1252
+re-encoding from CP1252
+re-encoding from CP1252
+re-encoding from CP1252
+   -> ok 
+
+### [0.6 mins] source SSBEConsuBasesUrbano.R
+   -> ok 
+Warning message:
+In `[.data.table`(dc_MfrecArt, CAP %in% pmrec1, `:=`(FactorMensual,  :
+  0.166667 (type 'double') at RHS position 60 taken as TRUE when assigning to type 'logical' (column 16 named 'FactorMensual')
+
+### [2.8 mins] source SSBEConsuBasesRural.R
+   -> ok 
+
+### [2.9 mins] compare with DataEstimates4
+total_2 rows: 872816  items: Beer,HotDrinks,MilkDerivatives,Spirits,SSB,Water 
+  all    SSB              households=82934 exact(|diff|<0.5)=0.9628  purchasers old/new=66345/66531  sum old/new=1.0175
+  all    Beer             households=82934 exact(|diff|<0.5)=0.9937  purchasers old/new=5081/4653  sum old/new=0.8682
+  all    Water            households=82934 exact(|diff|<0.5)=0.9684  purchasers old/new=20611/22179  sum old/new=1.1327
+  all    MilkDerivatives  households=82934 exact(|diff|<0.5)=0.9976  purchasers old/new=58396/58361  sum old/new=0.9983
+  all    HotDrinks        households=82934 exact(|diff|<0.5)=0.8732  purchasers old/new=54436/56313  sum old/new=1.2802
+  all    Spirits          households=82934 exact(|diff|<0.5)=0.9914  purchasers old/new=14170/14611  sum old/new=1.0351
+  codi   SSB              households=82934 exact(|diff|<0.5)=1.0000  purchasers old/new=58333/58333  sum old/new=1.0000
+  codi   Beer             households=82934 exact(|diff|<0.5)=1.0000  purchasers old/new=4653/4653  sum old/new=1.0000
+  codi   Water            households=82934 exact(|diff|<0.5)=0.9854  purchasers old/new=20598/21301  sum old/new=1.0134
+  codi   MilkDerivatives  households=82934 exact(|diff|<0.5)=1.0000  purchasers old/new=57414/57414  sum old/new=1.0000
+  codi   HotDrinks        households=82934 exact(|diff|<0.5)=1.0000  purchasers old/new=47081/47081  sum old/new=1.0000
+  codi   Spirits          households=82934 exact(|diff|<0.5)=1.0000  purchasers old/new=14058/14058  sum old/new=1.0000
+  texto  SSB              households=82934 exact(|diff|<0.5)=0.9628  purchasers old/new=28809/29534  sum old/new=1.0305
+  texto  Beer             households=82934 exact(|diff|<0.5)=NaN  purchasers old/new=526/0  sum old/new=0.0000
+  texto  Water            households=82934 exact(|diff|<0.5)=0.9826  purchasers old/new=21/1455  sum old/new=117.0001
+  texto  MilkDerivatives  households=82934 exact(|diff|<0.5)=0.9976  purchasers old/new=4778/4645  sum old/new=0.9534
+  texto  HotDrinks        households=82934 exact(|diff|<0.5)=0.8732  purchasers old/new=18333/23154  sum old/new=1.7042
+  texto  Spirits          households=82934 exact(|diff|<0.5)=0.9914  purchasers old/new=188/879  sum old/new=2.9168
+
+### [2.9 mins] source SSBRevisedPaper_Prices.R
+   -> ERROR: contrasts can be applied only to factors with 2 or more levels 
+
+### [4.7 mins] source SSBRevisedPaper_Prices_Codi.R
+   -> ERROR: contrasts can be applied only to factors with 2 or more levels 
+
+### [5.1 mins] files written
+ [1] "DataEstimates4.dta"             "DataEstimates5.dta"            
+ [3] "DtConsuRuralTotal.rds"          "DtConsuUrbanoTotal.rds"        
+ [5] "DtDiaUrb.rds"                   "DtDiaUrbC.rds"                 
+ [7] "DtDiaUrbComi.rds"               "DtMfrecArt.rds"                
+ [9] "DtPerRur.rds"                   "DtPerRurCom.rds"               
+[11] "DtPerUrb.rds"                   "DtPerUrbComi.rds"              
+[13] "DtSemRur.rds"                   "DtSemRurC.rds"                 
+[15] "DtSemRurComi.rds"               "UnitValueGasto_Hogar.dta"      
+[17] "UnitValueGasto_Hogar_Codi.dta"  "UnitValueGasto_Total.dta"      
+[19] "UnitValueGasto_Total_Codi.dta"  "UnitValuePrices_Hogar.dta"     
+[21] "UnitValuePrices_Hogar_Codi.dta" "UnitValuePrices_Total.dta"     
+[23] "UnitValuePrices_Total_Codi.dta"
+
+Stage results: ok | ok | ok | ERROR: contrasts can be applied only to factors with 2 or more levels | ERROR: contrasts can be applied only to factors with 2 or more levels 

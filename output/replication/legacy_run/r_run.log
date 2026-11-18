@@ -1,0 +1,112 @@
+DataEstimates5 source: DataEstimates5 (2).dta 
+
+### [0.1 min] source fclasicoicop.R
+   -> ok 
+
+### [0.1 min] source SSBDInput.R
+   -> ok 
+
+### [0.6 min] source SSBEConsuBasesUrbano.R
+   -> ok 
+
+### [3 min] source SSBEConsuBasesRural.R
+   -> ok 
+
+### [3.1 min] compare rebuilt spending with DataEstimates4
+    records            item households share_identical buyers_de4
+     <char>          <char>      <int>           <num>      <int>
+ 1:     all             SSB      82934          0.9628      66345
+ 2:     all            Beer      82934          0.9937       5081
+ 3:     all           Water      82934          0.9684      20611
+ 4:     all MilkDerivatives      82934          0.9976      58396
+ 5:     all       HotDrinks      82934          0.8732      54436
+ 6:     all         Spirits      82934          0.9914      14170
+ 7:    codi             SSB      82934          1.0000      58333
+ 8:    codi            Beer      82934          1.0000       4653
+ 9:    codi           Water      82934          0.9854      20598
+10:    codi MilkDerivatives      82934          1.0000      57414
+11:    codi       HotDrinks      82934          1.0000      47081
+12:    codi         Spirits      82934          1.0000      14058
+13:   texto             SSB      82934          0.9628      28809
+14:   texto            Beer      82934          0.9937        526
+15:   texto           Water      82934          0.9826         21
+16:   texto MilkDerivatives      82934          0.9976       4778
+17:   texto       HotDrinks      82934          0.8732      18333
+18:   texto         Spirits      82934          0.9914        188
+    buyers_rebuilt spend_ratio_rebuilt_to_de4
+             <int>                      <num>
+ 1:          66531                     1.0175
+ 2:           4653                     0.8682
+ 3:          22179                     1.1327
+ 4:          58361                     0.9983
+ 5:          56313                     1.2802
+ 6:          14611                     1.0351
+ 7:          58333                     1.0000
+ 8:           4653                     1.0000
+ 9:          21301                     1.0134
+10:          57414                     1.0000
+11:          47081                     1.0000
+12:          14058                     1.0000
+13:          29534                     1.0305
+14:              0                     0.0000
+15:           1455                   117.0001
+16:           4645                     0.9534
+17:          23154                     1.7042
+18:            879                     2.9168
+
+### [3.1 min] source SSBRevisedPaper_Prices.R
+Canal Total
+Bien Dairy
+Bien SSB
+Bien Spirits
+Bien Water
+Bien Beer
+Canal Hogar
+Bien Dairy
+Bien SSB
+Bien Spirits
+Bien Water
+Bien Beer
+Canal Fuera
+Bien Dairy
+Bien SSB
+Bien Spirits
+Bien Water
+Bien Beer
+   -> ERROR: contrasts can be applied only to factors with 2 or more levels 
+
+### [5.2 min] source SSBRevisedPaper_Prices_Codi.R
+Canal Hogar
+Bien MilkDerivatives
+Bien SSB
+Bien HotDrinks
+Bien Spirits
+Bien Beer
+Bien Water
+Canal Total
+Bien MilkDerivatives
+Bien SSB
+Bien HotDrinks
+Bien Spirits
+Bien Beer
+Bien Water
+Canal Fuera
+Bien MilkDerivatives
+Bien SSB
+Bien HotDrinks
+Bien Spirits
+Bien Beer
+   -> ERROR: contrasts can be applied only to factors with 2 or more levels 
+
+### [5.5 min] done
+run: 2026-11-17 18:17  R 4.5.1
+fclasicoicop.R                   ok
+SSBDInput.R                      ok
+SSBEConsuBasesUrbano.R           ok
+SSBEConsuBasesRural.R            ok
+SSBRevisedPaper_Prices.R         ERROR: contrasts can be applied only to factors with 2 or more levels
+SSBRevisedPaper_Prices_Codi.R    ERROR: contrasts can be applied only to factors with 2 or more levels
+UnitValuePrices_Total.dta        written
+UnitValueGasto_Total.dta         written
+UnitValuePrices_Hogar.dta        written
+UnitValueGasto_Hogar.dta         written

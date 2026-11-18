@@ -1,0 +1,5 @@
+rule_version,group_code,group_label,category,mixed_group,note
+2026.11-v1,8,"Leche (animal y vegetal)",dairy,no,Milk
+2026.11-v1,10,"Otros derivados de la leche: yogur, kumis, ...",dairy,yes,Mixed group: also contains non-drink dairy products
+2026.11-v1,22,"Cafe, chocolate, otras bebidas con cacao",hot,no,Coffee and chocolate
+2026.11-v1,24,"Agua, gaseosas, refrescos, jugos, te frio y otras bebidas no alcoholicas",sb,yes,Mixed group: contains bottled water as well as sweetened beverages

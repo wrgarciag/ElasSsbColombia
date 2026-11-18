@@ -1,0 +1,1538 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  11pt,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+% LaTeX preamble for manuscript.Rmd (pdf_document, pdflatex).
+% Required LaTeX packages beyond the pandoc default template: booktabs, threeparttable, float, caption, setspace, pdflscape.
+\usepackage{booktabs}
+\usepackage{threeparttable}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{setspace}
+\usepackage{pdflscape}
+\captionsetup{font=small,labelfont=bf}
+\floatplacement{figure}{!htbp}
+\setlength{\emergencystretch}{3em}
+\onehalfspacing
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Revisiting Elasticities of Alcoholic and Non-alcoholic Beverages in Colombia},
+  pdfauthor={Norman Maldonado; William García},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Revisiting Elasticities of Alcoholic and Non-alcoholic Beverages
+in Colombia}
+\author{Norman Maldonado\footnote{Research center on health economics
+  and social protection (PROESA), Department of Economics, Universidad
+  Icesi. Corresponding author.} \and William García\footnote{University
+  of Washington, Department of Global Health.}}
+\date{November 17, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent Taxes on sweetened beverages (SB) are designed with price and expenditure elasticities, and those elasticities depend on how purchases, quantities and prices are measured in household surveys. We re-estimate the demand for SB and related beverages in Colombia with the 2016--2017 National Household Budget Survey (ENPH) and Deaton's unit-value model as implemented in WELCOM, after rebuilding the data from the raw survey modules. Three measurement results matter for policy analysis. First, physical quantities exist only for at-home purchases recorded in the household diary; spirits and wine are collected without quantities, so their price elasticities cannot be estimated with unit values from this survey. Second, most beverage mentions in free-text descriptions are part of composite purchases (a meal with a drink) whose amount cannot be attributed to the beverage; purchases that can be identified from text add little to coded purchases. Third, SB cannot be separated into sugar-sweetened and non-sugar-sweetened drinks. In the primary specification the own-price elasticity of SB is $-0.89$ (95\% CI $-1.24$ to $-0.59$) in the combined at-home and away-from-home market and $-0.81$ (95\% CI $-1.14$ to $-0.41$) off-trade; across six specifications it ranges from $-0.98$ to $-0.25$. Expenditure elasticities are sensitive to the treatment of zero purchases: for SB the estimate is $0.52$ with WELCOM's selection term and $0.83$ without it. We report specification sensitivity rather than bias, because no specification is shown to be unbiased, and we list the estimator-level improvements that the data call for.
+\end{abstract}
+
+\noindent\textbf{Keywords:} sweetened beverages; price elasticity; unit
+values; household budget survey; Colombia. \quad \textbf{JEL:} D12, I12,
+C13.
+
+\section{Introduction}\label{introduction}
+
+Non-communicable diseases (NCDs) concentrate most of the burden of
+disease worldwide (\citeproc{ref-Murray2020GBDRiskFactors}{Murray et al.
+2020}) and threaten global health
+(\citeproc{ref-Benziger2016PreventableNCD}{Benziger, Roth, and Moran
+2016}) and sustainable development
+(\citeproc{ref-Engelgau2011EconomicEffectNCD}{Engelgau et al. 2011};
+\citeproc{ref-Jaspers2015Impoverishment}{Jaspers et al. 2015};
+\citeproc{ref-Nugent2018InvestingNCD}{Nugent et al. 2018}). Unhealthy
+diets are one of their common risk factors
+(\citeproc{ref-UN2018PoliticalDeclarationNCD}{United Nations 2018b};
+\citeproc{ref-PAHO2019NCDsAtAGlance}{Pan American Health Organization
+2019}). Sugar-sweetened beverages (SSB) play an important role in
+unhealthy diets (\citeproc{ref-PopkinHawkes2016Sweetening}{Popkin and
+Hawkes 2016}; \citeproc{ref-TempleAlp2016SugarBeverages}{Temple and Alp
+2016}), and non-sugar-sweetened beverages (NSSB) may also affect health
+(\citeproc{ref-Borges2017ArtificiallySweetened}{Borges et al. 2017};
+\citeproc{ref-Toews2019NonSugarSweeteners}{Toews et al. 2019};
+\citeproc{ref-Malik2019NonSugarSweeteners}{Malik 2019}), which makes a
+case for policies that reduce the consumption of sweetened beverages
+(SB) (\citeproc{ref-Pomeranz2012PolicyOptions}{Pomeranz 2012}). Soft
+drinks are also not part of a healthy diet from sustainable food systems
+(\citeproc{ref-Willett2019EATLancet}{Willett et al. 2019}).
+
+Spending on SB depends on prices and income. Excise taxes raise prices,
+make SB less affordable and change purchases
+(\citeproc{ref-PowellMaciejewski2018Taxes}{Powell and Maciejewski 2018};
+\citeproc{ref-WorldBank2020SSBTaxes}{World Bank 2020}); they are among
+the recommended interventions against NCDs
+(\citeproc{ref-SassiBelloni2014FiscalIncentives}{Sassi and Belloni
+2014}; \citeproc{ref-Thow2018FiscalPolicy}{Thow et al. 2018};
+\citeproc{ref-WHO2017BestBuys}{World Health Organization 2017}).
+Designing such a tax requires knowing how purchases respond to price.
+Errors in that response translate directly into errors in expected
+health benefits and revenues.
+
+Estimating that response from household surveys faces several
+difficulties. Taxes act on the whole population
+(\citeproc{ref-Gillam2012EssentialPublicHealth}{Gillam, Yates, and
+Badrinath 2012}), so population-representative expenditure surveys are
+the natural data, with the usual caveats about external validity of
+smaller studies (\citeproc{ref-DeatonCartwright2018RCTs}{Deaton and
+Cartwright 2018}). Expenditure surveys measure purchases, not intake,
+and they measure them with error
+(\citeproc{ref-Deaton1997HouseholdSurveys}{Deaton 1997}). Product
+reformulation has multiplied drinks with sweeteners other than sugar
+(\citeproc{ref-ScrinisMonteiro2018Reformulation}{Scrinis and Monteiro
+2018}), and classification systems do not separate them. The set of
+potential substitutes is wide and differs across countries. Finally,
+many households record no purchase of a given beverage during the survey
+window.
+
+Earlier estimates for Colombia
+(\citeproc{ref-Caro2017QUAIDSColombia}{Caro et al. 2017}) used coded
+purchases of urban households. A previous version of this paper argued
+that omitting purchases recorded only as text, ignoring zero purchases
+and excluding rural households biased the elasticities. This revision
+rebuilds the analysis from the raw survey files and reaches a more
+cautious position. We document what the survey can and cannot measure,
+correct errors in how the data were built and in how the estimator was
+called, and report how the elasticities move across specifications. We
+do not claim that any specification is unbiased or that the estimates
+are causal.
+
+\section{Materials and methods}\label{materials-and-methods}
+
+\subsection{Model}\label{model}
+
+We use Deaton's unit-value model
+(\citeproc{ref-Deaton1988QualityQuantityPrice}{Deaton 1988},
+\citeproc{ref-Deaton1990PriceElasticities}{1990},
+\citeproc{ref-Deaton1997HouseholdSurveys}{1997}). Market prices are not
+observed, but households that buy a good report spending and quantity,
+whose ratio is a unit value. Unit values reflect prices, the quality
+chosen by the household, and measurement error. For good \(g\),
+household \(h\) and cluster \(c\) the model has a unit-value equation
+and a budget-share equation,
+
+\begin{align}
+\ln v_{ghc} &= \alpha^1_g + \beta^1_g \ln x_{hc} + \gamma^{1\prime}_g z_{hc} + \sum_{j}\psi_{gj}\ln p_{jc} + u^1_{ghc}, \label{eq:uv}\\
+w_{ghc} &= \alpha^0_g + \beta^0_g \ln x_{hc} + \gamma^{0\prime}_g z_{hc} + \sum_{j}\theta_{gj}\ln p_{jc} + f_{gc} + u^0_{ghc}, \label{eq:share}
+\end{align}
+
+where \(x\) is total household expenditure, \(z\) are household
+characteristics and \(p_{jc}\) are prices, assumed common to the
+households of a cluster. Both equations are first estimated within
+clusters, which removes prices and identifies \(\beta^0_g\) and
+\(\beta^1_g\). The parts of unit values and shares not explained by
+household variables are then averaged by cluster, and the relation
+between cluster-average shares and cluster-average unit values,
+corrected for measurement error and for quality, identifies the price
+responses. The expenditure elasticity of quantity is
+\(1-\beta^1_g+\beta^0_g/\bar w_g\).
+
+\subsection{Data}\label{data}
+
+We use the National Household Budget Survey 2016--2017 (ENPH) of the
+National Department of Statistics
+(\citeproc{ref-DANE2018ENPH}{Departamento Administrativo Nacional de
+Estadística (DANE) 2018}). The public-use file has 87,201 households and
+291,590 persons and represents 14,350,388 households. ENPH collects
+purchases with several instruments: a 14-day household diary in urban
+areas and a weekly questionnaire in rural areas, both with quantities
+and units for food and beverages bought for the home; 7-day personal
+diaries; records of prepared food and drinks bought away from home, with
+a free-text description; a list of food groups with their usual purchase
+frequency and the value of the last purchase; and a monthly-recall
+module for less frequent purchases, which is where spirits and wine are
+collected.
+
+All 87,201 households form the universe. Households without a beverage
+purchase are kept with zero spending. 87,197 households are eligible for
+estimation; the rest have an invalid budget share or are the only
+household of their survey segment (Table \ref{tab:sampleflow}). Total
+household expenditure is DANE's monthly current expenditure of the
+spending unit and income is DANE's total income; neither is trimmed or
+imputed.
+
+\subsection{Measurement}\label{measurement}
+
+\emph{Categories.} Purchases are classified with COICOP codes
+(\citeproc{ref-UN2018COICOP}{United Nations 2018a}) into six categories:
+SB (soft drinks, malt drinks, packaged juices and teas, energy drinks),
+beer, spirits and wine, water, dairy drinks, and hot drinks (coffee,
+chocolate and tea). The earlier version merged hot drinks into dairy;
+they are separated here because at home they are bought by weight, not
+by volume. COICOP describes product type, not sweetener, so SSB and NSSB
+cannot be separated.
+
+\emph{Purchases identified from text.} Following Maldonado, García, and
+Jimenez (\citeproc{ref-MaldonadoGarciaJimenez2022Consumption}{2022}),
+descriptions of food and drinks bought away from home are searched for
+beverage terms. A description counts as a beverage purchase only when it
+names one beverage category and nothing else. Descriptions that also
+list other items, such as a meal with a drink, are composite purchases:
+the amount paid cannot be attributed to the drink. There are 184,408
+composite records against 15,041 that identify a beverage purchase.
+Assigning the full value of composite records to the beverage, as the
+earlier version did, overstates beverage spending.
+
+\emph{Monthly amounts.} Amounts are converted to a month with DANE's
+factors by stated purchase frequency
+(\citeproc{ref-DANE2020ENPHMetodologia}{Departamento Administrativo
+Nacional de Estadística (DANE) 2020}). Low-frequency food groups not
+bought inside the reference period enter through the value of their last
+purchase. Only purchases are counted.
+
+\emph{Quantities and unit values.} Quantities are converted to litres
+(kilograms for hot drinks) from the recorded unit. Personal diaries,
+away-from-home records and the monthly-recall module have no usable
+unit, so they contribute spending but no quantity. A unit value is
+computed only for households with a valid positive quantity and is never
+imputed for non-buyers. Unit values far from the centre of their
+distribution are flagged and not used; the household keeps its budget
+share.
+
+\emph{Markets.} The off-trade market covers purchases for the home and
+the combined market adds purchases away from home. Because
+away-from-home purchases have no quantities, both markets use the same
+unit values and differ in budget shares. An on-trade model cannot be
+estimated.
+
+\emph{Price clusters.} A price cluster is a local market in a quarter:
+the urban or the rural area of a municipality, in one collection quarter
+(483 clusters in the primary model, with a median of 54 households). No
+cluster mixes urban and rural households. Survey segments of about 10
+neighbouring households are a finer alternative, but segments of the
+same city are not separate markets and each holds few unit values, so
+their mean unit value is noisier (for SB its reliability is \(0.57\)
+against \(0.68\) for local markets; Table \ref{tab:clusters}). Segments
+are used in a sensitivity analysis.
+
+\subsection{Estimation and inference}\label{estimation-and-inference}
+
+All elasticities are estimated with the \texttt{duvm} routine of WELCOM
+3.60 (\citeproc{ref-WELCOM2018Version21}{Abdelkrim et al. 2018};
+\citeproc{ref-AraarEtAl2018WELCOM}{Araar et al. 2018}) in Stata 17. The
+routine implements equations \eqref{eq:uv} and \eqref{eq:share}, a
+correction of the between-cluster regression for measurement error,
+Deaton's quality correction, and a symmetry-restricted estimator. Budget
+shares are shares of total household expenditure and the expenditure
+regressor is the same total, as the routine assumes. The reported price
+elasticities are therefore uncompensated (Marshallian) and unconditional
+on the beverage budget, and the second set of elasticities refers to
+total expenditure, not income. In every matrix, rows are the beverage
+whose quantity responds and columns the beverage whose price changes.
+
+Household controls are the sex, age and education of the head, household
+size, a single-member indicator and the presence of children aged 0--5.
+Cluster-level variables are purged of region-by-area and quarter
+effects. WELCOM handles zero purchases by keeping non-buyers in the
+share regressions and, optionally, adding an inverse Mills ratio from a
+probit of purchase on the same regressors
+(\citeproc{ref-Heckman1979Selection}{Heckman 1979}); there is no
+exclusion restriction. Sampling weights are passed as cluster averages
+so that WELCOM's cluster means and household counts behave as in
+Deaton's formulas. A beverage enters a model only if its unit value is
+observed in enough clusters of that model's sample.
+
+WELCOM's own bootstrap holds the household-level stage fixed and does
+not provide valid standard errors for all quantities, so inference comes
+from an external cluster bootstrap that reruns the complete WELCOM
+estimation on resampled clusters
+(\citeproc{ref-CameronGelbachMiller2008}{Cameron, Gelbach, and Miller
+2008}). Standard errors are standard deviations over 99 to 100
+replications and intervals are percentile intervals. The target of 500
+replications had not been reached when this version was rendered, so
+inference is preliminary. The supplementary sensitivity analyses are
+reported as point estimates, without standard errors.
+
+\subsection{Specifications}\label{specifications}
+
+The primary specification (M1) uses WELCOM's selection term, sampling
+weights, regional controls, coded and text-identified purchases, and
+urban and rural households. Five alternatives change one element each:
+no selection term (M2), no weights (M3), no regional controls (M4),
+coded purchases only (M5), and urban households only (M6). M2 to M5 use
+the same households as M1. M6 changes the target population, so its
+difference from M1 is not a specification effect. The primary
+specification is also estimated separately by tercile of per-capita
+income; beer has too few unit values in the lowest tercile and is left
+out of the three tercile models. Seven further sensitivity analyses are
+in the appendix.
+
+\section{Results}\label{results}
+
+\subsection{Households and purchases}\label{households-and-purchases}
+
+Household heads are male in 63\% of households, the average household
+has \(3.35\) members and 21\% of households are rural (Table
+\ref{tab:demographics}).
+
+In the combined market 57\% of households buy SB, 71\% dairy drinks,
+67\% hot drinks, 17\% water, 11\% spirits or wine and 9\% beer (Table
+\ref{tab:consumption}). Purchasing households spend COP 22,347 a month
+on SB. Beverages are a small part of household budgets: SB take
+\(0.77\)\% of total expenditure on average. The mean observed unit value
+of SB is COP 2,312 per litre.
+
+Measurement coverage is uneven (Table \ref{tab:coverage}). Recorded
+quantities cover 54\% of off-trade SB spending and 23\% of off-trade
+beer spending. Beer has 1,065 usable unit values in 251 clusters,
+against 30,813 in 470 clusters for SB. Water unit values vary widely
+between clusters (Table \ref{tab:clusters}), which reflects package size
+as much as price. Text-identified purchases account for 0.9\% of
+combined-market SB spending, so the panels with and without them are
+close. 9,019 households mention SB only inside composite purchases and
+count as non-buyers.
+
+\subsection{Own-price elasticities}\label{own-price-elasticities}
+
+In the primary specification the own-price elasticity of SB is \(-0.89\)
+(95\% CI \(-1.24\) to \(-0.59\)) in the combined market and \(-0.81\)
+(95\% CI \(-1.14\) to \(-0.41\)) off-trade (Table \ref{tab:ownprice}).
+Demand for SB in the combined market is not statistically
+distinguishable from unit elasticity. For dairy drinks the
+combined-market estimate is \(-1.05\) (95\% CI \(-1.33\) to \(-0.74\)),
+for hot drinks \(-1.03\) (95\% CI \(-1.29\) to \(-0.90\)) and for water
+\(-1.98\) (95\% CI \(-2.20\) to \(-1.81\)). The beer estimate is
+\(-0.92\) (95\% CI \(-6.01\) to \(1.08\)), which is too imprecise to
+distinguish from zero or from unit elasticity; it rests on 1,065 unit
+values and should be read with caution. Spirits and wine cannot be
+estimated. For beer, dairy drinks and hot drinks the interval includes
+\(-1\). In this model an elasticity of \(-1\) is what results when
+cluster-average budget shares do not vary with cluster-average unit
+values, so such estimates indicate that the data carry little
+information on the price response, not that demand is unit-elastic.
+
+Across the six specifications the SB elasticity ranges from \(-0.98\) to
+\(-0.25\) in the combined market and from \(-0.91\) to \(-0.14\)
+off-trade (Figure \ref{fig:own}). Dropping the selection term (M2) moves
+it to \(-0.89\), dropping weights (M3) to \(-0.98\), dropping regional
+controls (M4) to \(-0.25\) and using coded purchases only (M5) to
+\(-0.88\). Restricting the sample to urban households (M6) gives
+\(-0.73\). Among the specifications estimated on the same households,
+the largest change comes from dropping the regional controls (M4, a
+change of \(0.64\)). The bootstrap standard error of M3 (\(18.42\)) is
+inflated by a few replications with extreme values; its percentile
+interval, \(-5.55\) to \(-0.28\), is the more informative summary. The
+estimator divides by the between-cluster variance of unit values net of
+measurement error, and that quantity can be close to zero in a resample.
+Off-trade, M5 equals M1 because every text-identified purchase is an
+away-from-home purchase.
+
+\begin{figure}[!htbp]\centering
+\includegraphics[width=0.82\textwidth]{_render/20261117a/fig1_own_price_specs.pdf}
+\caption{Own-price elasticities by specification. Points are WELCOM estimates; bars are 95\% percentile intervals from the external cluster bootstrap. The filled point is the primary specification (M1). The horizontal line marks $-1$. Dashed bars are intervals truncated to fit the panel; the full intervals are in the estimates files.}\label{fig:own}
+\end{figure}
+
+\subsection{Income terciles}\label{income-terciles}
+
+For SB in the combined market the own-price elasticity is \(-0.99\)
+(95\% CI \(-1.24\) to \(-0.60\)) in tercile 1, \(-0.87\) (95\% CI
+\(-1.09\) to \(-0.38\)) in tercile 2 and \(-0.26\) (95\% CI \(-0.93\) to
+\(0.51\)) in tercile 3, so the point estimate falls in absolute value
+from the lowest to the highest tercile; the intervals of the first and
+third terciles overlap (Table \ref{tab:terciles}). Off-trade it is
+\(-0.97\) (95\% CI \(-1.34\) to \(-0.51\)) in tercile 1, \(-0.69\) (95\%
+CI \(-0.98\) to \(-0.10\)) in tercile 2 and \(-0.03\) (95\% CI \(-0.87\)
+to \(0.96\)) in tercile 3, so the point estimate falls in absolute value
+from the lowest to the highest tercile; the intervals of the first and
+third terciles overlap. Each tercile is a separate estimation on about a
+third of the households, with fewer unit values per cluster.
+
+\subsection{Cross-price elasticities}\label{cross-price-elasticities}
+
+Table \ref{tab:matrix} reports the full matrices of the primary
+specification. In the combined market 6 of the 20 cross-price
+elasticities have a 95\% interval that excludes zero. Positive
+responses, consistent with substitution, are estimated for SB with
+respect to the price of hot drinks (\(0.33\)) and hot drinks with
+respect to the price of SB (\(0.29\)). Negative responses, consistent
+with complementarity, are estimated for SB with respect to the price of
+water (\(-0.10\)), beer with respect to the price of water (\(-0.32\)),
+water with respect to the price of SB (\(-0.61\)) and water with respect
+to the price of beer (\(-0.82\)).
+
+The response of beer purchases to the price of SB is \(0.81\) (95\% CI
+\(-0.36\) to \(2.06\)). It is not distinguishable from zero. These
+matrices impose Slutsky symmetry; without the restriction several
+cross-price estimates change size and sign (\texttt{price\_nosym} in the
+estimates files), so the cross-price pattern is not robust. Whether a
+tax on SB shifts purchases toward spirits or wine cannot be assessed
+with these data.
+
+\subsection{Expenditure elasticities}\label{expenditure-elasticities}
+
+In the primary specification the expenditure elasticity of SB is
+\(0.52\) (95\% CI \(0.38\) to \(0.63\)) in the combined market (Table
+\ref{tab:expenditure}, Figure \ref{fig:exp}). Without the selection term
+(M2) it is \(0.83\) (95\% CI \(0.79\) to \(0.87\)). The same contrast
+for beer is \(-3.58\) against \(1.60\), for water \(0.03\) against
+\(1.10\), for dairy drinks \(0.20\) against \(0.72\) and for hot drinks
+\(0.37\) against \(0.70\). The selection term is a function of the same
+regressors as the share equation, including expenditure, and it is
+entered in a regression that includes the zeros. Its effect on the
+expenditure coefficient is therefore a functional-form effect. The
+negative primary estimate for beer is an artefact of this term, not
+evidence that beer is an inferior good. We regard the M2 estimates as
+the more interpretable description of how quantities vary with total
+expenditure, and the M1 estimates as what the routine's selection option
+delivers.
+
+\begin{figure}[!htbp]\centering
+\includegraphics[width=0.82\textwidth]{_render/20261117a/fig2_expenditure_specs.pdf}
+\caption{Expenditure elasticities by specification. Points are WELCOM estimates; bars are 95\% percentile intervals from the external cluster bootstrap. The filled point is the primary specification (M1). The horizontal line marks 1. Dashed bars are intervals truncated to fit the panel.}\label{fig:exp}
+\end{figure}
+
+\section{Discussion}\label{discussion}
+
+The earlier version of this paper reported an SB own-price elasticity of
+\(-0.50\) and concluded that ignoring zero purchases, rural households
+and text-recorded purchases biased it. The rebuilt analysis does not
+support that reading. The estimate is now \(-0.89\) in the combined
+market. The five specifications estimated on the same households span
+\(0.73\), which is larger than the width of the 95\% interval of the
+primary estimate (\(0.66\)). Several corrections separate the two sets
+of numbers, and we have not decomposed their individual contributions.
+Unit values are now used only where a price was observed, instead of
+predicting a price for every household. Budget shares and the
+expenditure regressor use the same total budget. The price clusters are
+local markets in a quarter, defined from geography and time.
+
+The contribution of purchases recorded only as text is small once
+composite purchases are set aside. This does not mean that
+away-from-home consumption is small. It means that the survey does not
+record how much of a meal's price corresponds to the drink, so the
+on-trade share of SB spending is understated by an unknown amount.
+
+SSB cannot be identified. COICOP does not distinguish beverages
+sweetened with sugar from those with other sweeteners, and the same
+holds for the Harmonized System
+(\citeproc{ref-WCO2018HarmonizedSystem}{World Customs Organization
+2018}) and the Central Product Classification
+(\citeproc{ref-UN2015CPC}{United Nations 2015}). Earlier estimates for
+Colombia labelled as SSB elasticities, including those used to project
+revenues (\citeproc{ref-Caro2017QUAIDSColombia}{Caro et al. 2017}) and
+health effects
+(\citeproc{ref-VecinoOrtizArroyoAriza2018SSBTax}{Vecino-Ortiz and
+Arroyo-Ariza 2018}), are elasticities of SB.
+
+Changes in alcohol purchases could reinforce or offset the health effect
+of a tax on SB (\citeproc{ref-Babor2010Alcohol}{Babor et al. 2010};
+\citeproc{ref-WHO2018AlcoholHealth}{World Health Organization 2018};
+\citeproc{ref-Quirmbach2018AlcoholPurchases}{Quirmbach et al. 2018}).
+The earlier version read its cross-price estimates as evidence on
+substitution toward alcohol. That evidence is not available here:
+spirits and wine have no unit values, the beer estimates are fragile,
+and the cross-price pattern depends on the symmetry restriction.
+
+\subsection{Limitations}\label{limitations}
+
+\emph{No causal interpretation.} Price variation comes from differences
+in unit values between municipalities of the same region and area type,
+within a quarter. Those differences may reflect the type of outlet,
+package size or local tastes as well as price. The quality correction
+addresses one part of this problem under strong assumptions
+(\citeproc{ref-McKelvey2011UnitValue}{McKelvey 2011};
+\citeproc{ref-GibsonKim2019Bog}{Gibson and Kim 2019}).
+
+\emph{Zero purchases.} Between 29\% (dairy drinks) and 91\% (beer) of
+households record no purchase. WELCOM treats zeros with a linear share
+equation and an optional selection term without an exclusion
+restriction. A censored demand system
+(\citeproc{ref-ShonkwilerYen1999}{Shonkwiler and Yen 1999}) would be the
+natural alternative and would mainly affect the expenditure
+elasticities.
+
+\emph{Weights and survey design.} WELCOM does not use strata or primary
+sampling units, and it measures the number of households in a cluster by
+the sum of their weights. We pass weights in a form that keeps its
+formulas close to Deaton's, but this is an approximation. The bootstrap
+resamples price clusters, not the survey's sampling units, which are not
+released; standard errors are probably too small.
+
+\emph{Sparse and noisy unit values.} Beer has 1,065 unit values in 52\%
+of clusters, and the reliability of its cluster-mean unit value is
+\(0.29\). Water unit values mix bottles and bulk containers. The
+estimates for both goods should be read with caution. Spirits and wine
+need an external source of prices.
+
+\emph{Quantities.} Only purchases in the household diary carry
+quantities. Unit values therefore describe off-trade prices, and litres
+in Table \ref{tab:consumption} are lower bounds.
+
+\emph{Fixed construction rules.} Classification, unit conversion,
+outlier flags and income terciles are fixed across bootstrap
+replications. Their effect is shown through sensitivity analyses (Tables
+\ref{tab:sensown} and \ref{tab:sensexp}), not through the standard
+errors.
+
+\emph{Regional controls.} The SB estimate changes most when
+region-by-area effects are not removed from the cluster-level variables.
+Price differences between regions and between urban and rural areas are
+confounded with differences in tastes, and the estimates rely on the
+assumption that the regional controls separate the two.
+
+\emph{Model restrictions.} The demand system is linear in log
+expenditure, imposes symmetry, and completes the system with a residual
+good whose quality elasticity is fixed inside the routine. More flexible
+systems (\citeproc{ref-DeatonMuellbauer1980AIDS}{Deaton and Muellbauer
+1980}; \citeproc{ref-BanksBlundellLewbel1997}{Banks, Blundell, and
+Lewbel 1997}; \citeproc{ref-LewbelPendakur2009EASI}{Lewbel and Pendakur
+2009}) would test these restrictions but need price measures for every
+good.
+
+The estimator-level alternatives are listed with their evidence in the
+project's alternatives register. None of them is implemented here.
+
+\section{Conclusions}\label{conclusions}
+
+With the 2016--2017 ENPH and Deaton's unit-value model, the own-price
+elasticity of SB in Colombia is \(-0.89\) (95\% CI \(-1.24\) to
+\(-0.59\)) in the combined market and \(-0.81\) (95\% CI \(-1.14\) to
+\(-0.41\)) off-trade, with a range of \(-0.98\) to \(-0.25\) across
+specifications. SB demand is not statistically distinguishable from unit
+elasticity. The expenditure elasticity of SB is between \(0.52\) and
+\(0.83\) depending on how zero purchases are treated.
+
+For policy analysis, two points follow. First, the elasticity that feeds
+revenue and health projections should be used with its interval and its
+specification range, not as a single number. Second, the survey cannot
+answer two questions that matter for tax design: how purchases of
+sugar-sweetened and non-sugar-sweetened drinks respond separately, and
+whether a tax on SB changes purchases of spirits and wine. Answering
+them requires product-level data with sweetener content and a source of
+prices for alcoholic beverages
+(\citeproc{ref-PAHO2020BeverageTaxation}{Pan American Health
+Organization 2020};
+\citeproc{ref-Hattersley2020CounteringArguments}{Hattersley et al.
+2020}).
+
+\clearpage
+
+\section*{References}\label{references}
+\addcontentsline{toc}{section}{References}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-WELCOM2018Version21}
+Abdelkrim, Araar et al. 2018. \emph{Introducing {WELCOM}: A Tool to
+Simulate the Welfare Impacts of Competition}. 2.1 ed. World Bank.
+
+\bibitem[\citeproctext]{ref-AraarEtAl2018WELCOM}
+Araar, Abdelkrim, Eduardo Malasquez, Sergio Olivieri, and Carlos
+Rodriguez Castelan. 2018. {``{WELCOM}: Stata Module for Simulating
+Distributional Impacts of Changes in Competition.''} Statistical
+Software Components S458497, Boston College Department of Economics.
+\url{https://ideas.repec.org/c/boc/bocode/s458497.html}.
+
+\bibitem[\citeproctext]{ref-Babor2010Alcohol}
+Babor, Thomas et al. 2010. \emph{Alcohol: No Ordinary Commodity.
+Research and Public Policy}. 2nd ed. Oxford University Press; Pan
+American Health Organization.
+
+\bibitem[\citeproctext]{ref-BanksBlundellLewbel1997}
+Banks, James, Richard Blundell, and Arthur Lewbel. 1997. {``Quadratic
+{Engel} Curves and Consumer Demand.''} \emph{Review of Economics and
+Statistics} 79 (4): 527--39.
+\url{https://doi.org/10.1162/003465397557015}.
+
+\bibitem[\citeproctext]{ref-Benziger2016PreventableNCD}
+Benziger, Catherine P., Gregory A. Roth, and Andrew E. Moran. 2016.
+{``The Global Burden of Disease Study and the Preventable Burden of
+{NCD}.''} \url{https://doi.org/10.1016/j.gheart.2016.10.024}.
+
+\bibitem[\citeproctext]{ref-Borges2017ArtificiallySweetened}
+Borges, Maria Carolina et al. 2017. {``Artificially Sweetened Beverages
+and the Response to the Global Obesity Crisis.''} \emph{PLoS Medicine}
+14 (1): e1002195. \url{https://doi.org/10.1371/journal.pmed.1002195}.
+
+\bibitem[\citeproctext]{ref-CameronGelbachMiller2008}
+Cameron, A. Colin, Jonah B. Gelbach, and Douglas L. Miller. 2008.
+{``Bootstrap-Based Improvements for Inference with Clustered Errors.''}
+\emph{Review of Economics and Statistics} 90 (3): 414--27.
+\url{https://doi.org/10.1162/rest.90.3.414}.
+
+\bibitem[\citeproctext]{ref-Caro2017QUAIDSColombia}
+Caro, Juan Carlos et al. 2017. {``Sugary Drinks Taxation, Projected
+Consumption and Fiscal Revenues in {Colombia}: Evidence from a {QUAIDS}
+Model.''} \emph{PLOS ONE} 12 (12): 1--16.
+\url{https://doi.org/10.1371/journal.pone.0189026}.
+
+\bibitem[\citeproctext]{ref-Deaton1988QualityQuantityPrice}
+Deaton, Angus. 1988. {``Quality, Quantity, and Spatial Variation of
+Price.''} \emph{American Economic Review} 78 (3): 418--30.
+
+\bibitem[\citeproctext]{ref-Deaton1990PriceElasticities}
+---------. 1990. {``Price Elasticities from Survey Data: Extensions and
+{Indonesian} Results.''} \emph{Journal of Econometrics} 44 (3):
+281--309. \url{https://doi.org/10.1016/0304-4076(90)90060-7}.
+
+\bibitem[\citeproctext]{ref-Deaton1997HouseholdSurveys}
+---------. 1997. \emph{The Analysis of Household Surveys: A
+Microeconometric Approach to Development Policy}. The Johns Hopkins
+University Press.
+
+\bibitem[\citeproctext]{ref-DeatonCartwright2018RCTs}
+Deaton, Angus, and Nancy Cartwright. 2018. {``Understanding and
+Misunderstanding Randomized Controlled Trials.''} \emph{Social Science
+\& Medicine} 210: 2--21.
+\url{https://doi.org/10.1016/j.socscimed.2017.12.005}.
+
+\bibitem[\citeproctext]{ref-DeatonMuellbauer1980AIDS}
+Deaton, Angus, and John Muellbauer. 1980. {``An Almost Ideal Demand
+System.''} \emph{American Economic Review} 70 (3): 312--26.
+
+\bibitem[\citeproctext]{ref-DANE2018ENPH}
+Departamento Administrativo Nacional de Estadística (DANE). 2018.
+{``Encuesta Nacional de Presupuestos de Los Hogares -- {ENPH} -- Julio
+2016 - Julio 2017 {[}Microdatos{]}.''} Direcci{ó}n de Metodolog{í}a y
+Producci{ó}n Estad{í}stica (DIMPE). ID DANE-DIMPE-ENPH-2016-2017.
+\url{https://microdatos.dane.gov.co/index.php/catalog/566}.
+
+\bibitem[\citeproctext]{ref-DANE2020ENPHMetodologia}
+---------. 2020. {``Metodolog{í}a General Encuesta Nacional de
+Presupuestos de Los Hogares -- {ENPH}.''} DSO-ENPH-MET-001, versi{ó}n 2.
+Bogot{á}, Colombia: DANE, Direcci{ó}n de Metodolog{í}a y Producci{ó}n
+Estad{í}stica (DIMPE).
+\url{https://www.dane.gov.co/files/investigaciones/fichas/condiciones-de-vida/DSO-ENPH-MET-001-V2.pdf}.
+
+\bibitem[\citeproctext]{ref-Engelgau2011EconomicEffectNCD}
+Engelgau, Michael et al. 2011. {``The Economic Effect of Noncommunicable
+Diseases on Households and Nations: A Review of Existing Evidence.''}
+\emph{Journal of Health Communication} 16 (Suppl 2): 75--81.
+\url{https://doi.org/10.1080/10810730.2011.601394}.
+
+\bibitem[\citeproctext]{ref-GibsonKim2019Bog}
+Gibson, John, and Bonggeun Kim. 2019. {``Quality, Quantity, and Spatial
+Variation of Price: Back to the Bog.''} \emph{Journal of Development
+Economics} 137: 66--77.
+\url{https://doi.org/10.1016/j.jdeveco.2018.11.008}.
+
+\bibitem[\citeproctext]{ref-Gillam2012EssentialPublicHealth}
+Gillam, Stephen, Jan Yates, and Padmanabhan Badrinath. 2012.
+\emph{Essential Public Health: Theory and Practice}. 2nd ed. Cambridge
+University Press.
+
+\bibitem[\citeproctext]{ref-Hattersley2020CounteringArguments}
+Hattersley, Libby et al. 2020. {``Countering Common Arguments Against
+Taxes on Sugary Drinks.''} Knowledge Brief. World Bank Group, Health,
+Nutrition; Population Global Practice.
+
+\bibitem[\citeproctext]{ref-Heckman1979Selection}
+Heckman, James J. 1979. {``Sample Selection Bias as a Specification
+Error.''} \emph{Econometrica} 47 (1): 153--61.
+\url{https://doi.org/10.2307/1912352}.
+
+\bibitem[\citeproctext]{ref-Jaspers2015Impoverishment}
+Jaspers, Loes et al. 2015. {``The Global Impact of Non-Communicable
+Diseases on Households and Impoverishment: A Systematic Review.''}
+\emph{European Journal of Epidemiology} 30 (3): 163--88.
+\url{https://doi.org/10.1007/s10654-014-9983-3}.
+
+\bibitem[\citeproctext]{ref-LewbelPendakur2009EASI}
+Lewbel, Arthur, and Krishna Pendakur. 2009. {``Tricks with {Hicks}: The
+{EASI} Demand System.''} \emph{American Economic Review} 99 (3):
+827--63. \url{https://doi.org/10.1257/aer.99.3.827}.
+
+\bibitem[\citeproctext]{ref-MaldonadoGarciaJimenez2022Consumption}
+Maldonado, Norman, William García, and Jairo Jimenez. 2022.
+{``Correcting Bias on Estimation of Aggregate Consumption of Sweetened
+Beverages and Potential Substitutes in {Colombia}.''}
+
+\bibitem[\citeproctext]{ref-Malik2019NonSugarSweeteners}
+Malik, Vasanti S. 2019. {``Non-Sugar Sweeteners and Health.''}
+\emph{BMJ} 364: k5005. \url{https://doi.org/10.1136/bmj.k5005}.
+
+\bibitem[\citeproctext]{ref-McKelvey2011UnitValue}
+McKelvey, Christopher. 2011. {``Price, Unit Value, and Quality
+Demanded.''} \emph{Journal of Development Economics} 95 (2): 157--69.
+\url{https://doi.org/10.1016/j.jdeveco.2010.05.004}.
+
+\bibitem[\citeproctext]{ref-Murray2020GBDRiskFactors}
+Murray, Christopher J. L. et al. 2020. {``Global Burden of 87 Risk
+Factors in 204 Countries and Territories, 1990--2019: A Systematic
+Analysis for the {Global Burden of Disease Study 2019}.''} \emph{The
+Lancet} 396 (10258): 1223--49.
+\url{https://doi.org/10.1016/S0140-6736(20)30752-2}.
+
+\bibitem[\citeproctext]{ref-Nugent2018InvestingNCD}
+Nugent, Rachel et al. 2018. {``Investing in Non-Communicable Disease
+Prevention and Management to Advance the {Sustainable Development
+Goals}.''} \emph{The Lancet} 391 (10134): 2029--35.
+\url{https://doi.org/10.1016/S0140-6736(18)30667-6}.
+
+\bibitem[\citeproctext]{ref-PAHO2019NCDsAtAGlance}
+Pan American Health Organization. 2019. {``{NCDs} at a Glance: {NCD}
+Mortality and Risk Factor Prevalence in the Americas.''} Pan American
+Health Organization.
+
+\bibitem[\citeproctext]{ref-PAHO2020BeverageTaxation}
+---------. 2020. \emph{Sugar-Sweetened Beverage Taxation in the Region
+of the Americas}. Pan American Health Organization.
+
+\bibitem[\citeproctext]{ref-Pomeranz2012PolicyOptions}
+Pomeranz, Jennifer L. 2012. {``Advanced Policy Options to Regulate
+Sugar-Sweetened Beverages to Support Public Health.''} \emph{Journal of
+Public Health Policy} 33 (1): 75--88.
+\url{https://doi.org/10.1057/jphp.2011.46}.
+
+\bibitem[\citeproctext]{ref-PopkinHawkes2016Sweetening}
+Popkin, Barry M., and Corinna Hawkes. 2016. {``Sweetening of the Global
+Diet, Particularly Beverages: Patterns, Trends, and Policy Responses.''}
+\emph{The Lancet Diabetes \& Endocrinology} 4 (2): 174--86.
+\url{https://doi.org/10.1016/S2213-8587(15)00419-2}.
+
+\bibitem[\citeproctext]{ref-PowellMaciejewski2018Taxes}
+Powell, Lisa M., and Matthew L. Maciejewski. 2018. {``Taxes and
+Sugar-Sweetened Beverages.''} \emph{JAMA} 319 (3): 229--30.
+\url{https://doi.org/10.1001/jama.2017.19522}.
+
+\bibitem[\citeproctext]{ref-Quirmbach2018AlcoholPurchases}
+Quirmbach, Diana et al. 2018. {``Effect of Increasing the Price of
+Sugar-Sweetened Beverages on Alcoholic Beverage Purchases: An Economic
+Analysis of Sales Data.''} \emph{Journal of Epidemiology and Community
+Health} 72 (4): 324. \url{https://doi.org/10.1136/JECH-2017-209791}.
+
+\bibitem[\citeproctext]{ref-SassiBelloni2014FiscalIncentives}
+Sassi, Franco, and Annalisa Belloni. 2014. {``Fiscal Incentives,
+Behavior Change and Health Promotion: What Place in the
+Health-in-All-Policies Toolkit?''} \emph{Health Promotion International}
+29 (suppl\_1): i103--12. \url{https://doi.org/10.1093/heapro/dau050}.
+
+\bibitem[\citeproctext]{ref-ScrinisMonteiro2018Reformulation}
+Scrinis, Gyorgy, and Carlos Augusto Monteiro. 2018. {``Ultra-Processed
+Foods and the Limits of Product Reformulation.''} \emph{Public Health
+Nutrition} 21 (1): 247--52.
+\url{https://doi.org/10.1017/S1368980017001392}.
+
+\bibitem[\citeproctext]{ref-ShonkwilerYen1999}
+Shonkwiler, J. Scott, and Steven T. Yen. 1999. {``Two-Step Estimation of
+a Censored System of Equations.''} \emph{American Journal of
+Agricultural Economics} 81 (4): 972--82.
+\url{https://doi.org/10.2307/1244339}.
+
+\bibitem[\citeproctext]{ref-TempleAlp2016SugarBeverages}
+Temple, Norman J., and Kathryn Alp. 2016. {``Sugar in Beverages: Effects
+on Human Health.''} In \emph{Beverage Impacts on Health and Nutrition},
+edited by Ted Wilson and Norman J. Temple, 277--84. Cham: Humana Press.
+\url{https://doi.org/10.1007/978-3-319-23672-8_19}.
+
+\bibitem[\citeproctext]{ref-Thow2018FiscalPolicy}
+Thow, Anne Marie et al. 2018. {``Fiscal Policy to Improve Diets and
+Prevent Noncommunicable Diseases: From Recommendations to Action.''}
+\emph{Bulletin of the World Health Organization} 96 (3): 201--10.
+\url{https://doi.org/10.2471/BLT.17.195982}.
+
+\bibitem[\citeproctext]{ref-Toews2019NonSugarSweeteners}
+Toews, Ingrid et al. 2019. {``Association Between Intake of Non-Sugar
+Sweeteners and Health Outcomes: Systematic Review and Meta-Analyses of
+Randomised and Non-Randomised Controlled Trials and Observational
+Studies.''} \emph{BMJ} 364: k4718.
+\url{https://doi.org/10.1136/bmj.k4718}.
+
+\bibitem[\citeproctext]{ref-UN2015CPC}
+United Nations. 2015. {``Central Product Classification ({CPC}), Version
+2.1.''} United Nations, Department of Economic; Social Affairs,
+Statistics Division.
+
+\bibitem[\citeproctext]{ref-UN2018COICOP}
+---------. 2018a. {``Classification of Individual Consumption According
+to Purpose ({COICOP}) 2018.''} ST/ESA/STAT/SER.M/99. United Nations,
+Department of Economic; Social Affairs, Statistics Division.
+
+\bibitem[\citeproctext]{ref-UN2018PoliticalDeclarationNCD}
+---------. 2018b. {``Political Declaration of the Third High-Level
+Meeting of the {General Assembly} on the Prevention and Control of
+Non-Communicable Diseases.''} A/73/L.2. United Nations.
+
+\bibitem[\citeproctext]{ref-VecinoOrtizArroyoAriza2018SSBTax}
+Vecino-Ortiz, Andres I., and Daniel Arroyo-Ariza. 2018. {``A Tax on
+Sugar Sweetened Beverages in {Colombia}: Estimating the Impact on
+Overweight and Obesity Prevalence Across Socio Economic Levels.''}
+\emph{Social Science \& Medicine} 209: 111--16.
+\url{https://doi.org/10.1016/J.SOCSCIMED.2018.05.043}.
+
+\bibitem[\citeproctext]{ref-Willett2019EATLancet}
+Willett, Walter et al. 2019. {``Food in the {Anthropocene}: The
+{EAT-Lancet Commission} on Healthy Diets from Sustainable Food
+Systems.''} \emph{The Lancet} 393 (10170): 447--92.
+\url{https://doi.org/10.1016/S0140-6736(18)31788-4}.
+
+\bibitem[\citeproctext]{ref-WorldBank2020SSBTaxes}
+World Bank. 2020. \emph{Taxes on Sugar-Sweetened Beverages}. World Bank.
+\url{https://doi.org/10.1596/33969}.
+
+\bibitem[\citeproctext]{ref-WCO2018HarmonizedSystem}
+World Customs Organization. 2018. {``The Harmonized System: A Universal
+Language for International Trade 30 Years On.''} World Customs
+Organization.
+
+\bibitem[\citeproctext]{ref-WHO2017BestBuys}
+World Health Organization. 2017. {``Tackling {NCDs}: Best Buys and Other
+Recommended Interventions for the Prevention and Control of
+Noncommunicable Diseases.''} WHO/NMH/NVI/17.9. World Health
+Organization.
+
+\bibitem[\citeproctext]{ref-WHO2018AlcoholHealth}
+---------. 2018. {``Global Status Report on Alcohol and Health 2018.''}
+Geneva: World Health Organization.
+
+\end{CSLReferences}
+
+\clearpage
+\appendix
+\singlespacing
+
+\section{Tables}\label{tables}
+
+\begin{table}[!htbp]
+\centering
+\begin{threeparttable}
+\caption{Household demographics}
+\label{tab:demographics}
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Variable & Mean & Std. dev. & Min & Max \\
+\midrule
+Household head is male (1 = male, 0 = female) & 0.63 & 0.48 & 0 & 1 \\
+Age of household head (years) & 48.15 & 15.90 & 11 & 107 \\
+Rural (centros poblados and dispersed rural = 1) & 0.21 & 0.41 & 0 & 1 \\
+Household members & 3.35 & 1.73 & 1 & 22 \\
+Single-member household & 0.14 & 0.35 & 0 & 1 \\
+Children aged 0-5 in the household & 0.27 & 0.44 & 0 & 1 \\
+Head education: none or preschool & 0.06 & 0.24 & 0 & 1 \\
+Head education: primary & 0.32 & 0.47 & 0 & 1 \\
+Head education: secondary & 0.40 & 0.49 & 0 & 1 \\
+Head education: higher & 0.21 & 0.41 & 0 & 1 \\
+Total monthly household income (COP) & 2,250,475 & 3,355,308 & 0 & 290,250,000 \\
+Monthly income per member (COP) & 840,557 & 1,552,368 & 0 & 145,125,000 \\
+Total monthly current expenditure (COP) & 1,792,048 & 1,877,398 & 19,740 & 154,406,364 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item Estimation-eligible households (combined-market file): unweighted $N = 87,197$; sum of expansion factors $= 14,348,575$ households. Means and standard deviations are weighted by the ENPH expansion factor; minima and maxima are observed values.
+\item Sex: 1 = male (P6020). Children: any member aged 0--5. Education of the head (P6210): none or preschool; primary; secondary (b\'asica secundaria or media); higher. 20 heads report unknown education.
+\item Income is DANE's total monthly income of the spending unit and expenditure is DANE's monthly current expenditure, both in 2016--2017 Colombian pesos (COP) and neither trimmed nor imputed; 369 households report zero income.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\clearpage
+
+\begin{table}[!htbp]
+\centering
+\begin{threeparttable}
+\caption{Beverage purchase statistics}
+\label{tab:consumption}
+\scriptsize
+\begin{tabular}{lrrrrrrr}
+\toprule
+ & (1) & (2) & (3) & (4) & (5) & (6) & (7) \\
+ & Purchase & Spending, & Share of & Share of & Unit & Recorded & Spending with \\
+ & prevalence & purchasers & beverage & total exp. & value & quantity & quantity \\
+ &  & (COP) & basket & (\%) & (COP) & per month & (\%) \\
+\midrule
+\addlinespace\multicolumn{8}{l}{\textit{A. Coded purchases only --- off-trade}} \\
+SB & 0.484 & 19,491 & 0.196 & 0.574 & 2,312 & 2.51 & 53.6 \\
+Beer & 0.066 & 50,072 & 0.031 & 0.218 & 6,367 & 0.13 & 23.3 \\
+Spirits and wine & 0.102 & 73,151 & 0.061 & 0.351 & n.a. & n.a. & 0.0 \\
+Water & 0.167 & 12,756 & 0.043 & 0.120 & 1,219 & 2.61 & 47.0 \\
+Dairy drinks & 0.702 & 28,370 & 0.423 & 1.240 & 2,520 & 6.77 & 81.3 \\
+Hot drinks & 0.598 & 14,149 & 0.247 & 0.657 & 22,439 & 0.38 & 67.5 \\
+\addlinespace\multicolumn{8}{l}{\textit{B. Coded purchases only --- combined market}} \\
+SB & 0.563 & 22,260 & 0.226 & 0.765 & 2,312 & 2.51 & 40.4 \\
+Beer & 0.066 & 50,072 & 0.029 & 0.218 & 6,367 & 0.13 & 23.3 \\
+Spirits and wine & 0.102 & 73,151 & 0.056 & 0.351 & n.a. & n.a. & 0.0 \\
+Water & 0.167 & 12,756 & 0.036 & 0.120 & 1,219 & 2.61 & 47.0 \\
+Dairy drinks & 0.708 & 28,683 & 0.382 & 1.262 & 2,520 & 6.77 & 79.7 \\
+Hot drinks & 0.670 & 17,704 & 0.272 & 0.837 & 22,439 & 0.38 & 48.1 \\
+\addlinespace\multicolumn{8}{l}{\textit{C. Coded and text-identified purchases --- off-trade}} \\
+SB & 0.484 & 19,491 & 0.196 & 0.574 & 2,312 & 2.51 & 53.6 \\
+Beer & 0.066 & 50,072 & 0.031 & 0.218 & 6,367 & 0.13 & 23.3 \\
+Spirits and wine & 0.102 & 73,151 & 0.061 & 0.351 & n.a. & n.a. & 0.0 \\
+Water & 0.167 & 12,756 & 0.043 & 0.120 & 1,219 & 2.61 & 47.0 \\
+Dairy drinks & 0.702 & 28,370 & 0.423 & 1.240 & 2,520 & 6.77 & 81.3 \\
+Hot drinks & 0.598 & 14,149 & 0.247 & 0.657 & 22,439 & 0.38 & 67.5 \\
+\addlinespace\multicolumn{8}{l}{\textit{D. Coded and text-identified purchases --- combined market}} \\
+SB & 0.566 & 22,347 & 0.221 & 0.772 & 2,312 & 2.51 & 40.0 \\
+Beer & 0.093 & 60,597 & 0.040 & 0.320 & 6,367 & 0.13 & 13.7 \\
+Spirits and wine & 0.107 & 74,242 & 0.056 & 0.376 & n.a. & n.a. & 0.0 \\
+Water & 0.170 & 12,769 & 0.036 & 0.123 & 1,219 & 2.61 & 46.1 \\
+Dairy drinks & 0.711 & 28,780 & 0.378 & 1.271 & 2,520 & 6.77 & 79.2 \\
+Hot drinks & 0.674 & 17,789 & 0.270 & 0.843 & 22,439 & 0.38 & 47.7 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item Weighted statistics for estimation-eligible households ($N = 87,198$ in panels A--C, 87,197 in panel D). Monetary values in 2016--2017 COP per month.
+\item (1) Share of eligible households with at least one valid purchase. (2) Mean monthly spending among purchasing households. (3) Mean share of the category in the household's spending on the six beverage categories, among households buying any of them. (4) Mean share of the category in total household current expenditure, all eligible households (the budget share used in estimation).
+\item (5) Mean observed unit value among households with a valid positive quantity: COP per litre, and COP per kilogram for hot drinks. (6) Mean monthly quantity from purchases with a recorded volume or weight, averaged over all eligible households (litres; kilograms for hot drinks); purchases without a recorded quantity are not counted, so (6) is a lower bound. (7) Share of category spending covered by recorded quantities.
+\item n.a.: not available. ENPH collects spirits and wine in a monthly-recall module without quantities. Away-from-home purchases carry no physical quantity, so columns (5) and (6) rest on at-home purchases in every panel.
+\item Text-identified purchases are records whose description names a single beverage and nothing else; all of them are away-from-home purchases, so panels A and C coincide.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\clearpage
+
+\begin{table}[!htbp]
+\centering
+\begin{threeparttable}
+\caption{Own-price elasticities and specification sensitivity}
+\label{tab:ownprice}
+\footnotesize
+\begin{tabular}{lrrrrrr}
+\toprule
+ & M1 & M2 & M3 & M4 & M5 & M6 \\
+\midrule
+\addlinespace\multicolumn{7}{l}{\textit{Off-trade (at home)}} \\
+SB & $-$0.808\textsuperscript{**} & $-$0.807\textsuperscript{**} & $-$0.913 & $-$0.142 & $-$0.808\textsuperscript{**} & $-$0.660\textsuperscript{*} \\
+ & [0.208] & [0.209] & [23.371] & [0.216] & [0.208] & [0.269] \\
+Beer & $-$1.539 & $-$1.508 & $-$5.044 & $-$1.931 & $-$1.539 & $-$2.095 \\
+ & [2.566] & [2.548] & [413.115] & [1.456] & [2.566] & [2.351] \\
+Spirits and wine & n.e. & n.e. & n.e. & n.e. & n.e. & n.e. \\
+Water & $-$1.986\textsuperscript{**} & $-$1.986\textsuperscript{**} & $-$1.703 & $-$2.010\textsuperscript{**} & $-$1.986\textsuperscript{**} & $-$1.896\textsuperscript{**} \\
+ & [0.108] & [0.107] & [7.209] & [0.106] & [0.108] & [0.103] \\
+Dairy drinks & $-$1.055\textsuperscript{**} & $-$1.042\textsuperscript{**} & $-$1.083\textsuperscript{**} & $-$1.157\textsuperscript{**} & $-$1.055\textsuperscript{**} & $-$1.551\textsuperscript{**} \\
+ & [0.167] & [0.168] & [0.206] & [0.142] & [0.167] & [0.235] \\
+Hot drinks & $-$1.050\textsuperscript{**} & $-$1.053\textsuperscript{**} & $-$1.151 & $-$1.547\textsuperscript{**} & $-$1.050\textsuperscript{**} & $-$1.150\textsuperscript{**} \\
+ & [0.093] & [0.094] & [17.810] & [0.094] & [0.093] & [0.093] \\
+\addlinespace
+Households & 87,198 & 87,198 & 87,198 & 87,198 & 87,198 & 81,438 \\
+Price clusters & 483 & 483 & 483 & 483 & 483 & 338 \\
+\addlinespace\multicolumn{7}{l}{\textit{Combined market (at home + away from home)}} \\
+SB & $-$0.890\textsuperscript{**} & $-$0.889\textsuperscript{**} & $-$0.978 & $-$0.249 & $-$0.882\textsuperscript{**} & $-$0.726\textsuperscript{**} \\
+ & [0.177] & [0.177] & [18.417] & [0.188] & [0.175] & [0.204] \\
+Beer & $-$0.922 & $-$0.892 & $-$2.579 & $-$1.310 & $-$1.521 & $-$0.987 \\
+ & [1.766] & [1.752] & [280.022] & [1.061] & [2.751] & [1.263] \\
+Spirits and wine & n.e. & n.e. & n.e. & n.e. & n.e. & n.e. \\
+Water & $-$1.980\textsuperscript{**} & $-$1.980\textsuperscript{**} & $-$1.702 & $-$2.021\textsuperscript{**} & $-$1.973\textsuperscript{**} & $-$1.887\textsuperscript{**} \\
+ & [0.109] & [0.109] & [7.551] & [0.104] & [0.110] & [0.106] \\
+Dairy drinks & $-$1.046\textsuperscript{**} & $-$1.033\textsuperscript{**} & $-$1.070\textsuperscript{**} & $-$1.156\textsuperscript{**} & $-$1.055\textsuperscript{**} & $-$1.519\textsuperscript{**} \\
+ & [0.165] & [0.166] & [0.200] & [0.142] & [0.166] & [0.233] \\
+Hot drinks & $-$1.027\textsuperscript{**} & $-$1.029\textsuperscript{**} & $-$1.100 & $-$1.360\textsuperscript{**} & $-$1.026\textsuperscript{**} & $-$1.080\textsuperscript{**} \\
+ & [0.095] & [0.097] & [14.464] & [0.081] & [0.094] & [0.084] \\
+\addlinespace
+Households & 87,197 & 87,197 & 87,197 & 87,197 & 87,198 & 81,437 \\
+Price clusters & 483 & 483 & 483 & 483 & 483 & 338 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item Uncompensated (Marshallian) own-price elasticities of quantity from Deaton's unit-value model as implemented in WELCOM 3.60 (quality-corrected, symmetry-restricted), unconditional on the beverage budget: budget shares and the expenditure regressor use total household current expenditure.
+\item Columns: M1 primary specification (WELCOM \texttt{duvm} with the selection term, sampling weights averaged within price clusters and region-by-area controls; coded and text-identified purchases; urban and rural households). M2 without the selection term. M3 without sampling weights. M4 without regional controls. M5 coded purchases only. M6 urban households only (a different target population). Each column changes one element of M1.
+\item Standard errors in brackets are standard deviations over 99--100 cluster-bootstrap replications in which price clusters are resampled within region cells and the whole WELCOM estimation is repeated (1 failed replications). \textsuperscript{**} $p<0.01$, \textsuperscript{*} $p<0.05$ (two-sided, normal approximation). The replication target set in the configuration has not been reached for every model; inference is preliminary.
+\item n.e.: not estimable. ENPH records no physical quantity for spirits and wine, so no unit value exists and the good cannot enter the unit-value model.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\clearpage
+
+\begin{table}[!htbp]
+\centering
+\begin{threeparttable}
+\caption{Own-price elasticities by household income tercile}
+\label{tab:terciles}
+\footnotesize
+\begin{tabular}{lrrrr}
+\toprule
+ & All households & Tercile 1 & Tercile 2 & Tercile 3 \\
+\midrule
+\addlinespace\multicolumn{5}{l}{\textit{Off-trade (at home)}} \\
+SB & $-$0.808\textsuperscript{**} & $-$0.972\textsuperscript{**} & $-$0.686\textsuperscript{**} & $-$0.025 \\
+ & [0.208] & [0.217] & [0.212] & [0.447] \\
+Beer & $-$1.539 & n.e. & n.e. & n.e. \\
+ & [2.566] &  &  &  \\
+Spirits and wine & n.e. & n.e. & n.e. & n.e. \\
+Water & $-$1.986\textsuperscript{**} & $-$2.415\textsuperscript{**} & $-$1.931\textsuperscript{**} & $-$1.743\textsuperscript{**} \\
+ & [0.108] & [0.268] & [0.119] & [0.198] \\
+Dairy drinks & $-$1.055\textsuperscript{**} & $-$1.045\textsuperscript{**} & $-$1.023\textsuperscript{**} & $-$1.002\textsuperscript{**} \\
+ & [0.167] & [0.244] & [0.263] & [0.272] \\
+Hot drinks & $-$1.050\textsuperscript{**} & $-$1.055\textsuperscript{**} & $-$1.008\textsuperscript{**} & $-$0.971\textsuperscript{**} \\
+ & [0.093] & [0.086] & [0.104] & [0.193] \\
+\addlinespace
+Households & 87,198 & 25,654 & 30,586 & 30,958 \\
+Price clusters & 483 & 476 & 474 & 460 \\
+\addlinespace\multicolumn{5}{l}{\textit{Combined market (at home + away from home)}} \\
+SB & $-$0.890\textsuperscript{**} & $-$0.989\textsuperscript{**} & $-$0.868\textsuperscript{**} & $-$0.259 \\
+ & [0.177] & [0.173] & [0.181] & [0.367] \\
+Beer & $-$0.922 & n.e. & n.e. & n.e. \\
+ & [1.766] &  &  &  \\
+Spirits and wine & n.e. & n.e. & n.e. & n.e. \\
+Water & $-$1.980\textsuperscript{**} & $-$2.398\textsuperscript{**} & $-$1.921\textsuperscript{**} & $-$1.740\textsuperscript{**} \\
+ & [0.109] & [0.264] & [0.118] & [0.193] \\
+Dairy drinks & $-$1.046\textsuperscript{**} & $-$1.039\textsuperscript{**} & $-$1.017\textsuperscript{**} & $-$0.961\textsuperscript{**} \\
+ & [0.165] & [0.238] & [0.258] & [0.272] \\
+Hot drinks & $-$1.027\textsuperscript{**} & $-$1.057\textsuperscript{**} & $-$1.010\textsuperscript{**} & $-$0.902\textsuperscript{**} \\
+ & [0.095] & [0.084] & [0.101] & [0.165] \\
+\addlinespace
+Households & 87,197 & 25,654 & 30,586 & 30,957 \\
+Price clusters & 483 & 476 & 474 & 460 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item Uncompensated (Marshallian) own-price elasticities of quantity from Deaton's unit-value model as implemented in WELCOM 3.60 (quality-corrected, symmetry-restricted), unconditional on the beverage budget: budget shares and the expenditure regressor use total household current expenditure.
+\item Each tercile column is a separate WELCOM estimation of the primary specification on that tercile's households; no estimate is rescaled from the full sample.
+\item Terciles of per-capita total household income (DANE total income divided by household members), with cut-offs at COP 321,667 and COP 700,000 per month chosen so that each tercile holds one third of weighted households; households with zero income (369) are in tercile 1.
+\item Standard errors in brackets are standard deviations over 100 cluster-bootstrap replications in which price clusters are resampled within region cells and the whole WELCOM estimation is repeated (0 failed replications). \textsuperscript{**} $p<0.01$, \textsuperscript{*} $p<0.05$ (two-sided, normal approximation). The replication target set in the configuration has not been reached for every model; inference is preliminary.
+\item n.e.: not estimable. ENPH records no physical quantity for spirits and wine, so no unit value exists and the good cannot enter the unit-value model.
+\item Beer is not estimated in T1, T2, T3 (too few unit values in this model's sample). A good enters a model only if its unit value is observed in enough clusters of that model's sample; models compared with each other (the income terciles) use the same goods.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\clearpage
+
+\begin{table}[!htbp]
+\centering
+\begin{threeparttable}
+\caption{Own- and cross-price elasticity matrices}
+\label{tab:matrix}
+\footnotesize
+\begin{tabular}{lrrrrr}
+\toprule
+Quantity of $\downarrow$ / price of $\rightarrow$ & SB & Beer & Water & Dairy drinks & Hot drinks \\
+\midrule
+\addlinespace\multicolumn{6}{l}{\textit{Off-trade (at home)}} \\
+SB & $-$0.808\textsuperscript{**} & 0.417 & $-$0.072 & $-$0.205 & 0.407\textsuperscript{**} \\
+ & [0.208] & [0.332] & [0.051] & [0.226] & [0.126] \\
+Beer & 1.128 & $-$1.539 & $-$0.284 & 0.601 & 0.560 \\
+ & [0.902] & [2.566] & [0.167] & [1.207] & [0.574] \\
+Water & $-$0.332 & $-$0.520 & $-$1.986\textsuperscript{**} & 0.250 & $-$0.031 \\
+ & [0.240] & [0.291] & [0.108] & [0.245] & [0.139] \\
+Dairy drinks & $-$0.091 & 0.089 & 0.024 & $-$1.055\textsuperscript{**} & 0.107 \\
+ & [0.099] & [0.198] & [0.023] & [0.167] & [0.070] \\
+Hot drinks & 0.338\textsuperscript{**} & 0.164 & $-$0.006 & 0.198 & $-$1.050\textsuperscript{**} \\
+ & [0.104] & [0.175] & [0.024] & [0.131] & [0.093] \\
+\addlinespace\multicolumn{6}{l}{\textit{Combined market (at home + away from home)}} \\
+SB & $-$0.890\textsuperscript{**} & 0.322 & $-$0.100\textsuperscript{**} & $-$0.075 & 0.333\textsuperscript{**} \\
+ & [0.177] & [0.266] & [0.038] & [0.172] & [0.100] \\
+Beer & 0.808 & $-$0.922 & $-$0.320\textsuperscript{*} & 0.251 & 0.416 \\
+ & [0.662] & [1.766] & [0.125] & [0.830] & [0.476] \\
+Water & $-$0.611\textsuperscript{**} & $-$0.823\textsuperscript{**} & $-$1.980\textsuperscript{**} & 0.187 & $-$0.166 \\
+ & [0.234] & [0.313] & [0.109] & [0.239] & [0.180] \\
+Dairy drinks & $-$0.042 & 0.049 & 0.018 & $-$1.046\textsuperscript{**} & 0.101 \\
+ & [0.101] & [0.195] & [0.023] & [0.165] & [0.068] \\
+Hot drinks & 0.291\textsuperscript{**} & 0.137 & $-$0.024 & 0.148 & $-$1.027\textsuperscript{**} \\
+ & [0.086] & [0.161] & [0.025] & [0.102] & [0.095] \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item Primary specification (M1). Rows: beverage whose quantity responds. Columns: beverage whose price changes. Diagonal cells are the own-price elasticities of Tables~\ref{tab:ownprice} and~\ref{tab:terciles}. Uncompensated elasticities, quality-corrected, with the symmetry restriction imposed by \texttt{duvm}; unconditional on the beverage budget.
+\item Standard errors in brackets are standard deviations over 100 cluster-bootstrap replications in which price clusters are resampled within region cells and the whole WELCOM estimation is repeated (0 failed replications). \textsuperscript{**} $p<0.01$, \textsuperscript{*} $p<0.05$ (two-sided, normal approximation). The replication target set in the configuration has not been reached for every model; inference is preliminary.
+\item Spirits and wine cannot be included (no physical quantities in ENPH). The joint bootstrap covariance matrix of all cells is in \texttt{output/estimates/20261117a/covariance\_long.csv}.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\clearpage
+
+\begin{table}[!htbp]
+\centering
+\begin{threeparttable}
+\caption{Expenditure elasticities and specification sensitivity}
+\label{tab:expenditure}
+\footnotesize
+\begin{tabular}{lrrrrrr}
+\toprule
+ & M1 & M2 & M3 & M4 & M5 & M6 \\
+\midrule
+\addlinespace\multicolumn{7}{l}{\textit{Off-trade (at home)}} \\
+SB & 0.351\textsuperscript{**} & 0.815\textsuperscript{**} & 0.178\textsuperscript{*} & 0.351\textsuperscript{**} & 0.351\textsuperscript{**} & 0.130 \\
+ & [0.110] & [0.026] & [0.086] & [0.110] & [0.110] & [0.123] \\
+Beer & $-$6.113 & 1.558\textsuperscript{**} & $-$5.929\textsuperscript{*} & $-$6.113 & $-$6.113 & $-$6.496 \\
+ & [3.516] & [0.103] & [2.506] & [3.516] & [3.516] & [3.823] \\
+Spirits and wine & n.e. & n.e. & n.e. & n.e. & n.e. & n.e. \\
+Water & $-$0.003 & 1.101\textsuperscript{**} & 0.470 & $-$0.003 & $-$0.003 & $-$0.562 \\
+ & [0.558] & [0.051] & [0.256] & [0.558] & [0.558] & [0.630] \\
+Dairy drinks & 0.171\textsuperscript{*} & 0.715\textsuperscript{**} & $-$0.012 & 0.171\textsuperscript{*} & 0.171\textsuperscript{*} & 0.265\textsuperscript{**} \\
+ & [0.069] & [0.016] & [0.055] & [0.069] & [0.069] & [0.099] \\
+Hot drinks & 0.159 & 0.721\textsuperscript{**} & $-$0.253\textsuperscript{*} & 0.159 & 0.159 & 0.222 \\
+ & [0.179] & [0.026] & [0.109] & [0.179] & [0.179] & [0.265] \\
+\addlinespace
+Households & 87,198 & 87,198 & 87,198 & 87,198 & 87,198 & 81,438 \\
+Price clusters & 483 & 483 & 483 & 483 & 483 & 338 \\
+\addlinespace\multicolumn{7}{l}{\textit{Combined market (at home + away from home)}} \\
+SB & 0.521\textsuperscript{**} & 0.826\textsuperscript{**} & 0.479\textsuperscript{**} & 0.521\textsuperscript{**} & 0.521\textsuperscript{**} & 0.472\textsuperscript{**} \\
+ & [0.062] & [0.021] & [0.049] & [0.062] & [0.064] & [0.060] \\
+Beer & $-$3.582 & 1.601\textsuperscript{**} & $-$2.706 & $-$3.582 & $-$6.113 & $-$2.961 \\
+ & [1.857] & [0.087] & [1.488] & [1.857] & [3.516] & [2.641] \\
+Spirits and wine & n.e. & n.e. & n.e. & n.e. & n.e. & n.e. \\
+Water & 0.030 & 1.103\textsuperscript{**} & 0.534\textsuperscript{*} & 0.030 & $-$0.003 & $-$0.595 \\
+ & [0.534] & [0.053] & [0.251] & [0.534] & [0.558] & [0.598] \\
+Dairy drinks & 0.201\textsuperscript{**} & 0.719\textsuperscript{**} & 0.058 & 0.201\textsuperscript{**} & 0.193\textsuperscript{**} & 0.285\textsuperscript{**} \\
+ & [0.064] & [0.016] & [0.051] & [0.064] & [0.065] & [0.092] \\
+Hot drinks & 0.371\textsuperscript{*} & 0.704\textsuperscript{**} & 0.224\textsuperscript{*} & 0.371\textsuperscript{*} & 0.379\textsuperscript{*} & 0.626\textsuperscript{**} \\
+ & [0.149] & [0.031] & [0.090] & [0.149] & [0.157] & [0.196] \\
+\addlinespace
+Households & 87,197 & 87,197 & 87,197 & 87,197 & 87,198 & 81,437 \\
+Price clusters & 483 & 483 & 483 & 483 & 483 & 338 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item Elasticities of quantity with respect to total household current expenditure (not income) from WELCOM 3.60 \texttt{duvm}: $1-\beta^1_g+\beta^0_g/\bar w_g$, where $\beta^0_g$ and $\beta^1_g$ are the coefficients of log expenditure in the budget-share and unit-value regressions. Regional controls enter only the between-cluster stage, so M4 equals M1 by construction.
+\item Columns: M1 primary specification (WELCOM \texttt{duvm} with the selection term, sampling weights averaged within price clusters and region-by-area controls; coded and text-identified purchases; urban and rural households). M2 without the selection term. M3 without sampling weights. M4 without regional controls. M5 coded purchases only. M6 urban households only (a different target population). Each column changes one element of M1.
+\item Standard errors in brackets are standard deviations over 99--100 cluster-bootstrap replications in which price clusters are resampled within region cells and the whole WELCOM estimation is repeated (1 failed replications). \textsuperscript{**} $p<0.01$, \textsuperscript{*} $p<0.05$ (two-sided, normal approximation). The replication target set in the configuration has not been reached for every model; inference is preliminary.
+\item n.e.: not estimable. ENPH records no physical quantity for spirits and wine, so no unit value exists and the good cannot enter the unit-value model.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\clearpage
+
+\section{Supplementary tables and
+figures}\label{supplementary-tables-and-figures}
+
+\begin{table}[!htbp]
+\centering
+\begin{threeparttable}
+\caption{Sample flow}
+\label{tab:sampleflow}
+\footnotesize
+\begin{tabular}{p{10.5cm}rr}
+\toprule
+Step & Households & Weighted \\
+\midrule
+ENPH 2016-2017 households (public-use file) & 87,201 & 14,350,388 \\
+... answering the urban 14-day diary & 81,438 & 11,277,154 \\
+... answering the rural weekly questionnaire & 5,763 & 3,073,234 \\
+With positive DANE current expenditure & 87,201 & 14,350,388 \\
+With complete household-head covariates & 87,201 & 14,350,388 \\
+With valid budget shares (no category or total above total expenditure), combined market & 87,200 & 14,350,337 \\
+In a price cluster (local market) of at least two households = estimation-eligible, combined market & 87,197 & 14,348,575 \\
+Estimation-eligible, off-trade market & 87,198 & 14,348,627 \\
+... of which urban (cabeceras) & 81,437 & 11,277,103 \\
+... of which rural & 5,760 & 3,071,473 \\
+... with at least one valid beverage purchase (combined market) & 79,789 & 13,257,014 \\
+... with no beverage purchase recorded (kept as true zeros) & 7,408 & 1,091,561 \\
+Legacy analysis file (households with a beverage record and below 16 litres per person-day) & 82,934 &  \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item No household is dropped for having no beverage purchase: such households enter with zero budget shares. The legacy analysis file is shown for reference only.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\clearpage
+
+\begin{table}[!htbp]
+\centering
+\begin{threeparttable}
+\caption{Measurement coverage by beverage and market (primary data)}
+\label{tab:coverage}
+\scriptsize
+\begin{tabular}{lrrrrrrr}
+\toprule
+ & Buying & \ldots with & Unit values & Unit values & Spending with & Text-identified & Composite \\
+ & households & quantity & used & flagged & quantity (\%) & spending (\%) & mention only \\
+\midrule
+\addlinespace\multicolumn{8}{l}{\textit{Off-trade (at home)}} \\
+SB & 44,661 & 31,511 & 30,813 & 698 & 53.6 & 0.0 &  \\
+Beer & 4,087 & 1,167 & 1,065 & 102 & 23.3 & 0.0 &  \\
+Spirits and wine & 8,984 & 0 & 0 & 0 & 0.0 & 0.0 &  \\
+Water & 19,904 & 9,684 & 9,617 & 67 & 47.0 & 0.0 &  \\
+Dairy drinks & 59,425 & 52,208 & 48,264 & 3,944 & 81.3 & 0.0 &  \\
+Hot drinks & 46,271 & 33,968 & 33,356 & 612 & 67.5 & 0.0 &  \\
+\addlinespace\multicolumn{8}{l}{\textit{Combined market (at home + away from home)}} \\
+SB & 52,411 & 31,511 & 30,813 & 698 & 40.0 & 0.9 & 9,019 \\
+Beer & 6,406 & 1,167 & 1,065 & 102 & 13.7 & 40.9 & 469 \\
+Spirits and wine & 9,514 & 0 & 0 & 0 & 0.0 & 6.3 & 231 \\
+Water & 20,136 & 9,684 & 9,617 & 67 & 46.1 & 2.0 & 686 \\
+Dairy drinks & 60,587 & 52,208 & 48,264 & 3,944 & 79.2 & 0.7 & 2,246 \\
+Hot drinks & 52,798 & 33,968 & 33,356 & 612 & 47.7 & 0.9 & 7,916 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item Unweighted household counts; spending shares are weighted. `Unit values flagged' are observed unit values outside the robust log-scale band and not passed to WELCOM; the household keeps its budget share.
+\item `Composite mention only': households whose only evidence of buying the beverage is a description that also lists other items (for example a meal with a drink); the amount cannot be attributed and the household counts as a non-buyer of that beverage.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\clearpage
+
+\begin{table}[!htbp]
+\centering
+\begin{threeparttable}
+\caption{Supplementary sensitivity analyses: own-price elasticities}
+\label{tab:sensown}
+\footnotesize
+\begin{tabular}{lrrrrrrrr}
+\toprule
+ & M1 & S1 & S2 & S3 & S4 & S5 & S6 & S7 \\
+\midrule
+\addlinespace\multicolumn{9}{l}{\textit{Off-trade (at home)}} \\
+SB & $-$0.808\textsuperscript{**} & $-$0.713 & $-$0.720 & $-$0.611 & $-$0.812 & $-$0.224 & $-$0.880 & $-$0.695 \\
+ & [0.208] &  &  &  &  &  &  &  \\
+Beer & $-$1.539 & $-$1.513 & $-$1.395 & $-$1.449 & $-$1.605 & 0.147 & $-$0.877 & n.e. \\
+ & [2.566] &  &  &  &  &  &  &  \\
+Spirits and wine & n.e. & n.e. & n.e. & n.e. & n.e. & n.e. & n.e. & n.e. \\
+Water & $-$1.986\textsuperscript{**} & $-$1.985 & $-$1.996 & $-$1.928 & $-$1.987 & $-$1.865 & $-$1.882 & $-$1.962 \\
+ & [0.108] &  &  &  &  &  &  &  \\
+Dairy drinks & $-$1.055\textsuperscript{**} & $-$1.056 & $-$1.225 & $-$1.196 & $-$1.055 & $-$1.726 & $-$1.036 & $-$1.048 \\
+ & [0.167] &  &  &  &  &  &  &  \\
+Hot drinks & $-$1.050\textsuperscript{**} & $-$1.047 & $-$1.060 & $-$1.069 & $-$1.051 & $-$1.022 & $-$1.037 & $-$1.029 \\
+ & [0.093] &  &  &  &  &  &  &  \\
+\addlinespace
+Households & 87,198 & 87,198 & 87,198 & 87,197 & 87,187 & 87,198 & 87,198 & 87,198 \\
+Price clusters & 483 & 483 & 483 & 483 & 483 & 8,457 & 483 & 483 \\
+\addlinespace\multicolumn{9}{l}{\textit{Combined market (at home + away from home)}} \\
+SB & $-$0.890\textsuperscript{**} & $-$0.745 & $-$0.738 & $-$0.748 & $-$0.893 & $-$0.451 & $-$0.976 & $-$0.802 \\
+ & [0.177] &  &  &  &  &  &  &  \\
+Beer & $-$0.922 & $-$0.869 & $-$0.884 & $-$0.848 & $-$0.972 & $-$0.189 & $-$0.784 & n.e. \\
+ & [1.766] &  &  &  &  &  &  &  \\
+Spirits and wine & n.e. & n.e. & n.e. & n.e. & n.e. & n.e. & n.e. & n.e. \\
+Water & $-$1.980\textsuperscript{**} & $-$1.977 & $-$1.980 & $-$1.923 & $-$1.981 & $-$1.848 & $-$1.880 & $-$1.944 \\
+ & [0.109] &  &  &  &  &  &  &  \\
+Dairy drinks & $-$1.046\textsuperscript{**} & $-$1.048 & $-$1.200 & $-$1.184 & $-$1.046 & $-$1.692 & $-$1.030 & $-$1.043 \\
+ & [0.165] &  &  &  &  &  &  &  \\
+Hot drinks & $-$1.027\textsuperscript{**} & $-$1.024 & $-$1.041 & $-$1.037 & $-$1.028 & $-$1.029 & $-$1.031 & $-$1.009 \\
+ & [0.095] &  &  &  &  &  &  &  \\
+\addlinespace
+Households & 87,197 & 87,197 & 87,197 & 87,196 & 87,191 & 87,197 & 87,197 & 87,197 \\
+Price clusters & 483 & 483 & 483 & 483 & 483 & 8,457 & 483 & 483 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item Uncompensated (Marshallian) own-price elasticities of quantity from Deaton's unit-value model as implemented in WELCOM 3.60 (quality-corrected, symmetry-restricted), unconditional on the beverage budget: budget shares and the expenditure regressor use total household current expenditure.
+\item S1 broad SB definition. S2 unit values from directly recorded units only. S3 reference-period scaling of recall periods. S4 extreme spenders excluded. S5 price clusters defined as survey segments. S6 raw household expansion factors passed to WELCOM (legacy calling convention). S7 beer left out of the system. S1--S3 change measurements on the same households; S4 changes the sample.
+\item Standard errors in brackets are standard deviations over 100 cluster-bootstrap replications in which price clusters are resampled within region cells and the whole WELCOM estimation is repeated (0 failed replications). \textsuperscript{**} $p<0.01$, \textsuperscript{*} $p<0.05$ (two-sided, normal approximation). S1, S2, S3, S4, S5, S6, S7: too few completed replications; point estimates only. The replication target set in the configuration has not been reached for every model; inference is preliminary.
+\item n.e.: not estimable. ENPH records no physical quantity for spirits and wine, so no unit value exists and the good cannot enter the unit-value model.
+\item Beer is not estimated in S7 (excluded by the model specification). A good enters a model only if its unit value is observed in enough clusters of that model's sample; models compared with each other (the income terciles) use the same goods.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\clearpage
+
+\begin{table}[!htbp]
+\centering
+\begin{threeparttable}
+\caption{Supplementary sensitivity analyses: expenditure elasticities}
+\label{tab:sensexp}
+\footnotesize
+\begin{tabular}{lrrrrrrrr}
+\toprule
+ & M1 & S1 & S2 & S3 & S4 & S5 & S6 & S7 \\
+\midrule
+\addlinespace\multicolumn{9}{l}{\textit{Off-trade (at home)}} \\
+SB & 0.351\textsuperscript{**} & 0.406 & 0.363 & 0.292 & 0.350 & 0.546 & 0.305 & 0.351 \\
+ & [0.110] &  &  &  &  &  &  &  \\
+Beer & $-$6.113 & $-$6.113 & $-$6.097 & $-$6.391 & $-$6.103 & $-$2.794 & $-$4.512 & n.e. \\
+ & [3.516] &  &  &  &  &  &  &  \\
+Spirits and wine & n.e. & n.e. & n.e. & n.e. & n.e. & n.e. & n.e. & n.e. \\
+Water & $-$0.003 & $-$0.003 & $-$0.001 & 0.479 & $-$0.002 & 0.215 & 0.046 & $-$0.003 \\
+ & [0.558] &  &  &  &  &  &  &  \\
+Dairy drinks & 0.171\textsuperscript{*} & 0.171 & 0.187 & 0.121 & 0.171 & 0.297 & 0.158 & 0.171 \\
+ & [0.069] &  &  &  &  &  &  &  \\
+Hot drinks & 0.159 & 0.159 & 0.142 & 0.556 & 0.159 & 0.260 & 0.150 & 0.159 \\
+ & [0.179] &  &  &  &  &  &  &  \\
+\addlinespace
+Households & 87,198 & 87,198 & 87,198 & 87,197 & 87,187 & 87,198 & 87,198 & 87,198 \\
+Price clusters & 483 & 483 & 483 & 483 & 483 & 8,457 & 483 & 483 \\
+\addlinespace\multicolumn{9}{l}{\textit{Combined market (at home + away from home)}} \\
+SB & 0.521\textsuperscript{**} & 0.573 & 0.533 & 0.477 & 0.521 & 0.699 & 0.490 & 0.521 \\
+ & [0.062] &  &  &  &  &  &  &  \\
+Beer & $-$3.582 & $-$3.582 & $-$3.567 & $-$3.700 & $-$3.581 & 0.486 & $-$2.284 & n.e. \\
+ & [1.857] &  &  &  &  &  &  &  \\
+Spirits and wine & n.e. & n.e. & n.e. & n.e. & n.e. & n.e. & n.e. & n.e. \\
+Water & 0.030 & 0.030 & 0.032 & 0.490 & 0.031 & 0.271 & 0.104 & 0.030 \\
+ & [0.534] &  &  &  &  &  &  &  \\
+Dairy drinks & 0.201\textsuperscript{**} & 0.201 & 0.217 & 0.159 & 0.201 & 0.324 & 0.188 & 0.201 \\
+ & [0.064] &  &  &  &  &  &  &  \\
+Hot drinks & 0.371\textsuperscript{*} & 0.371 & 0.354 & 0.565 & 0.371 & 0.489 & 0.348 & 0.371 \\
+ & [0.149] &  &  &  &  &  &  &  \\
+\addlinespace
+Households & 87,197 & 87,197 & 87,197 & 87,196 & 87,191 & 87,197 & 87,197 & 87,197 \\
+Price clusters & 483 & 483 & 483 & 483 & 483 & 8,457 & 483 & 483 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item Elasticities of quantity with respect to total household current expenditure (not income) from WELCOM 3.60 \texttt{duvm}: $1-\beta^1_g+\beta^0_g/\bar w_g$, where $\beta^0_g$ and $\beta^1_g$ are the coefficients of log expenditure in the budget-share and unit-value regressions. Regional controls enter only the between-cluster stage, so M4 equals M1 by construction.
+\item S1 broad SB definition. S2 unit values from directly recorded units only. S3 reference-period scaling of recall periods. S4 extreme spenders excluded. S5 price clusters defined as survey segments. S6 raw household expansion factors passed to WELCOM (legacy calling convention). S7 beer left out of the system. S1--S3 change measurements on the same households; S4 changes the sample.
+\item Standard errors in brackets are standard deviations over 100 cluster-bootstrap replications in which price clusters are resampled within region cells and the whole WELCOM estimation is repeated (0 failed replications). \textsuperscript{**} $p<0.01$, \textsuperscript{*} $p<0.05$ (two-sided, normal approximation). S1, S2, S3, S4, S5, S6, S7: too few completed replications; point estimates only. The replication target set in the configuration has not been reached for every model; inference is preliminary.
+\item n.e.: not estimable. ENPH records no physical quantity for spirits and wine, so no unit value exists and the good cannot enter the unit-value model.
+\item Beer is not estimated in S7 (excluded by the model specification). A good enters a model only if its unit value is observed in enough clusters of that model's sample; models compared with each other (the income terciles) use the same goods.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\clearpage
+
+\begin{table}[!htbp]
+\centering
+\begin{threeparttable}
+\caption{Price-cluster diagnostics (off-trade unit values)}
+\label{tab:clusters}
+\footnotesize
+\begin{tabular}{lrrrrrr}
+\toprule
+ & Unit & Clusters with & Unit values per & SD of log & Between-cluster & Reliability of \\
+ & values & a unit value & cluster (harmonic) & unit value & variance share & cluster mean \\
+\midrule
+\addlinespace\multicolumn{7}{l}{\textit{Local market: municipality $\times$ area $\times$ quarter (primary): 486 clusters, median 54 households (10th--90th percentile 18--540)}} \\
+SB & 30,814 & 470 & 7.2 & 0.35 & 0.19 & 0.68 \\
+Beer & 1,065 & 251 & 1.8 & 0.36 & 0.34 & 0.29 \\
+Spirits and wine & 0 &  &  &  &  &  \\
+Water & 9,618 & 371 & 3.7 & 1.05 & 0.75 & 0.90 \\
+Dairy drinks & 48,265 & 458 & 8.8 & 0.21 & 0.21 & 0.87 \\
+Hot drinks & 33,357 & 480 & 11.7 & 0.66 & 0.33 & 0.80 \\
+\addlinespace\multicolumn{7}{l}{\textit{Survey segment (sensitivity S5): 8,460 clusters, median 10 households (10th--90th percentile 7--14)}} \\
+SB & 30,814 & 7,626 & 2.6 & 0.35 & 0.47 & 0.57 \\
+Beer & 1,065 & 876 & 1.1 & 0.36 & 0.87 & 0.32 \\
+Spirits and wine & 0 &  &  &  &  &  \\
+Water & 9,618 & 3,883 & 1.5 & 1.05 & 0.90 & 0.90 \\
+Dairy drinks & 48,265 & 7,725 & 4.1 & 0.21 & 0.40 & 0.73 \\
+Hot drinks & 33,357 & 7,802 & 2.8 & 0.66 & 0.54 & 0.65 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item Neither definition mixes urban and rural households. A local market spans one collection quarter; a survey segment one month and lies inside one local market.
+\item Between-cluster variance share: one-way decomposition of the log unit value; it mixes price differences with differences in quality and package size.
+\item Reliability of the cluster mean: share of the variance of cluster-mean log unit values that is not within-cluster sampling noise, $1-(s^2_w/\tilde n)/\mathrm{var}(\bar v_c)$, with $\tilde n$ the harmonic mean of unit values per cluster.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\clearpage
+
+\begin{table}[!htbp]
+\centering
+\begin{threeparttable}
+\caption{Model summary}
+\label{tab:models}
+\scriptsize
+\begin{tabular}{lp{5.2cm}rrrrr}
+\toprule
+Model & Specification & Households & Clusters & Replications & Failed & Target \\
+\midrule
+M1\_combined & Primary specification & 87,197 & 483 & 100 & 0 & 500 \\
+M2\_combined & Without the selection term & 87,197 & 483 & 100 & 0 & 500 \\
+M3\_combined & Without sampling weights & 87,197 & 483 & 100 & 0 & 500 \\
+M4\_combined & Without regional controls & 87,197 & 483 & 100 & 0 & 500 \\
+M5\_combined & Coded purchases only & 87,198 & 483 & 100 & 0 & 500 \\
+M6\_combined & Urban households only & 81,437 & 338 & 100 & 0 & 500 \\
+S1\_combined & Classification: broad SB definition & 87,197 & 483 & 4 & 0 & 100 \\
+S2\_combined & Quantities: directly recorded units only & 87,197 & 483 & 4 & 0 & 100 \\
+S3\_combined & Recall: reference-period scaling & 87,196 & 483 & 4 & 0 & 100 \\
+S4\_combined & Outliers: extreme spenders excluded & 87,191 & 483 & 4 & 0 & 100 \\
+S5\_combined & Price clusters: survey segments & 87,197 & 8,457 & 4 & 0 & 100 \\
+S6\_combined & Weights: raw household expansion factors & 87,197 & 483 & 4 & 0 & 100 \\
+S7\_combined & System without beer & 87,197 & 483 & 4 & 0 & 100 \\
+T1\_combined & Income tercile 1 (lowest) & 25,654 & 476 & 100 & 0 & 500 \\
+T2\_combined & Income tercile 2 & 30,586 & 474 & 100 & 0 & 500 \\
+T3\_combined & Income tercile 3 (highest) & 30,957 & 460 & 100 & 0 & 500 \\
+M1\_home & Primary specification & 87,198 & 483 & 100 & 0 & 500 \\
+M2\_home & Without the selection term & 87,198 & 483 & 100 & 0 & 500 \\
+M3\_home & Without sampling weights & 87,198 & 483 & 99 & 1 & 500 \\
+M4\_home & Without regional controls & 87,198 & 483 & 100 & 0 & 500 \\
+M5\_home & Coded purchases only & 87,198 & 483 & 100 & 0 & 500 \\
+M6\_home & Urban households only & 81,438 & 338 & 100 & 0 & 500 \\
+S1\_home & Classification: broad SB definition & 87,198 & 483 & 4 & 0 & 100 \\
+S2\_home & Quantities: directly recorded units only & 87,198 & 483 & 4 & 0 & 100 \\
+S3\_home & Recall: reference-period scaling & 87,197 & 483 & 4 & 0 & 100 \\
+S4\_home & Outliers: extreme spenders excluded & 87,187 & 483 & 4 & 0 & 100 \\
+S5\_home & Price clusters: survey segments & 87,198 & 8,457 & 4 & 0 & 100 \\
+S6\_home & Weights: raw household expansion factors & 87,198 & 483 & 4 & 0 & 100 \\
+S7\_home & System without beer & 87,198 & 483 & 4 & 0 & 100 \\
+T1\_home & Income tercile 1 (lowest) & 25,654 & 476 & 100 & 0 & 500 \\
+T2\_home & Income tercile 2 & 30,586 & 474 & 100 & 0 & 500 \\
+T3\_home & Income tercile 3 (highest) & 30,958 & 460 & 100 & 0 & 500 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item All models are estimated with WELCOM 3.60 \texttt{duvm}. Replications: completed external cluster-bootstrap replications.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\clearpage
+
+\begin{table}[!htbp]
+\centering
+\begin{threeparttable}
+\caption{Primary specification: point estimates and 95\% percentile bootstrap confidence intervals}
+\label{tab:ci}
+\footnotesize
+\begin{tabular}{lrrrr}
+\toprule
+ & Own-price & 95\% CI & Expenditure & 95\% CI \\
+\midrule
+\addlinespace\multicolumn{5}{l}{\textit{Off-trade (at home)}} \\
+SB & $-$0.808 & ($-$1.136, $-$0.414) & 0.351 & (0.111, 0.555) \\
+Beer & $-$1.539 & ($-$12.355, 0.450) & $-$6.113 & ($-$12.571, 0.237) \\
+Water & $-$1.986 & ($-$2.210, $-$1.803) & $-$0.003 & ($-$1.062, 1.048) \\
+Dairy drinks & $-$1.055 & ($-$1.355, $-$0.754) & 0.171 & (0.045, 0.296) \\
+Hot drinks & $-$1.050 & ($-$1.288, $-$0.925) & 0.159 & ($-$0.199, 0.528) \\
+\addlinespace\multicolumn{5}{l}{\textit{Combined market (at home + away from home)}} \\
+SB & $-$0.890 & ($-$1.243, $-$0.586) & 0.521 & (0.375, 0.630) \\
+Beer & $-$0.922 & ($-$6.013, 1.079) & $-$3.582 & ($-$7.413, $-$0.751) \\
+Water & $-$1.980 & ($-$2.200, $-$1.810) & 0.030 & ($-$0.899, 1.052) \\
+Dairy drinks & $-$1.046 & ($-$1.334, $-$0.744) & 0.201 & (0.085, 0.316) \\
+Hot drinks & $-$1.027 & ($-$1.294, $-$0.898) & 0.371 & (0.122, 0.652) \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item Percentile intervals from the external cluster bootstrap (2.5th and 97.5th percentiles of the replications).
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\clearpage
+
+\begin{table}[!htbp]
+\centering
+\begin{threeparttable}
+\caption{Own-price elasticities: WELCOM's own bootstrap output and the external cluster bootstrap}
+\label{tab:native}
+\footnotesize
+\begin{tabular}{lrrrr}
+\toprule
+ & Estimate & WELCOM & WELCOM replications: & External cluster \\
+ &  & Table 09 & SD of correct cell & bootstrap SE \\
+\midrule
+\addlinespace\multicolumn{5}{l}{\textit{Off-trade (at home)}} \\
+SB & $-$0.808 & 0.0351 & 0.3547 & 0.2084 \\
+Beer & $-$1.539 & 0.0656 & 7.3280 & 2.5664 \\
+Water & $-$1.986 & 0.0062 & 0.1208 & 0.1076 \\
+Dairy drinks & $-$1.055 & 0.0215 & 0.1748 & 0.1668 \\
+Hot drinks & $-$1.050 & 0.0153 & 0.0904 & 0.0931 \\
+\addlinespace\multicolumn{5}{l}{\textit{Combined market (at home + away from home)}} \\
+SB & $-$0.890 & 0.0299 & 0.3018 & 0.1766 \\
+Beer & $-$0.922 & 0.0488 & 3.7036 & 1.7662 \\
+Water & $-$1.980 & 0.0043 & 0.1204 & 0.1092 \\
+Dairy drinks & $-$1.046 & 0.0182 & 0.1710 & 0.1645 \\
+Hot drinks & $-$1.027 & 0.0122 & 0.0758 & 0.0953 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item WELCOM Table 09 is printed by \texttt{duvm} with \texttt{boot(100)}: it is the standard error of the mean of the replications, taken from a cell that does not correspond to the own-price elasticity for goods other than the first, with the first-stage regressions held fixed.
+\item Third column: standard deviation of WELCOM's own replications for the correct cell (first stage still fixed). Fourth column: the standard error used in this paper.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\clearpage
+
+\begin{figure}[!htbp]\centering
+\includegraphics[width=0.95\textwidth]{_render/20261117a/fig3_unit_values.pdf}
+\caption{Distribution of observed unit values by beverage (off-trade purchases with a recorded quantity; primary data).}\label{fig:uv}
+\end{figure}
+
+\vfill
+
+\noindent\footnotesize Analysis run 20261117a; WELCOM 3.60
+(13October2021); all numbers in the text, tables and figures are
+generated from the saved estimates of this run.
+
+\end{document}

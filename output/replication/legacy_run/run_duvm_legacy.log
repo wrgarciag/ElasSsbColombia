@@ -1,0 +1,2925 @@
+
+  ___  ____  ____  ____  ____ ©
+ /__    /   ____/   /   ____/      17.0
+___/   /   /___/   /   /___/       MP—Parallel Edition
+
+ Statistics and Data Science       Copyright 1985-2021 StataCorp LLC
+                                   StataCorp
+                                   4905 Lakeway Drive
+                                   College Station, Texas 77845 USA
+                                   800-STATA-PC        https://www.stata.com
+                                   979-696-4600        stata@stata.com
+
+Stata license: Unlimited-user 64-core network perpetual
+Serial number: 18461036
+  Licensed to: TEAM BTCR
+               TEAM BTCR
+
+Notes:
+      1. Stata is running in batch mode.
+      2. Unicode is supported; see help unicode_advice.
+      3. More than 2 billion observations are allowed; see help obs_advice.
+      4. Maximum number of variables is set to 5,000; see help set_maxvar.
+
+. do "C:/Users/wrgar/OneDrive - UW/02Work/Miscellaneous/ssb-colombia/ElasSsbCol
+> ombia/code/replication/run_duvm_legacy.do" "C:/Users/wrgar/OneDrive - UW/02Wo
+> rk/Miscellaneous/ssb-colombia/ElasSsbColombia" 
+
+. * Legacy replication, Stata side.
+. *
+. * Runs the four UNMODIFIED legacy duvm do-files in code/legacy/ on the files 
+> written by
+. * code/replication/run_legacy_r.R. This driver only sets $path, a seed, the w
+> orking directory and the logs.
+. *
+. * Usage (batch, from PowerShell or cmd; Git Bash rewrites /e):
+. *   StataMP-64.exe /e do "<root>/code/replication/run_duvm_legacy.do" "<root>
+> "
+. * or interactively from the repository root:
+. *   do code/replication/run_duvm_legacy.do
+. *
+. * Logs: output/replication/legacy_run/duvm_<model>.log
+. * duvm writes bootall.dta and tempclus.dta to the working directory, so it ru
+> ns in data/interim/legacy_run/stata_work/.
+. * Expected (2026-11-17): total and hogar run all three models; total_codi and
+>  hogar_codi stop with
+. * "variable Gasto_Wine not found" r(111) (audit blocker B8).
+. 
+. version 17
+
+. args root
+
+. if `"`root'"' == "" local root = c(pwd)
+
+. local root = subinstr(`"`root'"', "\", "/", .)
+
+. confirm file "`root'/code/legacy/SSBElasticityPaperRevised_total_duvm.do"
+
+. 
+. global path "`root'/data/interim/legacy_run"
+
+. confirm file "$path/DataEstimates5.dta"
+
+. confirm file "$path/UnitValuePrices_Total.dta"
+
+. 
+. local logdir "`root'/output/replication/legacy_run"
+
+. capture mkdir "`root'/output/replication"
+
+. capture mkdir "`logdir'"
+
+. capture mkdir "$path/stata_work"
+
+. set more off
+
+. 
+. foreach m in total hogar total_codi hogar_codi {
+  2.     clear all
+  3.     set seed 20261117
+  4.     quietly cd "$path/stata_work"
+  5.     log using "`logdir'/duvm_`m'.log", text replace
+  6.     which duvm
+  7.     capture noisily do "`root'/code/legacy/SSBElasticityPaperRevised_`m'_d
+> uvm.do"
+  8.     local rc_`m' = _rc
+  9.     capture log close
+ 10. }
+(file C:/Users/wrgar/OneDrive -
+    UW/02Work/Miscellaneous/ssb-colombia/ElasSsbColombia/output/replication/l
+    > egacy_run/duvm_total.log not found)
+-------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:/Users/wrgar/OneDrive - UW/02Work/Miscellaneous/ssb-colombia/Ela
+> sSsbColombia/output/replication/legacy_run/duvm_total.log
+  log type:  text
+ opened on:  17 Nov 2026, 18:23:17
+c:\ado\plus\d\duvm.ado
+
+. *********************
+. ******************
+. *
+. * Bloque3a. Estimacion del AIDS
+. *
+. ******************
+. *********************
+. 
+. 
+. *log using "C:\Users\wgarcia\Universidad Icesi (@icesi.edu.co)\Proesa - *22-1
+> 002-PahoElasSsb\Resu\SSBElasticityPaperrevised_log.log", append
+. 
+. use "$path\DataEstimates5.dta",clear
+
+. 
+. gen Cluster= substr(VIVIENDA,1,8)
+
+. encode Cluster, gen(psu)
+
+. 
+. rename GastoTotal exptotal
+
+. drop Gasto*
+
+. drop Precio*
+
+. 
+. 
+. merge m:1 DIRECTORIO using "$path\UnitValuePrices_Total.dta"
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                            82,934  (_merge==3)
+    -----------------------------------------
+
+. keep if _merge==3
+(0 observations deleted)
+
+. drop _merge
+
+. 
+. merge 1:1 DIRECTORIO using "$path\UnitValueGasto_Total.dta"
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                            82,934  (_merge==3)
+    -----------------------------------------
+
+. keep if _merge==3
+(0 observations deleted)
+
+. drop _merge
+
+. 
+. tab xeduc,gen(xeduc_)
+
+           xeduc |      Freq.     Percent        Cum.
+-----------------+-----------------------------------
+         Ninguno |      3,818        4.60        4.60
+        Primaria |     23,012       27.75       32.35
+Secundaria/Media |     35,718       43.07       75.42
+        Superior |     20,386       24.58      100.00
+-----------------+-----------------------------------
+           Total |     82,934      100.00
+
+. * Summary
+. summarize xsexo xedad xrural xtamanioh xuniper xninios xeduc_1 xeduc_2 xeduc_
+> 3 xeduc_4 IT ITPC IT ITPC 
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+       xsexo |     82,934    .5921817     .491432          0          1
+       xedad |     82,934    48.55144    15.78316         11        107
+      xrural |     82,934    .0694649    .2542445          0          1
+   xtamanioh |     82,934    3.379651    1.748752          1         22
+     xuniper |     82,934    .1320809    .3385808          0          1
+-------------+---------------------------------------------------------
+     xninios |     82,934    .2535028    .4350189          0          1
+     xeduc_1 |     82,934    .0460366    .2095657          0          1
+     xeduc_2 |     82,934    .2774737    .4477549          0          1
+     xeduc_3 |     82,934    .4306798    .4951744          0          1
+     xeduc_4 |     82,934    .2458099     .430569          0          1
+-------------+---------------------------------------------------------
+          IT |     82,934     1928357     1915306       1000   1.29e+07
+        ITPC |     82,934    701032.7    873064.4        200   1.28e+07
+          IT |     82,934     1928357     1915306       1000   1.29e+07
+        ITPC |     82,934    701032.7    873064.4        200   1.28e+07
+
+. 
+. 
+. ** QUAIDS libreria
+. local expe "Gasto_Dairy Gasto_SSB Gasto_Water Gasto_Beer Gasto_Spirits"
+
+.  
+. foreach i of local expe {
+  2.         replace `i' =0 if mi(`i')
+  3. }
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+
+. 
+. egen totalexp = rowtotal(Gasto_SSB Gasto_Beer Gasto_Spirits Gasto_Water Gasto
+> _Dairy)
+
+. 
+. gen ei1= Gasto_SSB if Gasto_SSB>0
+(21,848 missing values generated)
+
+. gen ei2= Gasto_Beer if Gasto_Beer>0
+(78,667 missing values generated)
+
+. gen ei3= Gasto_Spirits if Gasto_Spirits>0
+(69,898 missing values generated)
+
+. gen ei4= Gasto_Water if Gasto_Water>0
+(62,497 missing values generated)
+
+. 
+. gen ei5= Gasto_Dairy if Gasto_Dairy>0
+(13,260 missing values generated)
+
+. 
+. gen w1= Gasto_SSB/totalexp
+(1,210 missing values generated)
+
+. gen w2= Gasto_Beer/totalexp
+(1,210 missing values generated)
+
+. gen w3= Gasto_Spirits/totalexp
+(1,210 missing values generated)
+
+. gen w4= Gasto_Water/totalexp
+(1,210 missing values generated)
+
+. 
+. gen w5= Gasto_Dairy/totalexp
+(1,210 missing values generated)
+
+. 
+. rename PrecioM_SSB p1
+
+. rename PrecioM_Beer p2
+
+. rename PrecioM_Spirits p3
+
+. rename PrecioM_Water p4
+
+. rename PrecioM_Dairy p5
+
+. 
+. order p1 p2 p3 p4 p5
+
+. 
+. * dummies de consumo
+. gen di1= (Gasto_SSB>0)
+
+. gen di2= (Gasto_Beer>0)
+
+. gen di3= (Gasto_Spirits>0)
+
+. gen di4= (Gasto_Water>0)
+
+. 
+. gen di5= (Gasto_Dairy>0)
+
+. 
+. *Cantidades
+. rename Cantidades_SSB q1
+
+. rename Cantidades_Beer q2
+
+. rename Cantidades_Spirits q3
+
+. rename Cantidades_Water q4
+
+. rename Cantidades_Dairy q5
+
+. 
+. rename xsexo x1
+
+. rename xedad x2
+
+. rename xrural x3
+
+. rename xtamanioh x4
+
+. rename xuniper x5
+
+. rename xninios x6
+
+. rename primaria x7
+
+. rename secundaria x8
+
+. rename superior x9
+
+. rename ningunaed x10
+
+. 
+. ****************************
+. * Summarize
+. ****************************
+. *putexcel set "$prtab\market_hogar.xlsx", modify
+. *summarize q* [aweight=FEX_C]   
+. *putexcel B2 = `e(count)'
+. 
+. sum di* [aweight=FEX_C]
+
+    Variable |     Obs      Weight        Mean   Std. dev.       Min        Max
+-------------+-----------------------------------------------------------------
+         di1 |  82,934  13964284.7    .7778846   .4156708          0          1
+         di2 |  82,934  13964284.7    .0711819     .25713          0          1
+         di3 |  82,934  13964284.7    .1576442   .3644092          0          1
+         di4 |  82,934  13964284.7    .1831252   .3867715          0          1
+         di5 |  82,934  13964284.7    .8570948   .3499782          0          1
+
+. sum ei* [aweight=FEX_C]
+
+    Variable |     Obs      Weight        Mean   Std. dev.       Min        Max
+-------------+-----------------------------------------------------------------
+         ei1 |  61,086  10862602.6    25955.94    27401.8        100     120910
+         ei2 |   4,267  994004.685    31342.22    29229.7        160     128480
+         ei3 |  13,036  2201388.21    57365.51   48877.41        200     212320
+         ei4 |  20,437  2557212.58    8907.884   8417.008        100      38306
+         ei5 |  69,674  11968716.4    36217.08   27573.68        100     117074
+
+. sum w* [aweight=FEX_C]
+
+    Variable |     Obs      Weight        Mean   Std. dev.       Min        Max
+-------------+-----------------------------------------------------------------
+          w1 |  81,724  13775191.7    .3251495   .3150652          0          1
+          w2 |  81,724  13775191.7     .023069   .1063315          0          1
+          w3 |  81,724  13775191.7    .0748359   .2006851          0          1
+          w4 |  81,724  13775191.7    .0316282   .1137774          0          1
+          w5 |  81,724  13775191.7    .5453174   .3479398          0          1
+
+. sum p* [aweight=FEX_C]
+
+    Variable |     Obs      Weight        Mean   Std. dev.       Min        Max
+-------------+-----------------------------------------------------------------
+          p1 |  82,934  13964284.7    3063.855   2261.547       12.5   15550.97
+          p2 |  82,934  13964284.7    4136.991   2453.405   60.60606      30000
+          p3 |  82,934  13964284.7    22185.46   23001.05        125     380000
+          p4 |  82,934  13964284.7    1048.557    811.977       1.98       8900
+          p5 |  82,934  13964284.7    4464.708   3450.694   2.727307   23879.26
+-------------+-----------------------------------------------------------------
+  percentile |  82,934  13964284.7    .4747219   .2941166   .0000121          1
+         psu |  82,934  13964284.7    154.3383   118.8376          1        384
+
+. sum q* [aweight=FEX_C]
+
+    Variable |     Obs      Weight        Mean   Std. dev.       Min        Max
+-------------+-----------------------------------------------------------------
+          q5 |  82,934  13964284.7    8.801958   8.172791          0      33.13
+          q1 |  82,934  13964284.7    8.395963   10.50985          0      47.08
+          q3 |  82,934  13964284.7    .2742027   .8654644          0       8.42
+          q4 |  82,934  13964284.7    2.584838   8.957549          0     82.892
+          q2 |  82,934  13964284.7    .4755808    2.79933          0         42
+
+. 
+. *estpost summarize q* [aweight=FEX_C]   
+. *esttab using market_hogar.xls, replace cells("count sum_w mean sd min max")
+. 
+. * Logaritmos
+. * logaritmos de precios
+. 
+. forvalues i=1/5 {
+  2. gen lnp`i'=log(p`i')
+  3. }
+
+. 
+. 
+. forvalues i=1/5 {
+  2. gen luv`i'=log(p`i')
+  3. }
+
+. 
+. rename w1 wssb
+
+. rename w2 wbee
+
+. rename w3 wspi
+
+. rename w4 wwat
+
+. 
+. rename w5 wday
+
+. 
+. rename luv1 luvssb 
+
+. rename luv2 luvbee
+
+. rename luv3 luvspi
+
+. rename luv4 luvwat
+
+. 
+. rename luv5 luvday
+
+. 
+. 
+. *drop if totalexp==0
+. 
+. * Modelo 1
+. duvm ssb bee spi wat day, hhsize(x4) expend(exptotal) hweight(FEX_C) cluster(
+> psu) region(x3) indcat(x1 x5 x6 x7 x8 x9) indcon(x2) csb(1) dregres(1) hgroup
+> (Tercil) boot(100)
+
+Being a consumer with none nil expenditutes
+The cluster fixed effect regression(s)
+
+-------------------------------------------------------------------------------
+> ---------------------
+                              (1)             (2)             (3)             (
+> 4)             (5)   
+                           luvssb          luvbee          luvspi          luvw
+> at          luvday   
+-------------------------------------------------------------------------------
+> ---------------------
+Log of expenditures        0.0951***       0.0147***        0.100***       0.05
+> 71***       0.0925***
+Log of hhsize              -0.204***       -0.143***       -0.252***      -0.07
+> 04***       -0.120***
+x2                       0.000912***    0.0000899       -0.000561***      0.002
+> 69***    -0.000724***
+x1==1                      0.0360***       0.0666***        0.172***       0.02
+> 17***       0.0316***
+x5==1                      0.0459***        0.592***       0.0446***        0.1
+> 15***        0.119***
+x6==1                      0.0720***      -0.0174***      0.00290         0.002
+> 33          0.0266***
+x7==1                     0.00457          0.0181***      -0.0245**        0.06
+> 25***     -0.00260   
+x8==1                      0.0432***        0.103***        0.169***        0.1
+> 48***     -0.00235   
+x9==1                       0.201***        0.305***        0.470***        0.2
+> 93***       0.0562***
+Constant                    6.561***        7.932***        8.385***        5.6
+> 52***        6.982***
+-------------------------------------------------------------------------------
+> ---------------------
+Observations                82934           82934           82934           829
+> 34           82934   
+R-squared                   0.216           0.808           0.316           0.7
+> 75           0.132   
+-------------------------------------------------------------------------------
+> ---------------------
+* p<0.05, ** p<0.01, *** p<0.001
+
+The budget shares regression(s)
+
+-------------------------------------------------------------------------------
+> ---------------------
+                              (1)             (2)             (3)             (
+> 4)             (5)   
+                             wssb            wbee            wspi            ww
+> at            wday   
+-------------------------------------------------------------------------------
+> ---------------------
+Log of expenditures      -0.00308*         0.0536**         0.190***       0.06
+> 70***      -0.0263***
+Log of hhsize             -0.0221*         0.0487**        0.0425***        0.1
+> 66***      -0.0224   
+x2                        0.00185***    -0.000808**      -0.00291***     0.0002
+> 05***      0.00227***
+x1==1                     -0.0325***       0.0666**         0.102***     -0.008
+> 41***      0.00418   
+x5==1                      0.0493***       0.0608**         0.209***       0.07
+> 51***      0.00659   
+x6==1                    -0.00672         -0.0300**       -0.0656***      -0.05
+> 54***       0.0396***
+x7==1                      0.0426***      -0.0119*        -0.0453***      -0.02
+> 61***      -0.0187   
+x8==1                       0.112***      -0.0423*        -0.0546***       0.04
+> 62***     -0.00349   
+x9==1                       0.173***      -0.0483**     -0.000637           0.1
+> 21***       0.0303   
+__000004                   -0.721***                                           
+>                      
+__000005                                    0.307*                             
+>                      
+__000006                                                    0.701***           
+>                      
+__000007                                                                    0.5
+> 36***                
+__000008                                                                       
+>             -0.948** 
+Constant                    0.484***       -1.331**        -3.623***       -1.8
+> 97***        1.046***
+-------------------------------------------------------------------------------
+> ---------------------
+Observations                81724           81724           81724           817
+> 24           81724   
+R-squared                   0.061           0.074           0.076           0.0
+> 70           0.109   
+-------------------------------------------------------------------------------
+> ---------------------
+* p<0.05, ** p<0.01, *** p<0.001
+Number of observations (_N) was 0, now 1.
+(file bootall.dta not found)
+file bootall.dta saved
+Experiment number 1
+Experiment number 2
+Experiment number 3
+Experiment number 4
+Experiment number 5
+Experiment number 6
+Experiment number 7
+Experiment number 8
+Experiment number 9
+Experiment number 10
+Experiment number 11
+Experiment number 12
+Experiment number 13
+Experiment number 14
+Experiment number 15
+Experiment number 16
+Experiment number 17
+Experiment number 18
+Experiment number 19
+Experiment number 20
+Experiment number 21
+Experiment number 22
+Experiment number 23
+Experiment number 24
+Experiment number 25
+Experiment number 26
+Experiment number 27
+Experiment number 28
+Experiment number 29
+Experiment number 30
+Experiment number 31
+Experiment number 32
+Experiment number 33
+Experiment number 34
+Experiment number 35
+Experiment number 36
+Experiment number 37
+Experiment number 38
+Experiment number 39
+Experiment number 40
+Experiment number 41
+Experiment number 42
+Experiment number 43
+Experiment number 44
+Experiment number 45
+Experiment number 46
+Experiment number 47
+Experiment number 48
+Experiment number 49
+Experiment number 50
+Experiment number 51
+Experiment number 52
+Experiment number 53
+Experiment number 54
+Experiment number 55
+Experiment number 56
+Experiment number 57
+Experiment number 58
+Experiment number 59
+Experiment number 60
+Experiment number 61
+Experiment number 62
+Experiment number 63
+Experiment number 64
+Experiment number 65
+Experiment number 66
+Experiment number 67
+Experiment number 68
+Experiment number 69
+Experiment number 70
+Experiment number 71
+Experiment number 72
+Experiment number 73
+Experiment number 74
+Experiment number 75
+Experiment number 76
+Experiment number 77
+Experiment number 78
+Experiment number 79
+Experiment number 80
+Experiment number 81
+Experiment number 82
+Experiment number 83
+Experiment number 84
+Experiment number 85
+Experiment number 86
+Experiment number 87
+Experiment number 88
+Experiment number 89
+Experiment number 90
+Experiment number 91
+Experiment number 92
+Experiment number 93
+Experiment number 94
+Experiment number 95
+Experiment number 96
+Experiment number 97
+Experiment number 98
+Experiment number 99
+Experiment number 100
+Monte Carlo results
+
+Table 01: Average expenditures shares (in %)
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  | AV_sh~e |  32.515    2.307    7.484    3.163   54.532 |
+  +-------------------------------------------------------+
+
+
+
+Table 02: Expenditure elasticities
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  | Elast~y |   0.895    3.311    3.442    3.061    0.859 |
+  +-------------------------------------------------------+
+
+
+
+Table 03: Quality elasticities
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  | Elast~y |   0.095    0.015    0.100    0.057    0.092 |
+  +-------------------------------------------------------+
+
+
+
+Table 04: Price elasticities: without quality correction | without symmetry
+restricted estimators
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  |     ssb |  -0.847   -0.010    0.241   -0.038   -0.092 |
+  |     bee |   0.127   -0.192    0.241   -0.184   -0.545 |
+  |     spi |  -0.133   -0.743   -0.368   -0.115    0.046 |
+  |     wat |   0.414   -0.174    0.466   -2.145    0.378 |
+  |     day |  -0.083    0.084   -0.259    0.107   -0.895 |
+  +-------------------------------------------------------+
+
+
+
+Table 05: Price elasticities: without quality correction | with symmetry
+restricted estimators
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  |     ssb |  -0.864    0.029    0.248   -0.017   -0.087 |
+  |     bee |  -0.327   -0.154   -0.312   -0.084   -0.227 |
+  |     spi |   0.275   -0.104   -0.134   -0.165   -1.581 |
+  |     wat |  -0.838   -0.055   -0.345   -1.922    0.540 |
+  |     day |  -0.039    0.042   -0.033    0.096   -0.926 |
+  +-------------------------------------------------------+
+
+
+
+Table 06: Price elasticities: with quality correction | without symmetry
+restricted estimators
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  |     ssb |  -0.438   -0.005    0.125   -0.019   -0.048 |
+  |     bee |   0.113   -0.171    0.215   -0.165   -0.487 |
+  |     spi |  -0.112   -0.627   -0.311   -0.097    0.039 |
+  |     wat |   0.393   -0.166    0.443   -2.039    0.359 |
+  |     day |  -0.023    0.024   -0.073    0.030   -0.251 |
+  +-------------------------------------------------------+
+
+
+
+Table 07: Price elasticities: with quality correction | with symmetry
+restricted estimators
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  |     ssb |  -0.447    0.015    0.128   -0.009   -0.045 |
+  |     bee |  -0.292   -0.137   -0.278   -0.075   -0.203 |
+  |     spi |   0.232   -0.088   -0.113   -0.139   -1.334 |
+  |     wat |  -0.796   -0.053   -0.328   -1.827    0.513 |
+  |     day |  -0.011    0.012   -0.009    0.027   -0.259 |
+  +-------------------------------------------------------+
+
+
+
+Table 08: Standard errors of expenditure elasticities: with the bootstrap
+method
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  | STE_I~S |   0.007    0.061    0.019    0.024    0.003 |
+  +-------------------------------------------------------+
+
+
+
+
+
+Table 09: Standard errors of price elasticities: with the bootstrap method
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  |     ssb |   0.004    0.054    0.016    0.023    0.001 |
+  |     bee |   0.003    0.002    0.069    0.009    0.010 |
+  |     spi |   0.001    0.002    0.002    0.032    0.017 |
+  |     wat |   0.014    0.001    0.002    0.001    0.013 |
+  |     day |   0.005    0.015    0.000    0.001    0.003 |
+  +-------------------------------------------------------+
+ Treatment of hgroups : 1:2:3:
+
+
+Table 09: Own Price Elasiticies by hgroups
+
+  +-------------------------------------------------------------------------+
+  |         |     ssb      STE      bee      STE      spi      STE      wat |
+  |---------+---------------------------------------------------------------|
+  | Group_1 |  -0.424    0.005   -0.356    0.002    0.625    0.002   -2.115 |
+  | Group_2 |  -0.386    0.003   -0.297    0.002    0.249    0.002   -1.595 |
+  | Group_3 |  -0.354    0.005    0.812    0.002   -0.357    0.002   -1.494 |
+  +-------------------------------------------------------------------------+
+
+  +-------------------------------------+
+  |         |     STE      day      STE |
+  |---------+---------------------------|
+  | Group_1 |   0.002   -0.358    0.003 |
+  | Group_2 |   0.001   -0.149    0.002 |
+  | Group_3 |   0.001   -0.229    0.003 |
+  +-------------------------------------+
+
+. 
+. * Modelo 2 Sin censura
+. duvm ssb bee spi wat day, hhsize(x4) expend(exptotal) hweight(FEX_C) cluster(
+> psu) region(x3) indcat(x1 x5 x6 x7 x8 x9) indcon(x2) csb(0) dregres(1) boot(1
+> 00)
+
+Being a consumer with none nil expenditutes
+The cluster fixed effect regression(s)
+
+-------------------------------------------------------------------------------
+> ---------------------
+                              (1)             (2)             (3)             (
+> 4)             (5)   
+                           luvssb          luvbee          luvspi          luvw
+> at          luvday   
+-------------------------------------------------------------------------------
+> ---------------------
+Log of expenditures        0.0951***       0.0147***        0.100***       0.05
+> 71***       0.0925***
+Log of hhsize              -0.204***       -0.143***       -0.252***      -0.07
+> 04***       -0.120***
+x2                       0.000912***    0.0000899       -0.000561***      0.002
+> 69***    -0.000724***
+x1==1                      0.0360***       0.0666***        0.172***       0.02
+> 17***       0.0316***
+x5==1                      0.0459***        0.592***       0.0446***        0.1
+> 15***        0.119***
+x6==1                      0.0720***      -0.0174***      0.00290         0.002
+> 33          0.0266***
+x7==1                     0.00457          0.0181***      -0.0245**        0.06
+> 25***     -0.00260   
+x8==1                      0.0432***        0.103***        0.169***        0.1
+> 48***     -0.00235   
+x9==1                       0.201***        0.305***        0.470***        0.2
+> 93***       0.0562***
+Constant                    6.561***        7.932***        8.385***        5.6
+> 52***        6.982***
+-------------------------------------------------------------------------------
+> ---------------------
+Observations                82934           82934           82934           829
+> 34           82934   
+R-squared                   0.216           0.808           0.316           0.7
+> 75           0.132   
+-------------------------------------------------------------------------------
+> ---------------------
+* p<0.05, ** p<0.01, *** p<0.001
+
+The budget shares regression(s)
+
+-------------------------------------------------------------------------------
+> ---------------------
+                              (1)             (2)             (3)             (
+> 4)             (5)   
+                             wssb            wbee            wspi            ww
+> at            wday   
+-------------------------------------------------------------------------------
+> ---------------------
+Log of expenditures      -0.00578***      0.00756***       0.0324***      0.006
+> 41***      -0.0406***
+Log of hhsize              0.0703***      0.00439***     -0.00560**       0.004
+> 79***      -0.0738***
+x2                       -0.00174***    -0.000137***    -0.000541***     0.0001
+> 29***      0.00229***
+x1==1                    -0.00442         0.00798***       0.0240***      0.001
+> 37         -0.0289***
+x5==1                      0.0295***      0.00691***       0.0318***      0.001
+> 49         -0.0697***
+x6==1                     -0.0314***     -0.00493***      -0.0103***     -0.001
+> 17          0.0478***
+x7==1                    -0.00656         0.00196        -0.00770*        0.001
+> 34          0.0110*  
+x8==1                     0.00709       -0.000291         -0.0131***      0.004
+> 80*        0.00153   
+x9==1                     0.00301        -0.00230         0.00412          0.01
+> 46***      -0.0194** 
+Constant                    0.421***      -0.0863***       -0.359***      -0.07
+> 62***        1.101***
+-------------------------------------------------------------------------------
+> ---------------------
+Observations                81724           81724           81724           817
+> 24           81724   
+R-squared                   0.060           0.074           0.075           0.0
+> 69           0.109   
+-------------------------------------------------------------------------------
+> ---------------------
+* p<0.05, ** p<0.01, *** p<0.001
+Number of observations (_N) was 0, now 1.
+file bootall.dta saved
+Experiment number 1
+Experiment number 2
+Experiment number 3
+Experiment number 4
+Experiment number 5
+Experiment number 6
+Experiment number 7
+Experiment number 8
+Experiment number 9
+Experiment number 10
+Experiment number 11
+Experiment number 12
+Experiment number 13
+Experiment number 14
+Experiment number 15
+Experiment number 16
+Experiment number 17
+Experiment number 18
+Experiment number 19
+Experiment number 20
+Experiment number 21
+Experiment number 22
+Experiment number 23
+Experiment number 24
+Experiment number 25
+Experiment number 26
+Experiment number 27
+Experiment number 28
+Experiment number 29
+Experiment number 30
+Experiment number 31
+Experiment number 32
+Experiment number 33
+Experiment number 34
+Experiment number 35
+Experiment number 36
+Experiment number 37
+Experiment number 38
+Experiment number 39
+Experiment number 40
+Experiment number 41
+Experiment number 42
+Experiment number 43
+Experiment number 44
+Experiment number 45
+Experiment number 46
+Experiment number 47
+Experiment number 48
+Experiment number 49
+Experiment number 50
+Experiment number 51
+Experiment number 52
+Experiment number 53
+Experiment number 54
+Experiment number 55
+Experiment number 56
+Experiment number 57
+Experiment number 58
+Experiment number 59
+Experiment number 60
+Experiment number 61
+Experiment number 62
+Experiment number 63
+Experiment number 64
+Experiment number 65
+Experiment number 66
+Experiment number 67
+Experiment number 68
+Experiment number 69
+Experiment number 70
+Experiment number 71
+Experiment number 72
+Experiment number 73
+Experiment number 74
+Experiment number 75
+Experiment number 76
+Experiment number 77
+Experiment number 78
+Experiment number 79
+Experiment number 80
+Experiment number 81
+Experiment number 82
+Experiment number 83
+Experiment number 84
+Experiment number 85
+Experiment number 86
+Experiment number 87
+Experiment number 88
+Experiment number 89
+Experiment number 90
+Experiment number 91
+Experiment number 92
+Experiment number 93
+Experiment number 94
+Experiment number 95
+Experiment number 96
+Experiment number 97
+Experiment number 98
+Experiment number 99
+Experiment number 100
+Monte Carlo results
+
+Table 01: Average expenditures shares (in %)
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  | AV_sh~e |  32.515    2.307    7.484    3.163   54.532 |
+  +-------------------------------------------------------+
+
+
+
+Table 02: Expenditure elasticities
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  | Elast~y |   0.887    1.313    1.333    1.146    0.833 |
+  +-------------------------------------------------------+
+
+
+
+Table 03: Quality elasticities
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  | Elast~y |   0.095    0.015    0.100    0.057    0.092 |
+  +-------------------------------------------------------+
+
+
+
+Table 04: Price elasticities: without quality correction | without symmetry
+restricted estimators
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  |     ssb |  -0.849   -0.013    0.243   -0.038   -0.095 |
+  |     bee |   0.131   -0.199    0.240   -0.182   -0.551 |
+  |     spi |  -0.118   -0.749   -0.365   -0.114    0.030 |
+  |     wat |   0.436   -0.201    0.465   -2.144    0.360 |
+  |     day |  -0.084    0.085   -0.259    0.107   -0.894 |
+  +-------------------------------------------------------+
+
+
+
+Table 05: Price elasticities: without quality correction | with symmetry
+restricted estimators
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  |     ssb |  -0.865   -0.007    0.182   -0.026   -0.088 |
+  |     bee |  -0.204   -0.168   -0.344   -0.100   -0.062 |
+  |     spi |   0.646   -0.109   -0.151   -0.198   -1.086 |
+  |     wat |  -0.339   -0.070   -0.448   -1.977    1.290 |
+  |     day |  -0.035    0.006   -0.113    0.083   -0.918 |
+  +-------------------------------------------------------+
+
+
+
+Table 06: Price elasticities: with quality correction | without symmetry
+restricted estimators
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  |     ssb |  -0.441   -0.007    0.126   -0.020   -0.049 |
+  |     bee |   0.125   -0.190    0.229   -0.174   -0.526 |
+  |     spi |  -0.111   -0.702   -0.342   -0.107    0.028 |
+  |     wat |   0.428   -0.198    0.456   -2.105    0.353 |
+  |     day |  -0.024    0.024   -0.074    0.031   -0.256 |
+  +-------------------------------------------------------+
+
+
+
+Table 07: Price elasticities: with quality correction | with symmetry
+restricted estimators
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  |     ssb |  -0.450   -0.004    0.094   -0.014   -0.046 |
+  |     bee |  -0.195   -0.160   -0.328   -0.096   -0.060 |
+  |     spi |   0.606   -0.102   -0.142   -0.186   -1.018 |
+  |     wat |  -0.333   -0.068   -0.440   -1.941    1.267 |
+  |     day |  -0.010    0.002   -0.032    0.024   -0.263 |
+  +-------------------------------------------------------+
+
+
+
+Table 08: Standard errors of expenditure elasticities: with the bootstrap
+method
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  | STE_I~S |   0.008    0.065    0.019    0.022    0.004 |
+  +-------------------------------------------------------+
+
+
+
+
+
+Table 09: Standard errors of price elasticities: with the bootstrap method
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  |     ssb |   0.004    0.062    0.018    0.022    0.001 |
+  |     bee |   0.000    0.002    0.084    0.010    0.012 |
+  |     spi |   0.001    0.000    0.002    0.032    0.018 |
+  |     wat |   0.014    0.001    0.000    0.001    0.016 |
+  |     day |   0.006    0.012    0.000    0.000    0.004 |
+  +-------------------------------------------------------+
+
+. 
+. * Modelo 3 Sin Fex
+. gen fex2=1
+
+. duvm ssb bee spi wat day, hhsize(x4) expend(exptotal) hweight(fex2) cluster(p
+> su) region(x3) indcat(x1 x5 x6 x7 x8 x9) indcon(x2) csb(1) dregres(1) boot(10
+> 0)
+
+Being a consumer with none nil expenditutes
+The cluster fixed effect regression(s)
+
+-------------------------------------------------------------------------------
+> ---------------------
+                              (1)             (2)             (3)             (
+> 4)             (5)   
+                           luvssb          luvbee          luvspi          luvw
+> at          luvday   
+-------------------------------------------------------------------------------
+> ---------------------
+Log of expenditures         0.106***       0.0149***       0.0997***       0.06
+> 01***       0.0764***
+Log of hhsize              -0.255***       -0.140***       -0.241***      -0.07
+> 66***       -0.120***
+x2                       0.000793***     0.000215***     0.000153         0.003
+> 35***    -0.000990***
+x1==1                      0.0391***       0.0641***        0.173***       0.02
+> 84***       0.0296***
+x5==1                      0.0596***        0.598***       0.0578***        0.1
+> 06***        0.146***
+x6==1                      0.0839***      -0.0187***      0.00242         0.009
+> 61*         0.0103   
+x7==1                     0.00710          0.0154***     -0.00328          0.06
+> 76***      -0.0468***
+x8==1                      0.0666***        0.101***        0.191***        0.1
+> 63***      -0.0457***
+x9==1                       0.202***        0.304***        0.498***        0.3
+> 17***     -0.00796   
+Constant                    6.400***        7.799***        8.385***        5.5
+> 03***        7.304***
+-------------------------------------------------------------------------------
+> ---------------------
+Observations                82934           82934           82934           829
+> 34           82934   
+R-squared                   0.242           0.861           0.397           0.7
+> 00           0.162   
+-------------------------------------------------------------------------------
+> ---------------------
+* p<0.05, ** p<0.01, *** p<0.001
+
+The budget shares regression(s)
+
+-------------------------------------------------------------------------------
+> ---------------------
+                              (1)             (2)             (3)             (
+> 4)             (5)   
+                             wssb            wbee            wspi            ww
+> at            wday   
+-------------------------------------------------------------------------------
+> ---------------------
+Log of expenditures       -0.0215***       0.0250           0.183***       0.04
+> 41***      -0.0373***
+Log of hhsize              -0.176***       0.0232          0.0412***        0.1
+> 47***      -0.0920***
+x2                        0.00544***    -0.000196        -0.00337***    -0.0003
+> 91***      0.00299***
+x1==1                     -0.0307***       0.0242           0.129***      0.007
+> 92***      -0.0268*  
+x5==1                      0.0261***       0.0244           0.221***       0.04
+> 70***      -0.0591   
+x6==1                      0.0467***     -0.00937         -0.0483***      -0.04
+> 69***       0.0613***
+x7==1                      0.0756***     -0.00428         -0.0352***      0.007
+> 93**       0.00255   
+x8==1                       0.120***      -0.0137         -0.0315***       0.07
+> 64***     -0.00989   
+x9==1                       0.181***      -0.0146         -0.0418***        0.1
+> 20***      -0.0150   
+__000004                   -1.471***                                           
+>                      
+__000005                                    0.128                              
+>                      
+__000006                                                    0.720***           
+>                      
+__000007                                                                    0.5
+> 44***                
+__000008                                                                       
+>             0.0828   
+Constant                    1.080***       -0.608          -3.530***       -1.4
+> 63***        0.982***
+-------------------------------------------------------------------------------
+> ---------------------
+Observations                81724           81724           81724           817
+> 24           81724   
+R-squared                   0.072           0.044           0.063           0.1
+> 02           0.137   
+-------------------------------------------------------------------------------
+> ---------------------
+* p<0.05, ** p<0.01, *** p<0.001
+Number of observations (_N) was 0, now 1.
+file bootall.dta saved
+Experiment number 1
+Experiment number 2
+Experiment number 3
+Experiment number 4
+Experiment number 5
+Experiment number 6
+Experiment number 7
+Experiment number 8
+Experiment number 9
+Experiment number 10
+Experiment number 11
+Experiment number 12
+Experiment number 13
+Experiment number 14
+Experiment number 15
+Experiment number 16
+Experiment number 17
+Experiment number 18
+Experiment number 19
+Experiment number 20
+Experiment number 21
+Experiment number 22
+Experiment number 23
+Experiment number 24
+Experiment number 25
+Experiment number 26
+Experiment number 27
+Experiment number 28
+Experiment number 29
+Experiment number 30
+Experiment number 31
+Experiment number 32
+Experiment number 33
+Experiment number 34
+Experiment number 35
+Experiment number 36
+Experiment number 37
+Experiment number 38
+Experiment number 39
+Experiment number 40
+Experiment number 41
+Experiment number 42
+Experiment number 43
+Experiment number 44
+Experiment number 45
+Experiment number 46
+Experiment number 47
+Experiment number 48
+Experiment number 49
+Experiment number 50
+Experiment number 51
+Experiment number 52
+Experiment number 53
+Experiment number 54
+Experiment number 55
+Experiment number 56
+Experiment number 57
+Experiment number 58
+Experiment number 59
+Experiment number 60
+Experiment number 61
+Experiment number 62
+Experiment number 63
+Experiment number 64
+Experiment number 65
+Experiment number 66
+Experiment number 67
+Experiment number 68
+Experiment number 69
+Experiment number 70
+Experiment number 71
+Experiment number 72
+Experiment number 73
+Experiment number 74
+Experiment number 75
+Experiment number 76
+Experiment number 77
+Experiment number 78
+Experiment number 79
+Experiment number 80
+Experiment number 81
+Experiment number 82
+Experiment number 83
+Experiment number 84
+Experiment number 85
+Experiment number 86
+Experiment number 87
+Experiment number 88
+Experiment number 89
+Experiment number 90
+Experiment number 91
+Experiment number 92
+Experiment number 93
+Experiment number 94
+Experiment number 95
+Experiment number 96
+Experiment number 97
+Experiment number 98
+Experiment number 99
+Experiment number 100
+Monte Carlo results
+
+Table 01: Average expenditures shares (in %)
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  | AV_sh~e |  34.652    1.652    7.905    4.733   51.058 |
+  +-------------------------------------------------------+
+
+
+
+Table 02: Expenditure elasticities
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  | Elast~y |   0.832    2.496    3.215    1.872    0.851 |
+  +-------------------------------------------------------+
+
+
+
+Table 03: Quality elasticities
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  | Elast~y |   0.106    0.015    0.100    0.060    0.076 |
+  +-------------------------------------------------------+
+
+
+
+Table 04: Price elasticities: without quality correction | without symmetry
+restricted estimators
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  |     ssb |  -0.725   -0.052    0.297   -0.050   -0.158 |
+  |     bee |   0.393   -0.446    0.448   -0.215   -1.125 |
+  |     spi |  -0.156   -0.743   -0.433   -0.069    0.004 |
+  |     wat |   0.507   -0.066    0.387   -1.866    0.312 |
+  |     day |  -0.224    0.139   -0.359    0.132   -0.834 |
+  +-------------------------------------------------------+
+
+
+
+Table 05: Price elasticities: without quality correction | with symmetry
+restricted estimators
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  |     ssb |  -0.738   -0.015    0.304   -0.036   -0.168 |
+  |     bee |  -0.844   -0.284   -0.639    0.048   -0.042 |
+  |     spi |   0.541   -0.147   -0.060   -0.189   -1.759 |
+  |     wat |  -0.593    0.027   -0.202   -1.665    0.676 |
+  |     day |  -0.109    0.024   -0.092    0.108   -0.897 |
+  +-------------------------------------------------------+
+
+
+
+Table 06: Price elasticities: with quality correction | without symmetry
+restricted estimators
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  |     ssb |  -0.387   -0.028    0.158   -0.027   -0.084 |
+  |     bee |   0.376   -0.427    0.429   -0.206   -1.076 |
+  |     spi |  -0.131   -0.623   -0.363   -0.058    0.003 |
+  |     wat |   0.475   -0.062    0.363   -1.749    0.293 |
+  |     day |  -0.060    0.037   -0.096    0.035   -0.223 |
+  +-------------------------------------------------------+
+
+
+
+Table 07: Price elasticities: with quality correction | with symmetry
+restricted estimators
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  |     ssb |  -0.394   -0.008    0.162   -0.019   -0.090 |
+  |     bee |  -0.807   -0.271   -0.611    0.046   -0.040 |
+  |     spi |   0.453   -0.123   -0.051   -0.159   -1.474 |
+  |     wat |  -0.556    0.025   -0.190   -1.561    0.634 |
+  |     day |  -0.029    0.006   -0.024    0.029   -0.240 |
+  +-------------------------------------------------------+
+
+
+
+Table 08: Standard errors of expenditure elasticities: with the bootstrap
+method
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  | STE_I~S |   0.012    0.135    0.030    0.021    0.006 |
+  +-------------------------------------------------------+
+
+
+
+
+
+Table 09: Standard errors of price elasticities: with the bootstrap method
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  |     ssb |   0.006    0.129    0.025    0.020    0.002 |
+  |     bee |   0.003    0.003    0.093    0.010    0.009 |
+  |     spi |   0.001    0.002    0.004    0.057    0.020 |
+  |     wat |   0.014    0.001    0.002    0.002    0.027 |
+  |     day |   0.008    0.010    0.001    0.001    0.005 |
+  +-------------------------------------------------------+
+
+. 
+. * Modelo 4 Solo codificado
+. 
+. 
+. log close
+      name:  <unnamed>
+       log:  C:/Users/wrgar/OneDrive - UW/02Work/Miscellaneous/ssb-colombia/Ela
+> sSsbColombia/output/replication/legacy_run/duvm_total.log
+  log type:  text
+ closed on:  17 Nov 2026, 18:28:20
+-------------------------------------------------------------------------------
+
+. 
+. 
+end of do-file
+(file C:/Users/wrgar/OneDrive -
+    UW/02Work/Miscellaneous/ssb-colombia/ElasSsbColombia/output/replication/l
+    > egacy_run/duvm_hogar.log not found)
+-------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:/Users/wrgar/OneDrive - UW/02Work/Miscellaneous/ssb-colombia/Ela
+> sSsbColombia/output/replication/legacy_run/duvm_hogar.log
+  log type:  text
+ opened on:  17 Nov 2026, 18:28:20
+c:\ado\plus\d\duvm.ado
+
+. *********************
+. ******************
+. *
+. * Bloque3a. Estimacion del AIDS
+. *
+. ******************
+. *********************
+. 
+. 
+. *log using "C:\Users\wgarcia\Universidad Icesi (@icesi.edu.co)\Proesa - *22-1
+> 002-PahoElasSsb\Resu\SSBElasticityPaperrevised_log.log", append
+. 
+. use "$path\DataEstimates5.dta",clear
+
+. 
+. gen Cluster= substr(VIVIENDA,1,8)
+
+. encode Cluster, gen(psu)
+
+. 
+. rename GastoTotal exptotal
+
+. drop Gasto*
+
+. drop Precio*
+
+. 
+. 
+. merge m:1 DIRECTORIO using "$path\UnitValuePrices_Hogar.dta"
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                            82,934  (_merge==3)
+    -----------------------------------------
+
+. keep if _merge==3
+(0 observations deleted)
+
+. drop _merge
+
+. 
+. merge 1:1 DIRECTORIO using "$path\UnitValueGasto_Hogar.dta"
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                            82,934  (_merge==3)
+    -----------------------------------------
+
+. keep if _merge==3
+(0 observations deleted)
+
+. drop _merge
+
+. 
+. tab xeduc,gen(xeduc_)
+
+           xeduc |      Freq.     Percent        Cum.
+-----------------+-----------------------------------
+         Ninguno |      3,818        4.60        4.60
+        Primaria |     23,012       27.75       32.35
+Secundaria/Media |     35,718       43.07       75.42
+        Superior |     20,386       24.58      100.00
+-----------------+-----------------------------------
+           Total |     82,934      100.00
+
+. * Summary
+. summarize xsexo xedad xrural xtamanioh xuniper xninios xeduc_1 xeduc_2 xeduc_
+> 3 xeduc_4 IT ITPC IT ITPC 
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+       xsexo |     82,934    .5921817     .491432          0          1
+       xedad |     82,934    48.55144    15.78316         11        107
+      xrural |     82,934    .0694649    .2542445          0          1
+   xtamanioh |     82,934    3.379651    1.748752          1         22
+     xuniper |     82,934    .1320809    .3385808          0          1
+-------------+---------------------------------------------------------
+     xninios |     82,934    .2535028    .4350189          0          1
+     xeduc_1 |     82,934    .0460366    .2095657          0          1
+     xeduc_2 |     82,934    .2774737    .4477549          0          1
+     xeduc_3 |     82,934    .4306798    .4951744          0          1
+     xeduc_4 |     82,934    .2458099     .430569          0          1
+-------------+---------------------------------------------------------
+          IT |     82,934     1928357     1915306       1000   1.29e+07
+        ITPC |     82,934    701032.7    873064.4        200   1.28e+07
+          IT |     82,934     1928357     1915306       1000   1.29e+07
+        ITPC |     82,934    701032.7    873064.4        200   1.28e+07
+
+. 
+. 
+. ** QUAIDS libreria
+. local expe "Gasto_Dairy Gasto_SSB Gasto_Water Gasto_Beer Gasto_Spirits"
+
+.  
+. foreach i of local expe {
+  2.         replace `i' =0 if mi(`i')
+  3. }
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+
+. 
+. egen totalexp = rowtotal(Gasto_SSB Gasto_Beer Gasto_Spirits Gasto_Water Gasto
+> _Dairy)
+
+. 
+. gen ei1= Gasto_SSB if Gasto_SSB>0
+(35,329 missing values generated)
+
+. gen ei2= Gasto_Beer if Gasto_Beer>0
+(78,667 missing values generated)
+
+. gen ei3= Gasto_Spirits if Gasto_Spirits>0
+(73,394 missing values generated)
+
+. gen ei4= Gasto_Water if Gasto_Water>0
+(62,968 missing values generated)
+
+. 
+. gen ei5= Gasto_Dairy if Gasto_Dairy>0
+(19,468 missing values generated)
+
+. 
+. gen w1= Gasto_SSB/totalexp
+(5,598 missing values generated)
+
+. gen w2= Gasto_Beer/totalexp
+(5,598 missing values generated)
+
+. gen w3= Gasto_Spirits/totalexp
+(5,598 missing values generated)
+
+. gen w4= Gasto_Water/totalexp
+(5,598 missing values generated)
+
+. 
+. gen w5= Gasto_Dairy/totalexp
+(5,598 missing values generated)
+
+. 
+. rename PrecioM_SSB p1
+
+. rename PrecioM_Beer p2
+
+. rename PrecioM_Spirits p3
+
+. rename PrecioM_Water p4
+
+. rename PrecioM_Dairy p5
+
+. 
+. order p1 p2 p3 p4 p5
+
+. 
+. * dummies de consumo
+. gen di1= (Gasto_SSB>0)
+
+. gen di2= (Gasto_Beer>0)
+
+. gen di3= (Gasto_Spirits>0)
+
+. gen di4= (Gasto_Water>0)
+
+. 
+. gen di5= (Gasto_Dairy>0)
+
+. 
+. *Cantidades
+. rename Cantidades_SSB q1
+
+. rename Cantidades_Beer q2
+
+. rename Cantidades_Spirits q3
+
+. rename Cantidades_Water q4
+
+. rename Cantidades_Dairy q5
+
+. 
+. rename xsexo x1
+
+. rename xedad x2
+
+. rename xrural x3
+
+. rename xtamanioh x4
+
+. rename xuniper x5
+
+. rename xninios x6
+
+. rename primaria x7
+
+. rename secundaria x8
+
+. rename superior x9
+
+. rename ningunaed x10
+
+. 
+. ****************************
+. * Summarize
+. ****************************
+. *putexcel set "$prtab\market_hogar.xlsx", modify
+. *summarize q* [aweight=FEX_C]   
+. *putexcel B2 = `e(count)'
+. 
+. sum di* [aweight=FEX_C]
+
+    Variable |     Obs      Weight        Mean   Std. dev.       Min        Max
+-------------+-----------------------------------------------------------------
+         di1 |  82,934  13964284.7    .6473575   .4777955          0          1
+         di2 |  82,934  13964284.7    .0711819     .25713          0          1
+         di3 |  82,934  13964284.7     .112038   .3154151          0          1
+         di4 |  82,934  13964284.7    .1767695   .3814758          0          1
+         di5 |  82,934  13964284.7    .8022137   .3983325          0          1
+
+. sum ei* [aweight=FEX_C]
+
+    Variable |     Obs      Weight        Mean   Std. dev.       Min        Max
+-------------+-----------------------------------------------------------------
+         ei1 |  47,605  9039884.74     11991.1   11304.04        100      51442
+         ei2 |   4,267  994004.685    31342.22    29229.7        160     128480
+         ei3 |   9,540   1564530.5    59972.08   47645.98       1800     206000
+         ei4 |  19,966  2468459.86    8711.485   8417.173        100      38948
+         ei5 |  63,466  11202340.8    27751.67    20712.5        100      86640
+
+. sum w* [aweight=FEX_C]
+
+    Variable |     Obs      Weight        Mean   Std. dev.       Min        Max
+-------------+-----------------------------------------------------------------
+          w1 |  77,336  13199345.1     .257534   .3122718          0          1
+          w2 |  77,336  13199345.1    .0300409   .1285917          0          1
+          w3 |  77,336  13199345.1    .0717685   .2138422          0          1
+          w4 |  77,336  13199345.1    .0466042   .1512217          0          1
+          w5 |  77,336  13199345.1    .5940524   .3662797          0          1
+
+. sum p* [aweight=FEX_C]
+
+    Variable |     Obs      Weight        Mean   Std. dev.       Min        Max
+-------------+-----------------------------------------------------------------
+          p1 |  82,934  13964284.7    2152.705   902.7142       12.5       8500
+          p2 |  82,934  13964284.7    4136.991   2453.405   60.60606      30000
+          p3 |  82,934  13964284.7    41033.08   23839.12       1800     400000
+          p4 |  82,934  13964284.7    966.8213   701.3698       1.98   8333.333
+          p5 |  82,934  13964284.7     3699.62   2507.905   8.328706   16918.92
+-------------+-----------------------------------------------------------------
+  percentile |  82,934  13964284.7    .4747219   .2941166   .0000121          1
+         psu |  82,934  13964284.7    154.3383   118.8376          1        384
+
+. sum q* [aweight=FEX_C]
+
+    Variable |     Obs      Weight        Mean   Std. dev.       Min        Max
+-------------+-----------------------------------------------------------------
+          q5 |  82,934  13964284.7    6.890665   7.000588          0     28.248
+          q1 |  82,934  13964284.7    3.988834   5.967665          0     28.863
+          q3 |  82,934  13964284.7    .0983453   .2977828          0          1
+          q4 |  82,934  13964284.7    2.793796   10.15053          0      89.88
+          q2 |  82,934  13964284.7    .4755808    2.79933          0         42
+
+. 
+. *estpost summarize q* [aweight=FEX_C]   
+. *esttab using market_hogar.xls, replace cells("count sum_w mean sd min max")
+. 
+. * Logaritmos
+. * logaritmos de precios
+. 
+. forvalues i=1/5 {
+  2. gen lnp`i'=log(p`i')
+  3. }
+
+. 
+. 
+. forvalues i=1/5 {
+  2. gen luv`i'=log(p`i')
+  3. }
+
+. 
+. rename w1 wssb
+
+. rename w2 wbee
+
+. rename w3 wspi
+
+. rename w4 wwat
+
+. 
+. rename w5 wday
+
+. 
+. rename luv1 luvssb 
+
+. rename luv2 luvbee
+
+. rename luv3 luvspi
+
+. rename luv4 luvwat
+
+. 
+. rename luv5 luvday
+
+. 
+. 
+. *drop if totalexp==0
+. 
+. * Modelo 1
+. duvm ssb bee spi wat day, hhsize(x4) expend(exptotal) hweight(FEX_C) cluster(
+> psu) region(x3) indcat(x1 x5 x6 x7 x8 x9) indcon(x2) csb(1) dregres(1) hgroup
+> (Tercil) boot(100)
+
+Being a consumer with none nil expenditutes
+The cluster fixed effect regression(s)
+
+-------------------------------------------------------------------------------
+> ---------------------
+                              (1)             (2)             (3)             (
+> 4)             (5)   
+                           luvssb          luvbee          luvspi          luvw
+> at          luvday   
+-------------------------------------------------------------------------------
+> ---------------------
+Log of expenditures        0.0386***       0.0147***        0.102***       0.05
+> 74***       0.0572***
+Log of hhsize              -0.140***       -0.143***       0.0402***      -0.07
+> 31***      -0.0596***
+x2                       0.000671***    0.0000899         0.00171***      0.002
+> 85***     0.000407** 
+x1==1                      0.0300***       0.0666***        0.126***       0.02
+> 91***      0.00615   
+x5==1                      0.0271***        0.592***       0.0335***       0.02
+> 75***      -0.0179*  
+x6==1                      0.0674***      -0.0174***      -0.0544***      0.009
+> 97**        0.0307***
+x7==1                    -0.00656          0.0181***       0.0986***       0.08
+> 09***      -0.0125   
+x8==1                      0.0203***        0.103***        0.229***        0.1
+> 68***      -0.0295** 
+x9==1                       0.105***        0.305***        0.465***        0.3
+> 23***       0.0132   
+Constant                    7.105***        7.932***        8.677***        5.5
+> 65***        7.288***
+-------------------------------------------------------------------------------
+> ---------------------
+Observations                82934           82934           82934           829
+> 34           82934   
+R-squared                   0.239           0.808           0.421           0.7
+> 92           0.123   
+-------------------------------------------------------------------------------
+> ---------------------
+* p<0.05, ** p<0.01, *** p<0.001
+
+The budget shares regression(s)
+
+-------------------------------------------------------------------------------
+> ---------------------
+                              (1)             (2)             (3)             (
+> 4)             (5)   
+                             wssb            wbee            wspi            ww
+> at            wday   
+-------------------------------------------------------------------------------
+> ---------------------
+Log of expenditures       -0.0126***       0.0697***        0.267***       0.09
+> 21***      -0.0181***
+Log of hhsize             -0.0471***       0.0488***       -0.125***        0.2
+> 79***       0.0954***
+x2                        0.00418***     -0.00115***     -0.00527***     0.0005
+> 71***    -0.000328   
+x1==1                     -0.0879***        0.124***        0.189***     -0.006
+> 25***       0.0717***
+x5==1                      0.0415***        0.261***        0.514***        0.3
+> 11***        0.285***
+x6==1                   -0.000580         -0.0708***      -0.0769***       -0.1
+> 23***     -0.00460   
+x7==1                      0.0843***       0.0105**        -0.120***      -0.01
+> 30***      -0.0680***
+x8==1                       0.226***     -0.00705**      -0.00383           0.1
+> 50***      -0.0242***
+x9==1                       0.290***       0.0279**         0.138***        0.3
+> 32***        0.103***
+__000004                   -1.119***                                           
+>                      
+__000005                                    0.848***                           
+>                      
+__000006                                                    1.528***           
+>                      
+__000007                                                                    1.1
+> 59***                
+__000008                                                                       
+>             -2.648***
+Constant                    0.708***       -2.458***       -5.810***       -3.2
+> 54***        1.383***
+-------------------------------------------------------------------------------
+> ---------------------
+Observations                77336           77336           77336           773
+> 36           77336   
+R-squared                   0.077           0.065           0.087           0.1
+> 01           0.118   
+-------------------------------------------------------------------------------
+> ---------------------
+* p<0.05, ** p<0.01, *** p<0.001
+Number of observations (_N) was 0, now 1.
+file bootall.dta saved
+Experiment number 1
+Experiment number 2
+Experiment number 3
+Experiment number 4
+Experiment number 5
+Experiment number 6
+Experiment number 7
+Experiment number 8
+Experiment number 9
+Experiment number 10
+Experiment number 11
+Experiment number 12
+Experiment number 13
+Experiment number 14
+Experiment number 15
+Experiment number 16
+Experiment number 17
+Experiment number 18
+Experiment number 19
+Experiment number 20
+Experiment number 21
+Experiment number 22
+Experiment number 23
+Experiment number 24
+Experiment number 25
+Experiment number 26
+Experiment number 27
+Experiment number 28
+Experiment number 29
+Experiment number 30
+Experiment number 31
+Experiment number 32
+Experiment number 33
+Experiment number 34
+Experiment number 35
+Experiment number 36
+Experiment number 37
+Experiment number 38
+Experiment number 39
+Experiment number 40
+Experiment number 41
+Experiment number 42
+Experiment number 43
+Experiment number 44
+Experiment number 45
+Experiment number 46
+Experiment number 47
+Experiment number 48
+Experiment number 49
+Experiment number 50
+Experiment number 51
+Experiment number 52
+Experiment number 53
+Experiment number 54
+Experiment number 55
+Experiment number 56
+Experiment number 57
+Experiment number 58
+Experiment number 59
+Experiment number 60
+Experiment number 61
+Experiment number 62
+Experiment number 63
+Experiment number 64
+Experiment number 65
+Experiment number 66
+Experiment number 67
+Experiment number 68
+Experiment number 69
+Experiment number 70
+Experiment number 71
+Experiment number 72
+Experiment number 73
+Experiment number 74
+Experiment number 75
+Experiment number 76
+Experiment number 77
+Experiment number 78
+Experiment number 79
+Experiment number 80
+Experiment number 81
+Experiment number 82
+Experiment number 83
+Experiment number 84
+Experiment number 85
+Experiment number 86
+Experiment number 87
+Experiment number 88
+Experiment number 89
+Experiment number 90
+Experiment number 91
+Experiment number 92
+Experiment number 93
+Experiment number 94
+Experiment number 95
+Experiment number 96
+Experiment number 97
+Experiment number 98
+Experiment number 99
+Experiment number 100
+Monte Carlo results
+
+Table 01: Average expenditures shares (in %)
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  | AV_sh~e |  25.753    3.004    7.177    4.660   59.405 |
+  +-------------------------------------------------------+
+
+
+
+Table 02: Expenditure elasticities
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  | Elast~y |   0.912    3.306    4.618    2.919    0.912 |
+  +-------------------------------------------------------+
+
+
+
+Table 03: Quality elasticities
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  | Elast~y |   0.039    0.015    0.102    0.057    0.057 |
+  +-------------------------------------------------------+
+
+
+
+Table 04: Price elasticities: without quality correction | without symmetry
+restricted estimators
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  |     ssb |  -1.192   -0.110    0.483    0.113   -0.059 |
+  |     bee |  -0.233   -0.453   -0.297   -0.092   -0.302 |
+  |     spi |  -0.129   -0.696   -0.713   -0.080    0.297 |
+  |     wat |   1.141   -0.756    0.731   -2.100    0.600 |
+  |     day |   0.024    0.162   -0.280    0.051   -1.002 |
+  +-------------------------------------------------------+
+
+
+
+Table 05: Price elasticities: without quality correction | with symmetry
+restricted estimators
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  |     ssb |  -1.189   -0.032    0.449    0.127   -0.079 |
+  |     bee |  -0.873   -0.299   -0.866   -0.142    0.093 |
+  |     spi |   0.659   -0.406   -0.526   -0.066   -0.982 |
+  |     wat |   0.194   -0.081    0.028   -2.150    0.065 |
+  |     day |  -0.037    0.072    0.140    0.095   -1.027 |
+  +-------------------------------------------------------+
+
+
+
+Table 06: Price elasticities: with quality correction | without symmetry
+restricted estimators
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  |     ssb |  -0.469   -0.043    0.190    0.044   -0.023 |
+  |     bee |  -0.194   -0.377   -0.247   -0.077   -0.251 |
+  |     spi |  -0.105   -0.567   -0.581   -0.065    0.242 |
+  |     wat |   1.030   -0.683    0.660   -1.895    0.542 |
+  |     day |   0.004    0.025   -0.044    0.008   -0.157 |
+  +-------------------------------------------------------+
+
+
+
+Table 07: Price elasticities: with quality correction | with symmetry
+restricted estimators
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  |     ssb |  -0.468   -0.013    0.177    0.050   -0.031 |
+  |     bee |  -0.726   -0.248   -0.720   -0.118    0.077 |
+  |     spi |   0.537   -0.331   -0.429   -0.054   -0.800 |
+  |     wat |   0.175   -0.073    0.025   -1.941    0.059 |
+  |     day |  -0.006    0.011    0.022    0.015   -0.161 |
+  +-------------------------------------------------------+
+
+
+
+Table 08: Standard errors of expenditure elasticities: with the bootstrap
+method
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  | STE_I~S |   0.015    0.074    0.038    0.022    0.004 |
+  +-------------------------------------------------------+
+
+
+
+
+
+Table 09: Standard errors of price elasticities: with the bootstrap method
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  |     ssb |   0.006    0.061    0.031    0.020    0.001 |
+  |     bee |   0.007    0.003    0.053    0.018    0.006 |
+  |     spi |   0.000    0.004    0.004    0.043    0.032 |
+  |     wat |   0.012    0.000    0.006    0.002    0.009 |
+  |     day |   0.007    0.012    0.000    0.001    0.003 |
+  +-------------------------------------------------------+
+ Treatment of hgroups : 1:2:3:
+
+
+Table 09: Own Price Elasiticies by hgroups
+
+  +-------------------------------------------------------------------------+
+  |         |     ssb      STE      bee      STE      spi      STE      wat |
+  |---------+---------------------------------------------------------------|
+  | Group_1 |  -0.371    0.005   -0.436    0.002    0.266    0.003   -2.119 |
+  | Group_2 |  -0.266    0.007   -0.454    0.004    0.911    0.005   -1.570 |
+  | Group_3 |  -0.255    0.009    0.389    0.004   -0.242    0.006   -1.524 |
+  +-------------------------------------------------------------------------+
+
+  +-------------------------------------+
+  |         |     STE      day      STE |
+  |---------+---------------------------|
+  | Group_1 |   0.001   -0.246    0.003 |
+  | Group_2 |   0.001   -0.118    0.003 |
+  | Group_3 |   0.002   -0.109    0.006 |
+  +-------------------------------------+
+
+. 
+. * Modelo 2 Sin censura
+. duvm ssb bee spi wat day, hhsize(x4) expend(exptotal) hweight(FEX_C) cluster(
+> psu) region(x3) indcat(x1 x5 x6 x7 x8 x9) indcon(x2) csb(0) dregres(1) boot(1
+> 00)
+
+Being a consumer with none nil expenditutes
+The cluster fixed effect regression(s)
+
+-------------------------------------------------------------------------------
+> ---------------------
+                              (1)             (2)             (3)             (
+> 4)             (5)   
+                           luvssb          luvbee          luvspi          luvw
+> at          luvday   
+-------------------------------------------------------------------------------
+> ---------------------
+Log of expenditures        0.0386***       0.0147***        0.102***       0.05
+> 74***       0.0572***
+Log of hhsize              -0.140***       -0.143***       0.0402***      -0.07
+> 31***      -0.0596***
+x2                       0.000671***    0.0000899         0.00171***      0.002
+> 85***     0.000407** 
+x1==1                      0.0300***       0.0666***        0.126***       0.02
+> 91***      0.00615   
+x5==1                      0.0271***        0.592***       0.0335***       0.02
+> 75***      -0.0179*  
+x6==1                      0.0674***      -0.0174***      -0.0544***      0.009
+> 97**        0.0307***
+x7==1                    -0.00656          0.0181***       0.0986***       0.08
+> 09***      -0.0125   
+x8==1                      0.0203***        0.103***        0.229***        0.1
+> 68***      -0.0295** 
+x9==1                       0.105***        0.305***        0.465***        0.3
+> 23***       0.0132   
+Constant                    7.105***        7.932***        8.677***        5.5
+> 65***        7.288***
+-------------------------------------------------------------------------------
+> ---------------------
+Observations                82934           82934           82934           829
+> 34           82934   
+R-squared                   0.239           0.808           0.421           0.7
+> 92           0.123   
+-------------------------------------------------------------------------------
+> ---------------------
+* p<0.05, ** p<0.01, *** p<0.001
+
+The budget shares regression(s)
+
+-------------------------------------------------------------------------------
+> ---------------------
+                              (1)             (2)             (3)             (
+> 4)             (5)   
+                             wssb            wbee            wspi            ww
+> at            wday   
+-------------------------------------------------------------------------------
+> ---------------------
+Log of expenditures       -0.0126***      0.00942***       0.0337***      0.008
+> 15***      -0.0387***
+Log of hhsize              0.0494***      0.00848***      -0.0191***       0.01
+> 35***      -0.0524***
+x2                       -0.00141***    -0.000196***    -0.000883***    0.00009
+> 13*        0.00240***
+x1==1                      0.0100***       0.0106***       0.0277***      0.002
+> 73*        -0.0510***
+x5==1                      0.0415***       0.0131***       0.0480***       0.01
+> 37***       -0.116***
+x6==1                     -0.0164***     -0.00697***     -0.00659***     -0.006
+> 44***       0.0364***
+x7==1                    -0.00588         0.00107         -0.0162***      0.004
+> 19          0.0169** 
+x8==1                     0.00400        -0.00229         -0.0203***      0.009
+> 69***      0.00892   
+x9==1                      0.0104        -0.00501*       -0.00805*         0.02
+> 79***      -0.0252***
+Constant                    0.441***       -0.107***       -0.347***       -0.1
+> 00***        1.114***
+-------------------------------------------------------------------------------
+> ---------------------
+Observations                77336           77336           77336           773
+> 36           77336   
+R-squared                   0.076           0.065           0.084           0.1
+> 00           0.116   
+-------------------------------------------------------------------------------
+> ---------------------
+* p<0.05, ** p<0.01, *** p<0.001
+Number of observations (_N) was 0, now 1.
+file bootall.dta saved
+Experiment number 1
+Experiment number 2
+Experiment number 3
+Experiment number 4
+Experiment number 5
+Experiment number 6
+Experiment number 7
+Experiment number 8
+Experiment number 9
+Experiment number 10
+Experiment number 11
+Experiment number 12
+Experiment number 13
+Experiment number 14
+Experiment number 15
+Experiment number 16
+Experiment number 17
+Experiment number 18
+Experiment number 19
+Experiment number 20
+Experiment number 21
+Experiment number 22
+Experiment number 23
+Experiment number 24
+Experiment number 25
+Experiment number 26
+Experiment number 27
+Experiment number 28
+Experiment number 29
+Experiment number 30
+Experiment number 31
+Experiment number 32
+Experiment number 33
+Experiment number 34
+Experiment number 35
+Experiment number 36
+Experiment number 37
+Experiment number 38
+Experiment number 39
+Experiment number 40
+Experiment number 41
+Experiment number 42
+Experiment number 43
+Experiment number 44
+Experiment number 45
+Experiment number 46
+Experiment number 47
+Experiment number 48
+Experiment number 49
+Experiment number 50
+Experiment number 51
+Experiment number 52
+Experiment number 53
+Experiment number 54
+Experiment number 55
+Experiment number 56
+Experiment number 57
+Experiment number 58
+Experiment number 59
+Experiment number 60
+Experiment number 61
+Experiment number 62
+Experiment number 63
+Experiment number 64
+Experiment number 65
+Experiment number 66
+Experiment number 67
+Experiment number 68
+Experiment number 69
+Experiment number 70
+Experiment number 71
+Experiment number 72
+Experiment number 73
+Experiment number 74
+Experiment number 75
+Experiment number 76
+Experiment number 77
+Experiment number 78
+Experiment number 79
+Experiment number 80
+Experiment number 81
+Experiment number 82
+Experiment number 83
+Experiment number 84
+Experiment number 85
+Experiment number 86
+Experiment number 87
+Experiment number 88
+Experiment number 89
+Experiment number 90
+Experiment number 91
+Experiment number 92
+Experiment number 93
+Experiment number 94
+Experiment number 95
+Experiment number 96
+Experiment number 97
+Experiment number 98
+Experiment number 99
+Experiment number 100
+Monte Carlo results
+
+Table 01: Average expenditures shares (in %)
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  | AV_sh~e |  25.753    3.004    7.177    4.660   59.405 |
+  +-------------------------------------------------------+
+
+
+
+Table 02: Expenditure elasticities
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  | Elast~y |   0.912    1.299    1.368    1.118    0.878 |
+  +-------------------------------------------------------+
+
+
+
+Table 03: Quality elasticities
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  | Elast~y |   0.039    0.015    0.102    0.057    0.057 |
+  +-------------------------------------------------------+
+
+
+
+Table 04: Price elasticities: without quality correction | without symmetry
+restricted estimators
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  |     ssb |  -1.197   -0.119    0.489    0.112   -0.061 |
+  |     bee |  -0.226   -0.461   -0.303   -0.093   -0.304 |
+  |     spi |  -0.109   -0.691   -0.727   -0.081    0.281 |
+  |     wat |   1.159   -0.773    0.715   -2.098    0.588 |
+  |     day |   0.023    0.164   -0.277    0.050   -1.002 |
+  +-------------------------------------------------------+
+
+
+
+Table 05: Price elasticities: without quality correction | with symmetry
+restricted estimators
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  |     ssb |  -1.166   -0.074    0.334    0.113   -0.055 |
+  |     bee |  -0.725   -0.323   -0.972   -0.150    0.278 |
+  |     spi |   1.068   -0.412   -0.709   -0.086   -0.558 |
+  |     wat |   0.569   -0.092   -0.110   -2.152    0.753 |
+  |     day |  -0.020    0.025   -0.031    0.070   -1.016 |
+  +-------------------------------------------------------+
+
+
+
+Table 06: Price elasticities: with quality correction | without symmetry
+restricted estimators
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  |     ssb |  -0.471   -0.047    0.192    0.044   -0.024 |
+  |     bee |  -0.209   -0.427   -0.281   -0.086   -0.282 |
+  |     spi |  -0.102   -0.651   -0.684   -0.076    0.265 |
+  |     wat |   1.115   -0.744    0.688   -2.018    0.565 |
+  |     day |   0.004    0.026   -0.045    0.008   -0.162 |
+  +-------------------------------------------------------+
+
+
+
+Table 07: Price elasticities: with quality correction | with symmetry
+restricted estimators
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  |     ssb |  -0.459   -0.029    0.132    0.044   -0.022 |
+  |     bee |  -0.672   -0.299   -0.901   -0.139    0.258 |
+  |     spi |   1.006   -0.388   -0.668   -0.081   -0.526 |
+  |     wat |   0.547   -0.089   -0.106   -2.070    0.725 |
+  |     day |  -0.003    0.004   -0.005    0.011   -0.164 |
+  +-------------------------------------------------------+
+
+
+
+Table 08: Standard errors of expenditure elasticities: with the bootstrap
+method
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  | STE_I~S |   0.018    0.080    0.040    0.020    0.005 |
+  +-------------------------------------------------------+
+
+
+
+
+
+Table 09: Standard errors of price elasticities: with the bootstrap method
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  |     ssb |   0.007    0.074    0.038    0.019    0.001 |
+  |     bee |   0.000    0.004    0.066    0.016    0.008 |
+  |     spi |   0.000    0.000    0.004    0.038    0.034 |
+  |     wat |   0.013    0.001    0.000    0.001    0.012 |
+  |     day |   0.008    0.011    0.000    0.000    0.004 |
+  +-------------------------------------------------------+
+
+. 
+. * Modelo 3 Sin Fex
+. gen fex2=1
+
+. duvm ssb bee spi wat day, hhsize(x4) expend(exptotal) hweight(fex2) cluster(p
+> su) region(x3) indcat(x1 x5 x6 x7 x8 x9) indcon(x2) csb(1) dregres(1) boot(10
+> 0)
+
+Being a consumer with none nil expenditutes
+The cluster fixed effect regression(s)
+
+-------------------------------------------------------------------------------
+> ---------------------
+                              (1)             (2)             (3)             (
+> 4)             (5)   
+                           luvssb          luvbee          luvspi          luvw
+> at          luvday   
+-------------------------------------------------------------------------------
+> ---------------------
+Log of expenditures        0.0409***       0.0149***        0.103***       0.06
+> 05***       0.0378***
+Log of hhsize              -0.183***       -0.140***       0.0362***      -0.08
+> 13***      -0.0475***
+x2                       0.000753***     0.000215***      0.00213***      0.003
+> 41***     0.000653***
+x1==1                      0.0299***       0.0641***        0.127***       0.03
+> 43***      0.00562   
+x5==1                      0.0344***        0.598***       0.0300***       0.01
+> 82**      -0.00344   
+x6==1                      0.0867***      -0.0187***      -0.0524***       0.01
+> 71***       0.0102*  
+x7==1                     0.00145          0.0154***        0.110***       0.08
+> 31***      -0.0195*  
+x8==1                      0.0361***        0.101***        0.250***        0.1
+> 79***      -0.0305***
+x9==1                       0.108***        0.304***        0.491***        0.3
+> 42***     0.000489   
+Constant                    7.058***        7.799***        8.718***        5.4
+> 24***        7.607***
+-------------------------------------------------------------------------------
+> ---------------------
+Observations                82934           82934           82934           829
+> 34           82934   
+R-squared                   0.258           0.861           0.494           0.7
+> 25           0.188   
+-------------------------------------------------------------------------------
+> ---------------------
+* p<0.05, ** p<0.01, *** p<0.001
+
+The budget shares regression(s)
+
+-------------------------------------------------------------------------------
+> ---------------------
+                              (1)             (2)             (3)             (
+> 4)             (5)   
+                             wssb            wbee            wspi            ww
+> at            wday   
+-------------------------------------------------------------------------------
+> ---------------------
+Log of expenditures       -0.0486***       0.0694***        0.365***       0.01
+> 53         -0.0747***
+Log of hhsize              -0.215***       0.0787***       -0.146***       0.06
+> 68          0.0790***
+x2                        0.00949***     -0.00195***      -0.0105***    -0.0001
+> 41        -0.00348***
+x1==1                      -0.101***        0.219***        0.454***       0.01
+> 17          0.0919***
+x5==1                     -0.0133*          0.575***        0.998***       0.05
+> 92           0.300***
+x6==1                      0.0718***       -0.102***      -0.0988***      -0.03
+> 02         -0.0381***
+x7==1                       0.133***      0.00525*         -0.153***       0.01
+> 43         -0.0779***
+x8==1                       0.252***      -0.0481***      -0.0516***       0.05
+> 25          0.0458***
+x9==1                       0.291***       0.0535***       0.0841***       0.09
+> 17           0.216***
+__000004                   -2.149***                                           
+>                      
+__000005                                    2.010***                           
+>                      
+__000006                                                    3.011***           
+>                      
+__000007                                                                    0.2
+> 88                   
+__000008                                                                       
+>             -3.338***
+Constant                    1.794***       -4.496***       -9.160***       -0.5
+> 94           2.566***
+-------------------------------------------------------------------------------
+> ---------------------
+Observations                77336           77336           77336           773
+> 36           77336   
+R-squared                   0.072           0.040           0.074           0.1
+> 38           0.151   
+-------------------------------------------------------------------------------
+> ---------------------
+* p<0.05, ** p<0.01, *** p<0.001
+Number of observations (_N) was 0, now 1.
+file bootall.dta saved
+Experiment number 1
+Experiment number 2
+Experiment number 3
+Experiment number 4
+Experiment number 5
+Experiment number 6
+Experiment number 7
+Experiment number 8
+Experiment number 9
+Experiment number 10
+Experiment number 11
+Experiment number 12
+Experiment number 13
+Experiment number 14
+Experiment number 15
+Experiment number 16
+Experiment number 17
+Experiment number 18
+Experiment number 19
+Experiment number 20
+Experiment number 21
+Experiment number 22
+Experiment number 23
+Experiment number 24
+Experiment number 25
+Experiment number 26
+Experiment number 27
+Experiment number 28
+Experiment number 29
+Experiment number 30
+Experiment number 31
+Experiment number 32
+Experiment number 33
+Experiment number 34
+Experiment number 35
+Experiment number 36
+Experiment number 37
+Experiment number 38
+Experiment number 39
+Experiment number 40
+Experiment number 41
+Experiment number 42
+Experiment number 43
+Experiment number 44
+Experiment number 45
+Experiment number 46
+Experiment number 47
+Experiment number 48
+Experiment number 49
+Experiment number 50
+Experiment number 51
+Experiment number 52
+Experiment number 53
+Experiment number 54
+Experiment number 55
+Experiment number 56
+Experiment number 57
+Experiment number 58
+Experiment number 59
+Experiment number 60
+Experiment number 61
+Experiment number 62
+Experiment number 63
+Experiment number 64
+Experiment number 65
+Experiment number 66
+Experiment number 67
+Experiment number 68
+Experiment number 69
+Experiment number 70
+Experiment number 71
+Experiment number 72
+Experiment number 73
+Experiment number 74
+Experiment number 75
+Experiment number 76
+Experiment number 77
+Experiment number 78
+Experiment number 79
+Experiment number 80
+Experiment number 81
+Experiment number 82
+Experiment number 83
+Experiment number 84
+Experiment number 85
+Experiment number 86
+Experiment number 87
+Experiment number 88
+Experiment number 89
+Experiment number 90
+Experiment number 91
+Experiment number 92
+Experiment number 93
+Experiment number 94
+Experiment number 95
+Experiment number 96
+Experiment number 97
+Experiment number 98
+Experiment number 99
+Experiment number 100
+Monte Carlo results
+
+Table 01: Average expenditures shares (in %)
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  | AV_sh~e |  25.939    2.233    7.953    7.341   56.534 |
+  +-------------------------------------------------------+
+
+
+
+Table 02: Expenditure elasticities
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  | Elast~y |   0.772    4.094    5.487    1.149    0.830 |
+  +-------------------------------------------------------+
+
+
+
+Table 03: Quality elasticities
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  | Elast~y |   0.041    0.015    0.103    0.060    0.038 |
+  +-------------------------------------------------------+
+
+
+
+Table 04: Price elasticities: without quality correction | without symmetry
+restricted estimators
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  |     ssb |  -1.303   -0.078    0.657    0.132   -0.063 |
+  |     bee |  -0.667   -0.530   -0.219   -0.082   -0.461 |
+  |     spi |  -0.047   -0.740   -0.740   -0.044    0.242 |
+  |     wat |   1.013   -0.453    0.382   -1.750    0.457 |
+  |     day |   0.044    0.176   -0.384    0.045   -1.020 |
+  +-------------------------------------------------------+
+
+
+
+Table 05: Price elasticities: without quality correction | with symmetry
+restricted estimators
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  |     ssb |  -1.280   -0.042    0.662    0.139   -0.114 |
+  |     bee |  -1.315   -0.347   -1.330   -0.172    0.305 |
+  |     spi |   0.944   -0.407   -0.549   -0.087   -1.233 |
+  |     wat |   0.395    0.012    0.256   -1.770    0.444 |
+  |     day |  -0.063    0.082    0.191    0.082   -1.058 |
+  +-------------------------------------------------------+
+
+
+
+Table 06: Price elasticities: with quality correction | without symmetry
+restricted estimators
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  |     ssb |  -0.580   -0.035    0.292    0.059   -0.028 |
+  |     bee |  -0.586   -0.466   -0.192   -0.072   -0.405 |
+  |     spi |  -0.035   -0.558   -0.557   -0.033    0.182 |
+  |     wat |   0.923   -0.412    0.348   -1.594    0.417 |
+  |     day |   0.006    0.023   -0.049    0.006   -0.130 |
+  +-------------------------------------------------------+
+
+
+
+Table 07: Price elasticities: with quality correction | with symmetry
+restricted estimators
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  |     ssb |  -0.570   -0.019    0.295    0.062   -0.051 |
+  |     bee |  -1.156   -0.305   -1.170   -0.151    0.268 |
+  |     spi |   0.711   -0.306   -0.414   -0.066   -0.929 |
+  |     wat |   0.360    0.011    0.233   -1.613    0.405 |
+  |     day |  -0.008    0.010    0.024    0.010   -0.135 |
+  +-------------------------------------------------------+
+
+
+
+Table 08: Standard errors of expenditure elasticities: with the bootstrap
+method
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  | STE_I~S |   0.028    0.137    0.046    0.013    0.006 |
+  +-------------------------------------------------------+
+
+
+
+
+
+Table 09: Standard errors of price elasticities: with the bootstrap method
+
+  +-------------------------------------------------------+
+  |         |     ssb      bee      spi      wat      day |
+  |---------+---------------------------------------------|
+  |     ssb |   0.012    0.121    0.035    0.012    0.001 |
+  |     bee |   0.008    0.005    0.073    0.018    0.005 |
+  |     spi |   0.000    0.003    0.006    0.073    0.031 |
+  |     wat |   0.008    0.001    0.005    0.002    0.014 |
+  |     day |   0.007    0.008    0.000    0.001    0.006 |
+  +-------------------------------------------------------+
+
+. 
+. * Modelo 4 Solo codificado
+. 
+. 
+. log close
+      name:  <unnamed>
+       log:  C:/Users/wrgar/OneDrive - UW/02Work/Miscellaneous/ssb-colombia/Ela
+> sSsbColombia/output/replication/legacy_run/duvm_hogar.log
+  log type:  text
+ closed on:  17 Nov 2026, 18:31:53
+-------------------------------------------------------------------------------
+
+. 
+. 
+end of do-file
+(file C:/Users/wrgar/OneDrive -
+    UW/02Work/Miscellaneous/ssb-colombia/ElasSsbColombia/output/replication/l
+    > egacy_run/duvm_total_codi.log not found)
+-------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:/Users/wrgar/OneDrive - UW/02Work/Miscellaneous/ssb-colombia/Ela
+> sSsbColombia/output/replication/legacy_run/duvm_total_codi.log
+  log type:  text
+ opened on:  17 Nov 2026, 18:31:53
+c:\ado\plus\d\duvm.ado
+
+. *********************
+. ******************
+. *
+. * Bloque3a. Estimacion del AIDS
+. *
+. ******************
+. *********************
+. 
+. 
+. *log using "C:\Users\wgarcia\Universidad Icesi (@icesi.edu.co)\Proesa - *22-1
+> 002-PahoElasSsb\Resu\SSBElasticityPaperrevised_log.log", append
+. 
+. use "$path\DataEstimates5.dta",clear
+
+. 
+. gen Cluster= substr(VIVIENDA,1,8)
+
+. encode Cluster, gen(psu)
+
+. 
+. rename GastoTotal exptotal
+
+. drop Gasto*
+
+. drop Precio*
+
+. 
+. 
+. merge m:1 DIRECTORIO using "$path\UnitValuePrices_Total_Codi.dta"
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                            82,934  (_merge==3)
+    -----------------------------------------
+
+. keep if _merge==3
+(0 observations deleted)
+
+. drop _merge
+
+. 
+. merge 1:1 DIRECTORIO using "$path\UnitValueGasto_Total_Codi.dta"
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                            82,934  (_merge==3)
+    -----------------------------------------
+
+. keep if _merge==3
+(0 observations deleted)
+
+. drop _merge
+
+. 
+. tab xeduc,gen(xeduc_)
+
+           xeduc |      Freq.     Percent        Cum.
+-----------------+-----------------------------------
+         Ninguno |      3,818        4.60        4.60
+        Primaria |     23,012       27.75       32.35
+Secundaria/Media |     35,718       43.07       75.42
+        Superior |     20,386       24.58      100.00
+-----------------+-----------------------------------
+           Total |     82,934      100.00
+
+. * Summary
+. summarize xsexo xedad xrural xtamanioh xuniper xninios xeduc_1 xeduc_2 xeduc_
+> 3 xeduc_4 IT ITPC IT ITPC 
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+       xsexo |     82,934    .5921817     .491432          0          1
+       xedad |     82,934    48.55144    15.78316         11        107
+      xrural |     82,934    .0694649    .2542445          0          1
+   xtamanioh |     82,934    3.379651    1.748752          1         22
+     xuniper |     82,934    .1320809    .3385808          0          1
+-------------+---------------------------------------------------------
+     xninios |     82,934    .2535028    .4350189          0          1
+     xeduc_1 |     82,934    .0460366    .2095657          0          1
+     xeduc_2 |     82,934    .2774737    .4477549          0          1
+     xeduc_3 |     82,934    .4306798    .4951744          0          1
+     xeduc_4 |     82,934    .2458099     .430569          0          1
+-------------+---------------------------------------------------------
+          IT |     82,934     1928357     1915306       1000   1.29e+07
+        ITPC |     82,934    701032.7    873064.4        200   1.28e+07
+          IT |     82,934     1928357     1915306       1000   1.29e+07
+        ITPC |     82,934    701032.7    873064.4        200   1.28e+07
+
+. 
+. 
+. ** QUAIDS libreria
+. local expe "Gasto_HotDrinks Gasto_MilkDerivatives Gasto_SSB Gasto_Water Gasto
+> _Beer Gasto_Spirits Gasto_Wine"
+
+.  
+. foreach i of local expe {
+  2.         replace `i' =0 if mi(`i')
+  3. }
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+variable Gasto_Wine not found
+r(111);
+
+end of do-file
+(file C:/Users/wrgar/OneDrive -
+    UW/02Work/Miscellaneous/ssb-colombia/ElasSsbColombia/output/replication/l
+    > egacy_run/duvm_hogar_codi.log not found)
+-------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:/Users/wrgar/OneDrive - UW/02Work/Miscellaneous/ssb-colombia/Ela
+> sSsbColombia/output/replication/legacy_run/duvm_hogar_codi.log
+  log type:  text
+ opened on:  17 Nov 2026, 18:31:54
+c:\ado\plus\d\duvm.ado
+
+. *********************
+. ******************
+. *
+. * Bloque3a. Estimacion del AIDS
+. *
+. ******************
+. *********************
+. 
+. *log using "C:\Users\wgarcia\Universidad Icesi (@icesi.edu.co)\Proesa - *22-1
+> 002-PahoElasSsb\Resu\SSBElasticityPaperrevised_log.log", append
+. 
+. use "$path\DataEstimates5.dta",clear
+
+. 
+. gen Cluster= substr(VIVIENDA,1,8)
+
+. encode Cluster, gen(psu)
+
+. 
+. rename GastoTotal exptotal
+
+. drop Gasto*
+
+. drop Precio*
+
+. 
+. 
+. merge m:1 DIRECTORIO using "$path\UnitValuePrices_Hogar_Codi.dta"
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                            82,934  (_merge==3)
+    -----------------------------------------
+
+. keep if _merge==3
+(0 observations deleted)
+
+. drop _merge
+
+. 
+. merge 1:1 DIRECTORIO using "$path\UnitValueGasto_Hogar_Codi.dta"
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                            82,934  (_merge==3)
+    -----------------------------------------
+
+. keep if _merge==3
+(0 observations deleted)
+
+. drop _merge
+
+. 
+. tab xeduc,gen(xeduc_)
+
+           xeduc |      Freq.     Percent        Cum.
+-----------------+-----------------------------------
+         Ninguno |      3,818        4.60        4.60
+        Primaria |     23,012       27.75       32.35
+Secundaria/Media |     35,718       43.07       75.42
+        Superior |     20,386       24.58      100.00
+-----------------+-----------------------------------
+           Total |     82,934      100.00
+
+. * Summary
+. summarize xsexo xedad xrural xtamanioh xuniper xninios xeduc_1 xeduc_2 xeduc_
+> 3 xeduc_4 IT ITPC IT ITPC 
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+       xsexo |     82,934    .5921817     .491432          0          1
+       xedad |     82,934    48.55144    15.78316         11        107
+      xrural |     82,934    .0694649    .2542445          0          1
+   xtamanioh |     82,934    3.379651    1.748752          1         22
+     xuniper |     82,934    .1320809    .3385808          0          1
+-------------+---------------------------------------------------------
+     xninios |     82,934    .2535028    .4350189          0          1
+     xeduc_1 |     82,934    .0460366    .2095657          0          1
+     xeduc_2 |     82,934    .2774737    .4477549          0          1
+     xeduc_3 |     82,934    .4306798    .4951744          0          1
+     xeduc_4 |     82,934    .2458099     .430569          0          1
+-------------+---------------------------------------------------------
+          IT |     82,934     1928357     1915306       1000   1.29e+07
+        ITPC |     82,934    701032.7    873064.4        200   1.28e+07
+          IT |     82,934     1928357     1915306       1000   1.29e+07
+        ITPC |     82,934    701032.7    873064.4        200   1.28e+07
+
+. 
+. 
+. ** QUAIDS libreria
+. local expe "Gasto_HotDrinks Gasto_MilkDerivatives Gasto_SSB Gasto_Water Gasto
+> _Beer Gasto_Spirits Gasto_Wine"
+
+.  
+. foreach i of local expe {
+  2.         replace `i' =0 if mi(`i')
+  3. }
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+variable Gasto_Wine not found
+r(111);
+
+end of do-file
+
+. 
+. quietly cd "`root'"
+
+. foreach m in total hogar total_codi hogar_codi {
+  2.     display as text "duvm_`m': rc=`rc_`m''"
+  3. }
+duvm_total: rc=0
+duvm_hogar: rc=0
+duvm_total_codi: rc=111
+duvm_hogar_codi: rc=111
+
+. 
+end of do-file

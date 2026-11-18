@@ -1,0 +1,14 @@
+step,households,weighted_households
+ENPH 2016-2017 households (public-use file),87201,14350387.8521009
+... answering the urban 14-day diary,81438,11277153.8525464
+... answering the rural weekly questionnaire,5763,3073233.99955457
+With positive DANE current expenditure,87201,14350387.8521009
+With complete household-head covariates,87201,14350387.8521009
+"With valid budget shares (no category or total above total expenditure), combined market",87200,14350336.6657398
+"In a price cluster (local market) of at least two households = estimation-eligible, combined market",87197,14348575.3327275
+"Estimation-eligible, off-trade market",87198,14348626.5190886
+... of which urban (cabeceras),81437,11277102.6661853
+... of which rural,5760,3071472.66654221
+... with at least one valid beverage purchase (combined market),79789,13257014.2732361
+... with no beverage purchase recorded (kept as true zeros),7408,1091561.05949137
+Legacy analysis file (households with a beverage record and below 16 litres per person-day),82934,

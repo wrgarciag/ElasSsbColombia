@@ -1,0 +1,4 @@
+cluster_def,label,role
+market,Local market: municipality x area (urban / rest) x collection quarter,primary
+segment,"Survey segment (municipality + sector), single collection month",sensitivity S5
+seg8,Legacy: first 8 characters of the dwelling identifier,diagnostic only

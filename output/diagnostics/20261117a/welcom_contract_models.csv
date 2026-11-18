@@ -1,0 +1,193 @@
+model_id,role,good,households,unit_values,clusters_with_unit_value,within_cluster_df,dropped_by_specification,supported,market,supported_group,estimable,reason
+M1_home,main,sb,87198,30813,469,30344,FALSE,TRUE,home,TRUE,TRUE,""
+M1_home,main,beer,87198,1065,251,814,FALSE,TRUE,home,TRUE,TRUE,""
+M1_home,main,spirits,87198,0,0,0,FALSE,FALSE,home,FALSE,FALSE,no unit values (no physical quantities collected)
+M1_home,main,water,87198,9618,371,9247,FALSE,TRUE,home,TRUE,TRUE,""
+M1_home,main,dairy,87198,48265,458,47807,FALSE,TRUE,home,TRUE,TRUE,""
+M1_home,main,hot,87198,33356,479,32877,FALSE,TRUE,home,TRUE,TRUE,""
+M2_home,main,sb,87198,30813,469,30344,FALSE,TRUE,home,TRUE,TRUE,""
+M2_home,main,beer,87198,1065,251,814,FALSE,TRUE,home,TRUE,TRUE,""
+M2_home,main,spirits,87198,0,0,0,FALSE,FALSE,home,FALSE,FALSE,no unit values (no physical quantities collected)
+M2_home,main,water,87198,9618,371,9247,FALSE,TRUE,home,TRUE,TRUE,""
+M2_home,main,dairy,87198,48265,458,47807,FALSE,TRUE,home,TRUE,TRUE,""
+M2_home,main,hot,87198,33356,479,32877,FALSE,TRUE,home,TRUE,TRUE,""
+M3_home,main,sb,87198,30813,469,30344,FALSE,TRUE,home,TRUE,TRUE,""
+M3_home,main,beer,87198,1065,251,814,FALSE,TRUE,home,TRUE,TRUE,""
+M3_home,main,spirits,87198,0,0,0,FALSE,FALSE,home,FALSE,FALSE,no unit values (no physical quantities collected)
+M3_home,main,water,87198,9618,371,9247,FALSE,TRUE,home,TRUE,TRUE,""
+M3_home,main,dairy,87198,48265,458,47807,FALSE,TRUE,home,TRUE,TRUE,""
+M3_home,main,hot,87198,33356,479,32877,FALSE,TRUE,home,TRUE,TRUE,""
+M4_home,main,sb,87198,30813,469,30344,FALSE,TRUE,home,TRUE,TRUE,""
+M4_home,main,beer,87198,1065,251,814,FALSE,TRUE,home,TRUE,TRUE,""
+M4_home,main,spirits,87198,0,0,0,FALSE,FALSE,home,FALSE,FALSE,no unit values (no physical quantities collected)
+M4_home,main,water,87198,9618,371,9247,FALSE,TRUE,home,TRUE,TRUE,""
+M4_home,main,dairy,87198,48265,458,47807,FALSE,TRUE,home,TRUE,TRUE,""
+M4_home,main,hot,87198,33356,479,32877,FALSE,TRUE,home,TRUE,TRUE,""
+M5_home,main,sb,87198,30813,469,30344,FALSE,TRUE,home,TRUE,TRUE,""
+M5_home,main,beer,87198,1065,251,814,FALSE,TRUE,home,TRUE,TRUE,""
+M5_home,main,spirits,87198,0,0,0,FALSE,FALSE,home,FALSE,FALSE,no unit values (no physical quantities collected)
+M5_home,main,water,87198,9618,371,9247,FALSE,TRUE,home,TRUE,TRUE,""
+M5_home,main,dairy,87198,48265,458,47807,FALSE,TRUE,home,TRUE,TRUE,""
+M5_home,main,hot,87198,33356,479,32877,FALSE,TRUE,home,TRUE,TRUE,""
+M6_home,main,sb,81438,29945,338,29607,FALSE,TRUE,home,TRUE,TRUE,""
+M6_home,main,beer,81438,994,205,789,FALSE,TRUE,home,TRUE,TRUE,""
+M6_home,main,spirits,81438,0,0,0,FALSE,FALSE,home,FALSE,FALSE,no unit values (no physical quantities collected)
+M6_home,main,water,81438,9303,298,9005,FALSE,TRUE,home,TRUE,TRUE,""
+M6_home,main,dairy,81438,47486,338,47148,FALSE,TRUE,home,TRUE,TRUE,""
+M6_home,main,hot,81438,30984,337,30647,FALSE,TRUE,home,TRUE,TRUE,""
+T1_home,tercile,sb,25654,8013,430,7583,FALSE,TRUE,home,TRUE,TRUE,""
+T1_home,tercile,beer,25654,115,80,35,FALSE,FALSE,home,FALSE,FALSE,too few unit values in this model's sample
+T1_home,tercile,spirits,25654,0,0,0,FALSE,FALSE,home,FALSE,FALSE,no unit values (no physical quantities collected)
+T1_home,tercile,water,25654,1912,257,1655,FALSE,TRUE,home,TRUE,TRUE,""
+T1_home,tercile,dairy,25654,12534,432,12102,FALSE,TRUE,home,TRUE,TRUE,""
+T1_home,tercile,hot,25654,11086,456,10630,FALSE,TRUE,home,TRUE,TRUE,""
+T2_home,tercile,sb,30586,11228,426,10802,FALSE,TRUE,home,TRUE,TRUE,""
+T2_home,tercile,beer,30586,259,130,129,FALSE,TRUE,home,FALSE,FALSE,too few unit values in another model of the same comparison group
+T2_home,tercile,spirits,30586,0,0,0,FALSE,FALSE,home,FALSE,FALSE,no unit values (no physical quantities collected)
+T2_home,tercile,water,30586,3049,298,2751,FALSE,TRUE,home,TRUE,TRUE,""
+T2_home,tercile,dairy,30586,17976,424,17552,FALSE,TRUE,home,TRUE,TRUE,""
+T2_home,tercile,hot,30586,12384,453,11931,FALSE,TRUE,home,TRUE,TRUE,""
+T3_home,tercile,sb,30958,11572,389,11183,FALSE,TRUE,home,TRUE,TRUE,""
+T3_home,tercile,beer,30958,691,195,496,FALSE,TRUE,home,FALSE,FALSE,too few unit values in another model of the same comparison group
+T3_home,tercile,spirits,30958,0,0,0,FALSE,FALSE,home,FALSE,FALSE,no unit values (no physical quantities collected)
+T3_home,tercile,water,30958,4657,312,4345,FALSE,TRUE,home,TRUE,TRUE,""
+T3_home,tercile,dairy,30958,17755,394,17361,FALSE,TRUE,home,TRUE,TRUE,""
+T3_home,tercile,hot,30958,9886,414,9472,FALSE,TRUE,home,TRUE,TRUE,""
+S1_home,sensitivity,sb,87198,30813,469,30344,FALSE,TRUE,home,TRUE,TRUE,""
+S1_home,sensitivity,beer,87198,1065,251,814,FALSE,TRUE,home,TRUE,TRUE,""
+S1_home,sensitivity,spirits,87198,0,0,0,FALSE,FALSE,home,FALSE,FALSE,no unit values (no physical quantities collected)
+S1_home,sensitivity,water,87198,9618,371,9247,FALSE,TRUE,home,TRUE,TRUE,""
+S1_home,sensitivity,dairy,87198,48265,458,47807,FALSE,TRUE,home,TRUE,TRUE,""
+S1_home,sensitivity,hot,87198,33356,479,32877,FALSE,TRUE,home,TRUE,TRUE,""
+S2_home,sensitivity,sb,87198,29432,466,28966,FALSE,TRUE,home,TRUE,TRUE,""
+S2_home,sensitivity,beer,87198,794,222,572,FALSE,TRUE,home,TRUE,TRUE,""
+S2_home,sensitivity,spirits,87198,0,0,0,FALSE,FALSE,home,FALSE,FALSE,no unit values (no physical quantities collected)
+S2_home,sensitivity,water,87198,9059,356,8703,FALSE,TRUE,home,TRUE,TRUE,""
+S2_home,sensitivity,dairy,87198,45600,443,45157,FALSE,TRUE,home,TRUE,TRUE,""
+S2_home,sensitivity,hot,87198,28871,479,28392,FALSE,TRUE,home,TRUE,TRUE,""
+S3_home,sensitivity,sb,87197,30809,469,30340,FALSE,TRUE,home,TRUE,TRUE,""
+S3_home,sensitivity,beer,87197,1065,251,814,FALSE,TRUE,home,TRUE,TRUE,""
+S3_home,sensitivity,spirits,87197,0,0,0,FALSE,FALSE,home,FALSE,FALSE,no unit values (no physical quantities collected)
+S3_home,sensitivity,water,87197,9618,371,9247,FALSE,TRUE,home,TRUE,TRUE,""
+S3_home,sensitivity,dairy,87197,48266,458,47808,FALSE,TRUE,home,TRUE,TRUE,""
+S3_home,sensitivity,hot,87197,33354,479,32875,FALSE,TRUE,home,TRUE,TRUE,""
+S4_home,sensitivity,sb,87187,30807,469,30338,FALSE,TRUE,home,TRUE,TRUE,""
+S4_home,sensitivity,beer,87187,1064,251,813,FALSE,TRUE,home,TRUE,TRUE,""
+S4_home,sensitivity,spirits,87187,0,0,0,FALSE,FALSE,home,FALSE,FALSE,no unit values (no physical quantities collected)
+S4_home,sensitivity,water,87187,9618,371,9247,FALSE,TRUE,home,TRUE,TRUE,""
+S4_home,sensitivity,dairy,87187,48257,458,47799,FALSE,TRUE,home,TRUE,TRUE,""
+S4_home,sensitivity,hot,87187,33351,479,32872,FALSE,TRUE,home,TRUE,TRUE,""
+S5_home,sensitivity,sb,87198,30813,7625,23188,FALSE,TRUE,home,TRUE,TRUE,""
+S5_home,sensitivity,beer,87198,1065,876,189,FALSE,TRUE,home,TRUE,TRUE,""
+S5_home,sensitivity,spirits,87198,0,0,0,FALSE,FALSE,home,FALSE,FALSE,no unit values (no physical quantities collected)
+S5_home,sensitivity,water,87198,9618,3883,5735,FALSE,TRUE,home,TRUE,TRUE,""
+S5_home,sensitivity,dairy,87198,48265,7725,40540,FALSE,TRUE,home,TRUE,TRUE,""
+S5_home,sensitivity,hot,87198,33356,7801,25555,FALSE,TRUE,home,TRUE,TRUE,""
+S6_home,sensitivity,sb,87198,30813,469,30344,FALSE,TRUE,home,TRUE,TRUE,""
+S6_home,sensitivity,beer,87198,1065,251,814,FALSE,TRUE,home,TRUE,TRUE,""
+S6_home,sensitivity,spirits,87198,0,0,0,FALSE,FALSE,home,FALSE,FALSE,no unit values (no physical quantities collected)
+S6_home,sensitivity,water,87198,9618,371,9247,FALSE,TRUE,home,TRUE,TRUE,""
+S6_home,sensitivity,dairy,87198,48265,458,47807,FALSE,TRUE,home,TRUE,TRUE,""
+S6_home,sensitivity,hot,87198,33356,479,32877,FALSE,TRUE,home,TRUE,TRUE,""
+S7_home,sensitivity,sb,87198,30813,469,30344,FALSE,TRUE,home,TRUE,TRUE,""
+S7_home,sensitivity,beer,87198,1065,251,814,TRUE,TRUE,home,TRUE,FALSE,excluded by the model specification
+S7_home,sensitivity,spirits,87198,0,0,0,FALSE,FALSE,home,FALSE,FALSE,no unit values (no physical quantities collected)
+S7_home,sensitivity,water,87198,9618,371,9247,FALSE,TRUE,home,TRUE,TRUE,""
+S7_home,sensitivity,dairy,87198,48265,458,47807,FALSE,TRUE,home,TRUE,TRUE,""
+S7_home,sensitivity,hot,87198,33356,479,32877,FALSE,TRUE,home,TRUE,TRUE,""
+M1_combined,main,sb,87197,30813,469,30344,FALSE,TRUE,combined,TRUE,TRUE,""
+M1_combined,main,beer,87197,1065,251,814,FALSE,TRUE,combined,TRUE,TRUE,""
+M1_combined,main,spirits,87197,0,0,0,FALSE,FALSE,combined,FALSE,FALSE,no unit values (no physical quantities collected)
+M1_combined,main,water,87197,9617,371,9246,FALSE,TRUE,combined,TRUE,TRUE,""
+M1_combined,main,dairy,87197,48264,458,47806,FALSE,TRUE,combined,TRUE,TRUE,""
+M1_combined,main,hot,87197,33356,479,32877,FALSE,TRUE,combined,TRUE,TRUE,""
+M2_combined,main,sb,87197,30813,469,30344,FALSE,TRUE,combined,TRUE,TRUE,""
+M2_combined,main,beer,87197,1065,251,814,FALSE,TRUE,combined,TRUE,TRUE,""
+M2_combined,main,spirits,87197,0,0,0,FALSE,FALSE,combined,FALSE,FALSE,no unit values (no physical quantities collected)
+M2_combined,main,water,87197,9617,371,9246,FALSE,TRUE,combined,TRUE,TRUE,""
+M2_combined,main,dairy,87197,48264,458,47806,FALSE,TRUE,combined,TRUE,TRUE,""
+M2_combined,main,hot,87197,33356,479,32877,FALSE,TRUE,combined,TRUE,TRUE,""
+M3_combined,main,sb,87197,30813,469,30344,FALSE,TRUE,combined,TRUE,TRUE,""
+M3_combined,main,beer,87197,1065,251,814,FALSE,TRUE,combined,TRUE,TRUE,""
+M3_combined,main,spirits,87197,0,0,0,FALSE,FALSE,combined,FALSE,FALSE,no unit values (no physical quantities collected)
+M3_combined,main,water,87197,9617,371,9246,FALSE,TRUE,combined,TRUE,TRUE,""
+M3_combined,main,dairy,87197,48264,458,47806,FALSE,TRUE,combined,TRUE,TRUE,""
+M3_combined,main,hot,87197,33356,479,32877,FALSE,TRUE,combined,TRUE,TRUE,""
+M4_combined,main,sb,87197,30813,469,30344,FALSE,TRUE,combined,TRUE,TRUE,""
+M4_combined,main,beer,87197,1065,251,814,FALSE,TRUE,combined,TRUE,TRUE,""
+M4_combined,main,spirits,87197,0,0,0,FALSE,FALSE,combined,FALSE,FALSE,no unit values (no physical quantities collected)
+M4_combined,main,water,87197,9617,371,9246,FALSE,TRUE,combined,TRUE,TRUE,""
+M4_combined,main,dairy,87197,48264,458,47806,FALSE,TRUE,combined,TRUE,TRUE,""
+M4_combined,main,hot,87197,33356,479,32877,FALSE,TRUE,combined,TRUE,TRUE,""
+M5_combined,main,sb,87198,30813,469,30344,FALSE,TRUE,combined,TRUE,TRUE,""
+M5_combined,main,beer,87198,1065,251,814,FALSE,TRUE,combined,TRUE,TRUE,""
+M5_combined,main,spirits,87198,0,0,0,FALSE,FALSE,combined,FALSE,FALSE,no unit values (no physical quantities collected)
+M5_combined,main,water,87198,9618,371,9247,FALSE,TRUE,combined,TRUE,TRUE,""
+M5_combined,main,dairy,87198,48265,458,47807,FALSE,TRUE,combined,TRUE,TRUE,""
+M5_combined,main,hot,87198,33356,479,32877,FALSE,TRUE,combined,TRUE,TRUE,""
+M6_combined,main,sb,81437,29945,338,29607,FALSE,TRUE,combined,TRUE,TRUE,""
+M6_combined,main,beer,81437,994,205,789,FALSE,TRUE,combined,TRUE,TRUE,""
+M6_combined,main,spirits,81437,0,0,0,FALSE,FALSE,combined,FALSE,FALSE,no unit values (no physical quantities collected)
+M6_combined,main,water,81437,9302,298,9004,FALSE,TRUE,combined,TRUE,TRUE,""
+M6_combined,main,dairy,81437,47485,338,47147,FALSE,TRUE,combined,TRUE,TRUE,""
+M6_combined,main,hot,81437,30984,337,30647,FALSE,TRUE,combined,TRUE,TRUE,""
+T1_combined,tercile,sb,25654,8013,430,7583,FALSE,TRUE,combined,TRUE,TRUE,""
+T1_combined,tercile,beer,25654,115,80,35,FALSE,FALSE,combined,FALSE,FALSE,too few unit values in this model's sample
+T1_combined,tercile,spirits,25654,0,0,0,FALSE,FALSE,combined,FALSE,FALSE,no unit values (no physical quantities collected)
+T1_combined,tercile,water,25654,1912,257,1655,FALSE,TRUE,combined,TRUE,TRUE,""
+T1_combined,tercile,dairy,25654,12534,432,12102,FALSE,TRUE,combined,TRUE,TRUE,""
+T1_combined,tercile,hot,25654,11086,456,10630,FALSE,TRUE,combined,TRUE,TRUE,""
+T2_combined,tercile,sb,30586,11228,426,10802,FALSE,TRUE,combined,TRUE,TRUE,""
+T2_combined,tercile,beer,30586,259,130,129,FALSE,TRUE,combined,FALSE,FALSE,too few unit values in another model of the same comparison group
+T2_combined,tercile,spirits,30586,0,0,0,FALSE,FALSE,combined,FALSE,FALSE,no unit values (no physical quantities collected)
+T2_combined,tercile,water,30586,3049,298,2751,FALSE,TRUE,combined,TRUE,TRUE,""
+T2_combined,tercile,dairy,30586,17976,424,17552,FALSE,TRUE,combined,TRUE,TRUE,""
+T2_combined,tercile,hot,30586,12384,453,11931,FALSE,TRUE,combined,TRUE,TRUE,""
+T3_combined,tercile,sb,30957,11572,389,11183,FALSE,TRUE,combined,TRUE,TRUE,""
+T3_combined,tercile,beer,30957,691,195,496,FALSE,TRUE,combined,FALSE,FALSE,too few unit values in another model of the same comparison group
+T3_combined,tercile,spirits,30957,0,0,0,FALSE,FALSE,combined,FALSE,FALSE,no unit values (no physical quantities collected)
+T3_combined,tercile,water,30957,4656,312,4344,FALSE,TRUE,combined,TRUE,TRUE,""
+T3_combined,tercile,dairy,30957,17754,394,17360,FALSE,TRUE,combined,TRUE,TRUE,""
+T3_combined,tercile,hot,30957,9886,414,9472,FALSE,TRUE,combined,TRUE,TRUE,""
+S1_combined,sensitivity,sb,87197,30813,469,30344,FALSE,TRUE,combined,TRUE,TRUE,""
+S1_combined,sensitivity,beer,87197,1065,251,814,FALSE,TRUE,combined,TRUE,TRUE,""
+S1_combined,sensitivity,spirits,87197,0,0,0,FALSE,FALSE,combined,FALSE,FALSE,no unit values (no physical quantities collected)
+S1_combined,sensitivity,water,87197,9617,371,9246,FALSE,TRUE,combined,TRUE,TRUE,""
+S1_combined,sensitivity,dairy,87197,48264,458,47806,FALSE,TRUE,combined,TRUE,TRUE,""
+S1_combined,sensitivity,hot,87197,33356,479,32877,FALSE,TRUE,combined,TRUE,TRUE,""
+S2_combined,sensitivity,sb,87197,29432,466,28966,FALSE,TRUE,combined,TRUE,TRUE,""
+S2_combined,sensitivity,beer,87197,794,222,572,FALSE,TRUE,combined,TRUE,TRUE,""
+S2_combined,sensitivity,spirits,87197,0,0,0,FALSE,FALSE,combined,FALSE,FALSE,no unit values (no physical quantities collected)
+S2_combined,sensitivity,water,87197,9058,356,8702,FALSE,TRUE,combined,TRUE,TRUE,""
+S2_combined,sensitivity,dairy,87197,45599,443,45156,FALSE,TRUE,combined,TRUE,TRUE,""
+S2_combined,sensitivity,hot,87197,28871,479,28392,FALSE,TRUE,combined,TRUE,TRUE,""
+S3_combined,sensitivity,sb,87196,30809,469,30340,FALSE,TRUE,combined,TRUE,TRUE,""
+S3_combined,sensitivity,beer,87196,1065,251,814,FALSE,TRUE,combined,TRUE,TRUE,""
+S3_combined,sensitivity,spirits,87196,0,0,0,FALSE,FALSE,combined,FALSE,FALSE,no unit values (no physical quantities collected)
+S3_combined,sensitivity,water,87196,9617,371,9246,FALSE,TRUE,combined,TRUE,TRUE,""
+S3_combined,sensitivity,dairy,87196,48265,458,47807,FALSE,TRUE,combined,TRUE,TRUE,""
+S3_combined,sensitivity,hot,87196,33354,479,32875,FALSE,TRUE,combined,TRUE,TRUE,""
+S4_combined,sensitivity,sb,87191,30809,469,30340,FALSE,TRUE,combined,TRUE,TRUE,""
+S4_combined,sensitivity,beer,87191,1064,251,813,FALSE,TRUE,combined,TRUE,TRUE,""
+S4_combined,sensitivity,spirits,87191,0,0,0,FALSE,FALSE,combined,FALSE,FALSE,no unit values (no physical quantities collected)
+S4_combined,sensitivity,water,87191,9617,371,9246,FALSE,TRUE,combined,TRUE,TRUE,""
+S4_combined,sensitivity,dairy,87191,48260,458,47802,FALSE,TRUE,combined,TRUE,TRUE,""
+S4_combined,sensitivity,hot,87191,33354,479,32875,FALSE,TRUE,combined,TRUE,TRUE,""
+S5_combined,sensitivity,sb,87197,30813,7625,23188,FALSE,TRUE,combined,TRUE,TRUE,""
+S5_combined,sensitivity,beer,87197,1065,876,189,FALSE,TRUE,combined,TRUE,TRUE,""
+S5_combined,sensitivity,spirits,87197,0,0,0,FALSE,FALSE,combined,FALSE,FALSE,no unit values (no physical quantities collected)
+S5_combined,sensitivity,water,87197,9617,3883,5734,FALSE,TRUE,combined,TRUE,TRUE,""
+S5_combined,sensitivity,dairy,87197,48264,7725,40539,FALSE,TRUE,combined,TRUE,TRUE,""
+S5_combined,sensitivity,hot,87197,33356,7801,25555,FALSE,TRUE,combined,TRUE,TRUE,""
+S6_combined,sensitivity,sb,87197,30813,469,30344,FALSE,TRUE,combined,TRUE,TRUE,""
+S6_combined,sensitivity,beer,87197,1065,251,814,FALSE,TRUE,combined,TRUE,TRUE,""
+S6_combined,sensitivity,spirits,87197,0,0,0,FALSE,FALSE,combined,FALSE,FALSE,no unit values (no physical quantities collected)
+S6_combined,sensitivity,water,87197,9617,371,9246,FALSE,TRUE,combined,TRUE,TRUE,""
+S6_combined,sensitivity,dairy,87197,48264,458,47806,FALSE,TRUE,combined,TRUE,TRUE,""
+S6_combined,sensitivity,hot,87197,33356,479,32877,FALSE,TRUE,combined,TRUE,TRUE,""
+S7_combined,sensitivity,sb,87197,30813,469,30344,FALSE,TRUE,combined,TRUE,TRUE,""
+S7_combined,sensitivity,beer,87197,1065,251,814,TRUE,TRUE,combined,TRUE,FALSE,excluded by the model specification
+S7_combined,sensitivity,spirits,87197,0,0,0,FALSE,FALSE,combined,FALSE,FALSE,no unit values (no physical quantities collected)
+S7_combined,sensitivity,water,87197,9617,371,9246,FALSE,TRUE,combined,TRUE,TRUE,""
+S7_combined,sensitivity,dairy,87197,48264,458,47806,FALSE,TRUE,combined,TRUE,TRUE,""
+S7_combined,sensitivity,hot,87197,33356,479,32877,FALSE,TRUE,combined,TRUE,TRUE,""

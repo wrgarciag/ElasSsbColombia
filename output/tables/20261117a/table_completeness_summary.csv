@@ -1,0 +1,12 @@
+table_id,status,N
+T1,available,13
+T2,available,112
+T2,not_measured,8
+T3,available,60
+T3,not_estimable,12
+T4,available,34
+T4,not_estimable,14
+T5,available,50
+T5,not_estimable,22
+T6,available,60
+T6,not_estimable,12

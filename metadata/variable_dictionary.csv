@@ -1,0 +1,35 @@
+variable,type,description
+hhid,integer,Household identifier (ENPH DIRECTORIO)
+in_sample,integer,"1 = eligible for estimation (positive total expenditure, complete covariates, valid budget shares, cluster of 2+ households)"
+clus_market,integer,Primary price cluster: local market = municipality x area (urban/rest) x collection quarter
+clus_segment,integer,Alternative price cluster (sensitivity S5): survey segment (municipality + sector)
+wgt_market,numeric,"Estimation weight: market-cluster mean of the expansion factor, scaled to mean 1 (constant within clus_market)"
+wgt_segment,numeric,"Estimation weight for the segment clusters (constant within clus_segment, mean 1)"
+wgt_hh_raw,numeric,ENPH household expansion factor FEX_C (unscaled)
+exptot,numeric,"Monthly current expenditure of the spending unit, COP (DANE GCUG); denominator of every budget share"
+hhsize,integer,Number of household members (P6008)
+head_age,integer,"Age of household head, years (P6040)"
+head_male,integer,Household head is male (P6020 == 1)
+single,integer,Single-member household
+children,integer,Any member aged 0-5
+educ,integer,"Head education: 1 none/preschool, 2 primary, 3 secondary/media, 4 higher, 9 unknown"
+regctl,integer,Regional control cell: DANE region x (urban/rest)
+region7,integer,DANE region (7)
+quarter_id,integer,Collection quarter (1 = 2016Q3 ... 4 = 2017Q2)
+rural,integer,1 = centros poblados y rural disperso (P3 != 1)
+urban,integer,1 = cabecera (P3 == 1)
+tercile,integer,Weighted tercile of per-capita household income (DANE IT / members)
+spend_outlier_any,integer,1 = household flagged for extreme monthly spending in at least one category (used only in the outlier sensitivity)
+any_beverage,integer,1 = household has a valid purchase in at least one category
+wsb,numeric,WELCOM field: share of monthly sb purchases in exptot (0 for non-buyers)
+wbeer,numeric,WELCOM field: share of monthly beer purchases in exptot (0 for non-buyers)
+wspirits,numeric,WELCOM field: share of monthly spirits purchases in exptot (0 for non-buyers)
+wwater,numeric,WELCOM field: share of monthly water purchases in exptot (0 for non-buyers)
+wdairy,numeric,WELCOM field: share of monthly dairy purchases in exptot (0 for non-buyers)
+whot,numeric,WELCOM field: share of monthly hot purchases in exptot (0 for non-buyers)
+luvsb,numeric,"WELCOM field: log observed unit value of sb, COP per litre; missing when no valid unit value is observed"
+luvbeer,numeric,"WELCOM field: log observed unit value of beer, COP per litre; missing when no valid unit value is observed"
+luvspirits,numeric,"WELCOM field: log observed unit value of spirits, COP per litre; missing when no valid unit value is observed"
+luvwater,numeric,"WELCOM field: log observed unit value of water, COP per litre; missing when no valid unit value is observed"
+luvdairy,numeric,"WELCOM field: log observed unit value of dairy, COP per litre; missing when no valid unit value is observed"
+luvhot,numeric,"WELCOM field: log observed unit value of hot, COP per kilogram; missing when no valid unit value is observed"

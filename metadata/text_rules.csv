@@ -1,0 +1,223 @@
+rule_version,type,pattern,value,note
+2026.11-v1,phrase,coca cola,cocacola,
+2026.11-v1,phrase,pony malta,ponymalta,
+2026.11-v1,phrase,vive 100,vive100,
+2026.11-v1,phrase,vive cien,vive100,
+2026.11-v1,phrase,red bull,redbull,
+2026.11-v1,phrase,jugos? hit,jugohit,
+2026.11-v1,phrase,jugos? del valle,jugodelvalle,
+2026.11-v1,phrase,jugos? california,jugocalifornia,
+2026.11-v1,phrase,jugos? (de|en) (botella|caja|cajita|bolsa),jugoenvasado,packaged juice
+2026.11-v1,phrase,te helado,tehelado,
+2026.11-v1,phrase,mr tea,mrtea,
+2026.11-v1,phrase,club colombia,clubcolombia,
+2026.11-v1,phrase,cola y pola,colaypola,bottled refajo brand
+2026.11-v1,phrase,vino tinto,vinotinto,must precede the coffee token 'tinto'
+2026.11-v1,phrase,agua ?de ?panela,aguapanela,
+2026.11-v1,phrase,agua panela,aguapanela,
+2026.11-v1,phrase,agua aromatica,aromatica,
+2026.11-v1,phrase,agua con gas,aguacongas,
+2026.11-v1,phrase,agua de coco,aguadecoco,not bottled water
+2026.11-v1,phrase,cafe (con|en) leche,cafeconleche,
+2026.11-v1,phrase,leche condensada,lechecondensada,not a drink
+2026.11-v1,phrase,(arroz|dulce|pan|torta|postre) (con|de) leche,postrelacteo,not a drink
+2026.11-v1,phrase,chocolate en barra,chocolatina,not a drink
+2026.11-v1,phrase,agua (de|con) limon,limonada,not bottled water
+2026.11-v1,phrase,pina colada,coctel,
+2026.11-v1,phrase,helados? (de|con) [a-z]+,heladodesabor,ice cream: not a drink
+2026.11-v1,token,gaseosa,sb,
+2026.11-v1,token,gaseosas,sb,
+2026.11-v1,token,gaseoza,sb,
+2026.11-v1,token,gaceosa,sb,
+2026.11-v1,token,cocacola,sb,
+2026.11-v1,token,pepsi,sb,
+2026.11-v1,token,sprite,sb,
+2026.11-v1,token,postobon,sb,
+2026.11-v1,token,quatro,sb,
+2026.11-v1,token,kola,sb,
+2026.11-v1,token,cola,sb,
+2026.11-v1,token,energizante,sb,
+2026.11-v1,token,energizantes,sb,
+2026.11-v1,token,vive100,sb,
+2026.11-v1,token,redbull,sb,
+2026.11-v1,token,gatorade,sb,
+2026.11-v1,token,powerade,sb,
+2026.11-v1,token,malta,sb,
+2026.11-v1,token,maltas,sb,
+2026.11-v1,token,ponymalta,sb,
+2026.11-v1,token,pony,sb,
+2026.11-v1,token,jugohit,sb,
+2026.11-v1,token,jugodelvalle,sb,
+2026.11-v1,token,jugocalifornia,sb,
+2026.11-v1,token,jugoenvasado,sb,
+2026.11-v1,token,cifrut,sb,
+2026.11-v1,token,cifruc,sb,
+2026.11-v1,token,tampico,sb,
+2026.11-v1,token,tehelado,sb,
+2026.11-v1,token,mrtea,sb,
+2026.11-v1,token,refresco,sb,
+2026.11-v1,token,refrescos,sb,
+2026.11-v1,token,cerveza,beer,
+2026.11-v1,token,cervezas,beer,
+2026.11-v1,token,cervesa,beer,
+2026.11-v1,token,cervesas,beer,
+2026.11-v1,token,cerveveza,beer,
+2026.11-v1,token,serveza,beer,
+2026.11-v1,token,pola,beer,
+2026.11-v1,token,polas,beer,
+2026.11-v1,token,poker,beer,
+2026.11-v1,token,aguila,beer,
+2026.11-v1,token,aguilon,beer,
+2026.11-v1,token,pilsen,beer,
+2026.11-v1,token,clubcolombia,beer,
+2026.11-v1,token,heineken,beer,
+2026.11-v1,token,budweiser,beer,
+2026.11-v1,token,refajo,beer,COICOP places bottled refajo in class 0213 (beer); the legacy rule sent it to SB
+2026.11-v1,token,colaypola,beer,
+2026.11-v1,token,cerbeza,beer,
+2026.11-v1,token,cerveca,beer,
+2026.11-v1,token,cerv,beer,
+2026.11-v1,token,michelada,beer,
+2026.11-v1,token,costenita,beer,
+2026.11-v1,token,aguardiente,spirits,
+2026.11-v1,token,guaro,spirits,
+2026.11-v1,token,ron,spirits,
+2026.11-v1,token,whisky,spirits,
+2026.11-v1,token,wisky,spirits,
+2026.11-v1,token,whiskey,spirits,
+2026.11-v1,token,vodka,spirits,
+2026.11-v1,token,tequila,spirits,
+2026.11-v1,token,ginebra,spirits,
+2026.11-v1,token,brandy,spirits,
+2026.11-v1,token,cognac,spirits,
+2026.11-v1,token,coctel,spirits,
+2026.11-v1,token,cocteles,spirits,
+2026.11-v1,token,champana,spirits,
+2026.11-v1,token,champagna,spirits,
+2026.11-v1,token,vino,spirits,wine is reported with spirits (see docs/methods.md)
+2026.11-v1,token,vinos,spirits,
+2026.11-v1,token,vinotinto,spirits,
+2026.11-v1,token,sabajon,spirits,
+2026.11-v1,token,agua,water,
+2026.11-v1,token,aguas,water,
+2026.11-v1,token,aguacongas,water,
+2026.11-v1,token,tinto,hot,
+2026.11-v1,token,tintos,hot,
+2026.11-v1,token,cafe,hot,
+2026.11-v1,token,cafes,hot,
+2026.11-v1,token,cafeconleche,hot,
+2026.11-v1,token,capuchino,hot,
+2026.11-v1,token,cappuccino,hot,
+2026.11-v1,token,capuccino,hot,
+2026.11-v1,token,aromatica,hot,
+2026.11-v1,token,aromaticas,hot,
+2026.11-v1,token,aguapanela,hot,
+2026.11-v1,token,chocolate,hot,
+2026.11-v1,token,leche,dairy,
+2026.11-v1,token,yogurt,dairy,
+2026.11-v1,token,yogur,dairy,
+2026.11-v1,token,yogourt,dairy,
+2026.11-v1,token,yogurth,dairy,
+2026.11-v1,token,kumis,dairy,
+2026.11-v1,token,avena,dairy,
+2026.11-v1,neutral,de,,connector
+2026.11-v1,neutral,del,,connector
+2026.11-v1,neutral,la,,connector
+2026.11-v1,neutral,el,,connector
+2026.11-v1,neutral,en,,connector
+2026.11-v1,neutral,con,,connector
+2026.11-v1,neutral,sin,,connector
+2026.11-v1,neutral,un,,count
+2026.11-v1,neutral,una,,count
+2026.11-v1,neutral,uno,,count
+2026.11-v1,neutral,dos,,count
+2026.11-v1,neutral,tres,,count
+2026.11-v1,neutral,cuatro,,count
+2026.11-v1,neutral,media,,size
+2026.11-v1,neutral,medio,,size
+2026.11-v1,neutral,litro,,size
+2026.11-v1,neutral,litros,,size
+2026.11-v1,neutral,lt,,size
+2026.11-v1,neutral,lts,,size
+2026.11-v1,neutral,l,,size
+2026.11-v1,neutral,ml,,size
+2026.11-v1,neutral,cc,,size
+2026.11-v1,neutral,oz,,size
+2026.11-v1,neutral,onzas,,size
+2026.11-v1,neutral,personal,,size
+2026.11-v1,neutral,personales,,size
+2026.11-v1,neutral,familiar,,size
+2026.11-v1,neutral,grande,,size
+2026.11-v1,neutral,grandes,,size
+2026.11-v1,neutral,pequena,,size
+2026.11-v1,neutral,pequeno,,size
+2026.11-v1,neutral,pequenas,,size
+2026.11-v1,neutral,mediana,,size
+2026.11-v1,neutral,mediano,,size
+2026.11-v1,neutral,mini,,size
+2026.11-v1,neutral,botella,,container
+2026.11-v1,neutral,botellas,,container
+2026.11-v1,neutral,botellon,,container
+2026.11-v1,neutral,lata,,container
+2026.11-v1,neutral,latas,,container
+2026.11-v1,neutral,vaso,,container
+2026.11-v1,neutral,vasos,,container
+2026.11-v1,neutral,taza,,container
+2026.11-v1,neutral,tazas,,container
+2026.11-v1,neutral,pocillo,,container
+2026.11-v1,neutral,pocillos,,container
+2026.11-v1,neutral,copa,,container
+2026.11-v1,neutral,copas,,container
+2026.11-v1,neutral,jarra,,container
+2026.11-v1,neutral,bolsa,,container
+2026.11-v1,neutral,bolsas,,container
+2026.11-v1,neutral,caja,,container
+2026.11-v1,neutral,cajita,,container
+2026.11-v1,neutral,paca,,container
+2026.11-v1,neutral,canasta,,container
+2026.11-v1,neutral,sixpack,,container
+2026.11-v1,neutral,six,,container
+2026.11-v1,neutral,pack,,container
+2026.11-v1,neutral,fria,,descriptor
+2026.11-v1,neutral,frio,,descriptor
+2026.11-v1,neutral,helada,,descriptor
+2026.11-v1,neutral,caliente,,descriptor
+2026.11-v1,neutral,negro,,descriptor
+2026.11-v1,neutral,oscuro,,descriptor
+2026.11-v1,neutral,claro,,descriptor
+2026.11-v1,neutral,nacional,,descriptor
+2026.11-v1,neutral,importada,,descriptor
+2026.11-v1,neutral,light,,descriptor
+2026.11-v1,neutral,zero,,descriptor
+2026.11-v1,neutral,dietetica,,descriptor
+2026.11-v1,neutral,natural,,descriptor
+2026.11-v1,neutral,entera,,descriptor
+2026.11-v1,neutral,deslactosada,,descriptor
+2026.11-v1,neutral,descremada,,descriptor
+2026.11-v1,neutral,sabor,,descriptor
+2026.11-v1,neutral,sabores,,descriptor
+2026.11-v1,neutral,cristal,,brand qualifier (water)
+2026.11-v1,neutral,brisa,,brand qualifier (water)
+2026.11-v1,neutral,manantial,,brand qualifier (water)
+2026.11-v1,neutral,medellin,,brand qualifier (rum)
+2026.11-v1,neutral,antioqueno,,brand qualifier (aguardiente)
+2026.11-v1,neutral,nectar,,brand qualifier
+2026.11-v1,neutral,alpina,,brand qualifier (dairy)
+2026.11-v1,neutral,colanta,,brand qualifier (dairy)
+2026.11-v1,neutral,alqueria,,brand qualifier (dairy)
+2026.11-v1,neutral,colombiana,,brand qualifier (soft drink)
+2026.11-v1,neutral,manzana,,flavour (only reached when a beverage token is present)
+2026.11-v1,neutral,naranja,,flavour (only reached when a beverage token is present)
+2026.11-v1,neutral,uva,,flavour (only reached when a beverage token is present)
+2026.11-v1,neutral,fresa,,flavour (only reached when a beverage token is present)
+2026.11-v1,neutral,mora,,flavour (only reached when a beverage token is present)
+2026.11-v1,neutral,melocoton,,flavour (only reached when a beverage token is present)
+2026.11-v1,neutral,durazno,,flavour (only reached when a beverage token is present)
+2026.11-v1,neutral,premium,,descriptor
+2026.11-v1,neutral,laigh,,descriptor
+2026.11-v1,neutral,laigth,,descriptor
+2026.11-v1,neutral,mac,,brand qualifier (whisky)
+2026.11-v1,neutral,gregor,,brand qualifier (whisky)
+2026.11-v1,connector,y,,joins items: a description that still contains it after phrase replacement is treated as a composite purchase
+2026.11-v1,connector,e,,joins items
+2026.11-v1,connector,mas,,joins items

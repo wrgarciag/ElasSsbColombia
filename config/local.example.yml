@@ -1,0 +1,8 @@
+# Copy to config/local.yml (git-ignored) and adjust to this machine.
+stata_exe: "C:/Program Files/Stata17/StataMP-64.exe"
+rscript_exe: "C:/Program Files/R/R-4.5.1/bin/Rscript.exe"
+pandoc_dir: "C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools"
+# Optional overrides
+# parallel_workers: 8
+# Local, non-synchronised folder for Stata scratch files (duvm writes temporary .dta files on every call).
+stata_scratch_dir: "C:/Temp/elas_ssb_stata"

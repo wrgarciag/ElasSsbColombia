@@ -1,0 +1,116 @@
+% ============================================================
+%  beamer_addons.tex -- load AFTER beamer_preamble.tex
+%  APA 7 citations and reference list (biblatex-apa + biber),
+%  closing slide, big-number and source-line helpers, and
+%  render-time repairs for reference-manager exports.
+%  The .bib file itself is never edited.
+%
+%  Adapted from the beautiful-deck skill for this project:
+%  * pandoc 3.x loads biblatex (from `citation_package: biblatex`) BEFORE
+%    header-includes, so the APA options are passed in the deck's YAML
+%    (`biblatexoptions: [style=apa, backend=biber, natbib=true]`) and the
+%    package is loaded here only if pandoc has not already done so;
+%  * the closing slide and big numbers use `deckaccent` from the preamble;
+%  * the dissertation-specific .bib repairs were removed (none confirmed here).
+% ============================================================
+\providecolor{deckaccent}{HTML}{0F2A56}
+
+% -- APA 7 citations and reference list ---------------------------------------
+\makeatletter
+\@ifpackageloaded{biblatex}{}{\usepackage[style=apa, backend=biber, natbib=true]{biblatex}}
+\makeatother
+\DeclareFieldFormat{apacase}{#1}            % print titles exactly as stored
+\setlength{\bibhang}{0pt}
+\setlength{\bibitemsep}{0.6\baselineskip}
+\renewcommand*{\bibfont}{\footnotesize\raggedright}
+\setcounter{biburlbigbreakpenalty}{5000}    % break before a DOI, not inside it
+\setcounter{biburlbreakpenalty}{5000}
+\setbeamertemplate{frametitle continuation}{}
+% plain APA list: no beamer document icons, no structure colours in entries
+\setbeamertemplate{bibliography item}{}
+\setbeamercolor{bibliography entry author}{fg=black}
+\setbeamercolor{bibliography entry title}{fg=black}
+\setbeamercolor{bibliography entry location}{fg=black}
+\setbeamercolor{bibliography entry note}{fg=black}
+
+\makeatletter
+% reference frames are top-aligned on every page
+\AtBeginBibliography{%
+  \global\beamer@frametopskipautobreak=.45cm plus .5\paperheight\relax
+  \global\beamer@framebottomskipautobreak=0pt plus 1fill\relax}
+% keep the space between "(year)." and the title under biblatex-apa
+\AtBeginDocument{%
+  \patchcmd{\abx@macro@title}{\bbx@tempa\newblock\unspace}{\bbx@tempa\newblock}{}{}}
+
+% -- Closing slide:  ## {.standout}  ------------------------------------------
+%    Full-bleed and unnumbered. It ends the main deck: every frame after it
+%    (backup slides, references) is numbered separately, so the footer total
+%    counts main slides only.
+\usepackage{appendixnumberbeamer}
+\renewcommand{\appendixname}{Backup}
+\AtBeginPart{}                              % no automatic part page
+\newif\ifdeck@standout
+\define@key{beamerframe}{standout}[true]{%
+  \deck@standouttrue
+  \begingroup
+  \setkeys{beamerframe}{c,noframenumbering}%
+  \setbeamercolor{background canvas}{bg=deckaccent}%
+  \setbeamercolor{normal text}{fg=white}%
+  \setbeamertemplate{footline}{}%
+  \usebeamercolor[fg]{normal text}%
+  \centering\Large}
+% must be prepended: pandoc's ignorenonframetext mode skips appended code
+\pretocmd{\beamer@reseteecodes}{%
+  \ifdeck@standout\endgroup\deck@standoutfalse
+    \ifnum\currentgrouplevel>0 \aftergroup\appendix\else\appendix\fi
+  \fi}{}{}
+\makeatother
+
+% -- One number that carries the slide:  \bignumber{80\%}{of the gap ...} ------
+\newcommand{\bignumber}[2]{%
+  \begin{center}
+    {\fontsize{44}{48}\selectfont\bfseries\textcolor{deckaccent}{#1}}\par\vspace{6pt}
+    {\large #2}\par
+  \end{center}}
+
+% -- Source line under a figure, table or number ------------------------------
+\newcommand{\sourceline}[1]{\par\vspace{4pt}{\footnotesize\textcolor{black!60}{#1}\par}}
+
+% -- Render-time repairs for reference-manager exports ------------------------
+% Regex rules: spaces are stripped, so write \s or \x{20}; write % & # as
+% \x{25} \x{26} \x{23}; never put < in a pattern.
+\DeclareSourcemap{
+  \maps[datatype=bibtex]{
+    \map{% fields APA never prints, which often carry unescaped characters
+      \step[fieldset=abstract, null]
+      \step[fieldset=keywords, null]
+      \step[fieldset=month, null]
+      \step[fieldset=issn, null]
+      \step[fieldset=pmid, null]
+      \step[fieldset=annotation, null]       % reference-manager notes to self
+    }
+    \map{% a note that only repeats the DOI
+      \step[fieldsource=note, match=\regexp{^\s*doi:}, final]
+      \step[fieldset=note, null]
+    }
+    \map{% escape % & # in printed fields
+      \step[fieldsource=title, match=\regexp{\\([\x{25}\x{26}\x{23}])}, replace=\regexp{$1}]
+      \step[fieldsource=title, match=\regexp{([\x{25}\x{26}\x{23}])}, replace=\regexp{\\$1}]
+      \step[fieldsource=journal, match=\regexp{\\([\x{25}\x{26}\x{23}])}, replace=\regexp{$1}]
+      \step[fieldsource=journal, match=\regexp{([\x{25}\x{26}\x{23}])}, replace=\regexp{\\$1}]
+    }
+    \map{% DOI with an asset path or tracking suffix; several URLs in one field
+      \step[fieldsource=doi, match=\regexp{^(10\.\d{4,9}/[^\s;]+?)(?:/ASSET/.*|;.*)$}, replace=\regexp{$1}]
+      \step[fieldsource=url, match=\regexp{^(\S+)\s.*$}, replace=\regexp{$1}]
+    }
+    \map{% page range "e123-e123"; volume and issue appended to the journal name
+      \step[fieldsource=pages, match=\regexp{^(\w+)\s*-+\s*\1$}, replace=\regexp{$1}]
+      \step[fieldsource=journal, match=\regexp{\s+\d{4}\s+\d+:\d+$}, replace=\regexp{}]
+    }
+    \map[overwrite=false]{% reference managers write the issue number to "issue"
+      \step[fieldsource=issue, fieldtarget=number]
+    }
+    % -- Deck-specific repairs: one step per confirmed error in the .bib -------
+    %    None confirmed for manuscript/references.bib yet.
+  }
+}

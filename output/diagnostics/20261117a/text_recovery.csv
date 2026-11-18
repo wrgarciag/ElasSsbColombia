@@ -1,0 +1,86 @@
+module_id,mention,pure,outcome,records,households,value_sample_cop
+rur_meals_hh,dairy,FALSE,already coded as a beverage,7,7,16250
+rur_meals_hh,dairy,FALSE,composite purchase: amount not attributable,69,58,354600
+rur_meals_hh,dairy,FALSE,other,7,7,18800
+rur_meals_hh,dairy,TRUE,already coded as a beverage,24,21,44900
+rur_meals_hh,dairy,TRUE,text-identified beverage purchase,7,7,14200
+rur_meals_hh,hot,FALSE,already coded as a beverage,34,29,136300
+rur_meals_hh,hot,FALSE,composite purchase: amount not attributable,321,229,2431850
+rur_meals_hh,hot,TRUE,already coded as a beverage,70,69,133400
+rur_meals_hh,hot,TRUE,text-identified beverage purchase,13,11,38500
+rur_meals_hh,multiple,FALSE,already coded as a beverage,1,1,3000
+rur_meals_hh,multiple,FALSE,composite purchase: amount not attributable,25,14,134700
+rur_meals_hh,sb,FALSE,already coded as a beverage,24,20,74450
+rur_meals_hh,sb,FALSE,composite purchase: amount not attributable,428,331,2714300
+rur_meals_hh,sb,TRUE,already coded as a beverage,286,241,735900
+rur_meals_hh,sb,TRUE,text-identified beverage purchase,19,18,43000
+rur_meals_hh,water,FALSE,already coded as a beverage,8,8,25000
+rur_meals_hh,water,FALSE,composite purchase: amount not attributable,8,7,11200
+rur_meals_hh,water,TRUE,already coded as a beverage,55,48,103600
+rur_meals_hh,water,TRUE,text-identified beverage purchase,8,8,18000
+urb_meals_hh,beer,FALSE,already coded as a beverage,1,1,2500
+urb_meals_hh,beer,FALSE,composite purchase: amount not attributable,516,443,16257461
+urb_meals_hh,beer,FALSE,other,3,3,36500
+urb_meals_hh,beer,TRUE,already coded as a beverage,1,1,2000
+urb_meals_hh,beer,TRUE,text-identified beverage purchase,1327,993,34625790
+urb_meals_hh,dairy,FALSE,already coded as a beverage,348,236,951300
+urb_meals_hh,dairy,FALSE,composite purchase: amount not attributable,6731,3746,30596536
+urb_meals_hh,dairy,FALSE,other,368,286,1574850
+urb_meals_hh,dairy,TRUE,already coded as a beverage,1413,934,3582372
+urb_meals_hh,dairy,TRUE,text-identified beverage purchase,1164,816,2377330
+urb_meals_hh,hot,FALSE,already coded as a beverage,2019,973,5703000
+urb_meals_hh,hot,FALSE,composite purchase: amount not attributable,43551,12561,223764448
+urb_meals_hh,hot,FALSE,other,114,110,3023787
+urb_meals_hh,hot,TRUE,already coded as a beverage,10353,4155,15931368
+urb_meals_hh,hot,TRUE,text-identified beverage purchase,848,468,1513700
+urb_meals_hh,multiple,FALSE,already coded as a beverage,103,69,454900
+urb_meals_hh,multiple,FALSE,composite purchase: amount not attributable,1233,870,11709487
+urb_meals_hh,multiple,FALSE,other,2,2,4600
+urb_meals_hh,sb,FALSE,already coded as a beverage,725,525,2323300
+urb_meals_hh,sb,FALSE,composite purchase: amount not attributable,34326,16750,498009593
+urb_meals_hh,sb,FALSE,other,137,99,2658909
+urb_meals_hh,sb,TRUE,already coded as a beverage,11282,6006,30726514
+urb_meals_hh,sb,TRUE,text-identified beverage purchase,604,395,1502530
+urb_meals_hh,spirits,FALSE,composite purchase: amount not attributable,223,199,12027700
+urb_meals_hh,spirits,FALSE,other,1,1,6500
+urb_meals_hh,spirits,TRUE,text-identified beverage purchase,251,200,8435130
+urb_meals_hh,water,FALSE,already coded as a beverage,11,11,21800
+urb_meals_hh,water,FALSE,composite purchase: amount not attributable,801,454,7882350
+urb_meals_hh,water,FALSE,other,116,63,228290
+urb_meals_hh,water,TRUE,already coded as a beverage,1,1,1000
+urb_meals_hh,water,TRUE,text-identified beverage purchase,50,37,77150
+urb_meals_personal,beer,FALSE,already coded as a beverage,3,3,14000
+urb_meals_personal,beer,FALSE,composite purchase: amount not attributable,195,181,3791039
+urb_meals_personal,beer,FALSE,other,26,25,375200
+urb_meals_personal,beer,TRUE,already coded as a beverage,6,6,46700
+urb_meals_personal,beer,TRUE,text-identified beverage purchase,2734,2056,50690436
+urb_meals_personal,dairy,FALSE,already coded as a beverage,967,708,1648200
+urb_meals_personal,dairy,FALSE,composite purchase: amount not attributable,10844,5892,31057967
+urb_meals_personal,dairy,FALSE,other,899,726,4418700
+urb_meals_personal,dairy,TRUE,already coded as a beverage,3186,2001,5037694
+urb_meals_personal,dairy,TRUE,text-identified beverage purchase,3164,2065,4443310
+urb_meals_personal,hot,FALSE,already coded as a beverage,4995,2421,8876402
+urb_meals_personal,hot,FALSE,composite purchase: amount not attributable,31974,11920,123071827
+urb_meals_personal,hot,FALSE,other,263,249,4470000
+urb_meals_personal,hot,TRUE,already coded as a beverage,28269,10666,33233375
+urb_meals_personal,hot,TRUE,other,2,2,1000
+urb_meals_personal,hot,TRUE,text-identified beverage purchase,1791,1013,2228206
+urb_meals_personal,multiple,FALSE,already coded as a beverage,138,112,212500
+urb_meals_personal,multiple,FALSE,composite purchase: amount not attributable,706,488,3560898
+urb_meals_personal,multiple,FALSE,other,5,5,105000
+urb_meals_personal,sb,FALSE,already coded as a beverage,3555,2215,6350400
+urb_meals_personal,sb,FALSE,composite purchase: amount not attributable,51307,18719,263089250
+urb_meals_personal,sb,FALSE,other,448,323,8304159
+urb_meals_personal,sb,TRUE,already coded as a beverage,33131,12204,49643253
+urb_meals_personal,sb,TRUE,other,2,2,8000
+urb_meals_personal,sb,TRUE,text-identified beverage purchase,1500,882,2359850
+urb_meals_personal,spirits,FALSE,composite purchase: amount not attributable,155,140,3297500
+urb_meals_personal,spirits,FALSE,other,3,3,39000
+urb_meals_personal,spirits,TRUE,already coded as a beverage,1,1,4000
+urb_meals_personal,spirits,TRUE,text-identified beverage purchase,830,676,19836501
+urb_meals_personal,water,FALSE,already coded as a beverage,319,197,498100
+urb_meals_personal,water,FALSE,composite purchase: amount not attributable,995,626,4811500
+urb_meals_personal,water,FALSE,other,228,143,293900
+urb_meals_personal,water,TRUE,already coded as a beverage,5439,2193,4511097
+urb_meals_personal,water,TRUE,other,1,1,500
+urb_meals_personal,water,TRUE,text-identified beverage purchase,731,397,888401

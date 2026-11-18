@@ -1,0 +1,32 @@
+\begin{table}[!htbp]
+\centering
+\begin{threeparttable}
+\caption{Own-price elasticities: WELCOM's own bootstrap output and the external cluster bootstrap}
+\label{tab:native}
+\footnotesize
+\begin{tabular}{lrrrr}
+\toprule
+ & Estimate & WELCOM & WELCOM replications: & External cluster \\
+ &  & Table 09 & SD of correct cell & bootstrap SE \\
+\midrule
+\addlinespace\multicolumn{5}{l}{\textit{Off-trade (at home)}} \\
+SB & $-$0.808 & 0.0351 & 0.3547 & 0.2084 \\
+Beer & $-$1.539 & 0.0656 & 7.3280 & 2.5664 \\
+Water & $-$1.986 & 0.0062 & 0.1208 & 0.1076 \\
+Dairy drinks & $-$1.055 & 0.0215 & 0.1748 & 0.1668 \\
+Hot drinks & $-$1.050 & 0.0153 & 0.0904 & 0.0931 \\
+\addlinespace\multicolumn{5}{l}{\textit{Combined market (at home + away from home)}} \\
+SB & $-$0.890 & 0.0299 & 0.3018 & 0.1766 \\
+Beer & $-$0.922 & 0.0488 & 3.7036 & 1.7662 \\
+Water & $-$1.980 & 0.0043 & 0.1204 & 0.1092 \\
+Dairy drinks & $-$1.046 & 0.0182 & 0.1710 & 0.1645 \\
+Hot drinks & $-$1.027 & 0.0122 & 0.0758 & 0.0953 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item WELCOM Table 09 is printed by \texttt{duvm} with \texttt{boot(100)}: it is the standard error of the mean of the replications, taken from a cell that does not correspond to the own-price elasticity for goods other than the first, with the first-stage regressions held fixed.
+\item Third column: standard deviation of WELCOM's own replications for the correct cell (first stage still fixed). Fourth column: the standard error used in this paper.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}

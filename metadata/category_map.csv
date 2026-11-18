@@ -1,0 +1,37 @@
+rule_version,code_prefix,category,market,quantity_basis,variant,legacy_category,note
+2026.11-v1,01140101,dairy,home,litre_or_density,primary,MilkDerivatives,Raw milk
+2026.11-v1,01140102,dairy,home,litre_or_density,primary,MilkDerivatives,Pasteurised milk
+2026.11-v1,01140103,dairy,home,litre_or_density,primary,MilkDerivatives,UHT milk
+2026.11-v1,01140104,dairy,home,none,primary,MilkDerivatives,Code absent from the DANE nomenclature; recorded by weight; spending kept and quantity not converted
+2026.11-v1,01140105,dairy,home,none,primary,MilkDerivatives,Powdered milk: sold by weight; spending kept and quantity not converted to litres
+2026.11-v1,01149903,dairy,home,litre_or_density,primary,MilkDerivatives,Yogurt (grams converted at 1.03 kg per litre)
+2026.11-v1,01149904,dairy,home,litre_or_density,primary,MilkDerivatives,Kumis (grams converted at 1.03 kg per litre)
+2026.11-v1,01149908,dairy,home,litre_or_density,primary,(not classified),Flavoured milk drinks (avena); added: it is a dairy drink
+2026.11-v1,01210205,dairy,home,litre_or_density,primary,HotDrinks,Ready-to-drink chocolate milk; moved from hot drinks to dairy drinks
+2026.11-v1,11110303,dairy,away,none,primary,MilkDerivatives,Milk served away from home; no physical quantity
+2026.11-v1,11110304,dairy,away,none,primary,MilkDerivatives,Yogurt and kumis served away from home; no physical quantity
+2026.11-v1,012101,hot,home,kilogram,primary,HotDrinks,Coffee (ground / instant / beans / extracts): sold by weight
+2026.11-v1,01210199,hot,home,none,primary,HotDrinks,Prepared coffee drinks recorded by volume; spending kept and volume not mixed with kilograms
+2026.11-v1,012102,hot,home,kilogram,primary,HotDrinks,Drinking chocolate and cocoa: sold by weight
+2026.11-v1,012103,hot,home,kilogram,primary,HotDrinks,Tea and herbal infusions: sold by weight
+2026.11-v1,111102,hot,away,none,primary,HotDrinks,Hot drinks served away from home; no physical quantity
+2026.11-v1,012201,water,home,litre,primary,Water,Bottled mineral water
+2026.11-v1,012202,water,home,litre,primary,Water,Canned or tank water
+2026.11-v1,012203,excluded,home,none,primary,Water,Ice: not drinking water (legacy counted it as water)
+2026.11-v1,012204,sb,home,litre,primary,SSB,Carbonated soft drinks
+2026.11-v1,012205,sb,home,litre,primary,SSB,Malt drinks
+2026.11-v1,012206,sb,home,litre,primary,SSB,Packaged liquid refreshments (juices / iced tea / sports drinks)
+2026.11-v1,012207,excluded,home,none,primary,(not classified),Powdered concentrates: sold by weight; included in SB spending only in the broad-SB sensitivity
+2026.11-v1,012208,sb,home,litre,primary,SSB,Energy drinks
+2026.11-v1,012209,excluded,home,none,primary,SSB,Plant-based drinks (rice / soy / almond): legacy counted them as SB; included only in the broad-SB sensitivity
+2026.11-v1,11110301,sb,away,none,primary,SSB,Soft drinks and refreshments served away from home; no physical quantity
+2026.11-v1,11110302,excluded,away,none,primary,(not classified),Fresh juices served away from home; included only in the broad-SB sensitivity
+2026.11-v1,11110305,excluded,away,none,primary,(not classified),Masato / chicha / cold oat drinks: heterogeneous and partly alcoholic
+2026.11-v1,0213,beer,home,litre,primary,Beer,Beer and bottled refajo
+2026.11-v1,0211,spirits,home,none,primary,Spirits,Spirits: collected only in the monthly-recall module without quantities
+2026.11-v1,0212,spirits,home,none,primary,Spirits,Wine: collected only in the monthly-recall module without quantities
+2026.11-v1,11110601,alc_generic,away,none,primary,Spirits,Generic code for alcoholic drinks in shops and open-air venues: split into beer or spirits only by free text
+2026.11-v1,11110501,excluded,away,none,primary,(not classified),Spending in bars and discos: mixes food / drink / cover charge
+2026.11-v1,012207,sb,home,none,broad_sb,(not classified),Broad-SB sensitivity: powdered concentrates (spending only)
+2026.11-v1,012209,sb,home,litre,broad_sb,SSB,Broad-SB sensitivity: plant-based drinks
+2026.11-v1,11110302,sb,away,none,broad_sb,(not classified),Broad-SB sensitivity: fresh juices away from home (spending only)

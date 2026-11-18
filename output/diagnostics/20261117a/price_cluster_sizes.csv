@@ -1,0 +1,4 @@
+cluster_def,clusters,households,min_size,p10_size,median_size,p90_size,max_size,harmonic_mean_size,clusters_below_5,singletons,clusters_mixing_urban_rural,clusters_spanning_quarters,clusters_spanning_months,clusters_spanning_region_cells,median_within_cluster_weight_cv
+market,486,87201,1,18,54,540,1489,30.117159774049,7,3,0,0,200,0,0.31387077829685
+segment,8460,87201,1,7,10,14,33,9.09973445168751,212,31,0,0,0,0,0.195843910979319
+seg8,384,87201,1,19,49,940,1125,28.6462481308669,6,3,0,112,115,0,0.30975517249363

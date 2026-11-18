@@ -1,13 +1,35 @@
 .Rhistory
 *.html
 !docs/*.html
-*.
+.Rproj.user
 
+# --- Raw survey inputs (immutable, never committed) ---
 /data-raw/
 !data-raw/**/*.md
 
+# --- Household-level data: interim, processed, estimation samples, bootstrap intermediates ---
+/data/interim/**
+/data/processed/**
+!/data/**/README.md
+!/data/**/.gitkeep
 
-.Rproj.user
+# --- Machine-specific configuration ---
+/config/local.yml
+
+# --- Confidential or licensed inputs ---
+/docs/*Review*
+/output/old/EstimacionesV2.xlsx
+
+# --- Run logs and LaTeX scratch (aggregates in output/estimates, tables, diagnostics, figures are kept) ---
+/output/logs/**
+!/output/logs/README.md
+/manuscript/_render/
+*.smcl
+*.stswp
+
+# --- R environment ---
+/renv/library/
+/renv/staging/
 
 # Claude Code worktrees
 .claude/worktrees/

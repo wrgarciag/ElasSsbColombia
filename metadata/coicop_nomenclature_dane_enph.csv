@@ -1,0 +1,1690 @@
+division,grupo,clase,subclase,carticulo,articulo
+01,,,,,ALIMENTOS Y BEBIDAS NO ALCOHOLICAS
+01,1,,,,ALIMENTOS
+01,1,1,,,Pan y Cereales
+01,1,1,01,,Arroz
+01,1,1,01,01,Arroz para seco
+01,1,1,01,02,Arroz para sopa
+01,1,1,01,03,Arroz integral
+01,1,1,02,,Pastas alimenticias  
+01,1,1,02,01,"Pastas o fideos para sopa: letras, conchitas, etc."
+01,1,1,02,02,"Pastas para seco: espaguetis, raviolis, macarrones, tallarines, etc."
+01,1,1,03,,Avena y sus derivados 
+01,1,1,03,01,Avena molida
+01,1,1,03,02,Avena en hojuelas
+01,1,1,04,,Cebada y sus derivados
+01,1,1,04,01,Cebada perlada
+01,1,1,04,02,Cuchuco de cebada para preparar
+01,1,1,05,,Trigo y sus derivados  
+01,1,1,05,01,Cuchuco de trigo para preparar
+01,1,1,05,02,Harina de trigo (incluye tempura)
+01,1,1,05,03,Salvado de trigo
+01,1,1,06,,Maíz y sus derivados
+01,1,1,06,01,"Maíz blanco, amarillo, trillado, peto, porva, pira, millo para preparar"
+01,1,1,06,02,Cuchuco de maíz para preparar
+01,1,1,06,03,Harina de maíz
+01,1,1,06,04,Harina precocida de maíz
+01,1,1,06,05,Fécula de maíz para preparar
+01,1,1,08,,Pan
+01,1,1,08,01,"Pan corriente, con queso,  aliñado, mogolla, relleno, pan de coco, calado, tajado, árabe., para consumo en el hogar
+"
+01,1,1,08,02,Pan francés para consumo en el hogar
+01,1,1,08,03,Pan integral para consumo en el hogar
+01,1,1,98,,"Otras harinas, cereales y almidones"
+01,1,1,98,01,"Harina para preparar tortas, natilla, buñuelos, etc."
+01,1,1,98,02,Harina para coladas 
+01,1,1,98,03,Almidones de papa o yuca
+01,1,1,98,04,Cereales para el desayuno
+01,1,1,98,05,Cereales para la alimentación infantil (papilla)
+01,1,1,98,06,"Ajonjolí, soya, quinua, sorgo (para preparar)"
+01,1,1,98,07,"Masas para la preparación de productos de panadería o pastelería  (trigo, maíz, soya)"
+01,1,1,98,08,Arepas crudas o precocidas  
+01,1,1,98,09,"Bollos y envueltos precocidos, quiches, tamales"
+01,1,1,98,10,"Gérmen de trigo, lecitina, levadura, linaza "
+01,1,1,98,11,"Comidas preparadas precocidas a base de cereales (lasagna, pizza, empanadas) "
+01,1,1,98,12,"Carne vegetal, embutidos y otros alimentos vegetarianos (a base de soya, glúten, lenteja, quinua, etc.) sin cocinar"
+01,1,1,99,,Otros productos de panadería
+01,1,1,99,01,Galletas de sal para consumo en el hogar
+01,1,1,99,02,"Galletas de dulce (de panadería y de paquete) para consumo en el hogar
+"
+01,1,1,99,03,Galletas integrales (de panadería y de paquete) para consumo en el hogar
+01,1,1,99,99,"Otros productos de panadería no mencionados previamente: brownies, obleas, ponques, bizcochos (pudines en Costa Atlántica) para consumo en el hogar"
+01,1,2,,,Carnes  
+01,1,2,01,,Carne de res y derivados
+01,1,2,01,01,Carne de res sin hueso o pulpa
+01,1,2,01,02,Carne de res con hueso
+01,1,2,01,03,Hueso de res
+01,1,2,01,04,Carne molida de res
+01,1,2,01,05,Lengua de res
+01,1,2,01,06,"Hígado, riñones, corazón, sesos, mondongo,  tripa y otras vísceras de res"
+01,1,2,01,07,"Patas, manos, cola  y cabeza de res"
+01,1,2,02,,Carne de Cerdo y Derivados
+01,1,2,02,01,Carne de cerdo sin hueso o pulpa
+01,1,2,02,02,Carne de cerdo con hueso
+01,1,2,02,03,Carne molida de cerdo
+01,1,2,02,04,Hueso de cerdo (espinazo y otros huesos)
+01,1,2,02,05,Tocino y garra
+01,1,2,02,06,"Hígado, riñones, corazón, tripa y otras vísceras de cerdo"
+01,1,2,02,07,"Patas, manos, cola  y cabeza de cerdo"
+01,1,2,03,,Carne de Aves
+01,1,2,03,01,Gallina o pollo vivo
+01,1,2,03,02,Carne de gallina o de pollo (entero o en presas)
+01,1,2,03,03,"Carne de Pavo, Pichón, Zuro, Palomo, Pato  Ganso, codorniz"
+01,1,2,03,04,Menudencias de gallina o pollo
+01,1,2,04,,Carne de otros animales 
+01,1,2,04,01,"Conejo, liebre, Curí o cuy para consumo en el hogar"
+01,1,2,04,02,"Cordero, chivo, cabro para consumo en el hogar"
+01,1,2,04,03,Chigüiro para consumo en el hogar
+01,1,2,04,04,Caballo para consumo en el hogar
+01,1,2,05,,"Carnes preparadas, charcutería y otros productos conteniendo carne"
+01,1,2,05,01,"Carne preparada de pavo, pollo,cerdo, lomo ahumado para consumo en el hogar
+"
+01,1,2,05,02,Mortadela
+01,1,2,05,03,Salchichas para consumo en el hogar
+01,1,2,05,04,Jamón y jamoneta para consumo en el hogar
+01,1,2,05,05,Chorizo para consumo en el hogar
+01,1,2,05,06,Tocineta
+01,1,2,05,07,Hamburguesa para consumo en el hogar
+01,1,2,05,09,Carnes frías enlatadas
+01,1,2,05,99,"Otros embutidos de proteina animal (longaniza, butifarra, génovas, salchichón, salami, cábanos, patés, etc) para consumo en el hogar
+"
+01,1,2,99,,Otros alimentos no especificados
+01,1,2,99,01,"Otros alimentos no especificados: Hormigas culonas, etc. "
+01,1,3,,,Pescado
+01,1,3,01,,Pescado de río
+01,1,3,01,01,Pescado de río fresco o congelado
+01,1,3,02,,Pescado y otros productos de mar 
+01,1,3,02,01,Pescado de mar fresco o congelado
+01,1,3,02,02,Camarones frescos o congelados
+01,1,3,02,03,"Pescado y crustáceos enlatados (sardinas, atún, salmón, mejillones, etc.)"
+01,1,3,02,98,"Otros mariscos, crustáceos y moluscos frescos o congelados"
+01,1,3,02,99,Otros productos de pescado y derivados para consumo en el hogar
+01,1,4,,,"Leche, queso y huevos"
+01,1,4,01,,Leche 
+01,1,4,01,01,Leche cruda para consumo en el hogar
+01,1,4,01,02,"Leche pasteurizada (entera, descremada, semidescremada, deslactosada y enriquecida) para consumo en el hogar"
+01,1,4,01,03,"Leche larga vida (entera, descremada, semidescremada, deslactosada y enriquecida) para consumo en el hogar
+"
+01,1,4,01,05,"Leche en polvo (entera, descremada, semidescremada) para consumo en el hogar
+"
+01,1,4,02,,Quesos y productos afines  
+01,1,4,02,01,Queso campesino para consumo en el hogar
+01,1,4,02,02,Queso doble crema para consumo en el hogar
+01,1,4,02,04,"Cuajada, quesillo para consumo en el hogar"
+01,1,4,02,99,"Otros quesos: pera, mozarella, paipa, parmesano, etc. para consumo en el hogar"
+01,1,4,05,,Huevos 
+01,1,4,05,01,Huevos crudos de gallina y otras aves para consumo en el hogar
+01,1,4,05,02,Huevos crudos de iguana y de tortuga para consumo en el hogar
+01,1,4,99,,Otros derivados de la leche
+01,1,4,99,01,"Leche condensada, leche condensada y evaporada y crema chantilly para consumo en el hogar"
+01,1,4,99,02,Crema de leche
+01,1,4,99,03,Yogurt para consumo en el hogar
+01,1,4,99,04,Kumis para consumo en el hogar
+01,1,4,99,05,"Suero costeño, queso crema, crema agria"
+01,1,4,99,06,Natas para consumo en el hogar
+01,1,4,99,07,Postres lácteos para consumo en el hogar
+01,1,4,99,08,"Bebidas lácteas saborizadas no achocolatadas (avena) para consumo en el hogar
+"
+01,1,5,,,Aceites y grasas 
+01,1,5,01,,Aceites comestibles
+01,1,5,01,01,"Aceite de girasol, maíz, soya y palma"
+01,1,5,01,02,Aceite de oliva 
+01,1,5,01,99,"Otros aceites comestibles: canola, cacahuete, coco, almendras, dietéticos, etc."
+01,1,5,02,,Mantequilla de vaca 
+01,1,5,02,01,Mantequilla de vaca 
+01,1,5,03,,Margarinas 
+01,1,5,03,01,Margarinas 
+01,1,5,99,,Otras grasas animales y vegetales
+01,1,5,99,01,Manteca vegetal
+01,1,5,99,02,Manteca de cerdo
+01,1,5,99,99,"Otras grasas y aceites (aceite de pescado y otros animales marinos, mantequilla de maní)"
+01,1,6,,,Frutas 
+01,1,6,01,,Frutas frescas
+01,1,6,01,01,Naranjas
+01,1,6,01,02,Limones
+01,1,6,01,03,Mandarinas
+01,1,6,01,04,Toronjas
+01,1,6,01,05,Limas
+01,1,6,01,06,Cidras
+01,1,6,01,07,Bananos
+01,1,6,01,08,Manzanas
+01,1,6,01,09,Peras
+01,1,6,01,10,Melones
+01,1,6,01,11,Mango
+01,1,6,01,12,Guayabas
+01,1,6,01,13,Guanábanas
+01,1,6,01,14,Zapotes
+01,1,6,01,15,Tamarindo
+01,1,6,01,16,Tomate de árbol
+01,1,6,01,17,Moras
+01,1,6,01,18,Curubas
+01,1,6,01,19,Maracuyá
+01,1,6,01,20,Lulos
+01,1,6,01,21,Patilla o sandía
+01,1,6,01,22,Granadillas
+01,1,6,01,23,Piña
+01,1,6,01,24,Papaya
+01,1,6,01,25,Papayuela
+01,1,6,01,26,Uvas (verdes y rojas)
+01,1,6,01,27,Fresas
+01,1,6,01,28,Cocos
+01,1,6,01,29,Albaricoques
+01,1,6,01,30,Brevas
+01,1,6,01,31,Duraznos
+01,1,6,01,32,Chontaduros
+01,1,6,01,33,Ciruelas
+01,1,6,01,34,Aguacate
+01,1,6,01,35,Mangostino
+01,1,6,01,36,Kiwi
+01,1,6,01,37,Feijoa
+01,1,6,01,38,Higo
+01,1,6,01,39,Chirimoya
+01,1,6,01,99,Otras frutas frescas 
+01,1,6,02,,Frutas congeladas o en pulpa
+01,1,6,02,01,Frutas congeladas o en pulpa
+01,1,6,03,,"Frutos secos y nueces, cáscaras de frutas y semillas comestibles"
+01,1,6,03,01,"Almendras y otras nueces (maní, cacahuete, pistacho, etc) para consumo en el hogar"
+01,1,6,03,02,"Frutas deshidratadas y cristalizadas: peras, uvas y ciruelas pasas, etc para consumo en el hogar"
+01,1,6,04,,Frutas en conserva
+01,1,6,04,01,"Frutas en conserva: melocotón, piña, brevas, lychees, etc. para consumo en el hogar"
+01,1,7,,,Legumbres 
+01,1,7,01,,Hortalizas y legumbres frescas
+01,1,7,01,01,Tomate
+01,1,7,01,02,Cebolla cabezona
+01,1,7,01,03,"Cebolla larga o en rama (bermuda, junca)"
+01,1,7,01,04,Cebollin  
+01,1,7,01,05,Zanahoria
+01,1,7,01,06,Remolacha
+01,1,7,01,07,Pepino Cohombro
+01,1,7,01,08,Pimentón
+01,1,7,01,09,Pepino para guisar o rellenar
+01,1,7,01,10,Nabos
+01,1,7,01,11,Rábanos
+01,1,7,01,12,Ajos
+01,1,7,01,13,Ají
+01,1,7,01,14,Lechuga
+01,1,7,01,15,Espinaca
+01,1,7,01,16,Acelga
+01,1,7,01,17,"Repollo, Repollitas"
+01,1,7,01,19,Coliflor
+01,1,7,01,20,Brócoli  
+01,1,7,01,21,Coles (tallos)
+01,1,7,01,22,Apio en rama
+01,1,7,01,23,Alcachofas 
+01,1,7,01,24,Espárragos 
+01,1,7,01,25,Ahuyama
+01,1,7,01,26,Calabaza
+01,1,7,01,27,Calabacín
+01,1,7,01,28,Fríjol verde en vaina 
+01,1,7,01,29,Fríjol verde desgranado
+01,1,7,01,30,Arveja verde en vaina
+01,1,7,01,31,Arveja verde desgranada
+01,1,7,01,32,Habas verdes en vaina 
+01,1,7,01,33,Habas verdes desgranadas
+01,1,7,01,34,Habichuelas
+01,1,7,01,35,Mazorcas y maíz dulce para consumo en el hogar
+01,1,7,01,36,Berenjenas
+01,1,7,01,37,Champiñones y otros hongos comestibles para consumo en el hogar
+01,1,7,01,39,Verduras frescas amarradas (macitos de la costa atlántica)
+01,1,7,01,40,"Ensalada o Verduras picadas en bandeja, en bolsa o tarro (revuelto verde) para consumo en el hogar"
+01,1,7,01,99,"Otras verduras y leguminosas frescas: berros, chachafruto, algas comestibles, etc"
+01,1,7,02,,Legumbres secas
+01,1,7,02,01,"Fríjol seco: bolaroja, cargamanto, guarzo, guandul, zaragoza, blanquillo, etc."
+01,1,7,02,02,Arveja seca
+01,1,7,02,03,Habas secas para consumo en el hogar
+01,1,7,02,04,Lentejas
+01,1,7,02,05,Garbanzos
+01,1,7,03,,Legumbres y hortalizas en conserva y deshidratadas
+01,1,7,03,01,"Verduras, hortalizas y legumbres enlatadas: arveja, fríjoles, maíz, espárrago, zanahoria, habichuelas, ensalada"
+01,1,7,03,02,"Aceitunas, alcaparras, pepinillos y otros encurtidos en tarro"
+01,1,7,03,03,Legumbres y hortalizas deshidratadas
+01,1,7,04,,Plátanos
+01,1,7,04,01,Plátano verde para consumo en el hogar
+01,1,7,04,02,Plátano maduro  para consumo en el hogar
+01,1,7,04,03,"Colicero, guineo, mataburro"
+01,1,7,05,,Papas
+01,1,7,05,01,"Papa común: pastusa, tocarreña, R12"
+01,1,7,05,02,Papa criolla o amarilla
+01,1,7,06,,Yuca para consumo en el hogar
+01,1,7,06,01,Yuca para consumo en el hogar
+01,1,7,07,,Arracacha
+01,1,7,07,01,Arracacha
+01,1,7,08,,Ñame
+01,1,7,08,01,Ñame
+01,1,7,09,,"Ullucos, cubios, hibias, chuguas, rubas"
+01,1,7,09,01,"Ullucos, cubios, hibias, chuguas, rubas"
+01,1,7,11,,"Productos derivados de los tubérculos, raíces y plátanos "
+01,1,7,11,01,"Papa, yuca y plátano precocidos "
+01,1,7,11,02,"Harina de plátano, de yuca, de achiras, puré de papas"
+01,1,7,99,,"Otras raíces y tubérculos: mafafa, achira, batata, etc"
+01,1,7,99,01,"Otras raíces y tubérculos: mafafa, achira, batata, etc"
+01,1,8,,,"Azúcar, mermelada, miel, chocolate y dulces de azúcar "
+01,1,8,01,,Azúcar y otros endulzantes
+01,1,8,01,01,Azúcar refinada
+01,1,8,01,02,Azúcar natural o morena
+01,1,8,01,03,"Endulzantes dietéticos: aspartame, fructosa, sucralosa, otras"
+01,1,8,02,,Panela cruda para consumo en el hogar
+01,1,8,02,01,Panela cruda para consumo en el hogar
+01,1,8,03,,"Jaleas, mermeladas, miel y similares"
+01,1,8,03,01,Jaleas y mermeladas
+01,1,8,03,02,Compotas para consumo en el hogar
+01,1,8,03,03,Bocadillos para consumo en el hogar
+01,1,8,03,04,Arequipe para consumo en el hogar
+01,1,8,03,05,"Herpos, tumes y otros dulces de arequipe y bocadillo para consumo en el hogar"
+01,1,8,03,06,Gelatina de pata negra o blanca para consumo en el hogar
+01,1,8,03,07,"Gelatinas, flanes y pudines,en vaso listos para el consumo en el hogar"
+01,1,8,03,08,"Miel de abejas, maple o arce, melazas y almíbares"
+01,1,8,04,,"Pasta de chocolate para ponqué, cobertura de chocolate y crema de avellana y cacao (Nutella)"
+01,1,8,04,01,"Pasta de chocolate para ponqué, cobertura de chocolate y crema de avellana y cacao (Nutella)"
+01,1,8,05,,"Dulces, confites, caramelos, bombones, chocolatinas, chicles, masmelos, cocadas para consumo en el hogar"
+01,1,8,05,01,"Dulces, confites, caramelos, bombones, chocolatinas, chicles, masmelos, cocadas para consumo en el hogar"
+01,1,8,06,,"Helados, conos, paletas, vasitos, refrescos congelados y tortas heladas para consumo en el hogar"
+01,1,8,06,01,"Helados, conos, paletas, vasitos, refrescos congelados y tortas heladas para consumo en el hogar"
+01,1,8,07,,"Gelatinas, flanes y pudines en polvo para preparar"
+01,1,8,07,01,"Gelatinas, flanes y pudines en polvo para preparar"
+01,1,8,08,,Polvo para preparar helados
+01,1,8,08,01,Polvo para preparar helados
+01,1,9,,,Productos alimenticios no incluidos anteriormente
+01,1,9,01,,"Salsas, pastas y aderezos"
+01,1,9,01,01,Salsa de tomate
+01,1,9,01,02,Mayonesa
+01,1,9,01,03,"Mostaza, salsa rosada"
+01,1,9,01,04,Pasta de tomate
+01,1,9,01,06,Vinagre
+01,1,9,01,99,"Otras salsas: salsa de soya, salsa china, salsa tártara, salsa de ají, ají picante, etc"
+01,1,9,02,,Sal  
+01,1,9,02,01,Sal  
+01,1,9,03,,Condimentos  
+01,1,9,03,01,Cominos
+01,1,9,03,02,Pimienta
+01,1,9,03,03,Laurel 
+01,1,9,03,04,Tomillo
+01,1,9,03,05,Color
+01,1,9,03,06,"Ajo en polvo o en pasta, canela, clavos, nuez moscada"
+01,1,9,04,,"Hierbas culinarias: perejil, cilantro, romero, orégano, etc."
+01,1,9,04,01,"Hierbas culinarias: perejil, cilantro, romero, orégano, etc."
+01,1,9,05,,"Sopas, cremas, caldos y consomés  "
+01,1,9,05,01,"Sopas: de vegetales, de carne, de pollo, de pescado, cremas de sobre, sopas para bebé para consumo en el hogar
+"
+01,1,9,05,02,Caldos y consomés concentrados (cubos y polvo) 
+01,1,9,05,03,Bases para preparar carnes y otros alimentos
+01,1,9,06,,"Frituras: papas fritas, chitos, maizitos, patacones, besitos, etc, para consumo en el hogar"
+01,1,9,06,01,"Frituras: papas fritas, chitos, maizitos, patacones, besitos, etc"
+01,1,9,07,,Levaduras y esencias (polvo para hornear)
+01,1,9,07,01,Levaduras y esencias (polvo para hornear)
+01,1,9,09,,Mercados sin especificar productos
+01,1,9,09,01,Mercados sin especificar productos
+01,1,9,10,,Anchetas
+01,1,9,10,01,Anchetas
+01,1,9,11,,Leche en polvo para lactantes
+01,1,9,11,01,Leche en polvo para lactantes
+01,1,9,99,,"Otros alimentos precocidos y preparados: ajiaco, lenteja, frijol, lechona enlatada y similares"
+01,1,9,99,01,"Otros alimentos precocidos y preparados: ajiaco, lenteja, frijol, lechona enlatada y similares"
+01,2,,,,BEBIDAS NO ALCOHOLICAS
+01,2,1,,,"Café, té y cacao "
+01,2,1,01,,Café y productos a base de café
+01,2,1,01,01,Café molido
+01,2,1,01,02,Café o crema instantáneo en polvo o granulado
+01,2,1,01,03,Café en grano
+01,2,1,01,05,Extractos y esencias de café
+01,2,1,01,99,"Otras bebidas preparadas a base de café: capuchino, mocachino, café con leche, café en lata para consumo en el hogar"
+01,2,1,02,,Chocolate y productos a base de chocolate
+01,2,1,02,01,Chocolate en pastillas (con y sin azúcar)
+01,2,1,02,02,Chocolate instantáneo en polvo o granulado
+01,2,1,02,03,Cocoa y chucula  
+01,2,1,02,04,Polvo para preparar bebidas achocolatadas
+01,2,1,02,05,Bebidas achocolatadas listas para consumir
+01,2,1,03,,Té e infusiones (para bebidas calientes)
+01,2,1,03,01,Té en polvo (para preparar)
+01,2,1,03,02,"Hierbas aromáticas (secas y frescas), mate para consumo en el hogar
+"
+01,2,2,,,"Aguas minerales, refrescos, jugos de frutas y de legumbres (ND)"
+01,2,2,01,,Agua mineral (con y sin gas) para consumo en el hogar
+01,2,2,01,01,Agua mineral (con y sin gas) para consumo en el hogar
+01,2,2,02,,Agua en lata o de carrotanque
+01,2,2,02,01,Agua en lata o de carrotanque
+01,2,2,03,,Hielo 
+01,2,2,03,01,Hielo 
+01,2,2,04,,Gaseosas para consumo en el hogar
+01,2,2,04,01,Gaseosas para consumo en el hogar
+01,2,2,05,,Maltas para consumo en el hogar
+01,2,2,05,01,Maltas para consumo en el hogar
+01,2,2,06,,"Refrescos líquidos empacados (jugos, té fríos y bebidas hidratantes)"
+01,2,2,06,01,"Refrescos líquidos empacados (jugos, té fríos y bebidas hidratantes) para consumo en el hogar"
+01,2,2,07,,Concentrados para preparar refrescos
+01,2,2,07,01,Concentrados para preparar refrescos
+01,2,2,08,,"Bebidas energizantes (a base de glucosa, guaraná, cafeína, entre otros) para consumo en el hogar"
+01,2,2,08,01,"Bebidas energizantes (a base de glucosa, guaraná, cafeína, entre otros) para consumo en el hogar"
+01,2,2,09,,"Bebidas a base de arroz, soya, coco, quinua, almendra, etc (horchata, yogurt vegetariano) para consumo en el hogar"
+01,2,2,09,01,"Bebidas a base de arroz, soya, coco, quinua, almendra, etc (horchata, yogurt vegetariano) para consumo en el hogar"
+02,,,,,"BEBIDAS ALCOHÓLICAS, TABACO Y ESTUPEFACIENTES"
+02,1,,,,BEBIDAS ALCOHÓLICAS
+02,1,1,,,Bebidas destiladas 
+02,1,1,01,,Aguardiente
+02,1,1,01,01,Aguardiente para consumo en el hogar
+02,1,1,02,,Ron
+02,1,1,02,01,Ron para consumo en el hogar
+02,1,1,03,,"Whisky, brandy, vodka, ginebra, cognac, tequila"
+02,1,1,03,01,"Whisky, brandy, vodka, ginebra, cognac, tequila y similares para consumo en el hogar"
+02,1,1,04,,"Cremas de licor (de amareto, de whisky, etc.), sabajón y ponche crema para consumo en el hogar"
+02,1,1,04,01,"Cremas de licor (de amareto, de whisky, etc.), sabajón y ponche crema para consumo en el hogar"
+02,1,1,99,,Otras bebidas alcohólicas
+02,1,1,99,01,"Otras bebidas alcohólicas: aperitivos que no sean a base de vino, mezclas de cocteles para consumo en el hogar"
+02,1,2,,,Vino
+02,1,2,01,,"Vino, champaña, jerez y aperitivos a base de vino para consumo en el hogar
+"
+02,1,2,01,01,"Vino, champaña, jerez y aperitivos a base de vino para consumo en el hogar
+"
+02,1,3,,,Cerveza
+02,1,3,01,,Cerveza y refajo
+02,1,3,01,01,Cerveza nacional e importada para consumo en el hogar
+02,1,3,01,02,"Refajo preparado (embotellado o enlatado) para consumo en el hogar
+"
+02,2,,,,TABACO
+02,2,0,,,Tabaco 
+02,2,0,01,,"Cigarrillos, tabaco y derivados"
+02,2,0,01,01,Cigarrillos con filtro
+02,2,0,01,02,Cigarrillos sin filtro
+02,2,0,01,03,Tabacos y picadura para pipa o para armar cigarrillos
+02,3,,,,ESTUPEFACIENTES
+02,3,0,,,Estupefacientes
+02,3,0,01,,Estupefacientes
+02,3,0,01,01,"Estupefacientes: cocaína, éxtasis, heroína, marihuana, bazuco, crack, etc."
+03,,,,,PRENDAS DE VESTIR Y CALZADO
+03,1,,,,PRENDAS DE VESTIR
+03,1,1,,,Materiales para prendas de vestir 
+03,1,1,01,,"Telas y materiales (fibras naturales o sinteticas) para la confección de ropa de hombre, mujer, niño, niña y bebé 
+"
+03,1,1,01,01,"Telas y materiales (fibras naturales o sinteticas) para la confección de ropa de hombre, mujer, niño, niña y bebé "
+03,1,2,,,Prendas de vestir 
+03,1,2,01,,Prendas de vestir para hombre
+03,1,2,01,01,Camisas para hombre
+03,1,2,01,02,"Camisetas, franelas, esqueletos, polos para hombre"
+03,1,2,01,03,"Calzoncillos, pantaloncillos, boxer para hombre"
+03,1,2,01,04,Medias y calcetines para hombre
+03,1,2,01,05,Pantalones para hombre
+03,1,2,01,06,Jeans para hombre
+03,1,2,01,07,"Bermudas, pantalonetas y pantalón corto para hombre"
+03,1,2,01,08,"Vestido completo (sólo pantalón, chaqueta y/o chaleco) para hombre"
+03,1,2,01,09,"Blazers, chaquetas, chaquetones, chompas y sacos de sport en paño, cuero, gamuza y otros materiales para hombre"
+03,1,2,01,10,"Buzos, chalecos, sacos de lana y similares para hombre"
+03,1,2,01,11,"Gabardinas, gabanes, abrigos y sobretodos para hombre"
+03,1,2,01,12,Capas e impermeables para hombre
+03,1,2,01,13,"Sudaderas, trusas y bicicleteros para hombre"
+03,1,2,01,14,Pantalonetas de baño para hombre
+03,1,2,01,15,Pijamas y batas para hombre
+03,1,2,01,99,Otros artículos de vestir para hombre (depotivos y formales)
+03,1,2,02,,Prendas de vestir para mujer
+03,1,2,02,01,Blusas y camisas para mujer
+03,1,2,02,02,"Camisetas, franelas y bodies para mujer"
+03,1,2,02,03,"Pantalones, slacks y leggins "
+03,1,2,02,04,"Shorts, bermudas y pantalonetas para mujer"
+03,1,2,02,05,Jeans para mujer
+03,1,2,02,06,Faldas para mujer
+03,1,2,02,07,"Brassieres, tops y sostenes para mujer"
+03,1,2,02,08,Pantys (interiores) para mujer
+03,1,2,02,09,Media de lana y otros materiales diferente a velada para mujer
+03,1,2,02,10,Medias veladas para mujer
+03,1,2,02,11,"Enaguas, fondos y combinaciones para mujer"
+03,1,2,02,12,Vestidos confeccionados para mujer
+03,1,2,02,13,"Buzos, chalecos, sacos de lana y similares, sacos de sport en cuero, paño, gamuza y otros materiales"
+03,1,2,02,14,"Blazers, chaquetas, chaquetones y sacos de sport en paño, cuero, gamuza y otros materiales para mujer"
+03,1,2,02,15,"Gabardinas, gabanes, abrigos y sobretodos para mujer"
+03,1,2,02,16,Capas e impermeables para mujer
+03,1,2,02,17,"Sudaderas, trusas y bicicleteros para mujer"
+03,1,2,02,18,Trajes de baño para mujer
+03,1,2,02,19,Pijamas y batas para mujer
+03,1,2,02,99,Otros artículos de vestir para mujer (deportivos y formales) 
+03,1,2,03,,Prendas de vestir para niño
+03,1,2,03,01,Camisas para niño
+03,1,2,03,02,"Camisetas, franelas, esqueletos, polos para niño"
+03,1,2,03,03,"Calzoncillos, pantaloncillos, boxer para niño"
+03,1,2,03,04,Medias y calcetines para niño
+03,1,2,03,05,Pantalones para niño
+03,1,2,03,06,Jeans para niño
+03,1,2,03,07,"Bermudas, pantalonetas y pantalón corto para niño"
+03,1,2,03,08,"Vestido completo (sólo pantalón, chaqueta y/o chaleco) para niño"
+03,1,2,03,09,"Blazers, chaquetas, chompas y sacos de sport en paño, cuero, gamuza y otros materiales para niño"
+03,1,2,03,10,"Buzos, chalecos, sacos de lana y similares para niño"
+03,1,2,03,11,"Gabardinas, gabanes, abrigos y sobretodo para niño"
+03,1,2,03,12,Capas e impermeables para niño
+03,1,2,03,13,"Sudaderas, trusas y bicicleteros para niño"
+03,1,2,03,14,Pantalonetas de baño para niño
+03,1,2,03,15,Pijamas y batas para niño
+03,1,2,03,99,Otros artículos de vestir para niño (deportivos y formales)
+03,1,2,04,,Prendas de vestir para niña
+03,1,2,04,01,Blusas y camisas para niña
+03,1,2,04,02,"Camisetas, franelas y bodies para niña"
+03,1,2,04,03,"Pantalones, slacks y leggins para niña"
+03,1,2,04,04,"Shorts, bermudas y pantalonetas para niña"
+03,1,2,04,05,Jeans para niña
+03,1,2,04,06,Faldas para niña
+03,1,2,04,07,Vestidos confeccionados para niña
+03,1,2,04,08,"Enaguas, fondos, combinaciones para niña"
+03,1,2,04,09,Pantys (interiores) para niña
+03,1,2,04,10,"Brassieres, sostenes, tops  y acostumbradores para niña"
+03,1,2,04,11,"Media tobillera, media pantalón, media media (velada, de lana y otros materiales) para niña"
+03,1,2,04,12,"Buzos, chalecos, sacos de lana y similares para niña"
+03,1,2,04,13,"Blazers, chaquetas, chaquetones y sacos de sport en paño, cuero, gamuza y otros materiales para niña"
+03,1,2,04,14,"Gabardinas, gabanes, abrigos y sobretodos para niña"
+03,1,2,04,15,Capas e impermeables para niña
+03,1,2,04,16,"Sudaderas, trusas y bicicleteros para niña"
+03,1,2,04,17,Traje de baño para niña
+03,1,2,04,18,Pijamas y batas para niña
+03,1,2,04,99,Otros artículos de vestir para niña (deportivos y formales)
+03,1,2,05,,Prendas de vestir para bebés
+03,1,2,05,01,"Camisas, franelas para bebé"
+03,1,2,05,02,"Vestidos confeccionados, mamelucos, etc. para bebé"
+03,1,2,05,03,"Escarpines, patines, mitones, zapatos de tela, medias, gorritos y bufandas para bebé"
+03,1,2,05,04,Pijamas y talegos de dormir para bebé
+03,1,2,05,05,"Buzos, ruanas, sacos de lana y similares para bebé"
+03,1,2,05,06,Pañales de tela para bebé
+03,1,2,05,07,"Pantalones de tela, plástico, caucho y similares para bebé"
+03,1,2,05,08,Fajeros y cambiadores 
+03,1,2,05,99,Otros artículos de vestir para bebé
+03,1,2,06,,Uniformes
+03,1,2,06,01,"Uniformes (diario, gala, deportes)"
+03,1,3,,,Otros artículos y accesorios de vestir 
+03,1,3,97,,Otros artículos y accesorios de vestir para hombre 
+03,1,3,97,01,Corbatas y corbatines para hombre
+03,1,3,97,02,"Correas, tirantas y calzonarias para hombre"
+03,1,3,97,03,Pañuelos y pañoletas para hombre
+03,1,3,97,04,Ruanas y ponchos para hombre
+03,1,3,97,05,"Bufandas, pashiminas y guantes para hombre"
+03,1,3,97,06,"Sombreros, gorros, cachuchas, boinas, viseras para hombre"
+03,1,3,98,,Otros artículos y accesorios de vestir para mujer
+03,1,3,98,01,Pañuelos y pañoletas para mujer
+03,1,3,98,02,Cinturones y tirantas para mujer
+03,1,3,98,03,"Ruanas, chales, pañolones y ponchos para mujer"
+03,1,3,98,04,"Bufandas, pashminas y guantes para mujer"
+03,1,3,98,05,"Sombreros, gorros, cachuchas, boinas, viseras para mujer"
+03,1,3,99,,Otros artículos de vestir para adulto y para bebé y materiales para hacer prendas de vestir
+03,1,3,99,01,"Guantes de jardinería o de trabajo en material diferente a caucho (nylon, lycra, hilo, mitrillo, etc.); careta, tapones de oidos, lentes de seguridad."
+03,1,3,99,02,Cascos protectores para ciclista y motociclista
+03,1,3,99,03,"Hilos, cremalleras, botones, metro de costura, hombreras, encajes, broches, ganchos para ropa, hebillas, cordones y caucho para ropa  cintas, ribetes"
+03,1,3,99,04,"Baberos, broches y ganchos para bebé"
+03,1,3,99,05,"Madejas de lana y otros materiales para coser, tejer y bordar"
+03,1,4,,,"Limpieza, reparaciones y alquiler de prendas de vestir   "
+03,1,4,01,,Confección y reparación de prendas de vestir
+03,1,4,01,01,"Confección y reparación de prendas de vestir en general (hombre, mujer, niños, niñas, bebés) "
+03,1,4,01,02,Teñido de prendas de vestir  
+03,1,4,02,,Lavado y planchado de ropa
+03,1,4,02,01,"Lavado y planchado de ropa fuera del hogar (en lavandería, otro hogar u establecimiento)"
+03,1,4,03,,Alquiler de prendas de vestir
+03,1,4,03,01,"Alquiler de prendas de vestir en general (hombre mujer, niños, niñas y bebés)"
+03,2,,,,CALZADO
+03,2,1,,,Zapatos y otros calzados 
+03,2,1,01,,Calzado para hombre
+03,2,1,01,01,"Zapatos en cuero, caucho, goma y similares para hombre"
+03,2,1,01,02,"Botas en cuero, caucho, goma y similares para hombre"
+03,2,1,01,03,"Tenis, zapatillas y otros zapatos deportivos para hombre (excluyendo zapatos para deportes específicos equipados con cuchillas, ruedas, clavos, tacos, taches)"
+03,2,1,01,04,"Pantuflas, sandalias, abuelitas, chanclas, cotizas y alpargatas para hombre"
+03,2,1,02,,Calzado para mujer
+03,2,1,02,01,"Calzado plano en cuero, caucho, goma y similares para mujer"
+03,2,1,02,02,"Calzado de tacón en cuero, caucho, goma y similares para mujer"
+03,2,1,02,03,"Botas en cuero, caucho, goma y similares para mujer"
+03,2,1,02,04,"Tenis, zapatillas y otros zapatos deportivos para mujer (excluyendo zapatos para deportes específicos equipados con cuchillas, ruedas, clavos, tacos, taches)"
+03,2,1,02,05,"Pantuflas, sandalias, abuelitas, chanclas, cotizas y alpargatas para mujer"
+03,2,1,03,,Calzado para niño
+03,2,1,03,01,"Zapatos en cuero, caucho, goma y similares para niño"
+03,2,1,03,02,"Botas en cuero, caucho, goma y similares para niño"
+03,2,1,03,03,"Tenis, zapatillas y otros zapatos deportivos para niño (excluyendo zapatos para deportes específicos equipados con cuchillas, ruedas, clavos, tacos, taches)"
+03,2,1,03,04,"Pantuflas, sandalias, abuelitas, chanclas, cotizas y alpargatas para niño"
+03,2,1,04,,Calzado para niña
+03,2,1,04,01,"Calzado plano en cuero, caucho, goma y similares para niña"
+03,2,1,04,02,"Calzado de tacón en cuero, caucho, goma y similares para niña"
+03,2,1,04,03,"Botas en cuero, caucho, goma y similares para niña"
+03,2,1,04,04,"Tenis, zapatillas y otros zapatos deportivos para niña (excluyendo zapatos para deportes específicos equipados con cuchillas, ruedas, clavos, tacos, taches)"
+03,2,1,04,05,"Pantuflas, sandalias, abuelitas, chanclas, cotizas y alpargatas para niña"
+03,2,1,05,,Calzado para bebé
+03,2,1,05,01,"Calzado para bebé: zapatos, botas y tenis  "
+03,2,1,06,,Accesorios para calzado
+03,2,1,06,01,"Accesorios para calzado: Plantillas, hormas, adaptadores para calzado y calzadores"
+03,2,2,,,Reparación y alquiler de calzado 
+03,2,2,01,,Lustrado y limpieza de zapatos 
+03,2,2,01,01,Lustrado y limpieza de zapatos 
+03,2,2,02,,Reparación de calzado
+03,2,2,02,01,"Reparación de calzado: remonta, tapas, costuras, etc"
+03,2,2,03,,Alquiler de calzado diferente al calzado para deporte y recreación
+03,2,2,03,01,Alquiler de calzado diferente al calzado para deporte y recreación
+04,,,,,"ALOJAMIENTO, AGUA, ELECTRICIDAD, GAS Y OTROS COMBUSTIBLES"
+04,1,,,,ALQUILERES EFECTIVOS DE ALOJAMIENTO
+04,1,1,,,Alquileres efectivos pagados por los inquilinos 
+04,1,1,01,,Arriendo de la vivienda donde reside 
+04,1,1,01,01,Arriendo de la vivienda donde reside 
+04,1,2,,,Otros alquileres efectivos 
+04,1,2,01,,"Arriendo por viviendas para uso del hogar diferentes a la que habita, (no incluye  los servicios de alojamiento ofrecidos por aldeas y centros de vacaciones)
+"
+04,1,2,01,01,"Arriendo por viviendas para uso del hogar diferentes a la que habita, (no incluye  los servicios de alojamiento ofrecidos por aldeas y centros de vacaciones)
+"
+04,2,,,,ALQUILERES IMPUTADOS DEL ALOJAMIENTO
+04,2,1,,,Alquileres imputados de los propietarios ocupantes 
+04,2,1,01,,Estimación del arriendo imputado de la vivienda propia 
+04,2,1,01,01,Estimación del arriendo imputado de la vivienda propia 
+04,2,2,,,Otros alquileres imputados
+04,2,2,99,,Otros arriendos imputados
+04,2,2,99,02,Arriendos imputados por alquiler reducido o alojamiento gratuito o en usufructo
+04,2,2,99,03,Arriendos imputados por vivienda dada como salario en especie
+04,3,,,,CONSERVACIÓN Y REPARACIÓN DE LA VIVIENDA
+04,3,1,,,Materiales para la conservación y la reparación de la vivienda 
+04,3,1,01,,Materiales para la conservación y la reparación de la vivienda
+04,3,1,01,01,Pinturas y barnices para vivienda      
+04,3,1,01,02,"Recubrimientos para paredes (papel de colgadura, textiles, fibra de vidrio, piedra decorativa, etc.)"
+04,3,1,01,03,"Baldosas, porcelanato,celosías, mármoles, cerámicas, vinilos, cenefas de enchape (para interiores y para baño y cocina)"
+04,3,1,01,04,Vidriería para puertas y ventanas
+04,3,1,01,05,"Yeso, cemento, masilla, pegantes, siliconas"
+04,3,1,01,06,"Tubos para el agua, grifos, codos, sifones, etc."
+04,3,1,01,07,"Maderas pulidas y lacadas, parqué, maderas burdas, tablas, tablones "
+04,3,1,01,08,Puertas y ventanas (incluye corredizas y tipo cancel)
+04,3,1,01,99,"Otros materiales para la conservación y la reparación de la vivienda: tejas, cielo raso, drywall, canaletas, tanque de agua, etc"
+04,3,2,,,Servicios para la conservación y reparación de la vivienda 
+04,3,2,01,,Mantenimiento y reparación de aire acondicionado y calefacción
+04,3,2,01,01,Mantenimiento y reparación de aire acondicionado y calefacción
+04,3,2,02,,Mantenimiento y reparación de cañerías de agua y ductos e instalaciones de gas
+04,3,2,02,01,Mantenimiento y reparación de cañerías de agua y ductos e instalaciones de gas
+04,3,2,04,,Mantenimiento y reparación de redes eléctricas y telefónicas
+04,3,2,04,01,Mantenimiento y reparación de redes eléctricas y telefónicas
+04,3,2,05,,"Mantenimiento y reparación de techos, paredes y pisos"
+04,3,2,05,01,"Mantenimiento y reparación de techos, paredes y pisos"
+04,3,2,06,,Limpieza de exteriores de la vivienda
+04,3,2,06,01,Limpieza de exteriores  de la vivienda
+04,3,2,07,,Adoquinado y revestimiento menores de suelos de la vivienda
+04,3,2,07,01,Adoquinado y revestimiento menores de suelos de la vivienda
+04,3,2,99,,"Otros servicios para el mantenimiento y reparación de la vivienda: cerrajería, pintura, enchape, carpintería, ebanistería, decoración, etc."
+04,3,2,99,01,"Otros servicios para el mantenimiento y reparación de la vivienda: cerrajería, pintura, enchape, carpintería, ebanistería, decoración, etc."
+04,4,,,,SUMINISTRO DE AGUA Y SERVICIOS DIVERSOS RELACIONADOS CON  LA VIVIENDA
+04,4,1,,,Suministro de agua 
+04,4,1,01,,Suministro de agua 
+04,4,1,01,01,"Instalación, conexión, contador de agua"
+04,4,1,01,02,Servicio de acueducto
+04,4,1,01,03,Reconexión del servicio de acueducto
+04,4,2,,,Recogida de basura
+04,4,2,01,,Recogida de basuras
+04,4,2,01,01,Servicio público de recolección de basuras y aseo
+04,4,2,01,02,Pagos a recogedor de basuras y desechos
+04,4,3,,,Alcantarillado
+04,4,3,01,,Alcantarillado 
+04,4,3,01,01,Instalación o conexión al servicio de alcantarillado  
+04,4,3,01,02,Servicio de alcantarillado
+04,4,4,,,Otros servicios relacionados con la vivienda 
+04,4,4,01,,Servicios relacionados con la copropiedad 
+04,4,4,01,01,Cuotas de administración de la vivienda para uso del hogar
+04,4,4,01,02,Cuotas extraordinarias de administración
+04,4,4,01,03,Celaduría comunal
+04,4,4,01,04,Mantenimiento y reparación de ductos de ascensor
+04,4,4,02,,Gastos de conservación en jardinería
+04,4,4,02,01,Gastos de conservación en jardinería
+04,5,,,,"ELECTRICIDAD, GAS Y OTROS COMBUSTIBLES"
+04,5,1,,,Electricidad 
+04,5,1,01,,Electricidad 
+04,5,1,01,01,"Instalación, conexión y contador del servicio de energía eléctrica"
+04,5,1,01,02,Servicio de energía eléctrica
+04,5,1,01,03,Reconexión del servicio de energía eléctrica
+04,5,1,01,04,Servicio de alumbrado público
+04,5,2,,,Gas 
+04,5,2,01,,Compra de gas propano en pipeta o cilindro
+04,5,2,01,01,Compra de gas propano en pipeta o cilindro
+04,5,2,02,,Gas natural
+04,5,2,02,01,"Instalación, conexión y contador del servicio de gas natural  "
+04,5,2,02,02,Servicio de gas natural por tubería
+04,5,2,02,03,Reconexión del servicio de gas natural
+04,5,3,,,Combustibles líquidos 
+04,5,3,01,,"Combustibles líquidos para cocinar: gasolina, kerosene, petróleo, alcohol, etc.  "
+04,5,3,01,01,"Combustibles líquidos para cocinar: gasolina, kerosene, petróleo, alcohol, etc.  "
+04,5,4,,,Combustibles sólidos 
+04,5,4,01,,"Combustibles sólidos para cocinar: leña, carbón vegetal, carbón mineral, etc."
+04,5,4,01,01,"Combustibles sólidos para cocinar: leña, carbón vegetal, carbón mineral, etc."
+05,,,,,"MUEBLES, ARTICULOS PARA EL HOGAR Y PARA LA CONSERVACIÓN ORDINARIA DEL HOGAR"
+05,1,,,,"MUEBLES Y ACCESORIOS, ALFOMBRAS Y OTROS MATERIALES PARA PISOS"
+05,1,1,,,Muebles y accesorios 
+05,1,1,01,,Muebles
+05,1,1,01,01,Cama sencilla 
+05,1,1,01,02,"Cama semidoble, doble, king size, base cama y cama nido
+"
+05,1,1,01,03,Cunas y corral para bebé
+05,1,1,01,04,Juego completo de muebles de alcoba
+05,1,1,01,05,Juego completo de muebles de sala
+05,1,1,01,06,Juego completo de muebles de comedor
+05,1,1,01,07,Gabinetes de baño
+05,1,1,01,08,Cocina integral
+05,1,1,01,09,Muebles y gabinetes para cocina
+05,1,1,01,10,Escritorios y mesas de dibujo
+05,1,1,01,11,Muebles para computador o centros de entretenimiento
+05,1,1,01,12,"Colchones, somiers y colchonetas "
+05,1,1,01,13,"Bases para colchón, catres, camarotes, literas"
+05,1,1,01,14,"Sillas, sillones, sofás, sofacamas"
+05,1,1,01,15,"Asientos como: mecedoras, butacos, bancas, asientos inflables y puff, etc"
+05,1,1,01,16,"Armarios, clósets, cómodas, chifoniers, escaparates, organizadores, roperos, baules, entrepaños, repisas, etc.
+"
+05,1,1,01,17,Bibliotecas y muebles modulares
+05,1,1,01,19,"Mesas de noche, mesas de centro, mesas auxiliares, mesa de bar y cava"
+05,1,1,01,98,"Otros muebles para el hogar como: biffé, tocadores, vitrinas, archivadores, biombos, parasol, tabique plegable etc.
+"
+05,1,1,01,99,"Otros accesorios para el hogar: accesorios para baño, cocina, etc."
+05,1,1,02,,Equipo de iluminación
+05,1,1,02,01,"Lámparas de techo o de pie, reflectores, poste solar led, lámpara solar exterior y farol colgante o de pie."
+05,1,1,02,02,Lámparas o pantallas de mesa
+05,1,1,02,03,"Velas, veladoras, velones "
+05,1,1,02,04,Candeleros y candelabros
+05,1,1,03,,Artículos de arte
+05,1,1,03,01,Cuadros y pinturas de arte
+05,1,1,03,02,Reproducciones de cuadros y pinturas
+05,1,1,03,03,"Dibujos, grabados, tapices"
+05,1,1,03,04,"Estatuillas, esculturas, porcelanas y objetos de decoración en cualquier material"
+05,1,1,03,99,Otros objetos artísticos
+05,1,1,99,,Otros artículos de decoración
+05,1,1,99,01,"Espejos, porta retratos y percheros"
+05,1,1,99,02,"Persianas de materiales diferentes a tela, blackout"
+05,1,2,,,Alfombras y otros materiales para pisos
+05,1,2,01,,Alfombras y tapetes fijos y sueltos
+05,1,2,01,01,Alfombras y tapetes fijos y sueltos
+05,1,3,,,"Reparaciones de muebles, accesorios y materiales para pisos "
+05,1,3,01,,"Reparación de muebles, accesorios y materiales para pisos"
+05,1,3,01,01,"Reparación de muebles, accesorios y materiales para pisos"
+05,1,3,02,,"Restauración de obras de arte y de muebles antiguos del hogar
+"
+05,1,3,02,01,"Restauración de obras de arte y de muebles antiguos del hogar
+"
+05,2,,,,PRODUCTOS TEXTILES PARA EL HOGAR
+05,2,0,,,Productos textiles para hogar 
+05,2,0,01,,"Telas para confeccionar ropa de cama, manteles, cortinas y forros para muebles"
+05,2,0,01,01,"Telas para confeccionar ropa de cama, manteles, cortinas y forros para muebles"
+05,2,0,02,,Ropa confeccionada para cama
+05,2,0,02,01,"Juego completo de sábanas, sobresábanas y fundas "
+05,2,0,02,02,"Sábanas, sobresabanas, protectores de colchón y fundas sueltas"
+05,2,0,02,03,"Cubrelechos, cubrecamas, colchas para cama, etc."
+05,2,0,02,04,Cobijas y mantas para adulto
+05,2,0,02,05,"Cobijas, mantas y cobertores para bebé"
+05,2,0,02,06,"Almohadas, cojines, almohadones"
+05,2,0,02,07,"Hamacas, chinchorros, toldillos, mosquiteros"
+05,2,0,03,,"Ropa de mesa: manteles, caminos de mesa, individuales y servilletas de tela para comedor"
+05,2,0,03,01,"Ropa de mesa: manteles, caminos de mesa, individuales y servilletas de tela para comedor"
+05,2,0,04,,Ropa de tocador
+05,2,0,04,01,Toallas de tela para baño
+05,2,0,04,02,Juego de lencería para baño
+05,2,0,04,03,Cortinas para baño
+05,2,0,06,,Gastos por confección y reparación de productos textiles para el hogar
+05,2,0,06,01,Gastos por confección y reparación de productos textiles para el hogar
+05,2,0,99,,Otros productos textiles para el hogar
+05,2,0,99,01,Cortinas confeccionadas y cenefas para cortinas 
+05,2,0,99,02,Lanas y telas para tejidos y decoración del hogar
+05,2,0,99,03,"Talegos, sacos o lonas para ropa en tela"
+05,2,0,99,04,Banderas y escudos en general
+05,2,0,99,05,"Piedecamas, esteras y esterillas"
+05,2,0,99,06,Forros para muebles y electrodomésticos 
+05,3,,,,ARTEFACTOS PARA EL HOGAR
+05,3,1,,,Artefactos grandes para el hogar eléctricos o no
+05,3,1,01,,"Neveras, refrigeradores y congeladores"
+05,3,1,01,01,"Neveras, refrigeradores y congeladores"
+05,3,1,02,,"Lavadoras, secadoras y lava-vajillas"
+05,3,1,02,01,Lavadora y secadora de ropa
+05,3,1,02,02,Lavadora de platos
+05,3,1,03,,"Estufas, hornos y pipetas de gas"
+05,3,1,03,01,Estufa a gas
+05,3,1,03,02,Estufa eléctrica
+05,3,1,03,03,Estufa mixta (eléctrica y a gas)
+05,3,1,03,04,Campana extractora para la estufa
+05,3,1,03,05,"Estufa de carbón o leña, a gasolina o petróleo "
+05,3,1,03,06,Hornos eléctricos y hornos de gas 
+05,3,1,03,07,Hornos microondas
+05,3,1,03,08,Pipetas o cilindros de gas (envase sin incluir el gas)
+05,3,1,03,09,"Asadores no eléctricos (para BBQ, carbón, leña, a gas, etc.)"
+05,3,1,05,,Aparatos de calefacción
+05,3,1,05,01,Calentadores eléctricos
+05,3,1,05,02,Calentador de gas
+05,3,1,06,,Aparatos de aire acondicionado
+05,3,1,06,01,"Aire acondicionado, purificadores de agua o aire"
+05,3,1,06,02,Ventiladores o abanicos fijos
+05,3,1,07,,"Aspiradora, brilladora, lavatapetes e hidrolavadora"
+05,3,1,07,01,"Aspiradora, brilladora, lavatapetes e hidrolavadora"
+05,3,1,08,,"Máquinas de coser, tejer, fileteadoras y telares"
+05,3,1,08,01,"Máquinas de coser, tejer, fileteadoras y telares"
+05,3,1,99,,"Otros aparatos grandes del hogar: trituradoras de desperdicios, cajas fuertes, tinas, hidromasajes y piscinas spa."
+05,3,1,99,01,"Otros aparatos grandes del hogar: trituradoras de desperdicios, cajas fuertes, tinas, hidromasajes y piscinas spa."
+05,3,2,,,"Artefactos o aparatos pequeños eléctricos, para el hogar "
+05,3,2,01,,Aparatos eléctricos  pequeños para el hogar 
+05,3,2,01,01,Plancha eléctrica para ropa
+05,3,2,01,02,"Licuadora, picadora y ayudante de cocina eléctrico y procesador de alimentos"
+05,3,2,01,03,"Batidora, mezcladora eléctrica "
+05,3,2,01,04,"Sanducheras, wafleras, tostadoras eléctricas"
+05,3,2,01,05,Extractor de zumos y exprimidor eléctricos
+05,3,2,01,06,"Cafeteras eléctricas, teteras eléctricas"
+05,3,2,01,07,"Ollas arroceras, freidoras eléctricas y fondue"
+05,3,2,01,08,"Cuchillos, afila cuchillos y abrelatas (incluye eléctricos)"
+05,3,2,01,09,Encendedores eléctricos y no eléctricos para estufa
+05,3,2,01,10,Ventiladores o abanicos movibles
+05,3,2,01,11,Duchas eléctricas
+05,3,2,01,12,Asadores eléctricos para carne (raclette)
+05,3,2,01,14,Extractor eléctrico de olores
+05,3,2,01,16,Portacomidas eléctrico
+05,3,2,01,17,Esterilizadores o calentadores  de teteros
+05,3,2,01,99,"Otros aparatos eléctricos para el hogar: crispetera, máquina para helados, hornos tostadores"
+05,3,3,,,Reparación de artefactos para el hogar 
+05,3,3,01,,"Repuestos, reparación y alquiler de artefactos para el hogar  "
+05,3,3,01,01,Repuestos para aparatos domésticos
+05,3,3,01,02,Reparación de aparatos y utensilios domésticos
+05,3,3,01,03,"Alquiler de artefactos o aparatos domésticos (lavadoras, computadores, etc)"
+05,4,,,,"ARTICULOS DE VIDRIO Y CRISTAL, VAJILLA Y UTENSILIOS PARA EL HOGAR"
+05,4,0,,,"Artículos y utensilios de vidrio, y cristal, porcelana, cerámica, vajilla y utensilios para el hogar "
+05,4,0,01,,"Cristalería y vajilla Artículos, vajillas y utensilios de vidrio, cristal, porcelana y cerámica para el hogar"
+05,4,0,01,01,"Vajilla completa, juego de té o café y otros juegos completos (vaso, jarra, copas)"
+05,4,0,01,02,"Platos, pocillos, tazas, mugs"
+05,4,0,01,03,"Vasos, copas, jarras"
+05,4,0,01,04,"Bandejas, ensaladeras, soperas, dulceras, queseras, salseras, paneras."
+05,4,0,01,05,"Refractarias, jarras especiales (a fuego directo, filtro purificador)"
+05,4,0,01,99,"Otros artículos de vidrio, cristal, porcelana, cerámica"
+05,4,0,02,,Cubiertos
+05,4,0,02,01,Juego completo de cubiertos de mesa y cocina
+05,4,0,02,02,"Cucharas, cucharitas, tenedores, cuchillos, cucharones, tijeras de cocina  "
+05,4,0,03,,Utensilios de cocina y menaje no eléctricos
+05,4,0,03,01,"Ollas, cacerolas, cazuelas y sartenes de aluminio, esmaltadas, teflón, etc."
+05,4,0,03,02,Ollas a presión
+05,4,0,03,03,Planchas para asar y parrillas
+05,4,0,03,04,"Molinillos, coladeras, coladores, pinzas para hielo, abrelatas y sacacorchos manuales, piedras de afilar, moldes metálicos"
+05,4,0,03,05,"Cafeteras y teteras no eléctricas, dispensadores (agua y licor)"
+05,4,0,03,06,"Molinos, ralladores, trituradores de ajo, picadoras y exprimidores de jugo de tipo manual"
+05,4,0,03,07,"Corta huevos, pela papas, rebanador de quesos, cortador de pizza"
+05,4,0,03,08,"Tablas para picar, mortero y mazo, escurridor de aceite"
+05,4,0,03,09,"Set de mesa para vinagre y aceite, servilletero, especiero"
+05,4,0,03,10,"Termo, botella de aluminio, coctelera, hielera, vaso mezclador"
+05,4,0,03,11,"Reverberos, cocinas de alcohol y cocinetas"
+05,4,0,03,14,Biberones o teteros
+05,4,0,03,15,"Accesorios para utensilios de cocina y menaje no eléctrico (cauchos, pitos, identificadores de cubiertos o de bebida, porta ollas, etc.)"
+05,4,0,03,99,"Otros utensilios de cocina y menaje no eléctricos del hogar (centrifugador de verduras, escurridor de loza, recipientes y loncheras para guardar comida, set para reposteria, etc.)"
+05,4,0,05,,"Reparación de cristalería, vajilla y utensilios del hogar"
+05,4,0,05,01,"Reparación de cristalería, vajilla y utensilios del hogar"
+05,4,0,99,,Otros utensilios no eléctricos del hogar
+05,4,0,99,01,Mesa de planchar
+05,4,0,99,03,"Ceniceros, floreros"
+05,4,0,99,04,"Platones, baldes, embudos y poncheras"
+05,4,0,99,05,Canecas y papeleras para la basura
+05,4,0,99,06,Cestas y recipientes para la ropa de materiales diferentes a tela
+05,4,0,99,07,"Vasenilla, micas o patos médicos"
+05,5,,,,HERRAMIENTAS Y EQUIPOS PARA EL HOGAR Y EL JARDIN
+05,5,1,,,Herramientas y equipos grandes 
+05,5,1,01,,"Herramientas y equipos grandes eléctricos o motorizados
+"
+05,5,1,01,01,"Taladros, soldadoras, sierras, pulidoras y cizallas eléctricas para uso del hogar
+"
+05,5,1,01,02,"Podadoras, cortadoras de césped y guadañadoras eléctricas o motorizadas y tractores eléctricos para jardín para uso del hogar
+"
+05,5,1,01,03,"Compra e instalación de bombas eléctricas de agua, generador de energía o planta eléctrica de mediana potencia para uso del hogar"
+05,5,1,01,99,Otras herramientas y equipos eléctricos grandes para uso del hogar 
+05,5,1,02,,"Reparación de herramientas y equipos grandes para uso del hogar  ( Herramientas y equipo motorizados, como taladros, sierras, pulidoras y cortadoras eléctricos, tractores para jardín, cortadoras de césped, cultivadores, sierras de cadena y bombas de agua etc.)
+"
+05,5,1,02,01,"Reparación de herramientas y equipos grandes para uso del hogar  ( Herramientas y equipo motorizados, como taladros, sierras, pulidoras y cortadoras eléctricos, tractores para jardín, cortadoras de césped, cultivadores, sierras de cadena y bombas de agua.)
+"
+05,5,1,03,,"Alquiler de maquinaria y equipo grande ( Herramientas y equipo motorizados, como taladros, sierras, pulidoras y cortadoras eléctricos, tractores para jardín, cortadoras de césped, cultivadores, sierras de cadena y bombas de agua.)
+
+"
+05,5,1,03,01,"Alquiler de maquinaria y equipo grande ( Herramientas y equipo motorizados, como taladros, sierras, pulidoras y cortadoras eléctricos, tractores para jardín, cortadoras de césped, cultivadores, sierras de cadena y bombas de agua.)
+
+"
+05,5,2,,,Herramientas pequeñas y accesorios diversos
+05,5,2,01,,Herramientas del hogar
+05,5,2,01,01,"Hombresolos, alicates, tenazas, martillos, destornilladores, punzones, serruchos, limas para herramientas, escofinas, cizallas manuales, punteros, cinceles, palustres, etc."
+05,5,2,01,02,"Llaves de tuercas, llaves inglesas, llaves bristol."
+05,5,2,01,03,"Cintas métricas: metro, decámetro, niveles, etc."
+05,5,2,01,99,"Otras herramientas del hogar: escaleras, bombas de agua no eléctricas, etc."
+05,5,2,02,,"Herramientas de jardín: Carretillas, mangueras, lanzachorro, palas, azadones, pica,  estacas"
+05,5,2,02,01,"Herramientas de jardín: Carretillas, mangueras, lanzachorro, palas, azadones, pica,  estacas"
+05,5,2,03,,Accesorios eléctricos pequeños
+05,5,2,03,01,"Bombillos incandescentes, tubos fluorescentes, larga vida, halógenos, de neón, LED y de tungsteno."
+05,5,2,03,02,"Enchufes, interruptores, dimmers, cables eléctricos, rosetas, cinta aislante y de teflón,  timbres, alarmas, estabilizadores"
+05,5,2,03,03,Pilas y baterías recargables y no recargables para uso general
+05,5,2,03,04,Linternas y lámparas de mano
+05,5,2,03,99,Otros accesorios eléctricos pequeños (timers)
+05,5,2,04,,"Accesorios para puertas, ventanas y sillas: Bisagras, manijas, cerraduras, candados, conteras, topes, burletes, etc."
+05,5,2,04,01,"Accesorios para puertas, ventanas y sillas: Bisagras, manijas, cerraduras, candados, conteras, topes, burletes, etc."
+05,5,2,06,,Reparación de herramientas pequeñas y accesorios diversos del hogar y del jardín
+05,5,2,06,01,Reparación de herramientas pequeñas y accesorios diversos del hogar y del jardín
+05,5,2,99,,"Otros artículos de metal, madera, plástico para el hogar: rieles, varillas, tubos para cortina, ganchos para cortina, guardaescobas, perfiles y esquineros etc."
+05,5,2,99,01,"Otros artículos de metal, madera, plástico para el hogar: rieles, varillas, tubos para cortina, ganchos para cortina, guardaescobas, perfiles y esquineros etc."
+05,6,,,,BIENES Y SERVICIOS PARA CONSERVACIÓN ORDINARIA DEL HOGAR
+05,6,1,,,Bienes para el hogar no duraderos 
+05,6,1,01,,Productos de limpieza y mantenimiento 
+05,6,1,01,01,Jabón en barra para lavar ropa
+05,6,1,01,02,Jabón de cocina
+05,6,1,01,04,Detergente en polvo
+05,6,1,01,05,Detergente líquido
+05,6,1,01,06,Blanqueadores
+05,6,1,01,07,Suavizantes
+05,6,1,01,08,"Quitamanchas, polvo limpiador y champú para alfombras"
+05,6,1,01,09,"Líquidos y desinfectantes para limpiar muebles, vidrios, hornos, estufas, paredes, baños, pisos
+"
+05,6,1,01,10,"Ambientadores y desodorantes ambientales (velas aromatizadas, pastillas, aceites, geles, incienso, esencias naturales o florales para aromatizar ambientes)
+"
+05,6,1,01,11,Cera para pisos y selladores
+05,6,1,01,12,"Insecticidas, fungicidas (enchufe, spray, etc), trampa y venenos para roedores"
+05,6,1,01,99,"Otros productos de limpieza y mantenimiento: almidones para camisas, alcanfor, naftalina, disolventes, destapacañerías."
+05,6,1,02,,Elementos de aseo
+05,6,1,02,01,"Escobas, recogedores de basura, escobillas, plumeros limpiapolvos, trapeadores, chupa, destapacañerías mecánico y cepillos (para paredes, baños, ropa, vehículo y calzado)"
+05,6,1,02,02,Guantes de caucho  
+05,6,1,02,03,"Esponjas, esponjillas y estropajos"
+05,6,1,02,04,"Limpiones, cogeollas, paños de tela para limpiar (bayetilla, de microfibra) y delantales para cocina
+"
+05,6,1,02,99,"Otros elementos de aseo (antihumedad, antiacaros, antiolores)"
+05,6,1,99,,Otros artículos no duraderos para el hogar
+05,6,1,99,01,"Cuerdas, cordeles, mechas para lámpara, tendederos y pinzas para ropa, perchas de tornillo y ganchos adhesivos"
+05,6,1,99,02,"Agujas (para coser, tejer), alfileres"
+05,6,1,99,03,"Tijeras para costura, abreojales, desbaratadores, dedales"
+05,6,1,99,05,Fósforos y encendedores desechables
+05,6,1,99,06,"Betún, pomadas, tintes, cremas y espumas siliconadas para calzado"
+05,6,1,99,07,"Barnices, lacas y tintes para accesorios del hogar "
+05,6,1,99,08,Anilinas y tintes para prendas de vestir
+05,6,1,04,,"Artículos de ferretería: puntillas, clavos, tornillos, tuercas, brocas, brochas, pinceles, lijas y otros."
+05,6,1,04,01,"Artículos de ferretería: puntillas, clavos, tornillos, tuercas, brocas, brochas, pinceles, lijas y otros."
+05,6,1,05,,Productos desechables 
+05,6,1,05,01,"Papel de aluminio, parafinado, vinilpel, moldes de aluminio, filtros de papel para cafetera"
+05,6,1,05,02,"Rollos o paños de papel (absordente, húmedos) para cocina"
+05,6,1,05,03,"Productos desechables: servilletas,  manteles, platos, vasos, cubiertos, palillos"
+05,6,1,05,05,Bolsas plásticas para basura y para aspiradora   
+05,6,1,05,99,"Otros productos desechables:  pitillos, palos de pincho, etc"
+05,6,2,,,Servicios domésticos y para el hogar 
+05,6,2,01,,Servicio doméstico 
+05,6,2,01,01,Empleado(a) doméstico interno 
+05,6,2,01,02,Empleado(a) doméstico por días (permanente o temporal)
+05,6,2,01,99,"Otros empleados domésticos: amas de llaves, institutrices, tutores, mayordomos, choferes, jardineros, celadores, niñeras dentro del hogar
+"
+05,6,2,02,,Servicios de conservación para el hogar
+05,6,2,02,01,Servicio de limpieza de ventanas
+05,6,2,02,02,Servicio de desinfección y fumigación del hogar
+05,6,2,03,,Tintorería y lavandería de ropa del hogar diferente a prendas de vestir 
+05,6,2,03,01,"Servicio de lavado de ropa y limpieza del hogar: cubrelechos, cortinas, tejidos del hogar, tapetes, muebles y ventanas."
+05,6,2,03,02,Servicio de lavado de alfombras
+05,6,2,03,03,Servicio de tintorería y teñido de ropa del hogar
+06,,,,,SALUD
+06,1,,,,"PRODUCTOS, ARTEFACTOS Y EQUIPOS MÉDICOS"
+06,1,1,,,Productos farmacéuticos
+06,1,1,01,,Productos farmacéuticos  
+06,1,1,01,01,Analgésicos y Antiinflamatorios
+06,1,1,01,02,Antiácidos y medicamentos para la Gastritis
+06,1,1,01,03,Antibióticos topicos y sistémicos
+06,1,1,01,04,Medicamentos antialérgicos (antihistamínicos)
+06,1,1,01,05,Antigripales y Antitusivos no homeopáticos
+06,1,1,01,06,"Antiparasitarios, antimibianos, purgantes y laxantes"
+06,1,1,01,07,Antiartríticos y Antirreumáticos 
+06,1,1,01,08,Antidiabéticos e Insulinas 
+06,1,1,01,09,Antiespasmódicos y Antidiarréicos
+06,1,1,01,11,Medicamentos para la tensión arterial y cardiovasculares
+06,1,1,01,12,Desinfectantes
+06,1,1,01,13,Suero oral y sales de rehidratación
+06,1,1,01,14,Vacunas
+06,1,1,01,15,"Suplementos dietarios, vitaminas, reconstituyentes, calcio, otros minerales y aceite de higado de bacalao"
+06,1,1,01,17,Medicamentos para nivelar los niveles de colesterol
+06,1,1,01,18,Medicamentos para tratamientos contra el cancer
+06,1,1,01,19,Medicamentos para tratar la disfuncion erectil
+06,1,1,01,20,Medicamentos para tratar afecciones de la tiroides
+06,1,1,01,21,Medicamentos para el tratamiento de enfermedades psiquiátricas y antidepresivas
+06,1,1,01,22,Medicamentos para el tratamiento del VIH (SIDA)
+06,1,1,02,,Productos dermatológicos con formula médica (incluso los protectores solares medicados)
+06,1,1,02,01,Productos dermatológicos con formula médica (incluso los protectores solares medicados)
+06,1,1,99,,Otros productos farmacéuticos
+06,1,1,99,01,"Gotas para tratamiento de afecciones de oidos, ojos, naríz y suero fisiológico"
+06,1,1,99,02,"Anticonceptivos orales (píldoras), óvulos, inyecciones, cremas anticonceptivas, parches"
+06,1,1,99,03,"Medicamentos homeopáticos, medicamentos de origen natural y bioenergéticos;esencias naturales o florales medicinales. "
+06,1,1,04,,Fórmula médica completa (hace referencia a todos los medicamentos que el informante NO puede desargregar y no fueron registrados  en los anteriores artículos) 
+06,1,1,04,04,Fórmula médica completa (hace referencia a todos los medicamentos que el informante NO puede desargregar y no fueron registrados  en los anteriores artículos) 
+06,1,2,,,Otros productos médicos 
+06,1,2,01,,Elementos Implementos médicos
+06,1,2,01,01,Termómetros clínicos
+06,1,2,01,02,"Jeringas, agujas hipodérmicas"
+06,1,2,01,03,"Esparadrapo, vendas, gasas, curitas."
+06,1,2,01,04,Botiquines de primeros auxilios 
+06,1,2,01,05,Dispositivo de prueba rápida de embarazo 
+06,1,2,01,07,Inhaladores
+06,1,2,01,99,"Otros implementos médicos: bolsas de agua caliente, bolsas de hielo, paquetes de gel, etc."
+06,1,2,02,,Anticonceptivos de bloqueo
+06,1,2,02,01,Dispositivos de planificacion familiar: intrauterinos e implante intradérmico.
+06,1,2,02,02,Preservativos (condones)
+06,1,3,,,Artefactos y equipos terapéuticos 
+06,1,3,01,,Artefactos y equipo terapéutico y su reparación
+06,1,3,01,01,"Anteojos, gafas o lentes de contacto formulados "
+06,1,3,01,02,"Sillas de ruedas, camas y colchones especiales (de hospital para uso en el hogar)"
+06,1,3,01,03,Muletas y bastones ortopédicos
+06,1,3,01,04,Zapatos ortopédicos
+06,1,3,01,05,"Compra de equipo terapéutico: plantillas ortopédicas, soportes de cuello, ferula, bragueros, fajas quirúrgicas, medias elásticas para traumatología, soportes para rodilla, pie, brazo, caminadoras, etc. "
+06,1,3,01,06,Equipo para masajes médicos 
+06,1,3,01,07,"Prótesis (miembros artificiales), dentaduras postizas"
+06,1,3,01,08,Aparatos ortopédicos y de salud visual y ocular: ojo de cristal
+06,1,3,01,09,"Tensiómetros (eléctricos, manuales y de otro tipo), estetoscopios, glucómetros "
+06,1,3,01,10,Reparación de artefactos y equipos terapéuticos
+06,1,3,01,11,Aparatos de salud auditiva: audífonos ortopédicos y clínicos
+06,2,,,,SERVICIOS PARA PACIENTES EXTERNOS
+06,2,1,,,Servicios médicos 
+06,2,1,01,,Consulta médica general con médico particular  
+06,2,1,01,01,Consulta médica general con médico particular  
+06,2,1,02,,"Consulta médica con médico especialista particular: pediatría, oftalmología, ginecología, siquiatría, traumatología, cardiología y otros especialistas "
+06,2,1,02,01,"Consulta médica con médico especialista particular: pediatría, oftalmología, ginecología, siquiatría, traumatología, cardiología y otros especialistas "
+06,2,1,03,,Servicios de especialistas en ortodoncia (incluye compra de brackets y retenedores)
+06,2,1,03,01,Servicios de especialistas en ortodoncia (incluye compra de brackets y retenedores)
+06,2,1,04,,Consulta particular con médicos homeópatas y / o bioenergéticos
+06,2,1,04,01,"Consulta particular con médicos homeópatas, bioenergéticos y otros no tradicionales"
+06,2,2,,,Servicios dentales 
+06,2,2,01,,"Servicios odontológicos con odontólogos particulares: consultas, profilaxis, exodoncias (extracción), amalgamas, sellantes, fluorización. "
+06,2,2,01,01,"Servicios odontológicos con odontólogos particulares: consultas, profilaxis, exodoncias (extracción), amalgamas, sellantes, fluorización. "
+06,2,3,,,Servicios paramédicos
+06,2,3,01,,"Servicios para particulares en centros de rayos X: radiografías (incluyendo las dentales), urografías, mamografías, electrocardiogramas y otras imágenes diagnósticas    "
+06,2,3,01,01,"Servicios para particulares en centros de rayos X: radiografías (incluyendo las dentales), urografías, mamografías, electrocardiogramas y otras imágenes diagnósticas    "
+06,2,3,02,,"Exámenes de laboratorio para particulares: de sangre, bacteriológicos, etc.   "
+06,2,3,02,01,"Exámenes de laboratorio para particulares: de sangre, bacteriológicos, etc.   "
+06,2,3,03,,Servicios médicos auxiliares no hospitalarios
+06,2,3,03,01,"Servicios independientes de: fonoaudiólogos, fisioterapeutas"
+06,2,3,03,02,Terapia de gimnasia correctiva recetada por médicos
+06,2,3,03,03,"Servicios de medicina alternativa y complementaria (acupuntura, homeopatía, quiropráctica, osteopatía, hidroterapia, etc.)"
+06,2,3,03,04,"Servicios de enfermería para maternidad  en el hogar (enfermera(o) privada(o)) partera, comadrona)"
+06,2,3,03,05,"Consulta con teguas, empiricos, curanderos, yerbateros, etc."
+06,2,3,04,,"Alquiler de equipo terapéutico: muletas y bastones ortopédicos, zapatos y plantillas ortopédicas, soportes de cuello, ferula, bragueros, fajas quirúrgicas; soportes para rodilla, pie, brazo; caminadoras, etc"
+06,2,3,04,01,"Alquiler de equipo terapéutico: muletas y bastones ortopédicos, zapatos y plantillas ortopédicas, soportes de cuello, ferula, bragueros, fajas quirúrgicas; soportes para rodilla, pie, brazo; caminadoras, etc"
+06,2,4,,,"Cuotas moderadoras EPS (medicina, odontología, especialistas, medicamentos, exámenes, etc)"
+06,2,4,01,,"Cuotas moderadoras EPS (medicina, odontología, especialistas, medicamentos, exámenes, etc)"
+06,2,4,01,01,"Cuotas moderadoras EPS (medicina, odontología, especialistas, medicamentos, exámenes, etc)"
+06,2,4,02,,"Bonos de medicina prepagada o pagos en efectivo por consultas, odontología, medicamentos, exámenes, etc"
+06,2,4,02,01,"Bonos de medicina prepagada o pagos en efectivo por consultas, odontología, medicamentos, exámenes, etc"
+06,3,,,,SERVICIOS DE HOSPITAL
+06,3,0,,,Servicios de hospital  
+06,3,0,01,,"Servicios básicos hospitalarios atención a pacientes internos bajo la supervisión directa de médicos calificados; los centros médicos, centros de maternidad, hospicios para ancianos y hogares para convalecientes también prestan atención a pacientes internos."
+06,3,0,01,01,"Servicios básicos hospitalarios atención a pacientes internos bajo la supervisión directa de médicos calificados; los centros médicos, centros de maternidad, hospicios para ancianos y hogares para convalecientes también prestan atención a pacientes internos."
+06,3,0,02,,"Servicios médicos hospitalarios para particulares: atención de médicos (generales y especialistas), odontólogos, paramédicos, exámenes, radiografías y terapias "
+06,3,0,02,01,"Servicios médicos hospitalarios para particulares: atención de médicos (generales y especialistas), odontólogos, paramédicos, exámenes, radiografías y terapias "
+06,3,0,03,,"Servicios médicos menores (pequeña cirugía, cirugía ambulatoria, urgencias, etc.)"
+06,3,0,03,01,"Servicios médicos menores (pequeña cirugía, cirugía ambulatoria, urgencias, etc.)"
+06,3,0,04,,Pagos complementarios (POS y  medicina prepagada) de servicios hospitalarios
+06,3,0,04,01,Pagos complementarios (POS y  medicina prepagada) de servicios hospitalarios
+07,,,,,TRANSPORTE
+07,1,,,,ADQUISICIÓN DE VEHICULOS
+07,1,1,,,Vehículos a motor 
+07,1,1,01,,Vehículo particular nuevo o usado
+07,1,1,01,01,Compra de vehículos nuevos para uso particular (incluye pagos por nacionalización y otros pagos)     
+07,1,1,01,02,Compra de vehículos usados para uso particular (incluye pagos por nacionalización y otros pagos)     
+07,1,1,01,03,Gastos de matrículas para vehículos nuevos y de traspaso para vehículos usados
+07,1,2,,,Motocicletas 
+07,1,2,01,,Motos y bicicletas con motor nuevas o usadas
+07,1,2,01,01,Compra de motocicletas y bicicletas con motor o eléctricas nuevas o usadas
+07,1,2,01,02,Gastos de matrículas o traspaso de motocicletas o bicicletas con motor
+07,1,3,,,Bicicletas 
+07,1,3,01,,Compra de bicicletas nuevas o usadas (excepto para niños)
+07,1,3,01,01,Compra de bicicletas nuevas o usadas (excepto para niños)
+07,1,4,,,Vehículos de tracción animal 
+07,1,4,01,,Animales y vehículos de tracción animal para transporte de personas del hogar 
+07,1,4,01,01,Animales y vehículos de tracción animal para transporte de personas del hogar 
+07,2,,,,FUNCIONAMIENTO DE EQUIPO DE TRANSPORTE PERSONAL
+07,2,1,,,Piezas de repuesto y accesorios para equipo de transporte personal 
+07,2,1,01,,"Llantas y neumáticos, rines para vehículo    "
+07,2,1,01,01,"Llantas y neumáticos, rines para vehículo    "
+07,2,1,03,,"Productos para la limpieza y conservación del  vehículo: pintura, limpiadores, selladores, shampoo, ceras, ambientadores, eliminador de olores, pañitos húmedos para vehículos, etc."
+07,2,1,03,01,"Productos para la limpieza y conservación del  vehículo: pintura, limpiadores, selladores, shampoo, ceras, ambientadores, eliminador de olores, pañitos húmedos para vehículos, etc."
+07,2,1,04,,"Productos y accesorios para carrocería: pijamas, tapetes, barras de seguridad, ceniceros, organizador para carro, cubre asiento, bombillos (papa farolas, stops, laterales), etc."
+07,2,1,04,01,"Productos y accesorios para carrocería: pijamas, tapetes, barras de seguridad, ceniceros, organizador para carro, cubre asiento, bombillos (papa farolas, stops, laterales), etc."
+07,2,1,05,,"Herramientas para vehículos de transporte personal (equipo de carretera, cruceta y gato, infladores, etc)"
+07,2,1,05,01,"Herramientas para vehículos de transporte personal (equipo de carretera, cruceta y gato, infladores, etc)"
+07,2,1,06,,"Piezas para bicicleta: llantas, neumáticos, rines, manzanas, cadenas, cambios, piñones, guallas, sillines, candados y cable candado, luces, etc."
+07,2,1,06,01,"Piezas para bicicleta: llantas, neumáticos, rines, manzanas, cadenas, cambios, piñones, guallas, sillines, candados y cable candado, luces, etc."
+07,2,1,99,,Otras piezas de repuesto para vehículo
+07,2,1,99,01,Motores para vehículo
+07,2,1,99,02,"Bujías, inyectores, filtros, amortiguadores, baterías, carburadores, distribuidores de corriente, vidrios, condensadores, correas de ventilador, etc."
+07,2,2,,,Combustibles y lubricantes para equipo de transporte personal   
+07,2,2,01,,Gasolina corriente y extra
+07,2,2,01,01,Gasolina corriente y extra
+07,2,2,02,,Gas vehicular
+07,2,2,02,01,Gas vehicular
+07,2,2,03,,Combustible diesel
+07,2,2,03,01,Combustible diesel
+07,2,2,04,,"Aditivos, valvulinas, líquido para frenos, refrigerantes, agua para batería, etc.    "
+07,2,2,04,01,"Aditivos, valvulinas, líquido para frenos, refrigerantes, agua para batería, etc.    "
+07,2,3,,,Conservación y reparación de equipo de transporte personal 
+07,2,3,01,,"Mantenimiento y reparaciones efectuadas en el taller: engrase, sincronización, revisiones técnicas, instalaciones de partes y accesorios, balanceo de ruedas, despinchada, lavado y polichado, servicios de grúa, etc.         "
+07,2,3,01,01,"Mantenimiento y reparaciones efectuadas en el taller: engrase, sincronización, revisiones técnicas, instalaciones de partes y accesorios, balanceo de ruedas, despinchada, lavado y polichado, servicios de grúa, etc.         "
+07,2,3,02,,Compra y cambio de aceite
+07,2,3,02,01,Compra y cambio de aceite
+07,2,3,03,,Servicios de latonería y pintura
+07,2,3,03,01,Servicios de latonería y pintura
+07,2,3,04,,Cuotas a clubes o compañias de servicios especiales para el vehículo  como los centros de reparacion y mantenimiento de cosesionarios de marcas especificas 
+07,2,3,04,01,Cuotas a clubes o compañias de servicios especiales para el vehículo  como los centros de reparacion y mantenimiento de cosesionarios de marcas especificas 
+07,2,4,,,Otro servicios relativos al equipo de transporte personal 
+07,2,4,01,,Parqueaderos
+07,2,4,01,01,Pago mensual de parqueadero
+07,2,4,01,02,Pago de parqueadero o parquímetro por horas o días
+07,2,4,02,,Peajes   
+07,2,4,02,01,Peajes   
+07,2,4,03,,"Gastos reglamentarios relacionados con la propiedad, manejo y alquiler de vehículos "
+07,2,4,03,01,Gastos en licencias y clases de conducción
+07,2,4,03,02,Comparendos y multas por infracciones
+07,2,4,03,03,Revision tecnomecánica y otras revisiones ordenadas por ley
+07,2,4,03,04,Alquiler de vehículos sin conductor
+07,3,,,,SERVICIOS DE TRANSPORTE
+07,3,1,,,Transporte de pasajeros por ferrocarril 
+07,3,1,01,,Transporte en tren y metro
+07,3,1,01,01,Pasaje en tren
+07,3,1,01,02,Pasaje en metro
+07,3,2,,,Transporte de pasajeros por carretera 
+07,3,2,01,,Transporte urbano
+07,3,2,01,01,"Pasaje urbano en bus, buseta y colectivo  "
+07,3,2,01,02,"Pasaje en sistema integrado de transporte masivo (Transmilenio, SITP, MIO, Megabus, Metrolinea, Transmetro, Metroplus, etc)"
+07,3,2,01,03,Taxi urbano
+07,3,2,01,99,"Otros transportes urbanos: servicio pirata, bicitaxi, mototaxi, funicular, telesférico, etc"
+07,3,2,02,,"Transporte intermunicipal, interveredal e internacional"
+07,3,2,02,01,"Pasaje intermunicipal en bus, buseta, colectivo, taxi, aero vans, chiva, campero, etc.  "
+07,3,2,02,02,Pasaje en transporte internacional terrestre
+07,3,2,02,03,Transporte de equipajes por vía terrestre  
+07,3,2,02,04,Alquiler de vehículo con conductor
+07,3,2,02,05,Transporte proveniente de salario en especie
+07,3,2,02,07,Pasaje en transporte interveredal y a ciudades dormitorio
+07,3,2,02,99,Otro tipo de transporte intermunicipal
+07,3,2,03,,Transporte escolar
+07,3,2,03,01,Transporte escolar prestado por el colegio (con buses propios o con empresa contratada)
+07,3,2,03,02,Transporte escolar particular contratado por los padres
+07,3,3,,,Transporte de pasajeros por aire 
+07,3,3,01,,Transporte de pasajeros y equipaje en avión (incluye pagos por exceso de equipaje)
+07,3,3,01,01,Transporte de pasajeros y equipaje en avión (incluye pagos por exceso de equipaje)
+07,3,3,02,,Transporte de pasajeros y equipaje en helicóptero   
+07,3,3,02,01,Transporte de pasajeros y equipaje en helicóptero   
+07,3,4,,,Transporte de pasajeros por mar y cursos de agua interiores 
+07,3,4,01,,"Transporte de pasajeros y equipajes por mar, rios, caños, lagos, etc. en buque, navío, aerodeslizador, vehículo de colchón de aire (incluye transporte de vehículos privados por este medio)"
+07,3,4,01,01,"Transporte de pasajeros y equipajes por mar, rios, caños, lagos, etc. en buque, navío, aerodeslizador, vehículo de colchón de aire (incluye transporte de vehículos privados por este medio)"
+07,3,4,02,,"Transporte de pasajeros y equipajes por mar, ríos, caños, lagos, etc. en ferry, planchón, canoa y lancha"
+07,3,4,02,01,"Transporte de pasajeros y equipajes por mar, ríos, caños, lagos, etc. en ferry, planchón, canoa y lancha"
+07,3,5,,,Transporte combinado de pasajeros
+07,3,5,01,,Servicio en dos o más medios de transporte cuando el gasto no se puede discriminar 
+07,3,5,01,01,Servicio en dos o más medios de transporte cuando el gasto no se puede discriminar 
+07,3,6,,,Otros servicios de transporte adquiridos 
+07,3,6,01,,Servicios de remoción de escombros
+07,3,6,01,01,Servicios de remoción de escombros
+07,3,6,02,,Servicios de almacenamiento y depósito de equipaje
+07,3,6,02,01,Servicios de almacenamiento y depósito de equipaje
+07,3,6,03,,Servicio de trasteos y mudanzas
+07,3,6,03,01,Servicio de trasteos y mudanzas
+08,,,,,INFORMACIÓN Y COMUNICACIÓN 
+08,1,,,,SERVICIOS POSTALES
+08,1,0,,,Servicios postales  
+08,1,0,01,,Servicios postales 
+08,1,0,01,01,"Envío de cartas, correspondencia, paquetes o encomiendas por correo (incluye compra de postales con franqueo pagado) 
+"
+08,1,0,01,03,Apartado aéreo y casillero internacional.
+08,2,,,,EQUIPO TELEFÓNICO Y DE FACSÍMILE
+08,2,0,,,Equipo telefónico y de facsímile
+08,2,0,01,,Equipos fijos de teléfono y fax y su reparación
+08,2,0,01,01,Compra de teléfonos fijos y accesorios
+08,2,0,01,02,Compra de fax
+08,2,0,01,03,"Reparación de teléfonos fijos, de fax y de accesorios"
+08,2,0,02,,"Equipos de telefonía móvil, similares y reparación"
+08,2,0,02,01,Compra de celular convencional (no inteligente) y accesorios
+08,2,0,02,02,Compra de radioteléfono y accesorios
+08,2,0,02,03,Compra de celular inteligente y accesorios
+08,2,0,02,04,Reparación de celulares y de accesorios
+08,3,,,,SERVICIOS TELEFÓNICOS Y DE FACSÍMILE
+08,3,0,,,Servicios telefónicos y de facsímile
+08,3,0,01,,"Servicios de telegrafía, télex y telefax"
+08,3,0,01,01,"Servicios de telegrafía, télex y telefax"
+08,3,0,02,,Servicios de comunicación fija y movil 
+08,3,0,02,01,"Llamadas telefónicas desde una línea privada o desde una línea pública (Telefonos publicos y modenederos, etc.)
+"
+08,3,0,02,02,"Llamadas de larga distancia nacional o internacional desde teléfonos públicos, cabinas telefónicas, monederos y desde hoteles
+"
+08,3,0,02,03,"Llamadas por minuto desde celular en la calle a cualquier destino
+"
+08,3,0,02,04,Servicio telefónico residencial (local y larga distancia)  
+08,3,0,02,05,Instalación y reconexión de línea telefónica residencial
+08,3,0,02,06,Planes de telefonía celular de voz y mensajería 
+08,3,0,03,,Servicios de provisión de acceso a Internet y servicios de almacenamiento en red (S)
+08,3,0,03,01,"Servicios de acceso a Internet proporcionados por operadores de infraestructura cableada, inalámbrica o satelital"
+08,3,0,03,02,"Servicio de paquete de datos para celulares, tabletas, módem USB o LTE"
+08,3,0,03,03,Servicios de internet en centros de acceso público con costo (café internet)
+08,3,0,03,04,"Pago por suscripción a páginas web, incluído el almacenamiento en la nube y publicaciones periódicas (incluídas páginas de medios de comunicación)"
+08,3,0,03,05,"Recargas para telefonía celular (prepago para minutos o datos, diferente al plan postpago)"
+09,,,,,RECREACIÓN Y CULTURA
+09,1,,,,"EQUIPO AUDIOVISUAL, FOTOGRÁFICO Y DE PROCESAMIENTO DE INFORMACIÓN"
+09,1,1,,,"Equipo para la recepción, grabación y reproducción de sonido e imágenes "
+09,1,1,01,,"Equipo para la recepción, grabación y reproducción de sonido únicamente"
+09,1,1,01,01,"Equipos de sonido,  mini-componentes."
+09,1,1,01,03,"Radio, radioreloj, grabadoras, radiograbadora"
+09,1,1,01,05,"Radio, equipo de sonido o video para vehículos (CD, MP3 o MP4)"
+09,1,1,01,06,"Amplificadores de sonido, altavoces, equalizadores, bafles, parlantes, torres de sonido, micrófonos, audífonos, sintonizadores, altoparlantes, etc. "
+09,1,1,01,99,"Otros equipos para la recepción, grabación y reproducción de sonido"
+09,1,1,02,,"Equipo para la grabación, recepción y reproducción  de imagen y sonido"
+09,1,1,02,02,Televisor a color convencional
+09,1,1,02,03,"Televisor de pantalla plana (plasma, LCD o LED)"
+09,1,1,02,04,"Antenas de televisión, decodificadores, etc."
+09,1,1,02,06,Reproductores de video (DVD o BLU RAY)
+09,1,1,02,07,Teatro en casa
+09,1,1,02,09,"Reproductores digitales de música, video e imagen (MP3, MP4, Ipod, etc.)"
+09,1,1,02,10,Televisor inteligente (smart TV)
+09,1,1,02,11,Lectores de libros electrónicos
+09,1,2,,,Equipo fotográfico y cinematográfico e instrumentos ópticos 
+09,1,2,01,,Equipo fotográfico y de diapositivas
+09,1,2,01,01,Cámaras fotográficas 
+09,1,2,01,03,"Accesorios de fotografía: flash, lentes, medidores de luz, filtros, trípodes, equipo para revelado, etc."
+09,1,2,02,,Equipo cinematográfico
+09,1,2,02,01,Cámaras de video
+09,1,2,02,02,"Proyectores de películas, video beams, etc"
+09,1,2,02,03,"Accesorios de cinematografía: pantallas, visores, lentes, filtros, medidores de luz, lámparas de destello, trípodes, fotómetros, etc."
+09,1,2,03,,"Instrumentos ópticos: microscopios, telescopios, lupas, binóculos, brújulas, etc."
+09,1,2,03,01,"Instrumentos ópticos: microscopios, telescopios, lupas, binóculos, brújulas, etc."
+09,1,3,,,Equipo de procesamiento de información 
+09,1,3,01,,Aparatos de procesamiento de información y hardware
+09,1,3,01,01,"Computadores personales de escritorio (PC, all in one)"
+09,1,3,01,02,Monitores
+09,1,3,01,03,Impresora o escáner
+09,1,3,01,08,Calculadoras
+09,1,3,01,10,Computadores portátiles
+09,1,3,01,11,Tabletas (ipads)
+09,1,3,01,99,"Otros aparatos de tratamiento de información: servidores, etc"
+09,1,3,02,,Software
+09,1,3,02,01,"Software tipo Office: procesadores de palabra, hojas de cálculo, software para hacer presentaciones y para el manejo de bases de datos
+"
+09,1,3,02,02,"Software especializado: de medicina, financiero, de diseño y dibujo, paquetes estadísticos y similares
+"
+09,1,3,02,04,Antivirus y software para filtrado y control de navegación
+09,1,3,02,05,"Paquetes de software de computadora, tales como sistemas operativos, aplicaciones, lenguajes de programación, etc
+"
+09,1,3,03,,Hardware no especificado anteriormente 
+09,1,3,03,01,"Webcam, dispositivos de joystick y similares, mouse, teclados, parlantes, cables, lápiz óptico para computador"
+09,1,3,03,02,"Módem, router, tarjetas de video y de sonido, unidades de CD-ROM y de DVD-ROM"
+09,1,3,03,03,"Memoria RAM, procesador, board, switch de red, disco duro interno"
+09,1,3,99,,"Otros accesorios para computadores y tabletas: forros, pad mouse, etc."
+09,1,3,99,01,"Otros accesorios para computadores y tabletas: forros, pad mouse, etc."
+09,1,4,,,Medios para grabación 
+09,1,4,01,,CDs y DVDs pregrabados (con contenido)
+09,1,4,01,04,"CDs, DVDs o USB con contenido (de música, videos, libros, etc)"
+09,1,4,02,,CDs y DVDs sin grabar (vírgenes) 
+09,1,4,02,01,CDs y DVDs sin grabar (vírgenes) 
+09,1,4,03,,"Material para uso fotográfico: rollos, cartuchos, discos vírgenes para uso fotográfico y cinematográfico, papel de fotografía, químicos para revelado, lámparas de destello, etc.
+"
+09,1,4,03,01,"Material para uso fotográfico: rollos, cartuchos, discos vírgenes para uso fotográfico y cinematográfico, papel de fotografía, químicos para revelado, lámparas de destello, etc."
+09,1,4,04,,"Memoria USB, disco duro externo, tarjetas de memoria SD, mini-SD, micro-SD y lectores de tarjetas"
+09,1,4,04,01,"Memoria USB, disco duro externo, tarjetas de memoria SD, mini-SD, micro-SD y lectores de tarjetas"
+09,1,5,,,"Reparación de equipo audiovisual, fotográfico y de procesamiento de información "
+09,1,5,01,,Reparación de equipos y accesorios audiovisuales
+09,1,5,01,01,Reparación de equipos y accesorios audiovisuales
+09,1,5,02,,"Reparación de equipos, accesorios fotográficos y de procesamiento de información   "
+09,1,5,02,01,"Reparación de equipos, accesorios fotográficos y de procesamiento de información   "
+09,2,,,,"OTROS PRODUCTOS DURADEROS IMPORTANTES PARA RECREACIÓN Y CULTURA
+"
+09,2,1,,,"Principales bienes duraderos para recreación en interiores y exteriores
+
+"
+09,2,1,01,,"Equipo y accesorios para deportes: pesas, balones, mallas, bicicletas estáticas, mesas de ping pong, raquetas, chanchas de tejo, equipo de buceo, flotadores, cascos, guantes rodilleras y otros
+"
+09,2,1,01,01,"Equipo y accesorios para deportes: pesas, balones, mallas, bicicletas estáticas, mesas de ping pong, raquetas, chanchas de tejo, equipo de buceo, flotadores, cascos, guantes rodilleras y otros
+"
+09,2,1,02,,"Mesas de billar, carros de golf, botes, alas deltas (cometas humanas), rodaderos, piscinas, etc."
+09,2,1,02,01,"Mesas de billar, carros de golf, botes, alas deltas (cometas humanas), rodaderos, piscinas, etc."
+09,2,2,,,"Instrumentos musicales
+"
+09,2,2,01,,"Instrumentos musicales: armónicas,  flautas, maracas, tambores, baterías, guitarras, órganos, pianos, sintetizadores, trompetas, violines, etc"
+09,2,2,01,01,"Instrumentos musicales: armónicas,  flautas, maracas, tambores, baterías, guitarras, órganos, pianos, sintetizadores, trompetas, violines, etc"
+09,2,2,02,,Accesorios y piezas de repuestos de instrumentos musicales
+09,2,2,02,01,Accesorios y piezas de repuestos de instrumentos musicales
+09,2,3,,,"Conservación y reparación de otros bienes duraderos importantes para recreación y cultura
+"
+09,2,3,01,,"Mantenimiento y reparación de instrumentos musicales y de equipos relacionados con deportes y ocio terrestre, aéreo, acuático y en interiores"
+09,2,3,01,01,"Mantenimiento y reparación de instrumentos musicales y de equipos relacionados con deportes y ocio terrestre, aéreo, acuático y en interiores"
+09,3,,,,"OTROS ARTÍCULOS Y EQUIPO PARA RECREACIÓN, JARDINES Y ANIMALES DOMÉSTICOS.
+"
+09,3,1,,,"Juegos, juguetes y aficiones "
+09,3,1,01,,"Juegos de mesa: cartas, naipes, dominó, ajedrez, parqués, damas chinas, rumi-q, etc."
+09,3,1,01,01,"Juegos de mesa: cartas, naipes, dominó, ajedrez, parqués, damas chinas, rumi-q, etc."
+09,3,1,02,,Juegos y juguetes infantiles
+09,3,1,02,01,"Juguetes: carros, trenes, muñecas, loterias, peluches, rompecabezas, sonajeros, armatodos, bromas, etc."
+09,3,1,02,02,"Bicicletas para niño(a), triciclos, columpios"
+09,3,1,02,03,"Consolas y accesorios para juegos electrónicos: play station, nintendos, x-box, gameboy, etc.
+"
+09,3,1,02,04,Pago por descargas de juegos de internet 
+09,3,1,03,,"Artículos, adornos y prendas de vestir para fiestas"
+09,3,1,03,01,"Disfraces (vestidos, máscaras, accesorios)"
+09,3,1,03,02,"Adornos navideños (árboles de navidad artificiales, guirnaldas, y otros accesorios decorativos) pólvora y fuegos artificiales.
+"
+09,3,1,03,03,"Artículos para fiestas: piñatas, serpentinas, confetis, bombas plásticas, recordatorios, etc"
+09,3,1,04,,"Artículos de colección: monedas, estampillas, álbumes para estampillas, billetes, etc. "
+09,3,1,04,01,"Artículos de colección: monedas, estampillas, álbumes para estampillas, billetes, etc. "
+09,3,2,,,"Equipos para el deporte, campamento y recreación al aire libre "
+09,3,2,01,,"Equipo y accesorios para camping: carpas, colchonetas aislantes o térmicas, sacos de dormir, colchones de aire e infladores, neveras portables, maletines térmicos, navaja, etc. 
+"
+09,3,2,01,01,"Equipo y accesorios para camping: carpas, colchonetas aislantes o térmicas, sacos de dormir, colchones de aire e infladores, neveras portables, maletines térmicos, navaja, etc. "
+09,3,2,02,,"Calzado para deportes: patines, guayos, zapatos para golf, zapatillas para atletismo, crampones y otros aditamientos de calzado para deportes.
+"
+09,3,2,02,01,"Calzado para deportes: patines, guayos, zapatos para golf, zapatillas para atletismo, crampones y otros aditamientos de calzado para deportes."
+09,3,2,03,,"Equipos para pesca y caza: cañas y otros equipos para pescar, armas de fuego y municiones  
+"
+09,3,2,03,01,"Equipos para pesca y caza: cañas y otros equipos para pescar, armas de fuego y municiones  "
+09,3,3,,,"Jardines, plantas y flores"
+09,3,3,01,,Flores sueltas o por docena
+09,3,3,01,01,Flores sueltas o por docena
+09,3,3,02,,"Plantas naturales: ramos de flores, matas, arbustos "
+09,3,3,02,01,"Plantas naturales: ramos de flores, matas, arbustos "
+09,3,3,03,,"Coronas, flores para funerales, hojas verdes"
+09,3,3,03,01,"Coronas, flores para funerales, hojas verdes"
+09,3,3,04,,Plantas artificiales: flores (sueltas o en ramo) y matas 
+09,3,3,04,01,Plantas artificiales: flores (sueltas o en ramo) y matas 
+09,3,3,05,,"Semillas, bulbos de plantas, césped, fertilizantes, fungicidas, abonos, materas, macetas y tiestos para flores y plantas
+"
+09,3,3,05,01,"Semillas, bulbos de plantas, césped, fertilizantes, fungicidas, abonos, materas, macetas y tiestos para flores y plantas
+"
+09,3,4,,,Animales domésticos y productos conexos
+09,3,4,01,,"Animales domésticos, mascotas y para prácticas deportivas: perros, gatos,  pájaros, conejos, peces, etc.
+"
+09,3,4,01,01,"Animales domésticos, mascotas y para prácticas deportivas: perros, gatos,  pájaros, conejos, peces, etc."
+09,3,4,02,,Alimentos para animales domésticos y mascotas
+09,3,4,02,01,Alimentos para animales domésticos y mascotas
+09,3,4,03,,"Productos  para animales domésticos y mascotas, productos de veterinaria, artículos para el cuidado e higiene (shampoo, jabón, desodorantes) y accesorios para mascotas (collares, perrera, jaula, acuarios y otros)
+"
+09,3,4,03,01,"Productos  para animales domésticos y mascotas, productos de veterinaria, artículos para el cuidado e higiene (shampoo, jabón, desodorantes) y accesorios para mascotas (collares, perrera, jaula, acuarios y otros)"
+09,3,5,,,Servicios de veterinaria y de otro tipo para animales domésticos 
+09,3,5,01,,"Servicios de veterinaria y de otro tipo para animales domésticos: cuidado, salón de belleza, alojamiento, entrenamiento, paseadores de perros y colegios para mascotas etc.   "
+09,3,5,01,01,"Servicios de veterinaria y de otro tipo para animales domésticos: cuidado, salón de belleza, alojamiento, entrenamiento, paseadores de perros y colegios para mascotas etc.   "
+09,4,,,,SERVICIOS  DE RECREACION Y CULTURALES
+09,4,1,,,Servicios de recreación y deportivos 
+09,4,1,01,,Servicios recreativos 
+09,4,1,01,01,"Entrada a Ferias (del libro, artesanal, etc)"
+09,4,1,01,02,"Gastos en parques, parques de diversiones, juegos mecánicos (no incluir pago de paquetes de paseos de menos de un día por excursiones, peregrinaje o convivencia)"
+09,4,1,01,03,Gastos en bazares y fiestas populares
+09,4,1,01,04,"Servicio de profesores o instructores particulares en clases recreativas y deportivas (fútbol, ajedrez, gimnasia, patinaje, natación, yoga y otros)
+       "
+09,4,1,01,05,"Servicio de profesores o instructores particulares en clases de formación artística (música, baile, instrumentos musicales, canto, producción artística-creativa)     
+  "
+09,4,1,01,06,"Gastos en  fiestas del hogar (matrimonios, cumpleaños, bautizos, navidad) a excepción de piñatas.
+"
+09,4,1,01,07,"Gastos en juegos electrónicos y maquinitas (daytona y otros) en establecimientos públicos
+"
+09,4,1,02,,Servicios prestados por escenarios deportivos 
+09,4,1,02,01,Entrada a  espectáculos deportivos
+09,4,1,02,02,"Alquiler de instalaciones o canchas deportivas para la práctica de deportes (bolos, tenis, golfito, microfútbol, etc.)
+"
+09,4,1,02,03,Pago por servicios de gimnasio
+09,4,1,02,04,Cuotas a clubes sociales y deportivos
+09,4,1,02,05,"Servicio de billar, tejo, rana y ping-pong"
+09,4,1,03,,"Alquiler de equipo, accesorios y calzado para deporte y recreación "
+09,4,1,03,01,"Alquiler de equipo, accesorios y calzado para deporte y recreación "
+09,4,2,,,Servicios culturales 
+09,4,2,01,,Cines y teatros 
+09,4,2,01,01,Entradas a cine
+09,4,2,01,02,Entradas a teatro
+09,4,2,02,,"Entradas a espectáculos musicales: conciertos, óperas, ballets, zarzuela, etc."
+09,4,2,02,01,"Entradas a espectáculos musicales: conciertos, óperas, ballets, zarzuela, etc."
+09,4,2,03,,"Entradas a espectaculos como circos, plazas de toros y afines"
+09,4,2,03,01,Entradas a circos y otros espectáculos afines
+09,4,2,03,02,Entradas a plazas de toros  
+09,4,2,04,,"Entradas a museos, bibliotecas y hemerotecas"
+09,4,2,04,01,"Entradas a museos, galerías de arte y exhibiciones  "
+09,4,2,04,02,"Entradas a bibliotecas, hemerotecas y archivos"
+09,4,2,05,,"Entradas a parques, monumentos históricos y similares    "
+09,4,2,05,01,Entradas a parques nacionales y reservas naturales
+09,4,2,05,02,"Entradas a jardines botánicos, zoológicos y acuarios"
+09,4,2,05,03,"Entradas a monumentos nacionales (sitios históricos, etc) y zonas arqueológicas"
+09,4,2,06,,"Suscripción y servicio de televisión por redes y cable 
+"
+09,4,2,06,01,"Suscripción, instalación, conexión o reconexión a televisión por cable, satelital, IPTV, digitalizada o antena parabólica
+"
+09,4,2,06,02,"Servicio de televisión por cable, satelital, digitalizada, IPTV o antena parabólica
+"
+09,4,2,07,,"Alquiler de TV, equipos de sonido y de video: televisores, reproductoras de video y de sonido, radios, etc.
+"
+09,4,2,07,01,"Alquiler de TV, equipos de sonido y de video: televisores, reproductoras de video y de sonido, radios, etc."
+09,4,2,08,,"Alquiler tradicional de películas, videos musicales y videojuegos"
+09,4,2,08,01,"Alquiler tradicional de películas, videos musicales y videojuegos"
+09,4,2,09,,"Servicios fotográficos y de video: procesamiento video, revelado de fotografías, ampliaciones, impresión de fotografías digitales, servicio de fotógrafos, etc
+. "
+09,4,2,09,01,"Servicios fotográficos y de video: procesamiento video, revelado de fotografías, ampliaciones, impresión de fotografías digitales, servicio de fotógrafos, etc."
+09,4,2,11,,Pago por descargas de películas y videos de internet
+09,4,2,11,01,Pago por descargas de películas y videos de internet.
+09,4,2,12,,Pago por descargas de música de internet
+09,4,2,12,01,Pago por descargas de música de internet
+09,4,2,99,,"Otros servicios culturales: músicos, payasos,  recreacionistas y otros"
+09,4,2,99,01,"Otros servicios culturales: músicos, payasos,  recreacionistas y otros"
+09,4,3,,,Juegos de azar 
+09,4,3,01,,Juegos de azar 
+09,4,3,01,01,"Loterías, chance, baloto y similares"
+09,4,3,01,02,Rifas y sorteos (diferentes a loterías)
+09,4,3,01,03,"Casinos, máquinas tragamonedas y bingos"
+09,5,,,,"PERIÓDICOS, LIBROS Y PAPELES Y ÚTILES DE OFICINA
+"
+09,5,1,,,Libros 
+09,5,1,01,,Libros y lista de útiles escolares completa 
+09,5,1,01,01,Libros sueltos de lectura
+09,5,1,01,02,Atlas y diccionarios 
+09,5,1,01,03,"Enciclopedias, obras y colecciones completas"
+09,5,1,01,04,Fascículos y tomos sueltos de colecciones
+09,5,1,01,05,Encuadernación de libros
+09,5,1,01,06,Libros técnicos y especializados
+09,5,1,01,07,Lista de útiles escolares completa  
+09,5,1,02,,"Libros de texto: textos guías para clase (incluye libros de literatura, poesía, etc, requeridos en clase)
+"
+09,5,1,02,01,"Libros de texto: textos guías para clase (incluye libros de literatura, poesía, etc, requeridos en clase)
+"
+09,5,1,03,,Pago por descargas de libros de internet 
+09,5,1,03,01,Pago por descargas de libros de internet 
+09,5,2,,,"Diarios, periódicos y revistas    "
+09,5,2,01,,Compra diaria de periódicos 
+09,5,2,01,01,Compra diaria de periódicos 
+09,5,2,02,,"Suscripción a periódicos, revistas u otras publicaciones periódicas impresas."
+09,5,2,02,01,"Suscripción a periódicos, revistas u otras publicaciones periódicas impresas."
+09,5,2,03,,Compra de revistas
+09,5,2,03,01,"Revistas sueltas, comics, novelas gráficas, historietas, cuentos y cuadernillos para colorear"
+09,5,3,,,Material impreso diverso 
+09,5,3,01,,Material impreso diverso
+09,5,3,01,01,"Catálogos, material publicitario, tarjetas de invitación o felicitación, carteles, postales, calendarios, tarjetas personales, álbumes de láminas, láminas, monas y caramelos, afiches, separadores de libros, sufragios"
+09,5,3,01,02,Mapas y globos terráqueos
+09,5,4,,,Papel y útiles de oficina y materiales de dibujo 
+09,5,4,01,,"Artículos de papelería: cuadernos, agendas, papel suelto y en resmas"
+09,5,4,01,01,"Cuadernos (cosidos, grapados, argollados, plastificados, etc.)  y blocks"
+09,5,4,01,02,"Libretas, agendas, diarios personales"
+09,5,4,01,03,"Hojas sueltas de papel (oficio, carta, cuadriculado, mantequilla, carbón), cartulina y otro tipo de papeles y cartones"
+09,5,4,01,04,Resmas de papel (carta u oficio)
+09,5,4,01,99,"Otros artículos de papeleria: fólderes, sobres (carta o manila), forros, rótulos, carpetas, etc."
+09,5,4,02,,Artículos para escribir
+09,5,4,02,01,"Lápices, portaminas, minas, tajalápices y borradores "
+09,5,4,02,02,"Bolígrafos, estilógrafos, plumas, marcadores, plumones y resaltadores"
+09,5,4,02,03,"Tintas (para estilógrafo, china y otras), plantillas de dibujo, almohadillas, líquidos correctores, etc."
+09,5,4,03,,Artículos para pintura y dibujo
+09,5,4,03,01,"Lienzos, telas para dibujo y pintura"
+09,5,4,03,02,Pínceles para dibujo
+09,5,4,03,03,"Vinilos, témperas, acuarelas, óleos, carboncillos, cajas de colores, crayolas, plastilina, otras pinturas, etc   "
+09,5,4,03,99,"Otros artículos para manualidades (repujadores, troqueladores, enrolladores, palos de balso, escarcha, foamy, etc)"
+09,5,4,04,,Artículos de escritorio y pegantes
+09,5,4,04,01,"Perforadoras, cortadoras de papel, tijeras, grapadoras"
+09,5,4,04,02,"Pegamentos, cintas, colbones, gomas, adhesivos, bisturís, grapas, clips, broches para papel, etc.   "
+09,5,4,99,,Otros materiales educativos
+09,5,4,99,01,"Reglas, escuadras, compaces, transportadores y otros instrumentos de geometría.   "
+09,5,4,99,02,"Estuches para lápices, pizarras, tiza, yeso para actividades educativas, madera balso, etc"
+09,6,,,,PAQUETES TURISTICOS
+09,6,0,,,Paquetes turísticos    
+09,6,0,01,,"Paquetes turísticos completos: Gira turística completa (incluye pasajes, alojamiento, alimentación, etc.) 
+"
+09,6,0,01,01,"Paquetes turísticos completos: Gira turística completa (incluye pasajes, alojamiento, alimentación, etc.) "
+09,6,0,02,,"Pago de paquete por viajes de excursión, peregrinaje o convivencia de menos de un día (sin pernoctar)"
+09,6,0,02,01,"Pago de paquete por viajes de excursión, peregrinaje o convivencia de menos de un día (sin pernoctar)"
+10,,,,,EDUCACIÓN
+10,1,,,,EDUCACIÓN PREESCOLAR Y BÁSICA PRIMARIA    
+10,1,0,,,Educación preescolar y básica primaria 
+10,1,0,01,,"Preescolar (Pre-kinder, Kinder y transición) "
+10,1,0,01,01,Matrícula e inscripción en preescolar 
+10,1,0,01,02,Pensiones en preescolar
+10,1,0,01,03,Bonos escolares en preescolar
+10,1,0,01,04,Asociación de padres de familia en preescolar
+10,1,0,01,99,"Otros gastos en preescolar no especificados anteriormente (aportes para rifas, eventos especiales y cobros para actividades esporádicas del colegio)"
+10,1,0,02,,Básica primaria
+10,1,0,02,01,Matrícula e inscripción en básica primaria  
+10,1,0,02,02,Pensiones en básica primaria
+10,1,0,02,03,Bonos escolares en básica primaria
+10,1,0,02,04,Asociación de padres de familia en básica primaria
+10,1,0,02,99,"Otros gastos en básica primaria no especificados anteriormente (aportes para rifas, eventos especiales y cobros para actividades esporádicas del colegio)"
+10,1,0,03,,Educación de niños con necesidades especiales
+10,1,0,03,01,Matrícula e inscripción en educación para niños con necesidades educativas especiales
+10,1,0,03,02,Pensiones en educación de niños con necesidades educativas especiales
+10,1,0,03,99,"Otros gastos en educación de niños con necesidades educativas especiales (aportes para rifas, eventos especiales y cobros para actividades esporádicas del colegio)"
+10,2,,,,EDUCACIÓN SECUNDARIA
+10,2,0,,,Educación Secundaria 
+10,2,0,01,,Educación Secundaria 
+10,2,0,01,01,Matriculas e inscripción en secundaria
+10,2,0,01,02,Pensiones en secundaria
+10,2,0,01,03,Bonos escolares en secundaria
+10,2,0,01,04,Asociación de padres de familia en secundaria
+10,2,0,01,99,"Otros gastos en secundaria no especificados anteriormente (aportes para rifas, eventos especiales y cobros para actividades esporádicas del colegio)"
+10,4,,,,EDUCACIÓN SUPERIOR
+10,4,0,,,Educación superior
+10,4,0,01,,"Inscripciones y matrículas en carreras técnicas, tecnológicas y universitarias "
+10,4,0,01,01,Inscripciones y matrículas en carreras universitarias (no incluye postgrado)
+10,4,0,01,02,Inscripciones y matrículas en carreras técnicas y tecnológicas 
+10,4,0,02,,"Inscripciones y matrículas en postgrados (especialización, maestría, doctorado)"
+10,4,0,02,01,"Inscripciones y matrículas en postgrados (especialización, maestría, doctorado)"
+10,4,0,99,,Otros gastos en educación superior
+10,4,0,99,01,Otros gastos en educación superior (pregrados y postgrados)
+10,5,,,,EDUCACIÓN NO ATRIBUIBLE A NINGUN NIVEL
+10,5,0,,,Educación no atribuible a ningún nivel 
+10,5,0,01,,Cursos de educación no formal
+10,5,0,01,01,"Cursos de educación no formal en academias o instituciones de idiomas, informática, moda y confección, belleza, primeros auxilios, etc"
+10,5,0,01,02,Cursos de educación no formal en academias o instituciones de deportes
+10,5,0,01,03,Cursos de educación no formal en academias o instituciones de formación artística
+10,5,0,04,,"Diplomados, educación continuada, preicfes, preuniversitarios "
+10,5,0,04,01,"Diplomados, educación continuada, preicfes, preuniversitarios "
+10,5,0,05,,Educación para adultos y validaciones
+10,5,0,05,01,Educación para adultos y validaciones
+10,5,0,06,,Pago a instituciones por asesoría de tareas
+10,5,0,06,01,Pago a instituciones por asesoría de tareas
+10,5,0,07,,Clases académicas dictadas por particulares
+10,5,0,07,01,Clases académicas dictadas por particulares
+11,,,,,RESTAURANTES Y HOTELES
+11,1,,,,SERVICIOS DE SUMINISTRO DE COMIDAS POR CONTRATO
+11,1,1,,,"Restaurantes, cafés y establecimientos similares"
+11,1,1,01,,"Comidas en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las  contratadas por encargo, para llevar y por servicio a domicilio"
+11,1,1,01,01,Desayunos completos
+11,1,1,01,02,Almuerzos completos
+11,1,1,01,03,Comidas completas
+11,1,1,01,04,"Tiquetera para alimentos preparados, excepto en establecimientos educativos"
+11,1,1,01,05,"Platos diversos: Pollo asado, carne asada, arroz chino, lechona y similares para consumo inmediato  en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las  contratadas por encargo, para llevar y por servicio a domicilio
+"
+11,1,1,02,,"Bebidas calientes : Tinto, café con leche, chocolate, té, bebida achocolatada caliente, leche, agua de panela, agua aromática, avena caliente y similares  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las  contratadas por encargo, para llevar y por servicio a domicilio
+"
+11,1,1,02,01,"Bebidas calientes : Tinto, café con leche, chocolate, té, bebida achocolatada caliente, leche, agua de panela, agua aromática, avena caliente y similares  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las  contratadas por encargo, para llevar y por servicio a domicilio
+"
+11,1,1,03,,"Gaseosa y otros refrescos  en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las adquiriudas para llevar y servicio a domicilio"
+11,1,1,03,01,"Gaseosa y otros refrescos  en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las adquiridas para llevar y servicio a domicilio"
+11,1,1,03,02,"Jugos naturales  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  puestos moviles, y lugares de esparcimiento; se incluyen tambien los  contratados por encargo ,para llevar y servicio a domicilio"
+11,1,1,03,03,"Leche tomada fuera del hogar suministrada para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento."
+11,1,1,03,04,"Yogurt, kumis para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento."
+11,1,1,03,05,"Masato, mazamorra, chicha, avena helada, malteada, agua de panela fria y similares  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio, puestos moviles, y lugares de esparcimiento; se incluyen tambien las  contratadas por encargo y para llevar"
+11,1,1,04,,"Comidas preparadas fuera del hogar para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  puestos moviles, lugares de esparcimiento, para llevar y por servicio a domicilio"
+11,1,1,04,01,"Helados, paletas, conos y similares  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  puestos moviles,  lugares de esparcimiento y para llevar."
+11,1,1,04,02,"Ensaladas de frutas, frutas sueltas, fresas con crema  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las contratadas por encargo, para llevar y por servicio a domicilio"
+11,1,1,04,03,"Galletas de sal y de dulce  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las contratadas por encargo y para llevar"
+11,1,1,04,04,"Pan, almojábanas, buñuelos,  pandeyucas, arepas y similares  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las  contratadas por encargo, para llevar y por servicio a domicilio"
+11,1,1,04,05,"Emparedados, empanadas, bollos, envueltos, tamales, pastel de pollo, perros calientes, hamburguesas, pizzas y similares para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las  contratadas por encargo, para llevar y por servicio a domicilio"
+11,1,1,04,06,"Brownies, obleas, ponqués, bizcochos, milhojas y similares  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las  contratadas por encargo y para llevar"
+11,1,1,04,07,"Productos de salsamentaria y fritanga: chorizos, jamones, rellenas y similares para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio, puestos moviles, y lugares de esparcimiento; se incluyen tambien las contratadas por encargo y para llevar"
+11,1,1,04,08,"Quesos, cuajadas y quesillos para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las contratadas por encargo y para llevar"
+11,1,1,04,09,"Huevos preparados para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  puestos moviles, y lugares de esparcimiento y  para llevar"
+11,1,1,04,10,"Arequipes, bocadillos, gelatinas y similares para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento y para llevar"
+11,1,1,04,11,"Frituras: papas fritas, chitos, patacones y similares  para consumo inmediato, en medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento y para llevar"
+11,1,1,04,12,"Dulces, confites, chocolatinas, bombones  para consumo inmediato, en medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento y para llevar"
+11,1,1,04,13,"Cócteles de camarones, ostras y similares  para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  puestos moviles, y lugares de esparcimiento; se incluyen tambien las contratadas por encargo y para llevar"
+11,1,1,04,14,"Onces, medias nueves, media mañana, algo, entredía, recreo para consumo inmediato, en establecimientos de servicio a la mesa y autoservicio,  medios de transporte, maquinas expendedoras, puestos moviles, y lugares de esparcimiento; se incluyen tambien las contratadas por encargo y para llevar"
+11,1,1,04,15,Alimentos provenientes de salario en especie
+11,1,1,05,,"Gastos en discotecas, bares, griles, tabernas y similares (comida, bebidas, cover)  "
+11,1,1,05,01,"Gastos en discotecas, bares, griles, tabernas y similares (comida, bebidas, cover)  "
+11,1,1,06,,"Gastos en bebidas alcohólicas (cerveza, aguardiente, ron, etc) en tiendas, fondas rurales y al aire libre"
+11,1,1,06,01,"Gastos en bebidas alcohólicas (cerveza, aguardiente, ron, etc) en tiendas, fondas rurales y al aire libre"
+11,1,2,,,Comedores 
+11,1,2,01,,Pago por alimentación en comedores  
+11,1,2,01,01,"Pago mensual por alimentación de estudiantes en establecimiento educativo (restaurantes escolares, universitarios),  los comedores universitarios, los de tropa y de oficiales del ejército.
+"
+11,2,,,,SERVICIOS DE ALOJAMIENTO
+11,2,0,,,Servicios de alojamiento   
+11,2,0,01,,"Servicios de alojamiento en hoteles, pensiones, posadas y hostales "
+11,2,0,01,01,"Servicios de alojamiento en hoteles, pensiones, posadas y hostales "
+11,2,0,02,,Servicios de alojamiento en moteles y residencias  
+11,2,0,02,01,Servicios de alojamiento en moteles y residencias  
+11,2,0,03,,"Servicios de alojamiento en centros de vacaciones, cabañas, apartamentos, servicios de alquiler en terrenos para camping y servicios de guías turísticos"
+11,2,0,03,01,"Servicios de alojamiento en centros de vacaciones, cabañas, apartamentos, servicios de alquiler en terrenos para camping y servicios de guías turísticos"
+11,2,0,04,,Servicios de alojamiento por motivo de enseñanza: internados de colegios; residencias estudiantiles; albergues para menores; albergues para jóvenes trabajadores e inmigrantes
+11,2,0,04,01,Servicios de alojamiento por motivo de enseñanza: internados de colegios; residencias estudiantiles; albergues para menores; albergues para jóvenes trabajadores e inmigrantes
+12,,,,,BIENES Y SERVICIOS DIVERSOS
+12,1,,,,CUIDADO PERSONAL
+12,1,1,,,Salones de peluquería y establecimientos de cuidados personales 
+12,1,1,01,,Servicios prestados en salones de peluquería y establecimientos de cuidado personal 
+12,1,1,01,01,Corte de pelo para hombres y niños
+12,1,1,01,02,Afeitado en barberías
+12,1,1,01,03,"Corte de pelo, peinado y alisado para mujeres y niñas"
+12,1,1,01,04,Tratamientos capilares y faciales
+12,1,1,01,05,Manicure y pedicure
+12,1,1,01,06,"Teñido de cabello, permanentes y desrizados en salón de belleza"
+12,1,1,01,07," Tratatamientos y cuidados corporales: Saunas, turcos y masajes no terapéuticos"
+12,1,1,01,08,Depilaciones 
+12,1,1,01,99,"Otros tratamientos de belleza: bronceado en cámara,  maquillaje permanente, tatuajes, perforaciones, expansiones,etc"
+12,1,2,,,Aparatos eléctricos para el cuidado personal   
+12,1,2,01,,Aparatos eléctricos para el cuidado personal y su reparación
+12,1,2,01,01,"Máquinas eléctricas de afeitar, para cortar el pelo y depiladoras "
+12,1,2,01,02,"Pinzas eléctricas, planchas para cabello y secadores "
+12,1,2,01,04,Reparación de aparatos eléctricos para el cuidado personal 
+12,1,2,01,99,"Otros aparatos eléctricos para el cuidado personal: cepillos de dientes, vaporizadores, artículos eléctricos para masaje, etc."
+12,1,3,,,"Otros aparatos, artículos y productos para la atención personal "
+12,1,3,01,,Artículos para el cuidado y la atención personal 
+12,1,3,01,01,"Máquina de afeitar no desechables, cuchillas y repuestos para máquinas de afeitar, máquinas de afeitar desechables, depiladores, encrespadores, cepillos para el cabello, peines y peinillas, rulos, ganchos y moños, pinzas y hebillas para el cabello, diademas, balacas y gorros para baño."
+12,1,3,01,02,Básculas personales o pesas
+12,1,3,02,,Artículos para higiene corporal
+12,1,3,02,01,Jabones de tocador líquidos y en barra
+12,1,3,02,02,"Champús, acondicionadores, bálsamos, enjuagues, cremas y tratamientos para el cabello (excluir los productos de bebé), gel, fijadores y lacas para el cabello"
+12,1,3,02,03,"Cremas para afeitar y depilar (tubo, aerosol, gel) y lociones para después de la afeitada"
+12,1,3,02,04,"Desodorantes y antitranspitantes (crema, barra, roll-on, aerosol)"
+12,1,3,02,05,"Perfumes, colonias y lociones"
+12,1,3,02,06,"Artículos para la higiene corporal del bebé: aceites, cremas, champús, bálsamos, jabones, colonias, etc. (excluye paños húmedos)"
+12,1,3,03,,Artículos para la higiene oral
+12,1,3,03,01,"Cepillos de dientes, hilo y seda dental"
+12,1,3,03,02,Crema dental y  enjuague bucal
+12,1,3,03,03,Blanqueadores y ceras dentales.
+12,1,3,04,,Productos de belleza
+12,1,3,04,01,"Bases para la cara, polvos faciales, pestañinas, labiales, lápices de ceja, delineadores, sombras,  ruborizadores y desmaquilladores."
+12,1,3,04,02,"Esmaltes, quitaesmaltes, diluyentes, limas y tijeras para uñas, cortacutículas,  cortauñas y artículos decorativos para uñas."
+12,1,3,04,03,"Cremas (nutritivas, limpiadoras, hidratantes, etc.), talcos y polvos para el cuerpo y los pies, bronceadores y protectores solares no formulados"
+12,1,3,04,04,Tinturas para el cabello
+12,1,3,04,99,"Otros productos de belleza (pelucas, peluquines, extensiones de cabello, etc.)"
+12,1,3,99,,Otros productos para el aseo personal
+12,1,3,99,01,Papel higiénico
+12,1,3,99,02,"Algodón,  esponjas para el cuerpo y copitos"
+12,1,3,99,03,Pañuelos y pañitos húmedos desechables de uso personal
+12,1,3,99,04,"Toallas sanitarias, protectores, tampones, pañitos y jabones intimos."
+12,1,3,99,05,"Protectores para brassier, mamadores, succionadores y pezoneras"
+12,1,3,99,06,Pañales desechables
+12,1,3,99,07,Pañales y ropa interior para incontinencia
+12,1,3,99,99,Otros productos para el aseo personal
+12,2,,,,PROSTITUCIÓN
+12,2,0,,,Prostitución   
+12,2,0,01,,Servicios prestados por personas para entretenimiento privado de adultos (strippers y otros)
+12,2,0,01,01,Servicios prestados por personas para entretenimiento privado de adultos (strippers y otros)
+12,3,,,,EFECTOS PERSONALES 
+12,3,1,,,"Joyería, relojes de pared y relojes de pulsera "
+12,3,1,01,,"Artículos en oro,  plata y piedras preciosas y su reparación
+"
+12,3,1,01,01,"Anillos, argollas, sortijas, aretes, pendientes, prendedores y alfileres para corbata, mancornas en oro y plata
+"
+12,3,1,01,02,"Collares, cadenas, gargantillas, pulseras y manillas en oro y plata.
+"
+12,3,1,01,03,Piedras preciosas
+12,3,1,01,04,"Reparación de artículos de oro, plata y piedras preciosas."
+12,3,1,02,,"Relojes, cronómetros, termómetros, barómetros y su reparación"
+12,3,1,02,01,"Relojes de mesa o pared y despertadores, termómetros y barómetros de pared"
+12,3,1,02,02,"Relojes de pulso mecánicos o digitales, de bolsillo y cronómetros"
+12,3,1,02,03,"Reparación de relojes, cronómetros, termómetros y barómetros de pared"
+12,3,1,03,,Artículos de fantasía y su reparación
+12,3,1,03,01,"Anillos, argollas, sortijas, aretes, pendientes, prendedores, mancornas de fantasia e hilo."
+12,3,1,03,02,"Collares, cadenas, gargantillas, pulseras y manillas de fantasía e hilo"
+12,3,1,03,03,Reparación de artículos de fantasía e hilo
+12,3,2,,,Otros efectos personales 
+12,3,2,01,,Artículos de viaje y otros artículos para el transporte de efectos personales
+12,3,2,01,01,"Maletines, portafolios y bolsos de viaje"
+12,3,2,01,02,"Carteras, mochilas y bolsos de mano"
+12,3,2,01,03,"Billeteras, monederos, tarjeteros de bolsillo y portabilletes   "
+12,3,2,01,04,Bolsos y maletas tipo estudiante 
+12,3,2,01,05,"Reparación de maletines, cartera, billeteras y bolsos mencionados anteriormente"
+12,3,2,02,,Artículos para bebés y su reparación
+12,3,2,02,01,"Coches, caminadores, sillas, sillas para vehículo, cestos y hamacas para bebé"
+12,3,2,02,02,Portabebés delanteros y de espalda
+12,3,2,02,03,Monitores e intercomunicadores para bebé
+12,3,2,02,04,"Chupos, mamilas, entretenedores"
+12,3,2,02,05,Pañaleras
+12,3,2,02,07,Reparación de artículos para bebé
+12,3,2,02,99,"Otros artículos para bebé (bañeras, correas para bebé, etc) "
+12,3,2,03,,"Artículos para fumador: Pipas, encendedores no desechables, pitilleras, cortapuros, cigarrillos electrónicos y narguile"
+12,3,2,03,01,"Artículos para fumador: Pipas, encendedores no desechables, pitilleras, cortapuros, cigarrillos electrónicos y narguile"
+12,3,2,04,,"Artículos personales varios como: gafas de sol, lentes de contacto cosmeticos, bastones, paraguas y sombrillas, abanicos, llaveros, etc"
+12,3,2,04,01,"Artículos personales varios como: gafas de sol, lentes de contacto, cosmeticos, bastones, paraguas y sombrillas, abanicos, llaveros, etc"
+12,3,2,05,,"Artículos de funeraria: ataúdes, lápidas y urnas"
+12,3,2,05,01,"Artículos de funeraria: ataúdes, lápidas y urnas"
+12,4,,,,PROTECCION SOCIAL
+12,4,0,,,Protección social   
+12,4,0,01,,Servicios de protección social dentro y fuera del hogar
+12,4,0,01,01,"Residencias para ancianos, hogares geriátricos, hogares para personas con limitaciones físicas o cognitivas y centros de rehabilitación"
+12,4,0,01,02,Asistencia para el cuidado y mantenimiento de personas con limitaciones-discapacidad en el hogar
+12,4,0,02,,"Guarderías, salacunas, cuidado de niños fuera del hogar y servicios de adopción
+"
+12,4,0,02,01,"Pagos mensuales en guardería o salacunas: pensión, alimentación, etc"
+12,4,0,02,02,"Pagos anuales en guarderías o salacunas: matrícula, materiales, etc"
+12,4,0,02,03,Cuidado de niños fuera del hogar (niñeras fuera del hogar)
+12,4,0,02,04,Pagos en agencias por servicios de adopción
+12,4,0,03,,Pagos a EPS 
+12,4,0,03,01,Descuentos por aporte de asalariados a EPS
+12,4,0,03,02,Aportes obligatorios de trabajadores independientes a EPS 
+12,4,0,03,03,"Pagos adicionales en salud (PILA) por persona diferente al nucleo familiar: abuelos, personas mayores de 25 años, nietos, etc."
+12,4,0,04,,Pagos de pensiones y cesantías
+12,4,0,04,01,Descuentos por aportes obligatorios de asalariados a fondos de pensiones y cesantías
+12,4,0,04,02,Aportes obligatorios de trabajadores independientes a fondos de pensiones y cesantías 
+12,4,0,05,,Pago en comedores comunitarios orientados a la protección social
+12,4,0,05,01,Pago en comedores comunitarios
+12,4,0,05,02,Valor imputado por alimentación en comedores comunitarios
+12,5,,,,SEGURO
+12,5,1,,,Seguro de vida 
+12,5,1,01,,"Seguro de vida y de educación (ahorro programado), seguro de prestación en caso de fallecimiento.
+"
+12,5,1,01,01,"Seguro de vida y de educación (ahorro programado), seguro de prestación en caso de fallecimiento."
+12,5,2,,,Seguro relacionado con la vivienda 
+12,5,2,01,,"Seguro relacionado con la vivienda (robo, incendio, terremoto, terrorismo, etc)"
+12,5,2,01,01,"Seguro relacionado con la vivienda (robo, incendio, terremoto, terrorismo, etc)"
+12,5,3,,,Seguro relacionado con la salud  
+12,5,3,01,,"Seguros médicos, de accidentes y medicina pregada"
+12,5,3,01,01,Pago anual de medicina prepagada o plan complementario de salud
+12,5,3,01,02,Seguro estudiantil
+12,5,3,01,03,"Seguros relacionados con  la salud: médico, maternidad, neonatal, ambulancia, de accidentes,etc. (emermédica, emi, cem)"
+12,5,4,,,Seguro relacionado con el transporte 
+12,5,4,01,,Seguros de vehículos y otros relacionados con el transporte
+12,5,4,01,01,Pago de Seguro Obligatorio SOAT
+12,5,4,01,02,Pago de seguro de vehículos contra todo riesgo
+12,5,4,01,03,"Seguros relacionados con el transporte: seguro de vuelo, seguro de viaje y equipaje."
+12,5,5,,,Otros seguros 
+12,5,5,99,,"Otros seguros: seguros de responsabilidad civil por lesiones o daños a terceros o a su propiedad, seguro funerario y similares"
+12,5,5,99,01,"Otros seguros: seguros de responsabilidad civil por lesiones o daños a terceros o a su propiedad, seguro funerario y similares"
+12,6,,,,SERVICIOS FINANCIEROS   
+12,6,1,,,"Servicios de Intermediación Financiera Medidos Indirectamente (SIFMI)
+"
+12,6,1,01,,Servicios financieros asociados al pago de intereses sobre préstamos y depósitos
+12,6,1,01,01,Cuotas por crédito para adquisición de vehículos 
+12,6,1,01,02,"Cuotas o pagos por préstamos de consumo realizados a bancos, cooperativas y fondos (incluye cuotas de creditos para vivienda)
+
+"
+12,6,1,01,03,Cuotas o pagos por préstamos adquiridos con particulares y organizaciones del sector no financiero
+12,6,1,01,04,Compra de vivienda
+12,6,2,,,Otros servicios financieros    
+12,6,2,01,,"Servicios financieros prestados a cambio de una comisión explicita
+"
+12,6,2,01,01,"Pago por chequeras, servicios de cajero automático (retiros, consultas de saldos), audirespuesta, servicios en línea o banca virtual, avances en efectivo, costos del taloanario, reposición del plástico, certificaciones y referencias bancarias y cheques de gerencia.
+"
+12,6,2,01,02,"Comisiones bancarias por transferencias, pagos a terceros, por consignación nacional en oficina diferente a la de radicación, giros, remesas, portes (cheques)"
+12,6,2,01,03,Cuota de manejo de tarjeta débito o crédito
+12,6,2,01,04,"Pago del ultimo recibo por tarjetas de crédito, excluyendo cuota de manejo "
+12,6,2,01,05,Cuotas o pagos directos a almacenes y distribuidores por compras a crédito (excluye tarjetas de crédito expedidas por almacenes y distribuidores)
+12,6,2,01,06,Servicios financieros por medio de corresponsal
+12,6,2,02,,Servicios financieros relacionados con la adquisición y enajenación de activos y pasivos financieros en los mercados financieros
+12,6,2,02,02,"Pago de comisión por la administración de los fondos de inversión colectiva, fondos mutuos de inversión, negocios fiduciarios de inversión y portafolios de terceros de las sociedades comisionistas de bolsa"
+12,6,2,03,,Servicios auxiliares
+12,6,2,03,01,"Honorarios y cargos por servicio de agentes, asesores de inversión, consultores fiscales y financieros y servicios similares"
+12,6,2,03,02,Remesas de dinero a otros hogares para sostenimiento de personas a cargo del hogar en el exterior
+12,7,,,,OTROS SERVICIOS 
+12,7,0,,,Otros servicios   
+12,7,0,01,,"Pagos de honorarios por: asesoría jurídicas, contratación de personal para el hogar, guardaespaldas, detectives privados, agencias matrimoniales, agentes inmobiliarios, etc
+"
+12,7,0,01,01,"Pagos de honorarios por: asesoría jurídicas, contratación de personal para el hogar, guardaespaldas, detectives privados, agencias matrimoniales, agentes inmobiliarios, etc
+"
+12,7,0,02,,Certificados y documentos administrativos
+12,7,0,02,01,Libreta militar
+12,7,0,02,02,"Cédula de ciudadanía, pasaporte, visas, tarjetas profesionales, certificados de nacimiento, defunción, matrimonio, extrajuicios, certificados de libertad y otros certificados notariales"
+12,7,0,03,,Cuotas a organizaciones
+12,7,0,03,01,"Cuotas a asociaciones profesionales, partidos políticos,  juntas de acción comunal, aportes y donaciones a ONGs y donaciones en dinero a otras instituciones u hogares
+"
+12,7,0,03,02,"Cuotas a  instituciones religiosas y diezmo
+"
+12,7,0,04,,"Servicios religiosos y civiles por entierros, matrimonios,  gastos en pompas fúnebres y en otros servicios de funerales, etc  
+"
+12,7,0,04,01,"Servicios religiosos y civiles por entierros, matrimonios,  gastos en pompas fúnebres y en otros servicios de funerales, etc"
+12,7,0,06,,Impuestos 
+12,7,0,06,01,"Impuesto predial y de valorización de la(s) vivienda(s) ocupada(s) por el hogar
+"
+12,7,0,06,02,Impuestos del vehiculo
+12,7,0,06,03,Impuesto de renta
+12,7,0,06,99,"Otros impuestos (de timbre, etc)"
+12,7,0,07,,Mesadas a estudiantes y personas no perceptoras de ingresos para gastos diarios
+12,7,0,07,01,Mesadas a estudiantes y personas no perceptoras de ingresos para gastos diarios
+12,7,0,09,,"Planes de protección social a personas ajenas al hogar (Plan Canitas, Gotas de agua)"
+12,7,0,09,01,"Planes de protección social a personas ajenas al hogar (Plan Canitas, Gotas de agua)"
+12,7,0,99,,Otros pagos por servicios   
+12,7,0,99,01,Pago por noticias y anuncios en la prensa y en páginas web
+12,7,0,99,02,Pago por servicio de baños públicos
+12,7,0,99,03,"Servicio de fotocopias, reducciones, ampliaciones, laminaciones, argollados, impresión de hojas y documentos, servicio de scanner, servicio de quemado de CD o DVD y trabajos en computador"
+12,7,0,99,04,Servicio de coteros o cargadores

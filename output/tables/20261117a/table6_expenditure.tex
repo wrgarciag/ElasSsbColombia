@@ -1,0 +1,51 @@
+\begin{table}[!htbp]
+\centering
+\begin{threeparttable}
+\caption{Expenditure elasticities and specification sensitivity}
+\label{tab:expenditure}
+\footnotesize
+\begin{tabular}{lrrrrrr}
+\toprule
+ & M1 & M2 & M3 & M4 & M5 & M6 \\
+\midrule
+\addlinespace\multicolumn{7}{l}{\textit{Off-trade (at home)}} \\
+SB & 0.351\textsuperscript{**} & 0.815\textsuperscript{**} & 0.178\textsuperscript{*} & 0.351\textsuperscript{**} & 0.351\textsuperscript{**} & 0.130 \\
+ & [0.110] & [0.026] & [0.086] & [0.110] & [0.110] & [0.123] \\
+Beer & $-$6.113 & 1.558\textsuperscript{**} & $-$5.929\textsuperscript{*} & $-$6.113 & $-$6.113 & $-$6.496 \\
+ & [3.516] & [0.103] & [2.506] & [3.516] & [3.516] & [3.823] \\
+Spirits and wine & n.e. & n.e. & n.e. & n.e. & n.e. & n.e. \\
+Water & $-$0.003 & 1.101\textsuperscript{**} & 0.470 & $-$0.003 & $-$0.003 & $-$0.562 \\
+ & [0.558] & [0.051] & [0.256] & [0.558] & [0.558] & [0.630] \\
+Dairy drinks & 0.171\textsuperscript{*} & 0.715\textsuperscript{**} & $-$0.012 & 0.171\textsuperscript{*} & 0.171\textsuperscript{*} & 0.265\textsuperscript{**} \\
+ & [0.069] & [0.016] & [0.055] & [0.069] & [0.069] & [0.099] \\
+Hot drinks & 0.159 & 0.721\textsuperscript{**} & $-$0.253\textsuperscript{*} & 0.159 & 0.159 & 0.222 \\
+ & [0.179] & [0.026] & [0.109] & [0.179] & [0.179] & [0.265] \\
+\addlinespace
+Households & 87,198 & 87,198 & 87,198 & 87,198 & 87,198 & 81,438 \\
+Price clusters & 483 & 483 & 483 & 483 & 483 & 338 \\
+\addlinespace\multicolumn{7}{l}{\textit{Combined market (at home + away from home)}} \\
+SB & 0.521\textsuperscript{**} & 0.826\textsuperscript{**} & 0.479\textsuperscript{**} & 0.521\textsuperscript{**} & 0.521\textsuperscript{**} & 0.472\textsuperscript{**} \\
+ & [0.062] & [0.021] & [0.049] & [0.062] & [0.064] & [0.060] \\
+Beer & $-$3.582 & 1.601\textsuperscript{**} & $-$2.706 & $-$3.582 & $-$6.113 & $-$2.961 \\
+ & [1.857] & [0.087] & [1.488] & [1.857] & [3.516] & [2.641] \\
+Spirits and wine & n.e. & n.e. & n.e. & n.e. & n.e. & n.e. \\
+Water & 0.030 & 1.103\textsuperscript{**} & 0.534\textsuperscript{*} & 0.030 & $-$0.003 & $-$0.595 \\
+ & [0.534] & [0.053] & [0.251] & [0.534] & [0.558] & [0.598] \\
+Dairy drinks & 0.201\textsuperscript{**} & 0.719\textsuperscript{**} & 0.058 & 0.201\textsuperscript{**} & 0.193\textsuperscript{**} & 0.285\textsuperscript{**} \\
+ & [0.064] & [0.016] & [0.051] & [0.064] & [0.065] & [0.092] \\
+Hot drinks & 0.371\textsuperscript{*} & 0.704\textsuperscript{**} & 0.224\textsuperscript{*} & 0.371\textsuperscript{*} & 0.379\textsuperscript{*} & 0.626\textsuperscript{**} \\
+ & [0.149] & [0.031] & [0.090] & [0.149] & [0.157] & [0.196] \\
+\addlinespace
+Households & 87,197 & 87,197 & 87,197 & 87,197 & 87,198 & 81,437 \\
+Price clusters & 483 & 483 & 483 & 483 & 483 & 338 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item Elasticities of quantity with respect to total household current expenditure (not income) from WELCOM 3.60 \texttt{duvm}: $1-\beta^1_g+\beta^0_g/\bar w_g$, where $\beta^0_g$ and $\beta^1_g$ are the coefficients of log expenditure in the budget-share and unit-value regressions. Regional controls enter only the between-cluster stage, so M4 equals M1 by construction.
+\item Columns: M1 primary specification (WELCOM \texttt{duvm} with the selection term, sampling weights averaged within price clusters and region-by-area controls; coded and text-identified purchases; urban and rural households). M2 without the selection term. M3 without sampling weights. M4 without regional controls. M5 coded purchases only. M6 urban households only (a different target population). Each column changes one element of M1.
+\item Standard errors in brackets are standard deviations over 99--100 cluster-bootstrap replications in which price clusters are resampled within region cells and the whole WELCOM estimation is repeated (1 failed replications). \textsuperscript{**} $p<0.01$, \textsuperscript{*} $p<0.05$ (two-sided, normal approximation). The replication target set in the configuration has not been reached for every model; inference is preliminary.
+\item n.e.: not estimable. ENPH records no physical quantity for spirits and wine, so no unit value exists and the good cannot enter the unit-value model.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}

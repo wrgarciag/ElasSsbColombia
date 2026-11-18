@@ -1,0 +1,33 @@
+model_id,label,sample,csb,weight,region,cluster,n_households,n_clusters,boot_completed,boot_failed,boot_target
+M1_combined,Primary specification,in_sample==1,1,wgt_market,regctl,clus_market,87197,483,100,0,500
+M2_combined,Without the selection term,in_sample==1,0,wgt_market,regctl,clus_market,87197,483,100,0,500
+M3_combined,Without sampling weights,in_sample==1,1,none,regctl,clus_market,87197,483,100,0,500
+M4_combined,Without regional controls,in_sample==1,1,wgt_market,none,clus_market,87197,483,100,0,500
+M5_combined,Coded purchases only,in_sample==1,1,wgt_market,regctl,clus_market,87198,483,100,0,500
+M6_combined,Urban households only,in_sample==1 & urban==1,1,wgt_market,regctl,clus_market,81437,338,100,0,500
+S1_combined,Classification: broad SB definition,in_sample==1,1,wgt_market,regctl,clus_market,87197,483,4,0,100
+S2_combined,Quantities: directly recorded units only,in_sample==1,1,wgt_market,regctl,clus_market,87197,483,4,0,100
+S3_combined,Recall: reference-period scaling,in_sample==1,1,wgt_market,regctl,clus_market,87196,483,4,0,100
+S4_combined,Outliers: extreme spenders excluded,in_sample==1 & spend_outlier_any==0,1,wgt_market,regctl,clus_market,87191,483,4,0,100
+S5_combined,Price clusters: survey segments,in_sample==1,1,wgt_segment,regctl,clus_segment,87197,8457,4,0,100
+S6_combined,Weights: raw household expansion factors,in_sample==1,1,wgt_hh_raw,regctl,clus_market,87197,483,4,0,100
+S7_combined,System without beer,in_sample==1,1,wgt_market,regctl,clus_market,87197,483,4,0,100
+T1_combined,Income tercile 1 (lowest),in_sample==1 & tercile==1,1,wgt_market,regctl,clus_market,25654,476,100,0,500
+T2_combined,Income tercile 2,in_sample==1 & tercile==2,1,wgt_market,regctl,clus_market,30586,474,100,0,500
+T3_combined,Income tercile 3 (highest),in_sample==1 & tercile==3,1,wgt_market,regctl,clus_market,30957,460,100,0,500
+M1_home,Primary specification,in_sample==1,1,wgt_market,regctl,clus_market,87198,483,100,0,500
+M2_home,Without the selection term,in_sample==1,0,wgt_market,regctl,clus_market,87198,483,100,0,500
+M3_home,Without sampling weights,in_sample==1,1,none,regctl,clus_market,87198,483,99,1,500
+M4_home,Without regional controls,in_sample==1,1,wgt_market,none,clus_market,87198,483,100,0,500
+M5_home,Coded purchases only,in_sample==1,1,wgt_market,regctl,clus_market,87198,483,100,0,500
+M6_home,Urban households only,in_sample==1 & urban==1,1,wgt_market,regctl,clus_market,81438,338,100,0,500
+S1_home,Classification: broad SB definition,in_sample==1,1,wgt_market,regctl,clus_market,87198,483,4,0,100
+S2_home,Quantities: directly recorded units only,in_sample==1,1,wgt_market,regctl,clus_market,87198,483,4,0,100
+S3_home,Recall: reference-period scaling,in_sample==1,1,wgt_market,regctl,clus_market,87197,483,4,0,100
+S4_home,Outliers: extreme spenders excluded,in_sample==1 & spend_outlier_any==0,1,wgt_market,regctl,clus_market,87187,483,4,0,100
+S5_home,Price clusters: survey segments,in_sample==1,1,wgt_segment,regctl,clus_segment,87198,8457,4,0,100
+S6_home,Weights: raw household expansion factors,in_sample==1,1,wgt_hh_raw,regctl,clus_market,87198,483,4,0,100
+S7_home,System without beer,in_sample==1,1,wgt_market,regctl,clus_market,87198,483,4,0,100
+T1_home,Income tercile 1 (lowest),in_sample==1 & tercile==1,1,wgt_market,regctl,clus_market,25654,476,100,0,500
+T2_home,Income tercile 2,in_sample==1 & tercile==2,1,wgt_market,regctl,clus_market,30586,474,100,0,500
+T3_home,Income tercile 3 (highest),in_sample==1 & tercile==3,1,wgt_market,regctl,clus_market,30958,460,100,0,500

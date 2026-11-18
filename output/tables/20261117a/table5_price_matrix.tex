@@ -1,0 +1,42 @@
+\begin{table}[!htbp]
+\centering
+\begin{threeparttable}
+\caption{Own- and cross-price elasticity matrices}
+\label{tab:matrix}
+\footnotesize
+\begin{tabular}{lrrrrr}
+\toprule
+Quantity of $\downarrow$ / price of $\rightarrow$ & SB & Beer & Water & Dairy drinks & Hot drinks \\
+\midrule
+\addlinespace\multicolumn{6}{l}{\textit{Off-trade (at home)}} \\
+SB & $-$0.808\textsuperscript{**} & 0.417 & $-$0.072 & $-$0.205 & 0.407\textsuperscript{**} \\
+ & [0.208] & [0.332] & [0.051] & [0.226] & [0.126] \\
+Beer & 1.128 & $-$1.539 & $-$0.284 & 0.601 & 0.560 \\
+ & [0.902] & [2.566] & [0.167] & [1.207] & [0.574] \\
+Water & $-$0.332 & $-$0.520 & $-$1.986\textsuperscript{**} & 0.250 & $-$0.031 \\
+ & [0.240] & [0.291] & [0.108] & [0.245] & [0.139] \\
+Dairy drinks & $-$0.091 & 0.089 & 0.024 & $-$1.055\textsuperscript{**} & 0.107 \\
+ & [0.099] & [0.198] & [0.023] & [0.167] & [0.070] \\
+Hot drinks & 0.338\textsuperscript{**} & 0.164 & $-$0.006 & 0.198 & $-$1.050\textsuperscript{**} \\
+ & [0.104] & [0.175] & [0.024] & [0.131] & [0.093] \\
+\addlinespace\multicolumn{6}{l}{\textit{Combined market (at home + away from home)}} \\
+SB & $-$0.890\textsuperscript{**} & 0.322 & $-$0.100\textsuperscript{**} & $-$0.075 & 0.333\textsuperscript{**} \\
+ & [0.177] & [0.266] & [0.038] & [0.172] & [0.100] \\
+Beer & 0.808 & $-$0.922 & $-$0.320\textsuperscript{*} & 0.251 & 0.416 \\
+ & [0.662] & [1.766] & [0.125] & [0.830] & [0.476] \\
+Water & $-$0.611\textsuperscript{**} & $-$0.823\textsuperscript{**} & $-$1.980\textsuperscript{**} & 0.187 & $-$0.166 \\
+ & [0.234] & [0.313] & [0.109] & [0.239] & [0.180] \\
+Dairy drinks & $-$0.042 & 0.049 & 0.018 & $-$1.046\textsuperscript{**} & 0.101 \\
+ & [0.101] & [0.195] & [0.023] & [0.165] & [0.068] \\
+Hot drinks & 0.291\textsuperscript{**} & 0.137 & $-$0.024 & 0.148 & $-$1.027\textsuperscript{**} \\
+ & [0.086] & [0.161] & [0.025] & [0.102] & [0.095] \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item Primary specification (M1). Rows: beverage whose quantity responds. Columns: beverage whose price changes. Diagonal cells are the own-price elasticities of Tables~\ref{tab:ownprice} and~\ref{tab:terciles}. Uncompensated elasticities, quality-corrected, with the symmetry restriction imposed by \texttt{duvm}; unconditional on the beverage budget.
+\item Standard errors in brackets are standard deviations over 100 cluster-bootstrap replications in which price clusters are resampled within region cells and the whole WELCOM estimation is repeated (0 failed replications). \textsuperscript{**} $p<0.01$, \textsuperscript{*} $p<0.05$ (two-sided, normal approximation). The replication target set in the configuration has not been reached for every model; inference is preliminary.
+\item Spirits and wine cannot be included (no physical quantities in ENPH). The joint bootstrap covariance matrix of all cells is in \texttt{output/estimates/20261117a/covariance\_long.csv}.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}

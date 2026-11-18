@@ -1,0 +1,144 @@
+% ============================================================
+%  beamer_preamble.tex
+%  House look for the ENPH beverage-elasticity decks
+%  (Colombia, ENPH 2016-2017; Maldonado & Garcia revision)
+%  Adapted in-repo from an earlier project preamble: same default
+%  Beamer look, Calibri fonts and coloured blocks; the unrelated
+%  project labels, footer text and scenario palette were replaced
+%  with neutral names and a beverage palette. No institutional
+%  sponsorship is implied. Engine: xelatex.
+% ============================================================
+
+% -- Beamer theme (clean default look, lightly branded) ---------------------
+\usetheme{default}
+\usecolortheme{default}
+\usefonttheme{professionalfonts}
+
+% -- XeLaTeX fonts (requires xelatex engine) ---------------------------------
+\usepackage{fontspec}
+\setmainfont{Calibri}[
+  BoldFont       = Calibri Bold,
+  ItalicFont     = Calibri Italic,
+  BoldItalicFont = Calibri Bold Italic
+]
+\setsansfont{Calibri}
+\setmonofont{Consolas}
+
+% -- Packages ----------------------------------------------------------------
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{ragged2e}
+\usepackage{microtype}
+\usepackage{tabularx}
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, shapes.geometric, calc, backgrounds, fit}
+\usepackage{hyperref}
+
+% -- Palette (colour-blind aware) ---------------------------------------------
+\definecolor{decknavy}{HTML}{0F2A56}      % titles and the key series
+\definecolor{deckblue}{HTML}{2166AC}      % structure accents
+\definecolor{deckaccent}{HTML}{0F2A56}    % closing slide and big numbers
+\definecolor{deckgold}{HTML}{B7A57A}      % rare accent
+\definecolor{deckgrey}{HTML}{9E9E9E}      % context, comparators
+
+% Beverage colours (must match the ggplot palette in the .Rmd decks)
+\definecolor{bevsb}{HTML}{0072B2}         % sweetened beverages (SB)
+\definecolor{bevbeer}{HTML}{E69F00}       % beer
+\definecolor{bevspirits}{HTML}{CC79A7}    % spirits and wine
+\definecolor{bevwater}{HTML}{56B4E9}      % water
+\definecolor{bevdairy}{HTML}{009E73}      % dairy drinks
+\definecolor{bevhot}{HTML}{8C510A}        % hot drinks
+
+% Status colours (scorecards, work plans)
+\definecolor{statusgood}{HTML}{1B7837}    % done / reproduced
+\definecolor{statuspart}{HTML}{B35806}    % partly / awaiting verification
+\definecolor{statusopen}{HTML}{B2182B}    % not reproduced / needs new data
+\definecolor{highlightblue}{HTML}{DBEAFE} % table row highlight
+\definecolor{uncertaintyyellow}{HTML}{FFF3CD}
+\definecolor{uncertaintyborder}{HTML}{856404}
+
+% -- Light branding: navy frame titles, blue structure accents --------------
+\setbeamercolor{structure}{fg=deckblue}
+\setbeamercolor{title}{fg=decknavy}
+\setbeamercolor{subtitle}{fg=deckblue}
+\setbeamercolor{author}{fg=black}
+\setbeamercolor{date}{fg=black}
+\setbeamercolor{institute}{fg=black}
+\setbeamercolor{frametitle}{fg=decknavy}
+\setbeamercolor{normal text}{fg=black}
+\setbeamerfont{frametitle}{series=\bfseries}
+\setbeamerfont{title}{series=\bfseries}
+
+% -- Callout boxes: each colour has one meaning ------------------------------
+% block = navy-grey (definition) | alertblock = red (open question)
+% exampleblock = green (takeaway) | uncertaintyblock = amber (caveat)
+\setbeamercolor{block title}{bg=decknavy!12, fg=decknavy}
+\setbeamercolor{block body}{bg=decknavy!5}
+\setbeamercolor{block title alerted}{bg=statusopen!15, fg=statusopen!80!black}
+\setbeamercolor{block body alerted}{bg=statusopen!6}
+\setbeamercolor{block title example}{bg=statusgood!15, fg=statusgood!75!black}
+\setbeamercolor{block body example}{bg=statusgood!6}
+\newenvironment{uncertaintyblock}[1]{%
+  \setbeamercolor{block title}{bg=uncertaintyyellow, fg=uncertaintyborder}%
+  \setbeamercolor{block body}{bg=uncertaintyyellow!30}%
+  \begin{block}{#1}%
+}{\end{block}}
+
+% -- Bullet style (blue accent) ----------------------------------------------
+\setbeamertemplate{itemize item}{\textcolor{deckblue}{\textbullet}}
+\setbeamertemplate{itemize subitem}{\textcolor{deckblue}{--}}
+\setbeamertemplate{itemize subsubitem}{\textcolor{deckblue}{\textperiodcentered}}
+\setbeamertemplate{enumerate item}{\textcolor{deckblue}{\insertenumlabel.}}
+
+% -- Headline highlight command ----------------------------------------------
+\newcommand{\hlkey}[1]{%
+  \colorbox{highlightblue}{\textcolor{decknavy}{\textbf{#1}}}%
+}
+
+% -- Footer: authors | project and current part | frame number ---------------
+%    A deck may redefine \deckfootleft and \deckfootcenter in its own header.
+\newcommand{\deckfootleft}{Maldonado \& Garc\'ia}
+\newcommand{\deckfootcenter}{ENPH beverage elasticities}
+\setbeamertemplate{footline}{%
+  \leavevmode
+  \hbox{%
+    \begin{beamercolorbox}[wd=0.30\paperwidth, ht=2.25ex, dp=1ex, left]{author in head/foot}%
+      \hspace{1em}\usebeamerfont{author in head/foot}%
+      \textcolor{black!60}{\footnotesize\deckfootleft}%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=0.60\paperwidth, ht=2.25ex, dp=1ex, center]{title in head/foot}%
+      \usebeamerfont{title in head/foot}%
+      \textcolor{black!60}{\footnotesize\deckfootcenter}%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=0.10\paperwidth, ht=2.25ex, dp=1ex, right]{date in head/foot}%
+      \usebeamerfont{date in head/foot}%
+      \textcolor{black!60}{\footnotesize \insertframenumber{}/\inserttotalframenumber}%
+      \hspace{0.5em}%
+    \end{beamercolorbox}%
+  }%
+  \vskip0pt%
+}
+\setbeamertemplate{navigation symbols}{}
+
+% -- Section divider slides (auto from # headers) ----------------------------
+%    A short deck can turn them off with \sectiondividersfalse in its header;
+%    the section name can then be shown in the footer instead.
+\newif\ifsectiondividers
+\sectiondividerstrue
+\AtBeginSection[]{%
+  \ifsectiondividers
+  \begin{frame}
+    \vfill
+    \centering
+    \begin{beamercolorbox}[sep=10pt, center, shadow=false, rounded=true]{block title}
+      \usebeamerfont{title}\insertsectionhead\par
+    \end{beamercolorbox}
+    \vfill
+  \end{frame}
+  \fi
+}

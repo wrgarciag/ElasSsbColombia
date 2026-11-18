@@ -1,0 +1,117 @@
+-------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:/Users/wrgar/OneDrive - UW/02Work/Miscellaneous/ssb-colombia/Ela
+> sSsbColombia/output/replication/legacy_run/duvm_hogar_codi.log
+  log type:  text
+ opened on:  17 Nov 2026, 18:31:54
+c:\ado\plus\d\duvm.ado
+
+. *********************
+. ******************
+. *
+. * Bloque3a. Estimacion del AIDS
+. *
+. ******************
+. *********************
+. 
+. *log using "C:\Users\wgarcia\Universidad Icesi (@icesi.edu.co)\Proesa - *22-1
+> 002-PahoElasSsb\Resu\SSBElasticityPaperrevised_log.log", append
+. 
+. use "$path\DataEstimates5.dta",clear
+
+. 
+. gen Cluster= substr(VIVIENDA,1,8)
+
+. encode Cluster, gen(psu)
+
+. 
+. rename GastoTotal exptotal
+
+. drop Gasto*
+
+. drop Precio*
+
+. 
+. 
+. merge m:1 DIRECTORIO using "$path\UnitValuePrices_Hogar_Codi.dta"
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                            82,934  (_merge==3)
+    -----------------------------------------
+
+. keep if _merge==3
+(0 observations deleted)
+
+. drop _merge
+
+. 
+. merge 1:1 DIRECTORIO using "$path\UnitValueGasto_Hogar_Codi.dta"
+
+    Result                      Number of obs
+    -----------------------------------------
+    Not matched                             0
+    Matched                            82,934  (_merge==3)
+    -----------------------------------------
+
+. keep if _merge==3
+(0 observations deleted)
+
+. drop _merge
+
+. 
+. tab xeduc,gen(xeduc_)
+
+           xeduc |      Freq.     Percent        Cum.
+-----------------+-----------------------------------
+         Ninguno |      3,818        4.60        4.60
+        Primaria |     23,012       27.75       32.35
+Secundaria/Media |     35,718       43.07       75.42
+        Superior |     20,386       24.58      100.00
+-----------------+-----------------------------------
+           Total |     82,934      100.00
+
+. * Summary
+. summarize xsexo xedad xrural xtamanioh xuniper xninios xeduc_1 xeduc_2 xeduc_
+> 3 xeduc_4 IT ITPC IT ITPC 
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+       xsexo |     82,934    .5921817     .491432          0          1
+       xedad |     82,934    48.55144    15.78316         11        107
+      xrural |     82,934    .0694649    .2542445          0          1
+   xtamanioh |     82,934    3.379651    1.748752          1         22
+     xuniper |     82,934    .1320809    .3385808          0          1
+-------------+---------------------------------------------------------
+     xninios |     82,934    .2535028    .4350189          0          1
+     xeduc_1 |     82,934    .0460366    .2095657          0          1
+     xeduc_2 |     82,934    .2774737    .4477549          0          1
+     xeduc_3 |     82,934    .4306798    .4951744          0          1
+     xeduc_4 |     82,934    .2458099     .430569          0          1
+-------------+---------------------------------------------------------
+          IT |     82,934     1928357     1915306       1000   1.29e+07
+        ITPC |     82,934    701032.7    873064.4        200   1.28e+07
+          IT |     82,934     1928357     1915306       1000   1.29e+07
+        ITPC |     82,934    701032.7    873064.4        200   1.28e+07
+
+. 
+. 
+. ** QUAIDS libreria
+. local expe "Gasto_HotDrinks Gasto_MilkDerivatives Gasto_SSB Gasto_Water Gasto
+> _Beer Gasto_Spirits Gasto_Wine"
+
+.  
+. foreach i of local expe {
+  2.         replace `i' =0 if mi(`i')
+  3. }
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+variable Gasto_Wine not found
+r(111);
+
+end of do-file

@@ -1,0 +1,10 @@
+{
+  "run_id": "20261117a",
+  "pdf": "output/manuscript/20261117a/manuscript.pdf",
+  "pdf_sha256": "497354b3c883125a1b01eb0ce0c38b193117f7c82853dc64416d3b4962b0c679",
+  "pages": 30,
+  "rendered": "2026-11-17T22:09:03-0800",
+  "allow_incomplete": false,
+  "rmarkdown": "2.29",
+  "pandoc": "3.6.3"
+}

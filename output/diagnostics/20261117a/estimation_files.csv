@@ -1,0 +1,11 @@
+dataset,households,in_sample,urban_in_sample
+est_primary_home,87201,87198,81438
+est_primary_combined,87201,87197,81437
+est_coded_only_home,87201,87198,81438
+est_coded_only_combined,87201,87198,81438
+est_broad_sb_home,87201,87198,81438
+est_broad_sb_combined,87201,87197,81437
+est_units_direct_home,87201,87198,81438
+est_units_direct_combined,87201,87197,81437
+est_recall_design_home,87201,87197,81438
+est_recall_design_combined,87201,87196,81437

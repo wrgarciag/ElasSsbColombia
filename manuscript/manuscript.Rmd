@@ -1,0 +1,311 @@
+---
+title: "Revisiting Elasticities of Alcoholic and Non-alcoholic Beverages in Colombia"
+author:
+  - Norman Maldonado^[Research center on health economics and social protection (PROESA), Department of Economics, Universidad Icesi. Corresponding author.]
+  - William García^[University of Washington, Department of Global Health.]
+date: "`r format(Sys.Date(), '%B %d, %Y')`"
+output:
+  pdf_document:
+    latex_engine: pdflatex
+    number_sections: true
+    keep_tex: true
+    includes:
+      in_header: preamble.tex
+params:
+  run_id: ""
+  allow_incomplete: false
+bibliography: references.bib
+link-citations: true
+fontsize: 11pt
+geometry: margin=1in
+---
+
+```{r setup, include=FALSE}
+# The manuscript loads one validated analysis bundle; it never reruns data processing or estimation.
+# Every estimated number in the text comes from `v` (named values) or `res` (shared results object).
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+suppressPackageStartupMessages(library(data.table))
+run_id <- params$run_id
+root <- normalizePath("..", winslash = "/")
+if (is.null(run_id) || !nzchar(run_id)) {
+  # No run_id given (e.g. the Knit button): use the most recently built bundle. The run used is printed
+  # at the end of the PDF; all the checks below still apply to it.
+  mf <- Sys.glob(file.path(root, "data", "processed", "manuscript", "*", "manifest.json"))
+  if (!length(mf)) stop("No manuscript bundle found: run the pipeline's 'report' stage first, or pass params = list(run_id = '<run id>')")
+  run_id <- basename(dirname(mf[which.max(file.mtime(mf))]))
+  message("manuscript.Rmd: no run_id given; using the latest bundle, run '", run_id, "'")
+}
+if (!file.exists(file.path(root, "ElasSsbColombia.Rproj"))) stop("manuscript.Rmd must be rendered from the manuscript/ folder of the repository")
+bdir <- file.path(root, "data", "processed", "manuscript", run_id)
+need <- file.path(bdir, c("results.rds", "values.rds", "manifest.json"))
+if (!all(file.exists(need))) stop("Manuscript bundle missing for run '", run_id, "': run the 'report' stage first (", bdir, ")")
+man <- jsonlite::read_json(file.path(bdir, "manifest.json"))
+v <- readRDS(file.path(bdir, "values.rds"))
+res <- readRDS(file.path(bdir, "results.rds"))
+sha <- function(f) digest::digest(file = f, algo = "sha256")
+if (!identical(man$run_id, run_id) || !identical(v$run_id, run_id) || !identical(res$run_id, run_id)) stop("Bundle components belong to different runs")
+if (!identical(man$config_sha256, sha(file.path(root, "config", "config.yml"))) ||
+    !identical(man$models_sha256, sha(file.path(root, "config", "models.csv"))))
+  stop("Stale bundle: config/config.yml or config/models.csv changed after run '", run_id, "' was reported. Rerun the pipeline or the 'report' stage.")
+if (!isTRUE(man$complete) && !isTRUE(params$allow_incomplete)) stop("Bundle for run '", run_id, "' is incomplete (see output/tables/", run_id, "/table_completeness.csv)")
+if (!isTRUE(v$inference_available) && !isTRUE(params$allow_incomplete)) stop("Bootstrap inference is not available for run '", run_id, "'; render with allow_incomplete = TRUE only for drafts")
+tdir <- file.path(root, "output", "tables", run_id)
+fdir <- file.path(root, "output", "figures", run_id)
+loc <- file.path("_render", run_id)                       # LaTeX-safe relative path for figures
+dir.create(loc, recursive = TRUE, showWarnings = FALSE)
+figs <- c("fig1_own_price_specs.pdf", "fig2_expenditure_specs.pdf", "fig3_unit_values.pdf")
+if (!all(file.exists(file.path(fdir, figs)))) stop("Figures missing for run '", run_id, "'")
+invisible(file.copy(file.path(fdir, figs), file.path(loc, figs), overwrite = TRUE))
+
+lab <- res$labels; low <- function(g) if (g == "sb") "SB" else tolower(lab[[g]])
+ltx <- function(x) gsub("%", "\\%", x, fixed = TRUE)   # for text placed inside raw LaTeX (the abstract)
+goods <- v$goods_estimable
+n0 <- function(x) formatC(round(x), format = "d", big.mark = ",")
+num <- function(x, d = 2) ifelse(is.na(x), "n.a.", paste0("$", formatC(x, format = "f", digits = d), "$"))
+pct <- function(x, d = 0) paste0(formatC(100 * x, format = "f", digits = d), "%")
+el <- function(kind, spec, mk, g, g2 = NULL) v$el[[paste(c(kind, if (kind == "cross") NULL else spec, mk, g, g2), collapse = "_")]]
+own <- function(spec, mk, g) el("own", spec, mk, g)
+expd <- function(spec, mk, g) el("exp", spec, mk, g)
+crs <- function(mk, r, cc) v$el[[paste("cross", mk, r, cc, sep = "_")]]
+est <- function(x, d = 2) num(x$est, d)
+estci <- function(x, d = 2) if (is.na(x$lo)) num(x$est, d) else paste0(num(x$est, d), " (95% CI ", num(x$lo, d), " to ", num(x$hi, d), ")")
+signif0 <- function(x) !is.na(x$lo) && (x$lo > 0 || x$hi < 0)
+price_word <- function(x) {
+  if (is.na(x$lo)) return("")
+  if (x$hi < -1) "price-elastic (the interval lies below $-1$)"
+  else if (x$lo > -1 && x$hi < 0) "price-inelastic (the interval lies between $-1$ and 0)"
+  else if (x$lo > 0) "positive, which is not a credible demand response"
+  else if (x$lo > -1 && x$hi >= 0) "not statistically distinguishable from zero"
+  else if (x$hi >= 0) "too imprecise to distinguish from zero or from unit elasticity"
+  else "not statistically distinguishable from unit elasticity"
+}
+rng <- function(kind, mk, g, specs = paste0("M", 1:6)) {
+  z <- vapply(specs, function(s) el(kind, s, mk, g)$est, numeric(1))
+  paste0(num(min(z)), " to ", num(max(z)))
+}
+join <- function(x) if (length(x) == 0) "" else if (length(x) == 1) x else paste0(paste(x[-length(x)], collapse = ", "), " and ", x[length(x)])
+# cross-price cells of the primary matrix whose 95% interval excludes zero
+cross_list <- function(mk, sgn) {
+  out <- character()
+  for (r in goods) for (cc in goods) if (r != cc) {
+    x <- crs(mk, r, cc)
+    if (signif0(x) && sign(x$est) == sgn) out <- c(out, sprintf("%s with respect to the price of %s (%s)", low(r), low(cc), num(x$est)))
+  }
+  out
+}
+n_cross <- length(goods) * (length(goods) - 1)
+sb_c <- own("M1", "combined", "sb"); sb_h <- own("M1", "home", "sb")
+terc_sentence <- function(mk, g) {
+  z <- lapply(c("T1", "T2", "T3"), function(s) own(s, mk, g))
+  e <- vapply(z, function(x) x$est, 1)
+  ord <- if (all(diff(e) > 0)) "falls in absolute value from the lowest to the highest tercile"
+         else if (all(diff(e) < 0)) "rises in absolute value from the lowest to the highest tercile" else "does not change monotonically across terciles"
+  ov <- if (is.na(z[[1]]$lo)) "" else if (z[[1]]$hi < z[[3]]$lo || z[[3]]$hi < z[[1]]$lo) "; the intervals of the first and third terciles do not overlap" else "; the intervals of the first and third terciles overlap"
+  sprintf("%s in tercile 1, %s in tercile 2 and %s in tercile 3, so the point estimate %s%s", estci(z[[1]]), estci(z[[2]]), estci(z[[3]]), ord, ov)
+}
+spread_sentence <- function(mk, g) {
+  z <- vapply(paste0("M", 1:5), function(s) own(s, mk, g)$est, numeric(1)); x <- own("M1", mk, g)
+  sp <- max(z) - min(z)
+  if (is.na(x$lo)) return(sprintf("The five specifications estimated on the same households span %s.", num(sp)))
+  sprintf("The five specifications estimated on the same households span %s, which is %s than the width of the 95%% interval of the primary estimate (%s).",
+          num(sp), if (sp < x$hi - x$lo) "smaller" else "larger", num(x$hi - x$lo))
+}
+bmain <- range(res$status[bootclass == "final", completed])
+boot_txt <- if (bmain[1] == bmain[2]) n0(bmain[1]) else sprintf("%s to %s", n0(bmain[1]), n0(bmain[2]))
+spec_names <- c(M2 = "dropping the selection term", M3 = "dropping the sampling weights", M4 = "dropping the regional controls", M5 = "using coded purchases only")
+largest_change <- function(mk, g) {
+  d <- vapply(names(spec_names), function(sp) own(sp, mk, g)$est - own("M1", mk, g)$est, numeric(1))
+  k <- names(which.max(abs(d)))
+  sprintf("Among the specifications estimated on the same households, the largest change comes from %s (%s, a change of %s)", spec_names[[k]], k, num(d[[k]]))
+}
+# specifications whose bootstrap SD is dominated by a few extreme replications (heavy tails)
+unstable_note <- function(mk, g) {
+  b <- own("M1", mk, g)
+  if (is.na(b$se)) return("")
+  z <- Filter(function(sp) { x <- own(sp, mk, g); !is.na(x$se) && x$se > 5 * b$se && (x$hi - x$lo) < 0.5 * 3.92 * x$se }, paste0("M", 2:6))
+  if (!length(z)) return("")
+  paste0(" ", paste(vapply(z, function(sp) { x <- own(sp, mk, g)
+    sprintf("The bootstrap standard error of %s (%s) is inflated by a few replications with extreme values; its percentile interval, %s to %s, is the more informative summary.",
+            sp, num(x$se), num(x$lo), num(x$hi)) }, ""), collapse = " "),
+    " The estimator divides by the between-cluster variance of unit values net of measurement error, and that quantity can be close to zero in a resample.")
+}
+near_unit <- function(mk) {
+  z <- Filter(function(g) { x <- own("M1", mk, g); if (is.na(x$lo)) abs(x$est + 1) < 0.1 else (x$lo <= -1 && x$hi >= -1) }, setdiff(goods, "sb"))
+  if (!length(z)) return("")
+  paste0(" For ", join(vapply(z, low, "")), if (is.na(own("M1", mk, z[1])$lo)) " the estimate is close to $-1$" else " the interval includes $-1$",
+         ". In this model an elasticity of $-1$ is what results when cluster-average budget shares do not vary with cluster-average unit values, so such estimates indicate that the data carry little information on the price response, not that demand is unit-elastic.")
+}
+tex_in <- function(stem) {
+  f <- file.path(tdir, paste0(stem, ".tex"))
+  if (!file.exists(f)) stop("Table file missing: ", f)
+  cat("```{=latex}\n", paste(readLines(f, encoding = "UTF-8"), collapse = "\n"), "\n```\n", sep = "")
+}
+fig_in <- function(file, caption, label, width = "0.95\\textwidth") {
+  cat("```{=latex}\n\\begin{figure}[!htbp]\\centering\n\\includegraphics[width=", width, "]{", file.path(loc, file), "}\n\\caption{", caption, "}\\label{", label, "}\n\\end{figure}\n```\n", sep = "")
+}
+```
+
+\begin{abstract}
+\noindent Taxes on sweetened beverages (SB) are designed with price and expenditure elasticities, and those elasticities depend on how purchases, quantities and prices are measured in household surveys. We re-estimate the demand for SB and related beverages in Colombia with the 2016--2017 National Household Budget Survey (ENPH) and Deaton's unit-value model as implemented in WELCOM, after rebuilding the data from the raw survey modules. Three measurement results matter for policy analysis. First, physical quantities exist only for at-home purchases recorded in the household diary; spirits and wine are collected without quantities, so their price elasticities cannot be estimated with unit values from this survey. Second, most beverage mentions in free-text descriptions are part of composite purchases (a meal with a drink) whose amount cannot be attributed to the beverage; purchases that can be identified from text add little to coded purchases. Third, SB cannot be separated into sugar-sweetened and non-sugar-sweetened drinks. In the primary specification the own-price elasticity of SB is `r ltx(estci(sb_c))` in the combined at-home and away-from-home market and `r ltx(estci(sb_h))` off-trade; across six specifications it ranges from `r rng("own", "combined", "sb")`. Expenditure elasticities are sensitive to the treatment of zero purchases: for SB the estimate is `r est(expd("M1", "combined", "sb"))` with WELCOM's selection term and `r est(expd("M2", "combined", "sb"))` without it. We report specification sensitivity rather than bias, because no specification is shown to be unbiased, and we list the estimator-level improvements that the data call for.
+\end{abstract}
+
+\noindent\textbf{Keywords:} sweetened beverages; price elasticity; unit values; household budget survey; Colombia. \quad \textbf{JEL:} D12, I12, C13.
+
+# Introduction
+
+Non-communicable diseases (NCDs) concentrate most of the burden of disease worldwide [@Murray2020GBDRiskFactors] and threaten global health [@Benziger2016PreventableNCD] and sustainable development [@Engelgau2011EconomicEffectNCD; @Jaspers2015Impoverishment; @Nugent2018InvestingNCD]. Unhealthy diets are one of their common risk factors [@UN2018PoliticalDeclarationNCD; @PAHO2019NCDsAtAGlance]. Sugar-sweetened beverages (SSB) play an important role in unhealthy diets [@PopkinHawkes2016Sweetening; @TempleAlp2016SugarBeverages], and non-sugar-sweetened beverages (NSSB) may also affect health [@Borges2017ArtificiallySweetened; @Toews2019NonSugarSweeteners; @Malik2019NonSugarSweeteners], which makes a case for policies that reduce the consumption of sweetened beverages (SB) [@Pomeranz2012PolicyOptions]. Soft drinks are also not part of a healthy diet from sustainable food systems [@Willett2019EATLancet].
+
+Spending on SB depends on prices and income. Excise taxes raise prices, make SB less affordable and change purchases [@PowellMaciejewski2018Taxes; @WorldBank2020SSBTaxes]; they are among the recommended interventions against NCDs [@SassiBelloni2014FiscalIncentives; @Thow2018FiscalPolicy; @WHO2017BestBuys]. Designing such a tax requires knowing how purchases respond to price. Errors in that response translate directly into errors in expected health benefits and revenues.
+
+Estimating that response from household surveys faces several difficulties. Taxes act on the whole population [@Gillam2012EssentialPublicHealth], so population-representative expenditure surveys are the natural data, with the usual caveats about external validity of smaller studies [@DeatonCartwright2018RCTs]. Expenditure surveys measure purchases, not intake, and they measure them with error [@Deaton1997HouseholdSurveys]. Product reformulation has multiplied drinks with sweeteners other than sugar [@ScrinisMonteiro2018Reformulation], and classification systems do not separate them. The set of potential substitutes is wide and differs across countries. Finally, many households record no purchase of a given beverage during the survey window.
+
+Earlier estimates for Colombia [@Caro2017QUAIDSColombia] used coded purchases of urban households. A previous version of this paper argued that omitting purchases recorded only as text, ignoring zero purchases and excluding rural households biased the elasticities. This revision rebuilds the analysis from the raw survey files and reaches a more cautious position. We document what the survey can and cannot measure, correct errors in how the data were built and in how the estimator was called, and report how the elasticities move across specifications. We do not claim that any specification is unbiased or that the estimates are causal.
+
+# Materials and methods
+
+## Model
+
+We use Deaton's unit-value model [@Deaton1988QualityQuantityPrice; @Deaton1990PriceElasticities; @Deaton1997HouseholdSurveys]. Market prices are not observed, but households that buy a good report spending and quantity, whose ratio is a unit value. Unit values reflect prices, the quality chosen by the household, and measurement error. For good $g$, household $h$ and cluster $c$ the model has a unit-value equation and a budget-share equation,
+
+\begin{align}
+\ln v_{ghc} &= \alpha^1_g + \beta^1_g \ln x_{hc} + \gamma^{1\prime}_g z_{hc} + \sum_{j}\psi_{gj}\ln p_{jc} + u^1_{ghc}, \label{eq:uv}\\
+w_{ghc} &= \alpha^0_g + \beta^0_g \ln x_{hc} + \gamma^{0\prime}_g z_{hc} + \sum_{j}\theta_{gj}\ln p_{jc} + f_{gc} + u^0_{ghc}, \label{eq:share}
+\end{align}
+
+where $x$ is total household expenditure, $z$ are household characteristics and $p_{jc}$ are prices, assumed common to the households of a cluster. Both equations are first estimated within clusters, which removes prices and identifies $\beta^0_g$ and $\beta^1_g$. The parts of unit values and shares not explained by household variables are then averaged by cluster, and the relation between cluster-average shares and cluster-average unit values, corrected for measurement error and for quality, identifies the price responses. The expenditure elasticity of quantity is $1-\beta^1_g+\beta^0_g/\bar w_g$.
+
+## Data
+
+We use the National Household Budget Survey 2016--2017 (ENPH) of the National Department of Statistics [@DANE2018ENPH]. The public-use file has `r n0(v$n_enph)` households and `r n0(v$n_persons)` persons and represents `r n0(v$weight_total)` households. ENPH collects purchases with several instruments: a 14-day household diary in urban areas and a weekly questionnaire in rural areas, both with quantities and units for food and beverages bought for the home; 7-day personal diaries; records of prepared food and drinks bought away from home, with a free-text description; a list of food groups with their usual purchase frequency and the value of the last purchase; and a monthly-recall module for less frequent purchases, which is where spirits and wine are collected.
+
+All `r n0(v$n_enph)` households form the universe. Households without a beverage purchase are kept with zero spending. `r n0(v$n_sample_combined)` households are eligible for estimation; the rest have an invalid budget share or are the only household of their survey segment (Table \ref{tab:sampleflow}). Total household expenditure is DANE's monthly current expenditure of the spending unit and income is DANE's total income; neither is trimmed or imputed.
+
+## Measurement
+
+*Categories.* Purchases are classified with COICOP codes [@UN2018COICOP] into six categories: SB (soft drinks, malt drinks, packaged juices and teas, energy drinks), beer, spirits and wine, water, dairy drinks, and hot drinks (coffee, chocolate and tea). The earlier version merged hot drinks into dairy; they are separated here because at home they are bought by weight, not by volume. COICOP describes product type, not sweetener, so SSB and NSSB cannot be separated.
+
+*Purchases identified from text.* Following @MaldonadoGarciaJimenez2022Consumption, descriptions of food and drinks bought away from home are searched for beverage terms. A description counts as a beverage purchase only when it names one beverage category and nothing else. Descriptions that also list other items, such as a meal with a drink, are composite purchases: the amount paid cannot be attributed to the drink. There are `r n0(v$composite_records)` composite records against `r n0(v$text_identified_records)` that identify a beverage purchase. Assigning the full value of composite records to the beverage, as the earlier version did, overstates beverage spending.
+
+*Monthly amounts.* Amounts are converted to a month with DANE's factors by stated purchase frequency [@DANE2020ENPHMetodologia]. Low-frequency food groups not bought inside the reference period enter through the value of their last purchase. Only purchases are counted.
+
+*Quantities and unit values.* Quantities are converted to litres (kilograms for hot drinks) from the recorded unit. Personal diaries, away-from-home records and the monthly-recall module have no usable unit, so they contribute spending but no quantity. A unit value is computed only for households with a valid positive quantity and is never imputed for non-buyers. Unit values far from the centre of their distribution are flagged and not used; the household keeps its budget share.
+
+*Markets.* The off-trade market covers purchases for the home and the combined market adds purchases away from home. Because away-from-home purchases have no quantities, both markets use the same unit values and differ in budget shares. An on-trade model cannot be estimated.
+
+*Price clusters.* A price cluster is a local market in a quarter: the urban or the rural area of a municipality, in one collection quarter (`r n0(v$n_clusters_m1)` clusters in the primary model, with a median of `r n0(v$cluster_median_size)` households). No cluster mixes urban and rural households. Survey segments of about `r n0(v$segment_median_size)` neighbouring households are a finer alternative, but segments of the same city are not separate markets and each holds few unit values, so their mean unit value is noisier (for SB its reliability is `r num(v$reliability_segment_sb)` against `r num(v$reliability_sb)` for local markets; Table \ref{tab:clusters}). Segments are used in a sensitivity analysis.
+
+## Estimation and inference
+
+All elasticities are estimated with the `duvm` routine of WELCOM `r v$welcom_version` [@WELCOM2018Version21; @AraarEtAl2018WELCOM] in Stata 17. The routine implements equations \eqref{eq:uv} and \eqref{eq:share}, a correction of the between-cluster regression for measurement error, Deaton's quality correction, and a symmetry-restricted estimator. Budget shares are shares of total household expenditure and the expenditure regressor is the same total, as the routine assumes. The reported price elasticities are therefore uncompensated (Marshallian) and unconditional on the beverage budget, and the second set of elasticities refers to total expenditure, not income. In every matrix, rows are the beverage whose quantity responds and columns the beverage whose price changes.
+
+Household controls are the sex, age and education of the head, household size, a single-member indicator and the presence of children aged 0--`r v$child_age_max`. Cluster-level variables are purged of region-by-area and quarter effects. WELCOM handles zero purchases by keeping non-buyers in the share regressions and, optionally, adding an inverse Mills ratio from a probit of purchase on the same regressors [@Heckman1979Selection]; there is no exclusion restriction. Sampling weights are passed as cluster averages so that WELCOM's cluster means and household counts behave as in Deaton's formulas. A beverage enters a model only if its unit value is observed in enough clusters of that model's sample.
+
+WELCOM's own bootstrap holds the household-level stage fixed and does not provide valid standard errors for all quantities, so inference comes from an external cluster bootstrap that reruns the complete WELCOM estimation on resampled clusters [@CameronGelbachMiller2008]. Standard errors are standard deviations over `r boot_txt` replications and intervals are percentile intervals.`r if (!isTRUE(v$inference_final)) paste0(" The target of ", n0(v$boot_target), " replications had not been reached when this version was rendered, so inference is preliminary.") else ""``r if (!isTRUE(v$sens_inference_available)) " The supplementary sensitivity analyses are reported as point estimates, without standard errors." else ""`
+
+## Specifications
+
+The primary specification (M1) uses WELCOM's selection term, sampling weights, regional controls, coded and text-identified purchases, and urban and rural households. Five alternatives change one element each: no selection term (M2), no weights (M3), no regional controls (M4), coded purchases only (M5), and urban households only (M6). M2 to M5 use the same households as M1. M6 changes the target population, so its difference from M1 is not a specification effect. The primary specification is also estimated separately by tercile of per-capita income`r if (!"beer" %in% v$goods_terciles) "; beer has too few unit values in the lowest tercile and is left out of the three tercile models" else ""`. Seven further sensitivity analyses are in the appendix.
+
+# Results
+
+## Households and purchases
+
+Household heads are male in `r pct(v$head_male)` of households, the average household has `r num(v$hhsize)` members and `r pct(v$rural)` of households are rural (Table \ref{tab:demographics}).
+
+In the combined market `r pct(v$prev_comb_sb)` of households buy SB, `r pct(v$prev_comb_dairy)` dairy drinks, `r pct(v$prev_comb_hot)` hot drinks, `r pct(v$prev_comb_water)` water, `r pct(v$prev_comb_spirits)` spirits or wine and `r pct(v$prev_comb_beer)` beer (Table \ref{tab:consumption}). Purchasing households spend COP `r n0(v$spend_comb_sb)` a month on SB. Beverages are a small part of household budgets: SB take `r num(100 * v$share_tot_comb_sb)`% of total expenditure on average. The mean observed unit value of SB is COP `r n0(v$uv_sb)` per litre.
+
+Measurement coverage is uneven (Table \ref{tab:coverage}). Recorded quantities cover `r pct(v$qcov_home_sb)` of off-trade SB spending and `r pct(v$qcov_home_beer)` of off-trade beer spending. Beer has `r n0(v$n_uv_beer)` usable unit values in `r n0(v$clusters_uv_beer)` clusters, against `r n0(v$n_uv_sb)` in `r n0(v$clusters_uv_sb)` clusters for SB. Water unit values vary widely between clusters (Table \ref{tab:clusters}), which reflects package size as much as price. Text-identified purchases account for `r pct(v$text_share_comb_sb, 1)` of combined-market SB spending, so the panels with and without them are close. `r n0(v$composite_only_sb)` households mention SB only inside composite purchases and count as non-buyers.
+
+## Own-price elasticities
+
+In the primary specification the own-price elasticity of SB is `r estci(sb_c)` in the combined market and `r estci(sb_h)` off-trade (Table \ref{tab:ownprice}). `r if (nzchar(price_word(sb_c))) paste0("Demand for SB in the combined market is ", price_word(sb_c), ".") else ""` For dairy drinks the combined-market estimate is `r estci(own("M1", "combined", "dairy"))`, for hot drinks `r estci(own("M1", "combined", "hot"))` and for water `r estci(own("M1", "combined", "water"))`. The beer estimate is `r estci(own("M1", "combined", "beer"))``r if (nzchar(price_word(own("M1", "combined", "beer")))) paste0(", which is ", price_word(own("M1", "combined", "beer"))) else ""`; it rests on `r n0(v$n_uv_beer)` unit values and should be read with caution. Spirits and wine cannot be estimated.`r near_unit("combined")`
+
+Across the six specifications the SB elasticity ranges from `r rng("own", "combined", "sb")` in the combined market and from `r rng("own", "home", "sb")` off-trade (Figure \ref{fig:own}). Dropping the selection term (M2) moves it to `r est(own("M2", "combined", "sb"))`, dropping weights (M3) to `r est(own("M3", "combined", "sb"))`, dropping regional controls (M4) to `r est(own("M4", "combined", "sb"))` and using coded purchases only (M5) to `r est(own("M5", "combined", "sb"))`. Restricting the sample to urban households (M6) gives `r est(own("M6", "combined", "sb"))`. `r largest_change("combined", "sb")`.`r unstable_note("combined", "sb")` Off-trade, M5 equals M1 because every text-identified purchase is an away-from-home purchase.
+
+```{r fig1, results='asis'}
+fig_in("fig1_own_price_specs.pdf", "Own-price elasticities by specification. Points are WELCOM estimates; bars are 95\\% percentile intervals from the external cluster bootstrap. The filled point is the primary specification (M1). The horizontal line marks $-1$. Dashed bars are intervals truncated to fit the panel; the full intervals are in the estimates files.", "fig:own", "0.82\\textwidth")
+```
+
+## Income terciles
+
+For SB in the combined market the own-price elasticity is `r terc_sentence("combined", "sb")` (Table \ref{tab:terciles}). Off-trade it is `r terc_sentence("home", "sb")`. Each tercile is a separate estimation on about a third of the households, with fewer unit values per cluster.
+
+## Cross-price elasticities
+
+Table \ref{tab:matrix} reports the full matrices of the primary specification. In the combined market `r length(cross_list("combined", 1)) + length(cross_list("combined", -1))` of the `r n_cross` cross-price elasticities have a 95% interval that excludes zero. `r if (length(cross_list("combined", 1))) paste0("Positive responses, consistent with substitution, are estimated for ", join(cross_list("combined", 1)), ".") else "No positive cross-price response is distinguishable from zero."` `r if (length(cross_list("combined", -1))) paste0("Negative responses, consistent with complementarity, are estimated for ", join(cross_list("combined", -1)), ".") else "No negative cross-price response is distinguishable from zero."`
+
+The response of beer purchases to the price of SB is `r estci(crs("combined", "beer", "sb"))`. `r if (signif0(crs("combined", "beer", "sb"))) "Taken at face value this would mean that beer purchases change when SB prices change, but the beer equation rests on the sparse beer unit values described above." else "It is not distinguishable from zero."` These matrices impose Slutsky symmetry; without the restriction several cross-price estimates change size and sign (`price_nosym` in the estimates files), so the cross-price pattern is not robust. Whether a tax on SB shifts purchases toward spirits or wine cannot be assessed with these data.
+
+## Expenditure elasticities
+
+In the primary specification the expenditure elasticity of SB is `r estci(expd("M1", "combined", "sb"))` in the combined market (Table \ref{tab:expenditure}, Figure \ref{fig:exp}). Without the selection term (M2) it is `r estci(expd("M2", "combined", "sb"))`. The same contrast for beer is `r est(expd("M1", "combined", "beer"))` against `r est(expd("M2", "combined", "beer"))`, for water `r est(expd("M1", "combined", "water"))` against `r est(expd("M2", "combined", "water"))`, for dairy drinks `r est(expd("M1", "combined", "dairy"))` against `r est(expd("M2", "combined", "dairy"))` and for hot drinks `r est(expd("M1", "combined", "hot"))` against `r est(expd("M2", "combined", "hot"))`. The selection term is a function of the same regressors as the share equation, including expenditure, and it is entered in a regression that includes the zeros. Its effect on the expenditure coefficient is therefore a functional-form effect. `r if (expd("M1", "combined", "beer")$est < 0) "The negative primary estimate for beer is an artefact of this term, not evidence that beer is an inferior good." else ""` We regard the M2 estimates as the more interpretable description of how quantities vary with total expenditure, and the M1 estimates as what the routine's selection option delivers.
+
+```{r fig2, results='asis'}
+fig_in("fig2_expenditure_specs.pdf", "Expenditure elasticities by specification. Points are WELCOM estimates; bars are 95\\% percentile intervals from the external cluster bootstrap. The filled point is the primary specification (M1). The horizontal line marks 1. Dashed bars are intervals truncated to fit the panel.", "fig:exp", "0.82\\textwidth")
+```
+
+# Discussion
+
+The earlier version of this paper reported an SB own-price elasticity of $-0.50$ and concluded that ignoring zero purchases, rural households and text-recorded purchases biased it. The rebuilt analysis does not support that reading. The estimate is now `r est(sb_c)` in the combined market. `r spread_sentence("combined", "sb")` Several corrections separate the two sets of numbers, and we have not decomposed their individual contributions. Unit values are now used only where a price was observed, instead of predicting a price for every household. Budget shares and the expenditure regressor use the same total budget. The price clusters are local markets in a quarter, defined from geography and time.
+
+The contribution of purchases recorded only as text is small once composite purchases are set aside. This does not mean that away-from-home consumption is small. It means that the survey does not record how much of a meal's price corresponds to the drink, so the on-trade share of SB spending is understated by an unknown amount.
+
+SSB cannot be identified. COICOP does not distinguish beverages sweetened with sugar from those with other sweeteners, and the same holds for the Harmonized System [@WCO2018HarmonizedSystem] and the Central Product Classification [@UN2015CPC]. Earlier estimates for Colombia labelled as SSB elasticities, including those used to project revenues [@Caro2017QUAIDSColombia] and health effects [@VecinoOrtizArroyoAriza2018SSBTax], are elasticities of SB.
+
+Changes in alcohol purchases could reinforce or offset the health effect of a tax on SB [@Babor2010Alcohol; @WHO2018AlcoholHealth; @Quirmbach2018AlcoholPurchases]. The earlier version read its cross-price estimates as evidence on substitution toward alcohol. That evidence is not available here: spirits and wine have no unit values, the beer estimates are fragile, and the cross-price pattern depends on the symmetry restriction.
+
+## Limitations
+
+*No causal interpretation.* Price variation comes from differences in unit values between municipalities of the same region and area type, within a quarter. Those differences may reflect the type of outlet, package size or local tastes as well as price. The quality correction addresses one part of this problem under strong assumptions [@McKelvey2011UnitValue; @GibsonKim2019Bog].
+
+*Zero purchases.* Between `r pct(1 - v$prev_comb_dairy)` (dairy drinks) and `r pct(1 - v$prev_comb_beer)` (beer) of households record no purchase. WELCOM treats zeros with a linear share equation and an optional selection term without an exclusion restriction. A censored demand system [@ShonkwilerYen1999] would be the natural alternative and would mainly affect the expenditure elasticities.
+
+*Weights and survey design.* WELCOM does not use strata or primary sampling units, and it measures the number of households in a cluster by the sum of their weights. We pass weights in a form that keeps its formulas close to Deaton's, but this is an approximation. The bootstrap resamples price clusters, not the survey's sampling units, which are not released; standard errors are probably too small.
+
+*Sparse and noisy unit values.* Beer has `r n0(v$n_uv_beer)` unit values in `r pct(v$clusters_uv_beer / v$n_clusters_m1)` of clusters, and the reliability of its cluster-mean unit value is `r num(v$reliability_beer)`. Water unit values mix bottles and bulk containers. The estimates for both goods should be read with caution. Spirits and wine need an external source of prices.
+
+*Quantities.* Only purchases in the household diary carry quantities. Unit values therefore describe off-trade prices, and litres in Table \ref{tab:consumption} are lower bounds.
+
+*Fixed construction rules.* Classification, unit conversion, outlier flags and income terciles are fixed across bootstrap replications. Their effect is shown through sensitivity analyses (Tables \ref{tab:sensown} and \ref{tab:sensexp}), not through the standard errors.
+
+*Regional controls.* The SB estimate changes most when region-by-area effects are not removed from the cluster-level variables. Price differences between regions and between urban and rural areas are confounded with differences in tastes, and the estimates rely on the assumption that the regional controls separate the two.
+
+*Model restrictions.* The demand system is linear in log expenditure, imposes symmetry, and completes the system with a residual good whose quality elasticity is fixed inside the routine. More flexible systems [@DeatonMuellbauer1980AIDS; @BanksBlundellLewbel1997; @LewbelPendakur2009EASI] would test these restrictions but need price measures for every good.
+
+The estimator-level alternatives are listed with their evidence in the project's alternatives register. None of them is implemented here.
+
+# Conclusions
+
+With the 2016--2017 ENPH and Deaton's unit-value model, the own-price elasticity of SB in Colombia is `r estci(sb_c)` in the combined market and `r estci(sb_h)` off-trade, with a range of `r rng("own", "combined", "sb")` across specifications. `r if (nzchar(price_word(sb_c))) paste0("SB demand is ", price_word(sb_c), ". ") else ""`The expenditure elasticity of SB is between `r est(expd("M1", "combined", "sb"))` and `r est(expd("M2", "combined", "sb"))` depending on how zero purchases are treated.
+
+For policy analysis, two points follow. First, the elasticity that feeds revenue and health projections should be used with its interval and its specification range, not as a single number. Second, the survey cannot answer two questions that matter for tax design: how purchases of sugar-sweetened and non-sugar-sweetened drinks respond separately, and whether a tax on SB changes purchases of spirits and wine. Answering them requires product-level data with sweetener content and a source of prices for alcoholic beverages [@PAHO2020BeverageTaxation; @Hattersley2020CounteringArguments].
+
+\clearpage
+
+# References {-}
+
+<div id="refs"></div>
+
+\clearpage
+\appendix
+\singlespacing
+
+# Tables
+
+```{r tables-main, results='asis'}
+for (s in c("table1_demographics", "table2_consumption", "table3_own_price", "table4_terciles", "table5_price_matrix", "table6_expenditure")) {
+  tex_in(s); cat("\n\\clearpage\n\n")
+}
+```
+
+# Supplementary tables and figures
+
+```{r tables-supp, results='asis'}
+supp <- c("tableA1_sample_flow", "tableA2_measurement_coverage", "tableA3_sensitivity_own_price", "tableA4_sensitivity_expenditure",
+          "tableA5_price_clusters", "tableA6_model_summary", "tableA7_confidence_intervals", "tableA8_welcom_native_se")
+for (s in supp) if (file.exists(file.path(tdir, paste0(s, ".tex")))) { tex_in(s); cat("\n\\clearpage\n\n") }
+fig_in("fig3_unit_values.pdf", "Distribution of observed unit values by beverage (off-trade purchases with a recorded quantity; primary data).", "fig:uv")
+```
+
+\vfill
+\noindent\footnotesize Analysis run `r gsub("_", "\\\\_", run_id)`; WELCOM `r v$welcom_version` (`r v$welcom_date`); all numbers in the text, tables and figures are generated from the saved estimates of this run.

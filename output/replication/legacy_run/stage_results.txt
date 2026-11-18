@@ -1,0 +1,11 @@
+run: 2026-11-17 18:17  R 4.5.1
+fclasicoicop.R                   ok
+SSBDInput.R                      ok
+SSBEConsuBasesUrbano.R           ok
+SSBEConsuBasesRural.R            ok
+SSBRevisedPaper_Prices.R         ERROR: contrasts can be applied only to factors with 2 or more levels
+SSBRevisedPaper_Prices_Codi.R    ERROR: contrasts can be applied only to factors with 2 or more levels
+UnitValuePrices_Total.dta        written
+UnitValueGasto_Total.dta         written
+UnitValuePrices_Hogar.dta        written
+UnitValueGasto_Hogar.dta         written

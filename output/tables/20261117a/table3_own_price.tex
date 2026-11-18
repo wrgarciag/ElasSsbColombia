@@ -1,0 +1,51 @@
+\begin{table}[!htbp]
+\centering
+\begin{threeparttable}
+\caption{Own-price elasticities and specification sensitivity}
+\label{tab:ownprice}
+\footnotesize
+\begin{tabular}{lrrrrrr}
+\toprule
+ & M1 & M2 & M3 & M4 & M5 & M6 \\
+\midrule
+\addlinespace\multicolumn{7}{l}{\textit{Off-trade (at home)}} \\
+SB & $-$0.808\textsuperscript{**} & $-$0.807\textsuperscript{**} & $-$0.913 & $-$0.142 & $-$0.808\textsuperscript{**} & $-$0.660\textsuperscript{*} \\
+ & [0.208] & [0.209] & [23.371] & [0.216] & [0.208] & [0.269] \\
+Beer & $-$1.539 & $-$1.508 & $-$5.044 & $-$1.931 & $-$1.539 & $-$2.095 \\
+ & [2.566] & [2.548] & [413.115] & [1.456] & [2.566] & [2.351] \\
+Spirits and wine & n.e. & n.e. & n.e. & n.e. & n.e. & n.e. \\
+Water & $-$1.986\textsuperscript{**} & $-$1.986\textsuperscript{**} & $-$1.703 & $-$2.010\textsuperscript{**} & $-$1.986\textsuperscript{**} & $-$1.896\textsuperscript{**} \\
+ & [0.108] & [0.107] & [7.209] & [0.106] & [0.108] & [0.103] \\
+Dairy drinks & $-$1.055\textsuperscript{**} & $-$1.042\textsuperscript{**} & $-$1.083\textsuperscript{**} & $-$1.157\textsuperscript{**} & $-$1.055\textsuperscript{**} & $-$1.551\textsuperscript{**} \\
+ & [0.167] & [0.168] & [0.206] & [0.142] & [0.167] & [0.235] \\
+Hot drinks & $-$1.050\textsuperscript{**} & $-$1.053\textsuperscript{**} & $-$1.151 & $-$1.547\textsuperscript{**} & $-$1.050\textsuperscript{**} & $-$1.150\textsuperscript{**} \\
+ & [0.093] & [0.094] & [17.810] & [0.094] & [0.093] & [0.093] \\
+\addlinespace
+Households & 87,198 & 87,198 & 87,198 & 87,198 & 87,198 & 81,438 \\
+Price clusters & 483 & 483 & 483 & 483 & 483 & 338 \\
+\addlinespace\multicolumn{7}{l}{\textit{Combined market (at home + away from home)}} \\
+SB & $-$0.890\textsuperscript{**} & $-$0.889\textsuperscript{**} & $-$0.978 & $-$0.249 & $-$0.882\textsuperscript{**} & $-$0.726\textsuperscript{**} \\
+ & [0.177] & [0.177] & [18.417] & [0.188] & [0.175] & [0.204] \\
+Beer & $-$0.922 & $-$0.892 & $-$2.579 & $-$1.310 & $-$1.521 & $-$0.987 \\
+ & [1.766] & [1.752] & [280.022] & [1.061] & [2.751] & [1.263] \\
+Spirits and wine & n.e. & n.e. & n.e. & n.e. & n.e. & n.e. \\
+Water & $-$1.980\textsuperscript{**} & $-$1.980\textsuperscript{**} & $-$1.702 & $-$2.021\textsuperscript{**} & $-$1.973\textsuperscript{**} & $-$1.887\textsuperscript{**} \\
+ & [0.109] & [0.109] & [7.551] & [0.104] & [0.110] & [0.106] \\
+Dairy drinks & $-$1.046\textsuperscript{**} & $-$1.033\textsuperscript{**} & $-$1.070\textsuperscript{**} & $-$1.156\textsuperscript{**} & $-$1.055\textsuperscript{**} & $-$1.519\textsuperscript{**} \\
+ & [0.165] & [0.166] & [0.200] & [0.142] & [0.166] & [0.233] \\
+Hot drinks & $-$1.027\textsuperscript{**} & $-$1.029\textsuperscript{**} & $-$1.100 & $-$1.360\textsuperscript{**} & $-$1.026\textsuperscript{**} & $-$1.080\textsuperscript{**} \\
+ & [0.095] & [0.097] & [14.464] & [0.081] & [0.094] & [0.084] \\
+\addlinespace
+Households & 87,197 & 87,197 & 87,197 & 87,197 & 87,198 & 81,437 \\
+Price clusters & 483 & 483 & 483 & 483 & 483 & 338 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item Uncompensated (Marshallian) own-price elasticities of quantity from Deaton's unit-value model as implemented in WELCOM 3.60 (quality-corrected, symmetry-restricted), unconditional on the beverage budget: budget shares and the expenditure regressor use total household current expenditure.
+\item Columns: M1 primary specification (WELCOM \texttt{duvm} with the selection term, sampling weights averaged within price clusters and region-by-area controls; coded and text-identified purchases; urban and rural households). M2 without the selection term. M3 without sampling weights. M4 without regional controls. M5 coded purchases only. M6 urban households only (a different target population). Each column changes one element of M1.
+\item Standard errors in brackets are standard deviations over 99--100 cluster-bootstrap replications in which price clusters are resampled within region cells and the whole WELCOM estimation is repeated (1 failed replications). \textsuperscript{**} $p<0.01$, \textsuperscript{*} $p<0.05$ (two-sided, normal approximation). The replication target set in the configuration has not been reached for every model; inference is preliminary.
+\item n.e.: not estimable. ENPH records no physical quantity for spirits and wine, so no unit value exists and the good cannot enter the unit-value model.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}

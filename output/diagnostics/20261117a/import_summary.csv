@@ -1,0 +1,14 @@
+module_id,rows,cols,households,key_unique
+households,87201,106,87201,TRUE
+persons,291590,264,87201,TRUE
+urb_diary,3393520,18,79794,TRUE
+urb_meals_hh,504031,16,61774,TRUE
+urb_personal,524948,12,58528,TRUE
+urb_meals_personal,475963,15,53641,TRUE
+urb_capc,2035950,10,81438,TRUE
+lessfreq_items,2111331,13,87193,TRUE
+rur_weekly,241067,17,5763,TRUE
+rur_meals_hh,11439,17,4741,TRUE
+rur_personal,20900,14,4737,TRUE
+rur_meals_personal,6248,14,5763,TRUE
+rur_capc,144075,10,5763,TRUE

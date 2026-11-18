@@ -1,0 +1,31 @@
+\begin{table}[!htbp]
+\centering
+\begin{threeparttable}
+\caption{Sample flow}
+\label{tab:sampleflow}
+\footnotesize
+\begin{tabular}{p{10.5cm}rr}
+\toprule
+Step & Households & Weighted \\
+\midrule
+ENPH 2016-2017 households (public-use file) & 87,201 & 14,350,388 \\
+... answering the urban 14-day diary & 81,438 & 11,277,154 \\
+... answering the rural weekly questionnaire & 5,763 & 3,073,234 \\
+With positive DANE current expenditure & 87,201 & 14,350,388 \\
+With complete household-head covariates & 87,201 & 14,350,388 \\
+With valid budget shares (no category or total above total expenditure), combined market & 87,200 & 14,350,337 \\
+In a price cluster (local market) of at least two households = estimation-eligible, combined market & 87,197 & 14,348,575 \\
+Estimation-eligible, off-trade market & 87,198 & 14,348,627 \\
+... of which urban (cabeceras) & 81,437 & 11,277,103 \\
+... of which rural & 5,760 & 3,071,473 \\
+... with at least one valid beverage purchase (combined market) & 79,789 & 13,257,014 \\
+... with no beverage purchase recorded (kept as true zeros) & 7,408 & 1,091,561 \\
+Legacy analysis file (households with a beverage record and below 16 litres per person-day) & 82,934 &  \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item No household is dropped for having no beverage purchase: such households enter with zero budget shares. The legacy analysis file is shown for reference only.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}

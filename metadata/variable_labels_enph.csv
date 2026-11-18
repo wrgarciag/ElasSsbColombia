@@ -1,0 +1,514 @@
+module_id,variable,label,value_labels
+households,VIVIENDA,VIVIENDA,""
+households,DIRECTORIO,DIRECTORIO,""
+households,SECUENCIA_ENCUESTA,SECUENCIA_ENCUESTA,""
+households,SECUENCIA_P,SECUENCIA_P,""
+households,ORDEN,ORDEN,""
+households,REGION,REGION,""
+households,DOMINIO,DOMINIO,""
+households,P3,Clase,1=Cabeceras; 2=Centros poblados y rural disperso; 3=Centros poblados y rural disperso
+households,P5747,Tipo de vivienda,"1=Casa; 2=Apartamento; 3=Cuarto (s) en inquilinato; 4=Cuarto (s) en otro  tipo de estructura; 5=Vivienda indígena; 6=Otra vivienda (carpa,  vagón, embarcación, cueva, refugio na"
+households,P448,¿Cuál es el material predominante de las paredes exteriores de la vivienda? ¿Cuál es el material predominante de las paredes exteriores de la vivienda? ,"1=Ladrillo, bloque, material prefabricado, piedra; 2=Madera pulida; 3=Adobe o tapia pisada; 4=Bahareque; 5=Madera burda, tabla, tablón; 6=Guadua; 7=Caña, esterilla, otro tipo de material vegetal; 8=Zinc, tela, cartón, latas, desechos, plástico; 9=Sin paredes"
+households,P811,¿Cuál es el material predominante de los pisos de la vivienda?,"1=Tierra, arena; 2=Cemento, gravilla; 3=Madera burda, tabla, tablón, otro vegetal; 4=Baldosín, ladrillo, vinisol, otros materiales sintéticos; 5=Mármol; 6=Madera pulida; 7=Alfombra o tapete de pared a pared"
+households,P8520S1,¿Con cuáles de los siguientes servicios cuenta la vivienda? a. Energía eléctrica ,1=Si; 2=No
+households,P8520S1A1,¿Con cuáles de los siguientes servicios cuenta la vivienda? a. Energía eléctrica Estrato para tarifa:,""
+households,P8520S2,¿Con cuáles de los siguientes servicios cuenta la vivienda? b. Gas natural conectado a red pública ,1=Si; 2=No
+households,P8520S3,¿Con cuáles de los siguientes servicios cuenta la vivienda? c. Alcantarillado ,1=Si; 2=No
+households,P8520S4,¿Con cuáles de los siguientes servicios cuenta la vivienda? d. Recolección de basuras Veces por semana:,1=Si; 2=No
+households,P8520S4A1,¿Con cuáles de los siguientes servicios cuenta la vivienda? d. Recolección de basuras Veces por semana:,""
+households,P8520S5,¿Con cuáles de los siguientes servicios cuenta la vivienda? e. Acueducto,1=Si; 2=No
+households,P4040,"¿El agua del acueducto llega las 24 horas del día, durante los siete días de la semana?",1=Si; 2=No
+households,P1647,Incluyendo sala-comedor ¿de cuántos cuartos en total dispone este hogar? ,""
+households,P5010,¿En cuántos de esos cuartos duermen las personas de este hogar?,""
+households,P814,El servicio sanitario que utiliza el hogar es:,1=Inodoro conectado a alcantarillado; 2=Inodoro conectado a pozo séptico; 3=Inodoro sin conexión; 4=Letrina; 5=Bajamar; 6=No tiene servicio sanitario
+households,P449,¿Cómo eliminan principalmente la basura en este hogar?,"1=Por recolección pública o privada; 2=La tiran a un río, quebrada, caño o laguna; 3=La tiran a un patio, lote, zanja o baldío; 4=La queman o entierran; 5=La eliminan de otra forma"
+households,P5050,¿De dónde obtiene principalmente este hogar el agua para consumo humano?,"1=De acueducto por tubería; 10=Agua embotellada o en bolsa; 2=De otra fuente por tubería; 3=De pozo con bomba; 4=De pozo sin bomba, aljibe, jagüey o barreno; 5=Aguas lluvias; 6=Río, quebrada, nacimiento ó manantial; 7=De pila pública; 8=Carro tanque; 9=Aguatero"
+households,P5070,¿En cuál de los siguientes lugares preparan los alimentos las personas de este hogar?,"1=En un cuarto usado sólo para cocinar; 2=En un cuarto usado también para dormir; 3=En una sala comedor con lavaplatos; 4=En una sala comedor sin lavaplatos; 5=En un patio, corredor, enramada, al aire libre; 6=En ninguna parte, no preparan alimentos"
+households,P5080,¿Con qué energía o combustible cocinan principalmente en este hogar?,"1=Electricidad; 2=Petróleo, gasolina, kerosene, alcohol; 3=Gas natural conectado a red pública; 4=Gas propano en cilindro o pipeta; 5=Leña, madera o carbón de leña; 6=Carbón mineral; 7=Materiales de desecho"
+households,P5160,"¿En los últimos doce meses, algún miembro del hogar recibió subsidio del Gobierno o de otra institución para la compra, construcción o mejora de vivienda, casalote o lote?",1=Si; 2=No
+households,P5161S1,De qué entidad recibió el subsidio de vivienda ? a. Del Gobierno a. ¿En dinero?,1=Si; 2=No
+households,P5161S1A1, ¿De qué entidad recibió el subsidio? a. Del Gobierno a. En dinero?,1=Si; 2=No
+households,P5161S1A2, ¿De qué entidad recibió el subsidio?,1=Si; 2=No
+households,P5161S1A3,De qué entidad recibió el subsidio de vivienda ? a. Del Gobierno b. ¿En especie?,1=Si; 2=No
+households,P5161S1A4,De qué entidad recibió el subsidio de vivienda ? a. Del Gobierno b. ¿En especie? ¿En cuánto estima lo que recibió?,""
+households,P5161S2,"De qué entidad recibió el subsidio de vivienda ? b. De otra institución (ONG, fundación o empresa privada)",1=Si; 2=No
+households,P5161S2A1,"De qué entidad recibió el subsidio de vivienda ? b. De otra institución (ONG, fundación o empresa privada) a. ¿En dinero?",1=Si; 2=No
+households,P5161S2A2,"De qué entidad recibió el subsidio de vivienda ? b. De otra institución (ONG, fundación o empresa privada) a. ¿En dinero? ¿Cuánto?",""
+households,P5161S2A3,"De qué entidad recibió el subsidio de vivienda ? b. De otra institución (ONG, fundación o empresa privada) b. ¿En especie?",1=Si; 2=No
+households,P5161S2A4,"De qué entidad recibió el subsidio de vivienda ? b. De otra institución (ONG, fundación o empresa privada) b. ¿En especie? ¿En cuánto estima lo que recibió?",""
+households,P5090,La vivienda ocupada por este hogar es:,"1=Propia, totalmente pagada; 2=Propia, la están pagando; 3=En arriendo o subarriendo; 4=En usufructo; 5=Posesión sin titulo (Ocupante de hecho) ó propiedad colectiv; 6=Otra"
+households,P917,La vivienda ocupada por este hogar es: ¿Tiene escritura registrada?,1=Si; 2=No
+households,P5100S1,Cuánto pagan mensualmente por cuota de amortización? a. Capital,""
+households,P5100S2,Cuánto pagan mensualmente por cuota de amortización? b. Intereres,""
+households,P5100S3,Cuánto pagan mensualmente por cuota de amortización? c. Seguros y otros gastos,""
+households,P5100S4,Cuánto pagan mensualmente por cuota de amortización? d. Cuota total,""
+households,P5102,¿Esta vivienda la compró en los últimos 12 meses?,1=Si; 2=No
+households,P5103,¿Cuál fue el valor de la vivienda?,""
+households,P5105,¿La tasa de interés que se está pagando es subsidiada?,1=Si; 2=No
+households,P1644M1,"¿Cuáles de las siguientes fuentes utilizaron para la compra de esta vivienda? a. Recursos propios (ahorros, cesantías, fiducias, ingresos de venta de otros bienes)",1=Si
+households,P1644M2,¿Cuáles de las siguientes fuentes utilizaron para la compra de esta vivienda? b. Préstamos hipotecarios,1=Sí
+households,P1644M3,¿Cuáles de las siguientes fuentes utilizaron para la compra de esta vivienda? c. Préstamosbancarios de libre inversión,1=Si
+households,P1644M4,¿Cuáles de las siguientes fuentes utilizaron para la compra de esta vivienda? d. Subsidios,1=Si
+households,P1644M5,¿Cuáles de las siguientes fuentes utilizaron para la compra de esta vivienda? e. Fondo Nacional del Ahorro o CAPROVIMPO,1=Si
+households,P1644M6,¿Cuáles de las siguientes fuentes utilizaron para la compra de esta vivienda? f. Préstamos de particulares,1=Si
+households,P1644M7,¿Cuáles de las siguientes fuentes utilizaron para la compra de esta vivienda? g. Otra,1=Si
+households,P1644S1,¿Cuáles de las siguientes fuentes utilizaron para la compra de esta vivienda? ¿A cuántos años (Prestamos hipotecarios)?,""
+households,P1644S3,¿Cuáles de las siguientes fuentes utilizaron para la compra de esta vivienda? ¿A cuántos años (Libre inversión)?,""
+households,P1645,Si tuviera la oportunidad de comprar una vivienda en las mismas condiciones de esta ¿Cuál sería el precio que estaría dispuesto a pagar?,""
+households,P5110,"Si tuviera que pagar arriendo por esta vivienda, ¿cuánto estima que tendría que pagar mensualmente?",""
+households,P5140,¿Cuánto pagan mensualmente por arriendo ?,""
+households,P5240,Usted considera que los ingresos mensuales de su hogar:,1=Son más que suficientes para cubrir los gastos básicos del; 2=Son suficientes para cubrir los gastos básicos; 3=No alcanzan para cubrir los gastos básicos
+households,P5250,¿Cuál considera que debería ser el ingreso mínimo mensual que requiere este hogar para satisfacer adecuadamente sus necesidades?,""
+households,P5230,¿Usted se considera pobre?,1=Si; 2=No
+households,P1646S1,"Cuáles de los siguientes servicios o bienes en uso, posee este hogar? a. Servicio de teléfono fijo ",1=Si; 2=No
+households,P1646S2,"Cuáles de los siguientes servicios o bienes en uso, posee este hogar? b. Servicio de televisión por suscripción cable o antena parabólica.",1=Si; 2=No
+households,P1646S3,"Cuáles de los siguientes servicios o bienes en uso, posee este hogar? c. Servicio de Internet",1=Si; 2=No
+households,P1646S4,"Cuáles de los siguientes servicios o bienes en uso, posee este hogar? d. Máquina lavadora de ropa ",1=Si; 2=No
+households,P1646S5,"Cuáles de los siguientes servicios o bienes en uso, posee este hogar? e. Nevera o refrigerador",1=Si; 2=No
+households,P1646S6,"Cuáles de los siguientes servicios o bienes en uso, posee este hogar? f. Licuadora",1=Si; 2=No
+households,P1646S7,"Cuáles de los siguientes servicios o bienes en uso, posee este hogar? g. Estufa eléctrica o de gas",1=Si; 2=No
+households,P1646S8,"Cuáles de los siguientes servicios o bienes en uso, posee este hogar? h. Horno eléctrico o de gas ",1=Si; 2=No
+households,P1646S9,"Cuáles de los siguientes servicios o bienes en uso, posee este hogar? i. Horno microondas ",1=Si; 2=No
+households,P1646S10,"Cuáles de los siguientes servicios o bienes en uso, posee este hogar? j. Calentador de agua eléctrico o de gas o ducha eléctrica ",1=Si; 2=No
+households,P1646S11,"Cuáles de los siguientes servicios o bienes en uso, posee este hogar? k. Aspiradora/brilladora ",1=Si; 2=No
+households,P1646S12,"Cuáles de los siguientes servicios o bienes en uso, posee este hogar? l. Aire acondicionado",1=Si; 2=No
+households,P1646S13,"Cuáles de los siguientes servicios o bienes en uso, posee este hogar? m. Ventilador o abanico ",1=Si; 2=No
+households,P1646S14,"Cuáles de los siguientes servicios o bienes en uso, posee este hogar? n. Calentador de ambiente",1=Si; 2=No
+households,P1646S15,"Cuáles de los siguientes servicios o bienes en uso, posee este hogar? ñ. Televisor a color convencional ",1=Si; 2=No
+households,P1646S16,"Cuáles de los siguientes servicios o bienes en uso, posee este hogar? o. Telivisor LCD, plasma o LED",1=Si; 2=No
+households,P1646S17,"Cuáles de los siguientes servicios o bienes en uso, posee este hogar? p. Teatro en casa ",1=Si; 2=No
+households,P1646S18,"Cuáles de los siguientes servicios o bienes en uso, posee este hogar? q. Equipo de sonido y minicomponente ",1=Si; 2=No
+households,P1646S19,"Cuáles de los siguientes servicios o bienes en uso, posee este hogar? r. Microcomponente ",1=Si; 2=No
+households,P1646S20,"Cuáles de los siguientes servicios o bienes en uso, posee este hogar? s. Reproductores de audio digitales de música, vídeo e imagen (MP3, MP4, Ipod) ",1=Si; 2=No
+households,P1646S21,"Cuáles de los siguientes servicios o bienes en uso, posee este hogar? t. Reproductores de vídeo video (DVD, Blue-ray, DISC) ",1=Si; 2=No
+households,P1646S22,"Cuáles de los siguientes servicios o bienes en uso, posee este hogar? u. Consolas para juegos electrónicos: Play Station, X-box, Wii, PSP, Nintendo, Gameboy, etc ",1=Si; 2=No
+households,P1646S23,"Cuáles de los siguientes servicios o bienes en uso, posee este hogar? v. Tablet PC (IPAD) ",1=Si; 2=No
+households,P1646S24,"Cuáles de los siguientes servicios o bienes en uso, posee este hogar? w. Cámara digital fotográfica o de vídeo ",1=Si; 2=No
+households,P1646S25,"Cuáles de los siguientes servicios o bienes en uso, posee este hogar? x. Computador portátil",1=Si; 2=No
+households,P1646S26,"Cuáles de los siguientes servicios o bienes en uso, posee este hogar? y. Computador de escritorio",1=Si; 2=No
+households,P1646S27,"Cuáles de los siguientes servicios o bienes en uso, posee este hogar? z. Bicicleta ",1=Si; 2=No
+households,P1646S28,"Cuáles de los siguientes servicios o bienes en uso, posee este hogar? a.a. Motocicleta ",1=Si; 2=No
+households,P1646S29,"Cuáles de los siguientes servicios o bienes en uso, posee este hogar? a.b. Carro particular ",1=Si; 2=No
+households,P1646S30,"Cuáles de los siguientes servicios o bienes en uso, posee este hogar? a.c. Casa, apartamento o finca de recreo ",1=Si; 2=No
+households,P1646S28A1,"Cuáles de los siguientes servicios o bienes en uso, posee este hogar? a.a. Motocicleta Cuántas Motocicletas",""
+households,P1646S29A1,"Cuáles de los siguientes servicios o bienes en uso, posee este hogar? a.b. Carro particular Cuántos Carros",""
+households,P6008,Total de personas en el hogar,""
+households,NC2R_CC_P5,"Durante la semana pasada (de lunes a domingo) ¿El hogar tuvo algún gasto en alimentos debido a fiestas, reuniones o invitados? ",1=Si; 2=No
+households,NC2R_CC_P6,La principal forma de pago usada para comprar los bienes mencionados en este cuadernillo fue:,1=Tarjeta Débito; 2=Tarjeta de Crédito; 3=Efectivo; 4=Fiador; 5=Bonos; 6=Otro
+households,FEX_C,Factor de Expansión,""
+households,PERIODO,Año y mes de Recoleccion,""
+households,IT,Ingreso Total,""
+households,ICGU,Ingreso Corriente de la Unidad de Gasto,""
+households,ICMUG,Ingreso Corriente Monetario de la Unidad de Gasto,""
+households,ICMDUG,Ingreso Corriente Monetario Disponible de la Unidada de Gasto,""
+households,GTUG,Gasto Total de la Unidada de Gasto,""
+households,GCUG,Gasto Corriente de la Unidad de Gasto,""
+households,GCMUG,Gasto Corriente Monetario de la Unidad de Gasto,""
+persons,DIRECTORIO,DIRECTORIO,""
+persons,SECUENCIA_ENCUESTA,SECUENCIA_ENCUESTA,""
+persons,SECUENCIA_P,SECUENCIA_P,""
+persons,ORDEN,ORDEN,""
+persons,P6020,Sexo: 1 - Hombre 2 - Mujer,1=Hombre; 2=Mujer
+persons,P6040,¿Cuántos años cumplidos tiene ... ?,""
+persons,P6050,¿Cuál es el parentesco de ... con el ó la jefe del hogar?,"1=Jefe (a) del hogar; 2=Pareja, esposo(a), cónyuge, compañero(a); 3=Hijo(a), hijastro(a); 4=Nieto(a); 5=Otro  pariente; 6=Empleado(a) del servicio doméstico y sus parientes; 7=Pensionista; 8=Trabajador; 9=Otro no pariente"
+persons,P6080,"De acuerdo con su cultura, pueblo, o rasgos físicos, ... es o se reconoce como:","1=Indígena; 2=Gitano-Rrom; 3=Raizal del archipiélago de San Andrés y Providencia?; 4=Palenquero de San Basilio o descendiente; 5=Negro(a), mulato(a), afrocolombiano(a) o afrodescendiente?; 6=Ninguno de los anteriores (mestizo, blanco, etc.)"
+persons,P5170,"¿Asiste a un hogar comunitario, jardín, centro de desarrollo integral o colegio? 1 » Si 2 » No"" ¿Asiste a un hogar comunitario, jardín, centro de desarrollo integral o colegio? 1 - Si 2 - No"" ""7. ¿Asiste a un hogar comunitario, jardín, centro de desarrol",1=Si; 2=No
+persons,P5180," Recibe en el plantel educativo alimentos (desayunos, medias nueves, almuerzos, etc) en forma gratuita o por un pago simbólico",1=Si; 2=No
+persons,P5180S1," Recibe en el plantel educativo alimentos (desayunos, medias nueves, almuerzos, etc) en forma gratuita o por un pago simbólico a. ¿Cuánto paga por día?",1=Si; 2=No
+persons,P5180S2," Recibe en el plantel educativo alimentos (desayunos, medias nueves, almuerzos, etc) en forma gratuita o por un pago simbólico b. ¿Si lo tuviera que comprar en otra parte, cuánto pagaría al día por lo que recibe?",""
+persons,P6060,"¿Por FALTA de dinero, ... no consumió NINGUNA de las tres COMIDAS BÁSICAS O PRINCIPALES (desayuno, almuerzo, comida), uno o más días de la semana pasada?",1=Si; 2=No
+persons,P6060S1,"¿Por FALTA de dinero, ... no consumió NINGUNA de las tres COMIDAS BÁSICAS O PRINCIPALES (desayuno, almuerzo, comida), uno o más días de la semana pasada? ¿Cuántos días dejó de consumir las tres comidas?",""
+persons,P6081,El padre de ... ¿vive en este hogar?,1=Si; 2=No; 3= Fallecido(a)
+persons,P6081S1,El padre de ... ¿vive en este hogar? Número de orden del padre,""
+persons,P6083,La madre de ... ¿vive en este hogar?,1=Si; 2=No; 3=Fallecido(a)
+persons,P6083S1,La madre de ... ¿vive en este hogar?,""
+persons,P1650,SOLAMENTE PARA PERSONAS DE 10 AÑOS Y MAS 12. Actualmente ... :,1=No esta casado(a) y vive en pareja  hace  menos de dos años; 2=No esta  casado(a) y vive en pareja hace dos años  o más; 3=Esta viudo (a); 4=Esta separado(a) o divorciado(a); 5=Esta soltero (a); 6=Esta casado (a)
+persons,P6071,SOLAMENTE PARA PERSONAS DE 10 AÑOS Y MAS 13. El (la) cónyuge de ... ¿vive en este hogar?,1=Si; 2=No
+persons,P6071S1,El (la) cónyuge de ... ¿vive en este hogar? ¿vive en este hogar? Número de orden del (la) cónyuge,""
+persons,P6090,"¿ ... Está afiliado,es cotizante o beneficiario de alguna entidad de seguridad social en salud? (Empresa Promotora de Salud-EPS o Entidad Promotora de Salud Subsidiada-EPSS)","1=Si; 2=No; 9=No sabe, no informa"
+persons,P6100,¿A cuál de los siguientes regímenes de seguridad social en salud está afiliado:,"1=Contributivo  (EPS)?; 2=Especial ? (Fuerzas Armadas, Ecopetrol, universidades públic; 3=Subsidiado? (EPSS); 9=No sabe, no informa"
+persons,P6110,¿Quién paga mensualmente por la afiliación de ... ?,"1=... paga una parte y otra la empresa o patrón; 2= Le descuentan de la pensión; 3=... paga la totalidad de la cotización; 4=No paga, es beneficiario; 5=Paga completamente la empresa o patrón donde trabaja o traba; 9=No sabe, no informa"
+persons,P6120,¿Cuánto paga o cuánto le descuentan mensualmente? ,""
+persons,P6160,¿Sabe leer y escribir?,1=Si; 2=No
+persons,P6170,"¿Actualmente ... asiste al preescolar, escuela, colegio o universidad?",1=Si; 2=No
+persons,P6175,El establecimiento al que asiste ... ¿es oficial?,1=Si; 2=No
+persons,P6180,"Recibe en el plantel educativo alimentos (desayunos, medias nueves, almuerzos, etc) en forma gratuita o por un pago simbólico",1=Si; 2=No
+persons,P6180S1,"Recibe en el plantel educativo alimentos (desayunos, medias nueves, almuerzos, etc) en forma gratuita o por un pago simbólico a. ¿Cuánto paga por día?",""
+persons,P6180S2,"Recibe en el plantel educativo alimentos (desayunos, medias nueves, almuerzos, etc) en forma gratuita o por un pago simbólico b. Si lo tuviera que comprar en otra parte cuánto pagaría al día por lo que recibe?",""
+persons,P8610,Durante los últimos doce meses ... recibió beca en dinero o en especie para estudiar?,1=Si; 2=No
+persons,P8610S1,Durante los últimos doce meses ... recibió beca en dinero o en especie para estudiar? ¿Cuánto recibió en dinero?,""
+persons,P8610S2,Durante los últimos doce meses ... recibió beca en dinero o en especie para estudiar? ¿Cuánto recibió en especie?,""
+persons,P6207M1,¿De quién recibió la beca para estudiar? 1 » a. De la misma institución educativa,""
+persons,P6207M2,¿De quién recibió la beca para estudiar? 2 » b. ICETEX,""
+persons,P6207M3,¿De quién recibió la beca para estudiar? 3 » c. Gobierno nacional o departamental,""
+persons,P6207M4,¿De quién recibió la beca para estudiar? 4 » d. Gobierno distrital o municipal,""
+persons,P6207M5,¿De quién recibió la beca para estudiar? 5 » e. Otra entidad pública,""
+persons,P6207M6,¿De quién recibió la beca para estudiar? 6 » f. Empresa pública donde usted o un familiar trabajan,""
+persons,P6207M7,¿De quién recibió la beca para estudiar? 7 » g. Empresa privada donde usted o un familiar trabajan,""
+persons,P6207M8,¿De quién recibió la beca para estudiar? 8 » h. Otra entidad privada,""
+persons,P6207M9,"¿De quién recibió la beca para estudiar? 9 » i. ""Organismo internacional",""
+persons,P6207M10,"¿De quién recibió la beca para estudiar? 10 » j. ""Becas de Universidades y ONGs",""
+persons,P8612,Durante los últimos doce meses ... recibió subsidios en dinero o en especie para estudiar?,1=Si; 2=No
+persons,P8612S1,Durante los últimos doce meses ... recibió subsidios en dinero o en especie para estudiar? Sí,""
+persons,P8612S2,Durante los últimos doce meses ... recibió subsidios en dinero o en especie para estudiar? Sí,""
+persons,P6236,¿De quién recibió el subsidio para estudiar?,1=De la misma institución educativa; 10=Becas de Universidades y ONGs; 2=ICETEX; 3=Gobierno nacional o departamental; 4=Gobierno distrital o municipal; 5=Otra entidad pública; 6=Empresa pública donde usted o un familiar trabajan; 7=Empresa privada donde usted o un familiar trabajan; 8=Otra entidad privada; 9=Organismo internacional
+persons,P6236M1,¿De quién recibió el subsidio para estudiar? 1 » a. De la misma institución educativa,1=Si; 2=No
+persons,P6236M2,¿De quién recibió el subsidio para estudiar? 2 » b. ICETEX,1=Si; 2=No
+persons,P6236M3,¿De quién recibió el subsidio para estudiar? 3 » c. Gobierno nacional o departamental,1=Si; 2=No
+persons,P6236M4,¿De quién recibió el subsidio para estudiar? 4 » d. Gobierno distrital o municipal,1=Si; 2=No
+persons,P6236M5,¿De quién recibió el subsidio para estudiar? 5 » e. Otra entidad pública,1=Si; 2=No
+persons,P6236M6,¿De quién recibió el subsidio para estudiar? 6 » f. Empresa pública donde usted o un familiar trabajan,1=Si; 2=No
+persons,P6236M7,¿De quién recibió el subsidio para estudiar? 7 » g. Empresa privada donde usted o un familiar trabajan,1=Si; 2=No
+persons,P6236M8,A. ¿De quién recibió el subsidio para estudiar? 8 » h. Otra entidad privada,1=Si; 2=No
+persons,P6236M9,"¿De quién recibió el subsidio para estudiar? 9 » i. ""Organismo internacional",1=Si; 2=No
+persons,P6236M10,"¿De quién recibió el subsidio para estudiar? 10 » j. ""Becas de Universidades y ONGs",1=Si; 2=No
+persons,P1664,Durante los últimos doce meses ... recibió crédito educativo?,1=Si; 2=No
+persons,P1664S1,Durante los últimos doce meses ... recibió crédito educativo?,""
+persons,P1664S2,¿De quién recibió el crédito para estudiar?,1=Institución educativa; 2=ICETEX; 3=Fondo Nacional de Ahorro (FNA); 4=Banco o corporación; 5=Otra entidad pública; 6=Empresa pública donde usted o un familiar trabajan; 7=Empresa privada donde usted o un familiar trabajan; 8=Otra entidad privada
+persons,P1664M1,¿De quién recibió el crédito para estudiar? 1 » a. Institución educativa,1=Si; 2=No
+persons,P1664M2,¿De quién recibió el crédito para estudiar? 2 » b.ICETEX,1=Si; 2=No
+persons,P1664M3,¿De quién recibió el crédito para estudiar? 4 » c.Fondo Nacional de Ahorro (FNA),1=Si; 2=No
+persons,P1664M4,¿De quién recibió el crédito para estudiar? 5 » d.Otra entidad pública,1=Si; 2=No
+persons,P1664M5,¿De quién recibió el crédito para estudiar? 5 » e. Otra entidad pública ,1=Si; 2=No
+persons,P1664M6,¿De quién recibió el crédito para estudiar? 6 » f. Empresa pública donde usted o un familiar trabajan,1=Si; 2=No
+persons,P1664M7,¿De quién recibió el crédito para estudiar? 7 » g. Empresa privada donde usted o un familiar trabajan,1=Si; 2=No
+persons,P1664M8,¿De quién recibió el crédito para estudiar? 8 » h. Otra entidad privada,1=Si; 2=No
+persons,P6210,¿Cuál es el nivel educativo más alto alcanzado por ... ?,"1=Ninguno; 2=Preescolar; 3=Basica Primaria; 4=Basica Secundaria; 5=Media; 6=Superior o Universitaria; 9=""No sabe, no informa"""
+persons,P6210S1,¿Cuál es el último año o grado aprobado en este nivel ... ?,"100=Ninguno; 200=Inicio Preescolar; 201=Preescolar; 300=Inicio primaria; 301=Primero de primaria; 302=Segundo de primaria; 303=Tercero de primaria; 304=Cuarto de primaria; 305=Quinto de primaria; 400=Inicio Basica Secundaria; 406=Sexto; 407=Septimo; 408=Octavo; 409=Noveno; 500=Inicio Media; 510=Decimo; 511=Once; 512=Doce; 513=Trece; 600=Inicio Superior o Universitaria; 601=Primer año; 602=Segundo año; 603=Tercer año; 604=Cuarto año; 605=Quinto año; 606=Sexto año; 607=Septimo año; 608=Octavo año; 609=Noveno año; 610=Decimo año; 611=Undecimo año; 612=Decimo Segundo año; 613=Decimo Tercer año; 614=Decimo Cuarto año; 615=Decimo Quinto año; 999=No sabe, no informa"
+persons,P6210S2,¿Cuál es el título o diploma de mayor nivel educativo que Usted ha recibido?,"1=Ninguno; 2=Bachiller; 3=Técnico o tecnológico; 4=Universitario; 5=Postgrado; 9=No sabe, no informa"
+persons,P6240,¿En que actividad ocupó ... la mayor parte del tiempo la semana pasada?,1=Trabajando; 2=Buscando trabajo; 3=Estudiando; 4=Oficios del hogar; 5=Incapacitado permanente para trabajar; 6=Otra actividad
+persons,P6250,"Además de lo anterior, ... realizó la semana pasada alguna actividad paga por una hora o más?",1=Si; 2=No
+persons,P6260,"Aunque ... no trabajó la semana pasada, por una hora o más en forma remunerada, ¿tenía durante esa semana algún trabajo o negocio por el que recibe ingresos? ",1=Si; 2=No
+persons,P6270,... trabajó la semana pasada en un negocio por UNA HORA O MÁS sin que le pagaran?,1=Si; 2=No
+persons,P6280,En las ÚLTIMAS 4 SEMANAS ... hizo alguna diligencia para conseguir un trabajo o instalar un negocio?,1=Si; 2=No
+persons,P6300,... desea conseguir un trabajo remunerado o instalar un negocio?,1=Si; 2=No
+persons,P6310,"Aunque ... desea trabajar, ¿por qué motivo principal no hizo diligencias para buscar un trabajo oinstalar un negocio en las ÚLTIMAS 4 SEMANAS?",1=Ya encontró trabajo; 2=No hay trabajo disponible en la ciudad o región / No encuent; 3=Está esperando que lo llamen o está esperando temporada alta; 4=No sabe cómo buscarlo; 5=Está cansado de buscar; 6=Carece de la experiencia necesaria; 7=No tiene recursos para instalar un negocio; 8=Los empleadores lo consideran muy joven o muy viejo; 9=Usted se considera muy joven o muy viejo; 10=Responsabilidades familiares; 11=Problemas de salud; 12=Está estudiando; 13=Otro
+persons,P6320,Durante los últimos 12 meses ... trabajó por lo menos 2 semanas consecutivas?,1=Si; 2=No
+persons,P6330,"Después de su último empleo, ... ha hecho alguna diligencia para conseguir trabajo o instalar un negocio?",1=Si; 2=No
+persons,P6340,Durante los últimos 12 meses ... ha hecho alguna diligencia para conseguir trabajo o instalar un negocio?,1=Si; 2=No
+persons,P6350,Si le hubiera resultado algún trabajo a ... ¿estaba disponible la semana pasada para empezar a trabajar?,1=Si; 2=No
+persons,P6370S1,Oficio,""
+persons,P6390S1,Actividad Economica CIIU - Rev. 4,""
+persons,P6440,¿Para realizar este trabajo tiene ... algún tipo de contrato? (verbal o escrito),1=Si; 2=No
+persons,P6450,¿El contrato es verbal o escrito?,1=Verbal; 2=Escrito
+persons,P1652S1,"Paga o le descuentan mensualmente por: a. Impuestos de industria, comercio y avisos ICA o impuestos al valor agregado IVA",1=Si; 2=No
+persons,P1652S1A1,"Paga o le descuentan mensualmente por: a. Impuestos de industria, comercio y avisos ICA o impuestos al valor agregado IVA a. Valor pagado o descontado",""
+persons,P1652S2,Paga o le descuentan mensualmente por: b. Retención en la fuente,1=Si; 2=No
+persons,P1652S2A1,Paga o le descuentan mensualmente por: b. Retención en la fuente,""
+persons,P6426,"¿Cuanto tiempo lleva ... trabajando en esta empresa, negocio, industria, oficina, firma o finca de manera continua? Meses:",""
+persons,P6430,En este trabajo ... es:,"1=Obrero o empleado de empresa particular; 2=Obrero o empleado del gobierno; 3=Empleado doméstico; 4=Trabajador por cuenta propia; 5=Patrón o empleador; 6=Trabajador familiar sin remuneración; 7=Trabajador sin remuneración en empresas o negocios de otros; 8=Jornalero o Peón; 9=Otro, ¿cuál?"
+persons,P6500,"Antes de descuentos ¿cuánto ganó ... el mes pasado en este empleo? (Incluya propinas y comisiones, y excluya viáticos y pagos en especie)",""
+persons,P6510,¿El mes pasado recibió ingresos por concepto de horas extras?,"1=Si; 2=No; 9=No sabe, no informa"
+persons,P6510S1,¿El mes pasado recibió ingresos por concepto de horas extras? ¿cuánto recibió?,""
+persons,P6510S2,¿El mes pasado recibió ingresos por concepto de horas extras? ¿Incluyó este valor en los los ingresos del mes pasado ($ ${P6500}) que me declaró anteriormente?,1=Si; 2=No
+persons,P6590,"Además del salario en dinero, ¿el mes pasado recibió alimentos como parte de pago por su trabajo?","1=Si; 2=No; 9=No sabe, no informa"
+persons,P6590S1,"Además del salario en dinero, ¿el mes pasado recibió alimentos como parte de pago por su trabajo?",""
+persons,P6600,"Además del salario en dinero, ¿el mes pasado recibió vivienda como parte de pago por su trabajo?","1=Si; 2=No; 9=No sabe, no informa"
+persons,P6600S1,"Además del salario en dinero, ¿el mes pasado recibió vivienda como parte de pago por su trabajo? a. ¿En cuánto estima lo que recibió?",""
+persons,P6610,¿Normalmente ... utiliza transporte de la empresa para desplazarse a su trabajo (bus o automóvil)?,"1=Si; 2=No; 9=No sabe, no informa"
+persons,P6610S1,¿Normalmente ... utiliza transporte de la empresa para desplazarse a su trabajo (bus o automóvil)?,""
+persons,P6620,"Además del salario en dinero, ¿el mes pasado ... recibió otros ingresos en especie por su trabajo (electrodomésticos, ropa, productos diferentes a alimentos o bonos tipo Sodexho)?","1=Si; 2=No; 9=No sabe, no informa"
+persons,P6620S1,"Además del salario en dinero, ¿el mes pasado ... recibió otros ingresos en especie por su trabajo (electrodomésticos, ropa, productos diferentes a alimentos o bonos tipo Sodexho)?",""
+persons,P6585S1,¿Cuál o cuáles de los siguientes subsidios recibió ... el mes pasado? a. Auxilio o subsidio de alimentación? ,"1=Si; 2=No; 9=No sabe, no informa"
+persons,P6585S1A1,¿Cuál o cuáles de los siguientes subsidios recibió ... el mes pasado? a. Auxilio o subsidio de alimentación?,""
+persons,P6585S1A2,¿Cuál o cuáles de los siguientes subsidios recibió ... el mes pasado? a. Auxilio o subsidio de alimentación? b. ¿Incluyó este valor en los ingresos del mes pasado que me declaró anteriormente?,1=Si; 2=No
+persons,P6585S2,¿Cuál o cuáles de los siguientes subsidios recibió ... el mes pasado? b. Auxilio o subsidio de transporte? ,"1=Si; 2=No; 9=No sabe, no informa"
+persons,P6585S2A1,¿Cuál o cuáles de los siguientes subsidios recibió ... el mes pasado? b. Auxilio o subsidio de transporte? a. ¿Cuánto?,""
+persons,P6585S2A2,¿Cuál o cuáles de los siguientes subsidios recibió ... el mes pasado? b. Auxilio o subsidio de transporte? b. ¿Incluyó este valor en los ingresos del mes pasado que me declaró anteriormente?,1=Si; 2=No
+persons,P6585S3,¿Cuál o cuáles de los siguientes subsidios recibió ... el mes pasado:? c. Subsidio Familiar?,"1=Si; 2=No; 9=No sabe, no informa"
+persons,P6585S3A1,¿Cuál o cuáles de los siguientes subsidios recibió ... el mes pasado:? c. Subsidio Familiar? a. ¿Cuánto?,""
+persons,P6585S3A2,¿Cuál o cuáles de los siguientes subsidios recibió .... el mes pasado:? c. Subsidio Familiar? b. ¿Incluyó este valor en los ingresos del mes pasado que me declaró anteriormente?,""
+persons,P1653S1,"¿El mes pasado recibió ... : a. Primas técnicas, de antigüedad, clima, orden público, otras, etc.?","1=Si; 2=No; 9=No sabe, no informa"
+persons,P1653S1A1,"¿El mes pasado recibió ... : a. Primas técnicas, de antigüedad, clima, orden público, otras, etc.? a. ¿Cuánto?",""
+persons,P1653S1A2,"¿El mes pasado recibió ... : a. Primas técnicas, de antigüedad, clima, orden público, otras, etc.? b. ¿Incluyó este valor en los ingresos del mes pasado ($ ${P6500}) que me declaró anteriormente?",1=Si; 2=No
+persons,P1653S2,¿El mes pasado recibió ... : b. Algún tipo de bonificación de carácter mensual?,"1=Si; 2=No; 9=No sabe, no informa"
+persons,P1653S2A1,¿El mes pasado recibió ... : b. Algún tipo de bonificación de carácter mensual? a. ¿Cuánto?,""
+persons,P1653S2A2,¿El mes pasado recibió ... : b. Algún tipo de bonificación de carácter mensual? b. ¿Incluyó este valor en los ingresos del mes pasado ($ ${P6500}) que me declaró anteriormente?,1=Si; 2=No
+persons,P1653S3,¿El mes pasado recibió ... : c. Viáticos no permanentes,"1=Si; 2=No; 9=No sabe, no informa"
+persons,P1653S3A1,¿El mes pasado recibió ... : c. Viáticos no permanentes a. ¿Cuánto?,""
+persons,P1653S3A2,¿El mes pasado recibió ... : c. Viáticos no permanentes b. ¿Incluyó este valor en los ingresos del mes pasado ($ ${P6500}) que me declaró anteriormente?,1=Si; 2=No
+persons,P1653S4,¿El mes pasado recibió ... : d. Ingresos por gastos de representación,"1=Si; 2=No; 9=No sabe, no informa"
+persons,P1653S4A1,¿El mes pasado recibió ... : d. Ingresos por gastos de representación a. ¿Cuánto?,""
+persons,P1653S4A2,¿El mes pasado recibió ... : d. Ingresos por gastos de representación b. ¿Incluyó este valor en los ingresos del mes pasado ($ ${P6500}) que me declaró anteriormente?,1=Si; 2=No
+persons,P6630S1,¿En los últimos 12 meses recibió: a. Prima de servicios?,1=Si; 2=No
+persons,P6630S1A1,¿En los últimos 12 meses recibió: a. Prima de servicios? a. ¿Cuánto recibió?,""
+persons,P6630S2,¿En los últimos 12 meses recibió: b. Prima de navidad?,1=Si; 2=No
+persons,P6630S2A1,¿En los últimos 12 meses recibió: b. Prima de navidad? a. ¿Cuánto recibió?,""
+persons,P6630S3,¿En los últimos 12 meses recibió: c. Prima de vacaciones?,1=Si; 2=No
+persons,P6630S3A1,¿En los últimos 12 meses recibió: c. Prima de vacaciones? a. ¿Cuánto recibió?,""
+persons,P6630S4,¿En los últimos 12 meses recibió: d. Viáticos permanentes?,1=Si; 2=No
+persons,P6630S4A1,¿En los últimos 12 meses recibió: d. Viáticos permanentes? a. ¿Cuánto recibió?,""
+persons,P6630S5,¿En los últimos 12 meses recibió: e. Bonificaciones anuales?,1=Si; 2=No
+persons,P6630S5A1,¿En los últimos 12 meses recibió: e. Bonificaciones anuales? a. ¿Cuánto recibió?,""
+persons,P6630S6,¿En los últimos 12 meses recibió: f. Pagos por accidentes de trabajo,1=Si; 2=No
+persons,P6630S6A1,¿En los últimos 12 meses recibió: f. Pagos por accidentes de trabajo a. ¿Cuánto recibió?,""
+persons,P6640,¿La semana pasada ... trabajó horas extras remuneradas?,1=Si; 2=No
+persons,P6640S1,¿La semana pasada ... trabajó horas extras remuneradas? ¿Cuántas?,""
+persons,P6765,"En la semana pasada, ¿cuál de las siguientes formas de trabajo realizó:","1=Trabajó por honorarios o prestación de servicios?; 2=Trabajó por obra?; 3=Trabajó por piezas o a destajo? (satélite, maquila, etc.); 4=Trabajó por comisión únicamente?; 5=Trabajó vendiendo por catálogo?; 6=Trabajó en su oficio? (plomero, taxista, doméstica por días; 7=Tiene un negocio de industria, comercio, servicios o una fin; 8=Otro"
+persons,P6750,"¿Cuál fue la ganancia neta o los honorarios netos de ... en esa actividad, negocio, profesión o finca, el mes pasado ? Honorarios o ganancia neta en el mes pasado",""
+persons,P6760,¿ A cuántos meses corresponde lo que recibió?,""
+persons,P550,SÓLO PARA CENTROS POBLADOS Y ÁREA RURAL DISPERSA 21A. ¿Cuál fue la ganancia neta del negocio o de la cosecha durante los últimos doce meses? Honorarios o ganancia neta en los últimos 12 meses Valor,""
+persons,P6779,¿El mes pasado recibió viáticos?,1=Si; 2=No
+persons,P6779S1,¿El mes pasado recibió viáticos? a. ¿Cuánto recibió?,""
+persons,P549,Este trabajo es: ,"1=¿Ocasional? (de vez en cuando); 2=¿Estacional? (en ciertas épocas del año, cosechas, temporada; 3=¿Permanente?; 4=¿Otro?, especifique"
+persons,P1651,"¿Por este trabajo, le descontaron o pagó póliza de cumplimiento?",1=Si; 2=No
+persons,P1651S1,"¿Por este trabajo, le descontaron o pagó póliza de cumplimiento? ¿cuánto?",""
+persons,P6790,¿Cuántos meses trabajó en los últimos 12 meses?,""
+persons,P6800,¿Cuántas horas a la semana trabaja normalmente... en ese trabajo?,""
+persons,P6850,¿Cuántas horas trabajó durante la semana pasada en este trabajo?,""
+persons,P6830,"¿Por qué razón, de las horas que normalmente trabaja, hubo algunas que no trabajó la semana pasada ?","1=Enfermedad, permiso o licencia; 2=Festivos; 3=Vacaciones; 4=Capacitación; 5=Suspensión o terminación del empleo; 6=Reducción de la actividad económica de la empresa; 7=Otro"
+persons,P6870,"¿Cuántas personas en total tiene la empresa, negocio, industria, oficina, firma, finca o sitio donde ${posicion1} trabaja?",1=Trabaja solo; 2=2 a 3 personas; 3=4 a 5 personas; 4=6 a 10 personas; 5=11 a 19 personas; 6=20 a 30 personas; 7=31 a 50 personas; 8=51 a 100 personas; 9=101 o más personas
+persons,P6871,"Usted recibe los honorarios, salarios o ganancias de forma:",1=Diaria; 2=semanal; 3=Quincenal; 4=Mensual; 5=Otra
+persons,P6880,Dónde realiza principalmente su trabajo:,"1=En esta vivienda; 2=En otras viviendas; 3=En kiosco - caseta; 4=En un vehículo; 5=De puerta en puerta; 6=Sitio al descubierto en la calle (ambulante y estacionario); 7=Local fijo, oficina, fábrica, etc.; 8=En el campo o área rural, mar o río; 9=En una obra en construcción; 10=En una mina o cantera; 11=Otro"
+persons,P6920,¿Está ... cotizando actualmente a un fondo de pensiones?,1=Si; 2=No; 3=Ya es pensionado
+persons,P6920S1,¿Está ... cotizando actualmente a un fondo de pensiones? a. ¿Valor pagado o descontado?,""
+persons,P6940,¿ Quién paga mensualmente por la cotización al fondo de pensiones de ... ?,1=...paga una parte y otra la empresa o patrón; 2=... paga la totalidad de la cotización; 3=Paga completamente la empresa ó patrón; 4=No paga
+persons,P6990,"¿Está afiliado por una empresa o individualmente a una Aseguradora de Riesgos Laborales (ARL) (por accidentes de trabajo, enfermedad profesional etc.)?","1=Si; 2=No; 9=No sabe, no informa"
+persons,P6990S1,"¿Está afiliado por una empresa o individualmente a una Aseguradora de Riesgos Laborales (ARL) (por accidentes de trabajo, enfermedad profesional etc.)? a. Valor pagado descontado",""
+persons,P9450,¿Esta afiliado a una caja de compensación familiar?,"1=Si; 2=No; 9=No sabe, no informa"
+persons,P9450S2,¿Esta afiliado a una caja de compensación familiar? a. tipo de afiliado: 1 - a.Cotizante 2 - b.Beneficiario,1=Cotizante; 2=Beneficiario
+persons,P9450S1,¿Esta afiliado a una caja de compensación familiar? cotizante Valor pagado,""
+persons,P7040,"Además de la ocupación principal, ... tenía la semana pasada otro trabajo o negocio?",1=Si; 2=No
+persons,P7045,¿Cuántas horas trabajó ... la semana pasada en ese segundo trabajo?,""
+persons,P7050,En ese segundo trabajo ... es:,"1=Obrero o empleado de empresa particular; 2=Obrero o empleado del gobierno; 3=Empleado doméstico; 4=Trabajador por cuenta propia; 5=Patrón o empleador; 6=Trabajador familiar sin remuneración; 7=Trabajador sin remuneración en empresas o negocios de otros; 8=Jornalero o Peón; 9=Otro, ¿cuál?"
+persons,P7070,¿Cuánto recibió o ganó ... el mes pasado en este otro trabajo o negocio?,""
+persons,P1665,Durante el mes pasado recibió ingresos por concepto de otros trabajos o negocios adicionales a los mencionados anteriormente?,""
+persons,P1665S1,Durante el mes pasado recibió ingresos por concepto de otros trabajos o negocios adicionales a los mencionados anteriormente?,""
+persons,P7310,... ha buscado trabajo por primera vez o había trabajado antes por lo menos durante dos semanas consecutivas? ,1=Primera vez; 2=Trabajó antes
+persons,P9460,¿Actualmente recibe subsidio de desempleo?,"1=Si; 2=No; 3=No sabe, no informa"
+persons,P9460S1,¿Actualmente recibe subsidio de desempleo? a. ¿cuánto?,""
+persons,P7422,¿Recibió o ganó el mes pasado ingresos por concepto de trabajo?,1=Si; 2=No
+persons,P7422S1,¿Recibió o ganó el mes pasado ingresos por concepto de trabajo? ¿cuánto?,""
+persons,P7472,¿Recibió o ganó el mes pasado ingresos por concepto de trabajo?,1=Si; 2=No
+persons,P7472S1,¿Recibió o ganó el mes pasado ingresos por concepto de trabajo? ¿cuánto?,""
+persons,P7500S1,"¿El mes pasado, recibió pagos por: a. Arriendos por edificaciones (casas y apartamentos)","1=Si; 2=No; 9=No sabe, no informa"
+persons,P7500S1A1,"¿El mes pasado, recibió pagos por: a. Arriendos por edificaciones (casas y apartamentos) Valor mes pasado",""
+persons,P7500S4,"¿El mes pasado, recibió pagos por: b. Arriendos por lotes, terrenos y fincas","1=Sí; 2=No; 9=No sabe, no informa"
+persons,P7500S4A1,"¿El mes pasado, recibió pagos por: b. Arriendos por lotes, terrenos y fincas Valor mes pasado",""
+persons,P7500S5,"¿El mes pasado, recibió pagos por: c. Arriendos por vehículos y otros equipos","1=Si; 2=No; 9=No sabe, no informa"
+persons,P7500S5A1,"¿El mes pasado, recibió pagos por: c. Arriendos por vehículos y otros equipos Valor mes pasado",""
+persons,P7500S2,"¿El mes pasado, recibió pagos por: d. Pensiones o jubilaciones por vejez, invalidez o sustitución pensional","1=Si; 2=No; 9=No sabe, no informa"
+persons,P7500S2A1,"¿El mes pasado, recibió pagos por: d. Pensiones o jubilaciones por vejez, invalidez o sustitución pensional Valor mes pasado",""
+persons,P7500S3,"¿El mes pasado, recibió pagos por: e. Pensión alimenticia por paternidad, divorcio o separación","1=Si; 2=No; 9=No sabe, no informa"
+persons,P7500S3A1,"¿El mes pasado, recibió pagos por: e. Pensión alimenticia por paternidad, divorcio o separación Valor mes pasado",""
+persons,P7510S1,Durante los últimos doce meses recibió: a. Dinero de otros hogares o personas residentes en el país?,"1=Si; 2=No; 9=No sabe, no informa"
+persons,P7510S1A1,Durante los últimos doce meses recibió: a. Dinero de otros hogares o personas residentes en el país? Valor,""
+persons,P7510S2,Durante los últimos doce meses recibió: b. Dinero de otros hogares o personas residentes fuera del país?,"1=Si; 2=No; 9=No sabe, no informa"
+persons,P7510S2A1,Durante los últimos doce meses recibió: b. Dinero de otros hogares o personas residentes fuera del país? Valor,""
+persons,P7510S3,Durante los últimos doce meses recibió: c. Ayudas de entidades privadas nacionales?,"1=Si; 2=No; 9=No sabe, no informa"
+persons,P7510S3A1,Durante los últimos doce meses recibió: c. Ayudas de entidades privadas nacionales? Valor,""
+persons,P7510S4,Durante los últimos doce meses recibió: d. Ayudas en dinero de instituciones fuera del país?,"1=Si; 2=No; 9=No sabe, no informa"
+persons,P7510S4A1,Durante los últimos doce meses recibió: d. Ayudas en dinero de instituciones fuera del país? Valor,""
+persons,P7510S5,"Durante los últimos doce meses recibió: e. Dinero por intereses de préstamos o por CDT, depósitos de ahorro, utilidades, fiducuentas y títulos de valores?","1=Si; 2=No; 9=No sabe, no informa"
+persons,P7510S5A1,"Durante los últimos doce meses recibió: e. Dinero por intereses de préstamos o por CDT, depósitos de ahorro, utilidades, fiducuentas y títulos de valores? Valor",""
+persons,P7510S6,Durante los últimos doce meses recibió: f. Retiros por concepto cesantías y/o intereses a las cesantías?,"1=Si; 2=No; 9=No sabe, no informa"
+persons,P7510S6A1,Durante los últimos doce meses recibió: f. Retiros por concepto cesantías y/o intereses a las cesantías? Valor,""
+persons,P7510S10,Durante los últimos doce meses recibió: g. Dividendos por acciones,"1=Si; 2=No; 9=No sabe, no informa"
+persons,P7510S10A1,Durante los últimos doce meses recibió: g. Dividendos por acciones Valor,""
+persons,P7510S9,Durante los últimos doce meses recibió: h. Rendimientos por venta de títulos,"1=Si; 2=No; 9=No sabe, no informa"
+persons,P7510S9A1,Durante los últimos doce meses recibió: h. Rendimientos por venta de títulos Valor,""
+persons,P1668S1,Durante los últimos 12 meses recibió alguno de los siguentes subsidios: a. Más Familias en Acción,1=Si; 2=No
+persons,P1668S1A2,Durante los últimos 12 meses recibió alguno de los siguentes subsidios: a. Más Familias en Acción ¿En dinero?,""
+persons,P1668S1A1,Durante los últimos 12 meses recibió alguno de los siguentes subsidios: a. Más Familias en Acción ¿En dinero? $ Valor,""
+persons,P1668S1A3,Durante los últimos 12 meses recibió alguno de los siguentes subsidios: a. Más Familias en Acción ¿En especie?,1=Si; 2=No
+persons,P1668S1A4,Durante los últimos 12 meses recibió alguno de los siguentes subsidios: a. Más Familias en Acción ¿En especie? $ Valor estimado,""
+persons,P1668S2,Durante los últimos 12 meses recibió alguno de los siguentes subsidios: b.Programa de adultos mayores,1=Si; 2=No
+persons,P1668S2A1,Durante los últimos 12 meses recibió alguno de los siguentes subsidios: b.Programa de adultos mayores ¿En dinero?,1=Si; 2=No
+persons,P1668S2A2,Durante los últimos 12 meses recibió alguno de los siguentes subsidios: b.Programa de adultos mayores ¿En dinero? $ Valor,""
+persons,P1668S2A3,Durante los últimos 12 meses recibió alguno de los siguentes subsidios: b.Programa de adultos mayores ¿En especie?,1=Si; 2=No
+persons,P1668S2A4,Durante los últimos 12 meses recibió alguno de los siguentes subsidios: b.Programa de adultos mayores ¿En especie? $ Valor estimado,""
+persons,P1668S3,Durante los últimos 12 meses recibió alguno de los siguentes subsidios: c. Familias en su tierra,1=Si; 2=No
+persons,P1668S3A1,Durante los últimos 12 meses recibió alguno de los siguentes subsidios: c. Familias en su tierra ¿En dinero?,1=Si; 2=No
+persons,P1668S3A2,Durante los últimos 12 meses recibió alguno de los siguentes subsidios: c. Familias en su tierra ¿En dinero? $ Valor,""
+persons,P1668S3A3,Durante los últimos 12 meses recibió alguno de los siguentes subsidios: c. Familias en su tierra ¿En especie?,1=Si; 2=No
+persons,P1668S3A4,Durante los últimos 12 meses recibió alguno de los siguentes subsidios: c. Familias en su tierra ¿En especie? $ Valor estimado,""
+persons,P1668S4,Durante los últimos 12 meses recibió alguno de los siguentes subsidios: d. Jóvenes en Acción,1=Si; 2=No
+persons,P1668S4A1,Durante los últimos 12 meses recibió alguno de los siguentes subsidios: d. Jóvenes en Acción ¿En dinero?,1=Si; 2=No
+persons,P1668S4A2,Durante los últimos 12 meses recibió alguno de los siguentes subsidios: d. Jóvenes en Acción ¿En dinero? $ Valor,""
+persons,P1668S4A3,Durante los últimos 12 meses recibió alguno de los siguentes subsidios: d. Jóvenes en Acción ¿En especie?,1=Si; 2=No
+persons,P1668S4A4,Durante los últimos 12 meses recibió alguno de los siguentes subsidios: d. Jóvenes en Acción ¿En especie? $ Valor estimado,""
+persons,P1668S5,Durante los últimos 12 meses recibió alguno de los siguentes subsidios: e. Transferencias por victimización,1=Si; 2=No
+persons,P1668S5A1,Durante los últimos 12 meses recibió alguno de los siguentes subsidios: e. Transferencias por victimización ¿En dinero?,1=Si; 2=No
+persons,P1668S5A2,Durante los últimos 12 meses recibió alguno de los siguentes subsidios: e. Transferencias por victimización ¿En dinero? $ Valor,""
+persons,P1668S5A3,Durante los últimos 12 meses recibió alguno de los siguentes subsidios: e. Transferencias por victimización ¿En especie?,1=Si; 2=No
+persons,P1668S5A4,Durante los últimos 12 meses recibió alguno de los siguentes subsidios: e. Transferencias por victimización ¿En especie? $ Valor estimado,""
+persons,P1668S6,Durante los últimos 12 meses recibió alguno de los siguentes subsidios: f. Otra,1=Si; 2=No
+persons,P1668S6A2,Durante los últimos 12 meses recibió alguno de los siguentes subsidios: f. Otra ¿En dinero? ,""
+persons,P1668S6A3,Durante los últimos 12 meses recibió alguno de los siguentes subsidios: f. Otra ¿En dinero? ,""
+persons,P1668S6A4,Durante los últimos 12 meses recibió alguno de los siguentes subsidios: f. Otra ¿En especie? ,""
+persons,P1668S6A5,Durante los últimos 12 meses recibió alguno de los siguentes subsidios: f. Otra ¿cuál? ¿En especie? Durante los últimos 12 meses recibió alguno de los siguentes subsidios: f. Otra ¿En especie? $ Valor estimado,""
+persons,P7513S1,"Durante los últimos 12 meses recibió ingresos ocasionales por: a. Ventas de casas, apartamentos fincas, lotes, terrenos?",1=Si; 2=No
+persons,P7513S1A1,"Durante los últimos 12 meses recibió ingresos ocasionales por: a. Ventas de casas, apartamentos fincas, lotes, terrenos? Valor",""
+persons,P7513S2,"Durante los últimos 12 meses recibió ingresos ocasionales por: b. Venta de vehículos, maquinaria mobiliario?",1=Si; 2=No
+persons,P7513S2A1,"Durante los últimos 12 meses recibió ingresos ocasionales por: b. Venta de vehículos, maquinaria mobiliario? Valor",""
+persons,P7513S3,Durante los últimos 12 meses recibió ingresos ocasionales por: c. Venta de semovientes?,1=Si; 2=No
+persons,P7513S3A1,Durante los últimos 12 meses recibió ingresos ocasionales por: c. Venta de semovientes? Valor,""
+persons,P7513S4,Durante los últimos 12 meses recibió ingresos ocasionales por: d. Ventas de acciones y de títulos valores?,1=Si; 2=No
+persons,P7513S4A1,Durante los últimos 12 meses recibió ingresos ocasionales por: d. Ventas de acciones y de títulos valores? Valor,""
+persons,P7513S5,Durante los últimos 12 meses recibió ingresos ocasionales por: e. Reembolsoso de dinero prestado por usted o a otra persona,1=Si; 2=No
+persons,P7513S5A1,Durante los últimos 12 meses recibió ingresos ocasionales por: e. Reembolsoso de dinero prestado por usted o a otra persona Valor,""
+persons,P7513S6,Durante los últimos 12 meses recibió ingresos ocasionales por: f. Préstamos bancarios?,1=Si; 2=No
+persons,P7513S6A1,Durante los últimos 12 meses recibió ingresos ocasionales por: f. Préstamos bancarios? Valor,""
+persons,P7513S7,Durante los últimos 12 meses recibió ingresos ocasionales por: g. Préstamos particulares?,1=Si; 2=No
+persons,P7513S7A1,Durante los últimos 12 meses recibió ingresos ocasionales por: g. Préstamos particulares? Valor,""
+persons,P7513S7A2,Durante los últimos 12 meses recibió ingresos ocasionales por: g. Préstamos particulares? ¿Qué tasa pagó?,""
+persons,P7513S8,"Durante los últimos 12 meses recibió ingresos ocasionales por: h. Indemnizaciones, despidos, lesiones, daños, etc.",1=Si; 2=No
+persons,P7513S8A1,"Durante los últimos 12 meses recibió ingresos ocasionales por: h. Indemnizaciones, despidos, lesiones, daños, etc. Valor",""
+persons,P7513S9,"Durante los últimos 12 meses recibió ingresos ocasionales por: i. Ganancia de loterías, baloto, chance, rifas, juegos",1=Si; 2=No
+persons,P7513S9A1,"Durante los últimos 12 meses recibió ingresos ocasionales por: i. Ganancia de loterías, baloto, chance, rifas, juegos Valor",""
+persons,P7513S10,Durante los últimos 12 meses recibió ingresos ocasionales por: j. Herencias?,1=Si; 2=No
+persons,P7513S10A1,Durante los últimos 12 meses recibió ingresos ocasionales por: j. Herencias? Valor,""
+persons,P7513S11,"Durante los últimos 12 meses recibió ingresos ocasionales por: k. Devoluciones de impuestos (renta, IVA, etc.)? Durante los últimos 12 meses recibió ingresos ocasionales por: k. Devoluciones de impuestos (renta, IVA, etc.)? ",1=Si; 2=No
+persons,P7513S11A1,"Durante los últimos 12 meses recibió ingresos ocasionales por: k. Devoluciones de impuestos (renta, IVA, etc.)? Valor",""
+persons,P7513S12,"Durante los últimos 12 meses recibió ingresos ocasionales por: l. Devoluciones o reintegros por seguros educativos, incapacidad o invalidez",1=Si; 2=No
+persons,P7513S12A1,"Durante los últimos 12 meses recibió ingresos ocasionales por: l. Devoluciones o reintegros por seguros educativos, incapacidad o invalidez Valor",""
+persons,P7514,"¿Utilizó ... durante los ÚLTIMOS 12 MESES, parte de esos ingresos ocasionales en los gastos del hogar?",1=Si; 2=No; 3=No recibió ingresos ocasionales
+persons,P7514S1,"¿Utilizó ... durante los ÚLTIMOS 12 MESES, parte de esos ingresos ocasionales en los gastos del hogar? Valor",""
+persons,P7516,"Utilizó ... durante los ÚLTIMOS 12 MESES, ahorros de años anteriores en los gastos del hogar?",1=Si; 2=No; 3= No tiene ahorros
+persons,P7516S1,"Utilizó ... durante los ÚLTIMOS 12 MESES, ahorros de años anteriores en los gastos del hogar? Valo",""
+persons,FEX_C,Factor de Expansión,""
+urb_diary,DIRECTORIO,DIRECTORIO,""
+urb_diary,SECUENCIA_ENCUESTA,SECUENCIA_ENCUESTA,""
+urb_diary,SECUENCIA_P,SECUENCIA_P,""
+urb_diary,ORDEN,ORDEN,""
+urb_diary,NH_CGDU_P1,Nombre del artículo o servicio,""
+urb_diary,P10250S1A1,Número de orden de la persona qué se le entregó la mesada,""
+urb_diary,P10250S1A2,Las mesadas fueron recibidas por personas de otros hogares?,1=Si; 2=No
+urb_diary,NH_CGDU_P2,Cantidad adquirida,""
+urb_diary,NH_CGDU_P3,Unidad de Medida,1=Centímetros Cúbicos; 2=Litro; 3=Gramos; 4=Onzas; 5=Libra; 6=Kilo; 7=Arroba; 8=Otra
+urb_diary,NH_CGDU_P4_S1,Unidad de Medida Otra Equivalencia,""
+urb_diary,NH_CGDU_P4_S2,Unidad de Medida Otra Equivalencia unidad de medida ,1=gm; 2=cm3; 3=cm3
+urb_diary,NH_CGDU_P5,Forma de Adquisición,1=Compra; 2=Recibidos como pago por trabajo; 3=Regalo o donación; 4=Intercambio o trueque; 5=Traidos de la finca o producidos por el hogar; 6=Tomados de un negocio del hogar; 7=Otra
+urb_diary,NH_CGDU_P7B1379,Lugar de compra del articulo o de obtención del servicio,"1=Almacenes, supermercado de cadena,  tiendas por departamento; 4=Supermercados de cajas de compesanción, cooperativas, fondos; 6=Supermercado de barrio, tiendas de barrio, cigarrerías, sals; 7=Misceláneas de barrio y cacharrerías; 10=Plazas de mercado, galerías, mercados móviles, central mayor; 13=Vendedores ambulantes; 14=Sanandrecitos, bodegas y fábricas; 16=Establecimiento especializado en la venta del artículo o la; 17=Farmacias y droguerías; 18=Restaurantes; 19=Cafeterías y establecientos de comidas rápidas; 20=Persona particular; 21=Ferias especializada: artesanal, del libro , del hogar, de t; 22=A través de  internet; 23=Televentas y ventas por catálogo; 24=Otro; 25=Plazoleta de comidas"
+urb_diary,NH_CGDU_P8,¿Cuánto pagó o cuánto tendría que pagar si tuviera que comprarlo?,""
+urb_diary,NH_CGDU_P9,Frecuencia de Compra,1=Diario; 2=Varias veces; 3=Semanal; 4=Quincenal; 5=Mensual; 6=Bimestral; 7=Trimestral; 9=Esporádica
+urb_diary,NH_CGDU_P10,Gasto del hogar (1) o gasto personal (2),""
+urb_diary,FEX_C,Factor de expansión,""
+urb_meals_hh,DIRECTORIO,DIRECTORIO,""
+urb_meals_hh,SECUENCIA_ENCUESTA,SECUENCIA_ENCUESTA,""
+urb_meals_hh,SECUENCIA_P,SECUENCIA_P,""
+urb_meals_hh,ORDEN,ORDEN,""
+urb_meals_hh,NH_CGDUCFH_P1,Descripción de la comida o alimento adquirido,""
+urb_meals_hh,NH_CGDUCFH_P1_1,Código de artículo COICOP que mejor describe la comida o alimento adquirido,""
+urb_meals_hh,NH_CGDUCFH_P1_2,"Marque con una X, la opción que describa mejor el tipo de comida","1=Desayuno; 2=Almuerzo; 3=Cena; 4=Onces, medias nueves, merienda, etc."
+urb_meals_hh,NH_CGDUCFH_P2,Cantidad adquirida ,""
+urb_meals_hh,NH_CGDUCFH_P3,Forma de Adquisición,1=Compra; 2=Recibidos como pago por trabajo; 3=Regalo o donación; 4=Intercambio o trueque; 5=Traidos de la finca o producidos por el hogar; 6=Tomados de un negocio del hogar; 7=Otra
+urb_meals_hh,NH_CGDUCFH_P4,Lugar de compra del articulo o de obtención del servicio,"1=Almacenes, supermercado de cadena,  tiendas por departamento; 4=Supermercados de cajas de compesanciónm, cooperativas, fondo; 6=Supermercado de barrio, tiendas de barrio, cigarrerías, sals; 7=Misceláneas de barrio y cacharrerías; 10=Plazas de mercado, galerías, mercados móviles, central mayor; 13=Vendedores ambulantes; 14=Sanandrecitos, bodegas y fábricas; 16=Establecimiento especializado en la venta del artículo o la; 17=Farmacias y droguerías; 18=Restaurantes; 19=Cafeterías y establecientos de comidas rápidas; 20=Persona particular; 21=Ferias especializada: artesanal, del libro , del hogar, de t; 22=A través de  internet; 23=Televentas y ventas por catálogo; 24=Otro; 25=Plazoleta de comidas"
+urb_meals_hh,NH_CGDUCFH_P5,¿Cuánto pagó o cuánto tendría que pagar si tuviera que comprarlo?,""
+urb_meals_hh,NH_CGDUCFH_P6,Frecuencia de Compra,1=Diario; 2=Varias veces; 3=Semanal; 4=Quincenal; 5=Mensual; 6=Bimestral; 7=Trimestral; 9=Esporádica por semana
+urb_meals_hh,NH_CGDUCFH_P7,Gasto del hogar (1) o gasto personal (2) 1 - Del hogar 2 - Personal,1=Del hogar; 2=Personal
+urb_meals_hh,NH_CGDUCFH_P8,Marque con una x si lo adquirió a domicilio,1=Si; 2=No
+urb_meals_hh,FEX_C,Factor de expansión,""
+urb_personal,DIRECTORIO,DIRECTORIO,""
+urb_personal,SECUENCIA_ENCUESTA,SECUENCIA_ENCUESTA,""
+urb_personal,SECUENCIA_P,SECUENCIA_P,""
+urb_personal,ORDEN,ORDEN,""
+urb_personal,NC4_CC_P1_1,Nombre del artículo o servicio,""
+urb_personal,NC4_CC_P2,Cantidad adquirida,""
+urb_personal,NC4_CC_P3,Forma de adquisición,1=Compra; 2=Traídos de la finca o producidos por el hogar; 3=Tomados de un negocio del hogar; 4=Recibidos como pagos por trabajo; 5=Regalo o donación; 6=Intercambio o trueque; 7=Otra
+urb_personal,NC4_CC_P4,Lugar de compra del artículo o de obtención del servicio,"1=Almacenes, supermercado de cadena,  tiendas por departamento; 4=Supermercados de cajas de compesanción, cooperativas, fondos; 6=Supermercado de barrio, tiendas de barrio, cigarrerías, sals; 7=Misceláneas de barrio y cacharrerías; 10=Plazas de mercado, galerías, mercados móviles, central mayor; 13=Vendedores ambulantes; 14=Sanandrecitos, bodegas y fábricas; 16=Establecimiento especializado en la venta del artículo o la; 17=Farmacias y droguerías; 18=Restaurantes; 19=Cafeterías y establecientos de comidas rápidas; 20=Persona particular; 21=Ferias especializada: artesanal, del libro , del hogar, de t; 22=A través de  internet; 23=Televentas y ventas por catálogo; 24=Otro; 25=Plazoleta de comidas"
+urb_personal,NC4_CC_P5,¿Cuánto pagó o cuánto tendría que pagar si tuviera que comprarlo?,""
+urb_personal,NC4_CC_P6,Frecuencia de Compra,1=Diario; 2=Varias veces; 3=Semanal; 4=Quincenal; 5=Mensual; 6=Bimestral; 7=Trimestral; 9=Esporádica por semana
+urb_personal,FEX_C,Factor de expansión,""
+urb_meals_personal,DIRECTORIO,DIRECTORIO,""
+urb_meals_personal,SECUENCIA_ENCUESTA,SECUENCIA_ENCUESTA,""
+urb_meals_personal,SECUENCIA_P,SECUENCIA_P,""
+urb_meals_personal,ORDEN,ORDEN,""
+urb_meals_personal,NH_CGPUCFH_P1,COMIDAS PREPARADAS FUERA DEL HOGAR. Descripción de la comida o alimento adquirido,""
+urb_meals_personal,NH_CGPUCFH_P1_S1,Código de artículo COICOP que mejor describe la comida o alimento adquirido,""
+urb_meals_personal,NH_CGPUCFH_P1_S2,Opción que mejor describe la comida o alimento adquirido,"1=Desayuno; 2=Almuerzo; 3=Cena; 4=Onces, medias nueves, merienda, etc."
+urb_meals_personal,NH_CGPUCFH_P2,Cantidad adquirida,""
+urb_meals_personal,NH_CGPUCFH_P3,Forma de Adquisición,1=Compra; 2=Recibidos como pago por trabajo; 3=Regalo o donación; 4=Intercambio o trueque; 5=Traidos de la finca o producidos por el hogar; 6=Tomados de un negocio del hogar; 7=Otra
+urb_meals_personal,NH_CGPUCFH_P4,Lugar de compra del articulo o de obtención del servicio,"1=Almacenes, supermercado de cadena,  tiendas por departamento; 4=Supermercados de cajas de compesanciónm, cooperativas, fondo; 6=Supermercado de barrio, tiendas de barrio, cigarrerías, sals; 7=Misceláneas de barrio y cacharrerías; 10=Plazas de mercado, galerías, mercados móviles, central mayor; 13=Vendedores ambulantes; 14=Sanandrecitos, bodegas y fábricas; 16=Establecimiento especializado en la venta del artículo o la; 17=Farmacias y droguerías; 18=Restaurantes; 19=Cafeterías y establecientos de comidas rápidas; 20=Persona particular; 21=Ferias especializada: artesanal, del libro , del hogar, de t; 22=A través de  internet; 23=Televentas y ventas por catálogo; 24=Otro; 25=Plazoleta de comidas"
+urb_meals_personal,NH_CGPUCFH_P5,¿Cuánto pagó o cuánto tendría que pagar si tuviera que comprarlo?,""
+urb_meals_personal,NH_CGPUCFH_P6,Frecuencia de Compra,1=Diario; 2=Varias veces; 3=Semanal; 4=Quincenal; 5=Mensual; 6=Bimestral; 7=Trimestral; 9=Esporádica por semana
+urb_meals_personal,NH_CGPUCFH_P8, Lo adquirió a domicilio?,1=Si; 2=No
+urb_meals_personal,FEX_C,Factor de expansión,""
+urb_capc,DIRECTORIO,DIRECTORIO,""
+urb_capc,SECUENCIA_ENCUESTA,SECUENCIA_ENCUESTA,""
+urb_capc,SECUENCIA_P,SECUENCIA_P,""
+urb_capc,ORDEN,ORDEN,""
+urb_capc,NC2_CC_P1,Alimentos o grupos de alimentos,"1=Pan, arepas, bollos y almojábanas $; 2=Galletas de sal y de dulce; 3=Arroz, pastas alimenticias, avena, maíz,; 4=Carne de res, cerdo, hueso y vísceras; 5=Pollo, otras aves y menudencias; 6=Salchichas, jamón, mortadela, salchichón; 7=Pescado de río, mar y otros productos; 8=Leche (animal y vegetal) $; 9=Queso (animal y vegetal); 10=Otros derivados de la leche: yogur, kumis,; 11=Huevos; 12=Aceites y grasas: aceite, manteca, mantequilla,; 13=Frutas; 14=Verduras y hortalizas: tomate, cebolla,; 15=Granos secos: fríjol, lenteja, garbanzo, etc.; 16=Enlatados y encurtidos: arveja, fríjol, maíz,; 17=Plátano, yuca, arracacha, ñame, papa y; 18=Azúcar, panela y otros endulzantes; 19=Mermeladas, arequipe, bocadillos,; 20=Salsas, mayonesa, mostaza, vinagre, etc.; 21=Sal y condimentos; 22=Café, chocolate, otras bebidas con cacao; 23=Papas fritas, chitos, maicitos, patacones,; 24=Agua, gaseosas, refrescos, jugos, té frío y; 25=Alimentos y bebidas preparados fuera"
+urb_capc,NC2_CC_P2,Frecuencia ,1=Diario; 2=Varias veces; 3=Semanal; 4=Quincenal; 5=Mensual; 6=Bimestral; 7=Trimestral; 9=Esporádica por semana; 11=Nunca
+urb_capc,NC2_CC_P3_S1,¿Cuál fue el valor de la última compra?,""
+urb_capc,NC2_CC_P3_S2,¿Comprará este alimento o grupo de alimentos durante los 14 días que dura la encuesta?,1=Si; 2=No
+urb_capc,FEX_C,Factor de Expansión,""
+lessfreq_items,DIRECTORIO,DIRECTORIO,""
+lessfreq_items,SECUENCIA_ENCUESTA,SECUENCIA_ENCUESTA,""
+lessfreq_items,SECUENCIA_P,SECUENCIA_P,""
+lessfreq_items,ORDEN,ORDEN,""
+lessfreq_items,CAP,CAP,""
+lessfreq_items,P10270,Nombre del artículo o servicio ,""
+lessfreq_items,FORMA,Forma de adquisición,1=Compra; 2=Traídos de la finca o producidos por el hogar; 3=Tomados de un negocio del hogar; 4=Recibidos como pagos por trabajo; 5=Regalo o donación; 6=Intercambio o trueque; 7=Otra
+lessfreq_items,VALOR,¿Cuánto pagó o cuánto tendría que pagar si tuviera que comprarlo?,""
+lessfreq_items,P10270S2,Lugar de compra de:,"1=Almacenes, supermercado de cadena,  tiendas por departamento; 10=Plazas de mercado, galerías, mercados móviles, central mayor; 13=Vendedores ambulantes; 14=Sanandrecitos, bodegas y fábricas; 16=Establecimiento especializado en la venta del artículo o la; 17=Farmacias y droguerías; 18=Restaurantes; 19=Cafeterías y establecientos de comidas rápidas; 20=Persona particular; 21=Ferias especializada: artesanal, del libro , del hogar, de t; 22=A través de  internet; 23=Televentas y ventas por catálogo; 24=Otro; 25=Plazoleta de comidas; 4=Supermercados de cajas de compesanción, cooperativas, fondos; 6=Supermercado de barrio, tiendas de barrio, cigarrerías, sals; 7=Misceláneas de barrio y cacharrerías"
+lessfreq_items,P10270S3,Frecuencia de compra de:,10=Semestral; 3=Semana; 4=Quincenal; 5=Mensual; 6=Bimestral; 7=Trimestral; 8=Anual; 9=Esporádica
+lessfreq_items,P10270S4,Valor a crédito para las preguntas que tienen opción contado/crédito ,""
+lessfreq_items,FEX_C,Factor de expansión,""
+rur_weekly,DIRECTORIO,DIRECTORIO,""
+rur_weekly,SECUENCIA_ENCUESTA,SECUENCIA_ENCUESTA,""
+rur_weekly,SECUENCIA_P,SECUENCIA_P,""
+rur_weekly,ORDEN,ORDEN,""
+rur_weekly,CAP,CAP,""
+rur_weekly,NC2R_CA_P1,NC2R_CA_P1,""
+rur_weekly,NC2R_CA_P3,Nombre de artículo o servicio,""
+rur_weekly,NC2R_CA_P4_S1,Cantidad adquirida,""
+rur_weekly,NC2R_CA_P4_S2,Unidad de Medida,1=Centímetros Cúbicos; 2=Litro; 3=Gramos; 4=Onzas; 5=Libra; 6=Kilo; 7=Arroba; 8=Otra
+rur_weekly,NC2R_CA_P4_S3,Equivalencia en gramos o en centímetros cúbicos de la unidad de medida,""
+rur_weekly,NC2R_CA_P4_S4,Equivalencia en gramos o en centímetros cúbicos de la unidad de medida unidad de medida equivalencia ,1=gm; 2=cm3
+rur_weekly,NC2R_CA_P5_S1,Forma de adquisición,1=Compra; 2=Recibidos como pago por trabajo; 3=Regalo o donación; 4=Intercambio o trueque; 5=Traidos de la finca o producidos por el hogar; 6=Tomados de un negocio del hogar; 7=Otra
+rur_weekly,NC2R_CA_P6_S1,Lugar de compra,"1=Almacenes, supermercado de cadena,  tiendas por departamento; 4=Supermercados de cajas de compesanciónm, cooperativas, fondo; 6=Supermercado de barrio, tiendas de barrio, cigarrerías, sals; 7=Misceláneas de barrio y cacharrerías; 10=Plazas de mercado, galerías, mercados móviles, central mayor; 13=Vendedores ambulantes; 14=Sanandrecitos, bodegas y fábricas; 16=Establecimiento especializado en la venta del artículo o la; 17=Farmacias y droguerías; 18=Restaurantes; 19=Cafeterías y establecientos de comidas rápidas; 20=Persona particular; 21=Ferias especializada: artesanal, del libro , del hogar, de t; 22=A través de  internet; 23=Televentas y ventas por catálogo; 24=Otro; 25=Plazoleta de comidas"
+rur_weekly,NC2R_CA_P7_S1,Valor pagado o estimado,""
+rur_weekly,NC2R_CA_P8_S1,Frecuencia de compra,1=Diario; 2=Varias veces; 3=Semanal; 4=Quincenal; 5=Mensual; 6=Bimestral; 7=Trimestral; 9=Esporádica por semana
+rur_weekly,FEX_C,Factor de expansión,""
+rur_meals_hh,DIRECTORIO,DIRECTORIO,""
+rur_meals_hh,SECUENCIA_ENCUESTA,SECUENCIA_ENCUESTA,""
+rur_meals_hh,SECUENCIA_P,SECUENCIA_P,""
+rur_meals_hh,ORDEN,ORDEN,""
+rur_meals_hh,NC2R_CE1_P1,La semana pasada (hasta el día) usted compró o adquirió sin tener que comprar:,1=Sí; 2=No
+rur_meals_hh,NH_CGPRCFH_P1,Descripción de la comida o alimento adquirido,""
+rur_meals_hh,NH_CGPRCFH_P1S1,"Marque con una X, la opción que describa mejor el tipo de comida código de tipo comida o alimento adquirido",""
+rur_meals_hh,NH_CGPRCFH_P1S2,"Marque con una X, la opción que describa mejor el tipo de comida","1=Desayuno; 2=Almuerzo; 3=Cena; 4=Onces, medias nueves, merienda, etc."
+rur_meals_hh,NH_CGPRCFH_P2,Cantidad adquirida,""
+rur_meals_hh,NH_CGPRCFH_P3,Forma de Adquisición,1=Compra; 2=Recibidos como pago por trabajo; 3=Regalo; 4=Intercambio o trueque; 5=Traidos de la finca o producidos por el hogar; 6=Tomados de un negocio del hogar; 7=Otra
+rur_meals_hh,NH_CGPRCFH_P4,Lugar de compra del articulo o de obtención del servicio,"1=Almacenes o supermercados de cadena y tiendas por departamen; 2=Hipermercados; 4=Supermercados de cajas de compesanciónm, cooperativas, fondo; 6=Supermercado y tiendas de barrio; 7=Misceláneas de barrio y cacharrerías; 8=Cigarrerías, salsamentarias y delikatessen; 10=Plazas de mercado, galerías y graneros; 11=Central mayorista de abastecimiento; 12=Mercados móviles; 13=Vendedores ambulantes o ventas callejeras; 14=San Andresitos; 15=Bodegas o fábricas; 16=Establecimiento especializado en la venta del artículo o la; 17=Farmacias y droguerías; 18=Restaurantes; 19=Cafeterías y establecimientos de comidas rápidas; 20=Persona particular; 21=Ferias especializadas: Artesanal, del hogar, del libro, de c; 22=A través de internet; 23=Televentas y ventas por catálogo; 24=Otro"
+rur_meals_hh,NH_CGPRCFH_P5,¿Cuánto pagó o cuánto tendría que pagar si tuviera que comprarlo?,""
+rur_meals_hh,NH_CGPRCFH_P6,Frecuencia de Compra,1=Diario; 2=Varias veces; 3=Semanal; 4=Quincenal; 5=Mensual; 6=Bimestral; 7=Trimestral; 9=Esporádica por semana
+rur_meals_hh,NH_CGPRCFH_P7,Gasto del hogar (1) o gasto personal (2),1=Del hogar; 2=Personas
+rur_meals_hh,NH_CGPRCFH_P8,lo adquirió a domicilio?,1=Si; 2=No
+rur_meals_hh,FEX_C,Factor de expansión,""
+rur_personal,DIRECTORIO,DIRECTORIO,""
+rur_personal,SECUENCIA_ENCUESTA,SECUENCIA_ENCUESTA,""
+rur_personal,SECUENCIA_P,SECUENCIA_P,""
+rur_personal,ORDEN,ORDEN,""
+rur_personal,CAP,CAP,""
+rur_personal,NC2R_CE_P1,La semana pasada usted compró o adquirió sin tener que comprar:,1=Si; 2=No
+rur_personal,NC2R_CE_P2,artículo o servicio,""
+rur_personal,NC2R_CE_P4S1,Cantidad adquirida,""
+rur_personal,NC2R_CE_P5S2,Forma de adquisición ,1=Compra; 2=Recibido como pago por trabajo; 3=Regalo; 4=Intercambio o Trueque; 5=Cultivados en la finca o producidos por el hogar; 6=Tomado de un negocio del hogar; 7=Otra
+rur_personal,NC2R_CE_P6,Lugar de compra del artículo o de obtención del servicio,"1=Almacenes, supermercado de cadena,  tiendas por departamento; 4=Supermercados de cajas de compesanciónm, cooperativas, fondo; 6=Supermercado de barrio, tiendas de barrio, cigarrerías, sals; 7=Misceláneas de barrio y cacharrerías; 10= Plazas de mercado, galerías, mercados móviles, central mayo; 13=Vendedores ambulantes; 14=Sanandrecitos, bodegas y fábricas; 16=Establecimiento especializado en la venta del artículo o la; 17=Farmacias y droguerías; 18= Restaurantes; 19=Cafeterías y establecientos de comidas rápidas; 20= Persona particular; 21=Ferias especializada: artesanal, del libro , del hogar, de t; 22=A través de  internet; 23=Televentas y ventas por catálogo; 24= Otro; 25=Plazoleta de comidas"
+rur_personal,NC2R_CE_P7,Valor pagado o estimado,""
+rur_personal,NC2R_CE_P8,Frecuencia de compra,1=Diario; 2=Varias veces; 3=Semanal; 4=Quincenal; 5=Mensual; 6=Bimestral; 7=Trimestral; 9=Esporádica por semana
+rur_personal,FEX_C,Factor de expansión,""
+rur_meals_personal,DIRECTORIO,DIRECTORIO,""
+rur_meals_personal,SECUENCIA_ENCUESTA,SECUENCIA_ENCUESTA,""
+rur_meals_personal,SECUENCIA_P,SECUENCIA_P,""
+rur_meals_personal,ORDEN,ORDEN,""
+rur_meals_personal,CAP,CAP,""
+rur_meals_personal,NC2R_CA_P3,Nombre de artículo o servicio Descripción detallada de la comida,""
+rur_meals_personal,NC2R_CJ_P4_S1A2,Opción que mejor describe la comida o alimento adquirido,"1=Desayuno; 2=Almuerzo; 3=Cena; 4=Onces, medias nueves, merienda, etc."
+rur_meals_personal,NC2R_CA_P4_S1,Cantidad adquirida,""
+rur_meals_personal,NC2R_CA_P5_S1,Forma de adquisición,1=Compra; 2=Recibidos como pago por trabajo; 3=Regalo o donación; 4=Intercambio o trueque; 5=Traidos de la finca o producidos por el hogar; 6=Tomados de un negocio del hogar; 7=Otra
+rur_meals_personal,NC2R_CA_P6_S1,Lugar de compra,"1=Almacenes, supermercado de cadena,  tiendas por departamento; 4=Supermercados de cajas de compesanciónm, cooperativas, fondo; 6=Supermercado de barrio, tiendas de barrio, cigarrerías, sals; 7=Misceláneas de barrio y cacharrerías; 10=Plazas de mercado, galerías, mercados móviles, central mayor; 13=Vendedores ambulantes; 14=Sanandrecitos, bodegas y fábricas; 16=Establecimiento especializado en la venta del artículo o la; 17=Farmacias y droguerías; 18=Restaurantes; 19=Cafeterías y establecientos de comidas rápidas; 20=Persona particular; 21=Ferias especializada: artesanal, del libro , del hogar, de t; 22=A través de  internet; 23=Televentas y ventas por catálogo; 24=Otro; 25=Plazoleta de comidas"
+rur_meals_personal,NC2R_CA_P7_S1,Valor pagado o estimado,""
+rur_meals_personal,NC2R_CA_P8_S1,Frecuencia de compra,1=Diario; 2=Varias veces; 3=Semanal; 4=Quincenal; 5=Mensual; 6=Bimestral; 7=Trimestral; 9=Esporádica
+rur_meals_personal,FEX_C,Factor de expansión,""
+rur_capc,DIRECTORIO,DIRECTORIO,""
+rur_capc,SECUENCIA_ENCUESTA,SECUENCIA_ENCUESTA,""
+rur_capc,SECUENCIA_P,SECUENCIA_P,""
+rur_capc,ORDEN,ORDEN,""
+rur_capc,NC2_CC_P1,CARACTERISTICAS DEL GASTO EN ALIMENTOS DE LOS HOGARES 1. Alimentos o grupos de alimentos,"1=Pan, arepas, bollos y almojábanas; 2=Galletas de sal y de dulce; 3=Arroz, pastas alimenticias, avena, maíz, harinas; 4=Carne de res, cerdo, hueso y vísceras; 5=Pollo, otras aves y menudencias; 6=Salchichas, jamón, mortadela, salchichón; 7=Pescado de río, mar y otros productos; 8=Leche (animal y vegetal); 9=Queso (animal y vegetal); 10=Otros derivados de la leche: yogur,; 11=Huevos; 12=Aceites y grasas: aceite, manteca, mantequilla,; 13=Frutas; 14=Verduras y hortalizas: tomate, cebolla,; 15=Granos secos: fríjol, lenteja, garbanzo,; 16=Enlatados y encurtidos: arveja, fríjol,; 17=Plátano, yuca, arracacha, ñame, papa y; 18=Azúcar, panela y otros endulzantes; 19=Mermeladas, arequipe, bocadillos, compotas,; 20=Salsas, mayonesa, mostaza, vinagre, etc.; 21=Sal y condimentos; 22=Café, chocolate, otras bebidas con cacao; 23=Papas fritas, chitos, maicitos, patacones,; 24=Agua, gaseosas, refrescos, jugos, té frío y; 25=Alimentos y bebidas preparados fuera"
+rur_capc,NC2_CC_P2,Frecuencia de Compra,1=Diario; 2=Varias veces; 3=Semanal; 4=Quincenal; 5=Mensual; 6=Bimestral; 7=Trimestral; 9=Esporádica por semana; 11=Nunca
+rur_capc,NC2_CC_P3_S1,¿Cuál fue el valor de la última compra?,""
+rur_capc,NC2_CC_P3_S2,¿Compró este alimento o grupo de alimentos durante la semana pasada (de lunes a domingo)?,1=Si; 2=No
+rur_capc,FEX_C,Factor de Expansión,""

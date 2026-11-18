@@ -1,0 +1,35 @@
+\begin{table}[!htbp]
+\centering
+\begin{threeparttable}
+\caption{Price-cluster diagnostics (off-trade unit values)}
+\label{tab:clusters}
+\footnotesize
+\begin{tabular}{lrrrrrr}
+\toprule
+ & Unit & Clusters with & Unit values per & SD of log & Between-cluster & Reliability of \\
+ & values & a unit value & cluster (harmonic) & unit value & variance share & cluster mean \\
+\midrule
+\addlinespace\multicolumn{7}{l}{\textit{Local market: municipality $\times$ area $\times$ quarter (primary): 486 clusters, median 54 households (10th--90th percentile 18--540)}} \\
+SB & 30,814 & 470 & 7.2 & 0.35 & 0.19 & 0.68 \\
+Beer & 1,065 & 251 & 1.8 & 0.36 & 0.34 & 0.29 \\
+Spirits and wine & 0 &  &  &  &  &  \\
+Water & 9,618 & 371 & 3.7 & 1.05 & 0.75 & 0.90 \\
+Dairy drinks & 48,265 & 458 & 8.8 & 0.21 & 0.21 & 0.87 \\
+Hot drinks & 33,357 & 480 & 11.7 & 0.66 & 0.33 & 0.80 \\
+\addlinespace\multicolumn{7}{l}{\textit{Survey segment (sensitivity S5): 8,460 clusters, median 10 households (10th--90th percentile 7--14)}} \\
+SB & 30,814 & 7,626 & 2.6 & 0.35 & 0.47 & 0.57 \\
+Beer & 1,065 & 876 & 1.1 & 0.36 & 0.87 & 0.32 \\
+Spirits and wine & 0 &  &  &  &  &  \\
+Water & 9,618 & 3,883 & 1.5 & 1.05 & 0.90 & 0.90 \\
+Dairy drinks & 48,265 & 7,725 & 4.1 & 0.21 & 0.40 & 0.73 \\
+Hot drinks & 33,357 & 7,802 & 2.8 & 0.66 & 0.54 & 0.65 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item Neither definition mixes urban and rural households. A local market spans one collection quarter; a survey segment one month and lies inside one local market.
+\item Between-cluster variance share: one-way decomposition of the log unit value; it mixes price differences with differences in quality and package size.
+\item Reliability of the cluster mean: share of the variance of cluster-mean log unit values that is not within-cluster sampling noise, $1-(s^2_w/\tilde n)/\mathrm{var}(\bar v_c)$, with $\tilde n$ the harmonic mean of unit values per cluster.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}

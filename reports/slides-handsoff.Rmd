@@ -1,0 +1,801 @@
+---
+title: "Rebuilt from ENPH, sweetened-beverage demand responds to price; spirits, wine and SSB need other data"
+subtitle: "Research handoff: revising the Colombia beverage-elasticity paper"
+author: "Norman Maldonado and William García"
+institute:
+  - "PROESA, Universidad Icesi"
+  - "Department of Global Health, University of Washington"
+date: "`r format(Sys.Date(), '%B %Y')`"
+params:
+  run_id: "20261117a"
+  draft: false
+output:
+  beamer_presentation:
+    includes:
+      in_header: [beamer_preamble.tex, beamer_addons.tex, slides-handsoff-header.tex]
+    slide_level: 2
+    latex_engine: xelatex
+    citation_package: biblatex
+bibliography: ../manuscript/references.bib
+biblatexoptions: [style=apa, backend=biber, natbib=true]
+biblio-title: References
+classoption: "aspectratio=169"
+---
+
+```{r setup, include=FALSE}
+# Handoff deck for the ENPH beverage-elasticity revision.
+# It reads the SAME validated bundle as manuscript/manuscript.Rmd (run fixed in params$run_id),
+# applies the manuscript's consistency checks, and never reruns data processing or estimation.
+# Storyboard, timing and presenter notes: reports/slides-handsoff_outline.md.
+knitr::opts_chunk$set(
+  echo = FALSE, message = FALSE, warning = TRUE,
+  dev = "cairo_pdf", fig.align = "center",
+  fig.width = 6.0, fig.height = 2.7, out.width = "100%"
+)
+library(data.table)
+library(ggplot2)
+
+# ---- The manuscript's bundle: one run, checked as the manuscript checks it ----------------------
+run_id <- params$run_id
+if (is.null(run_id) || !nzchar(run_id)) stop("params$run_id is empty: set it to the run the manuscript was rendered from", call. = FALSE)
+root <- normalizePath("..", winslash = "/")
+if (!file.exists(file.path(root, "ElasSsbColombia.Rproj"))) stop("Render slides-handsoff.Rmd from the reports/ folder of the repository", call. = FALSE)
+bdir <- file.path(root, "data", "processed", "manuscript", run_id)
+need <- function(path, producer) {
+  if (!file.exists(path)) stop("Missing result file: ", path, "\n  Produced by: ", producer, call. = FALSE)
+  path
+}
+by_report <- sprintf("powershell -ExecutionPolicy Bypass -File run_pipeline.ps1 -Stage report -RunId %s", run_id)
+man <- jsonlite::read_json(need(file.path(bdir, "manifest.json"), by_report))
+v   <- readRDS(need(file.path(bdir, "values.rds"), by_report))
+res <- readRDS(need(file.path(bdir, "results.rds"), by_report))
+sha <- function(f) digest::digest(file = f, algo = "sha256")
+if (!identical(man$run_id, run_id) || !identical(v$run_id, run_id) || !identical(res$run_id, run_id))
+  stop("Bundle components belong to different runs", call. = FALSE)
+if (!identical(man$config_sha256, sha(file.path(root, "config", "config.yml"))) ||
+    !identical(man$models_sha256, sha(file.path(root, "config", "models.csv"))))
+  stop("Stale bundle: config/config.yml or config/models.csv changed after run '", run_id, "' was reported", call. = FALSE)
+if (!isTRUE(man$complete) && !isTRUE(params$draft))
+  stop("Bundle for run '", run_id, "' is incomplete (output/tables/", run_id, "/table_completeness.csv); render with draft = TRUE only for a labelled draft", call. = FALSE)
+if (!isTRUE(v$inference_available) && !isTRUE(params$draft))
+  stop("Bootstrap inference is not available for run '", run_id, "'; render with draft = TRUE only for a labelled draft", call. = FALSE)
+qrules <- fread(need(file.path(root, "output", "diagnostics", run_id, "quantity_rules.csv"),
+                     sprintf("Rscript code/R/00_run.R construct --run-id=%s", run_id)))
+rinfo_f <- file.path(root, "output", "manuscript", run_id, "render_info.json")
+rinfo <- if (file.exists(rinfo_f)) jsonlite::read_json(rinfo_f) else NULL
+
+# ---- Formatting ----------------------------------------------------------------------------------
+fmt <- function(x, d = 2) ifelse(is.na(x), "n.a.", sub("^-", "\u2212", formatC(x, format = "f", digits = d)))
+n0  <- function(x) formatC(round(x), format = "d", big.mark = ",")
+pct <- function(x, d = 0) paste0(formatC(100 * x, format = "f", digits = d), "\\%")
+claim <- function(ok, title) if (!isTRUE(ok)) stop("Data no longer support the title: ", title, call. = FALSE)
+lab <- res$labels
+goods <- v$goods_estimable
+
+# ---- Estimates (named values written by the report stage) ----------------------------------------
+el   <- function(key) { x <- v$el[[key]]; if (is.null(x)) stop("Value missing from the bundle: ", key, call. = FALSE); x }
+own  <- function(spec, mk, g) el(paste("own", spec, mk, g, sep = "_"))
+expd <- function(spec, mk, g) el(paste("exp", spec, mk, g, sep = "_"))
+crs  <- function(mk, r, cc) el(paste("cross", mk, r, cc, sep = "_"))
+ci   <- function(x) if (is.na(x$lo)) "n.a." else paste0(fmt(x$lo), " to ", fmt(x$hi))
+ci_lv <- unique(res$est$ci_level[!is.na(res$est$ci_level)])
+if (length(ci_lv) != 1) stop("The results hold more than one interval level", call. = FALSE)
+ci_pct <- paste0(round(100 * ci_lv), "\\%")
+sb_c <- own("M1", "combined", "sb"); sb_h <- own("M1", "home", "sb")
+
+# ---- Bootstrap status ----------------------------------------------------------------------------
+st  <- res$status
+fin <- st[bootclass == "final"]; sen <- st[bootclass == "sens"]
+B <- list(reps = max(fin$completed), reps_min = min(fin$completed), target = v$boot_target,
+          nfin = nrow(fin), nsens = nrow(sen), sens_reps = max(sen$completed), sens_target = max(sen$target),
+          failed = sum(st$failed), final = isTRUE(v$inference_final))
+B$range <- if (B$reps_min == B$reps) n0(B$reps) else paste0(n0(B$reps_min), "--", n0(B$reps))
+B$note  <- if (B$final) sprintf("%s cluster-bootstrap replications", n0(B$reps)) else
+  sprintf("preliminary inference: %s of %s cluster-bootstrap replications", n0(B$reps), n0(B$target))
+draft_tag <- if (isTRUE(params$draft)) " \\textbf{DRAFT: incomplete bundle.}" else ""
+
+# ---- Historical values, typed once from their sources (never current estimates) -----------------
+# src: docs/Paper_20_1012_ElasticiBeverages.pdf, Table 3 (p. 20): SB, Model 1, full market -0.503 [0.003]; off trade -0.355 [0.004]
+# src: output/replication/legacy_run/duvm_total.log:584 and duvm_hogar.log:583 (WELCOM 2.30, Table 06, Model 1): -0.438, -0.469
+#      (same values in docs/reproducibility_audit.md, section 1.6)
+legacy <- list(pub_full = -0.503, pub_off = -0.355, pub_se_full = 0.003, rerun_full = -0.438, rerun_off = -0.469)
+# src: docs/reproducibility_audit.md, revision 2 (2026-11-17)
+aud <- list(beer_pred = 78667,              # section 2.9: non-buyers with a regression-imputed beer price
+            trim = "8--11",                 # section 2.6: buyers recoded to non-buyers (7.9% to 10.8%)
+            se = "0.003--0.006",            # section 1.6: SB own-price SEs, published [0.003]/[0.004], rerun 0.004/0.006
+            t2_full = 25, t2_off = 24,      # section 0: Table 2 cells reproduced within 0.01
+            clus_rep = 354, clus_rebuilt = 384, welcom_rep = "2.1", welcom_audit = "2.30")
+# src: docs/blockers.md B-4: about 75 main replications an hour on 12 workers, about 7 more hours
+boot_hours <- 7
+
+# ---- Values used in titles and text --------------------------------------------------------------
+N <- list(enph = n0(v$n_enph), legacy = n0(v$n_legacy), elig = n0(v$n_sample_combined), urban = n0(v$n_urban),
+          rural = n0(v$n_sample_combined - v$n_urban), nobev = n0(v$n_no_beverage),
+          wt_m = formatC(v$weight_total / 1e6, format = "f", digits = 1),
+          textid = n0(v$text_identified_records), composite = n0(v$composite_records),
+          clus = n0(v$n_clusters_m1), uvbeer = n0(v$n_uv_beer), clusbeer = n0(v$clusters_uv_beer),
+          models = n0(nrow(res$models)), sp_spend = n0(v$spend_comb_spirits))
+qty_rules <- c("direct_unit", "other_unit_dane_equivalence", "weight_to_litre_density_1.03")
+sp_rec <- qrules[category == "spirits", sum(N)]
+sp_qty <- qrules[category == "spirits" & qty_rule %in% qty_rules, sum(N)]
+N$sp_rec <- n0(sp_rec); N$sp_qty <- n0(sp_qty)
+P <- list(text_sb = pct(v$text_share_comb_sb, 1), sp_prev = pct(v$prev_comb_spirits),
+          beer_pred = pct(aud$beer_pred / v$n_legacy), qcov_sb = pct(v$qcov_home_sb), qcov_beer = pct(v$qcov_home_beer))
+S <- list(m1c = fmt(sb_c$est), m1h = fmt(sb_h$est), ci_c = ci(sb_c), ci_h = ci(sb_h),
+          e1 = fmt(expd("M1", "combined", "sb")$est), e2 = fmt(expd("M2", "combined", "sb")$est),
+          leg = fmt(legacy$pub_full))
+
+# ---- Guards: every title that states a result ----------------------------------------------------
+claim(sb_c$hi < legacy$pub_full, "Rebuilt from raw ENPH, SB demand is more price-responsive than first reported")
+claim(v$n_sample_combined <= v$n_enph && v$n_no_beverage > 0, "The rebuilt sample keeps all ENPH households, non-buyers included")
+claim(v$qcov_home_spirits == 0 && sp_qty == 0 && sp_rec > 0, "Spending is not a price: no spirits or wine purchase records a quantity")
+claim(v$composite_records > v$text_identified_records, "A text record counts as a drink purchase only if it names nothing else")
+spec_d <- function(mk) vapply(paste0("M", 2:6), function(s) abs(own(s, mk, "sb")$est - own("M1", mk, "sb")$est), 1)
+claim(names(which.max(spec_d("combined"))) == "M4" && names(which.max(spec_d("home"))) == "M4",
+      "SB's own-price elasticity is ... in M1, and regional controls matter most")
+claim(sb_c$hi < 0 && sb_h$hi < 0, "SB purchases respond to price (intervals below zero)")
+claim(expd("M1", "combined", "sb")$est < expd("M2", "combined", "sb")$est, "Expenditure elasticities hinge on the selection term")
+claim(!isTRUE(B$final), "Inference is preliminary")
+
+# ---- Plot styling (beverage colours match beamer_preamble.tex) -----------------------------------
+deck_font <- "Calibri"
+col_key <- "#0F2A56"; col_m4 <- "#B35806"; col_alert <- "#B2182B"; col_muted <- "grey60"
+theme_deck <- theme_minimal(base_size = 11, base_family = deck_font) +
+  theme(panel.grid.minor = element_blank(), panel.grid.major.y = element_blank(), axis.title = element_blank(),
+        strip.text = element_text(face = "bold", size = 11, hjust = 0))
+
+# LaTeX table from a data frame (booktabs, no float)
+ltab <- function(df, align, header = names(df)) {
+  cat("\\begin{tabular}{", align, "}\n\\toprule\n", paste(header, collapse = " & "), " \\\\\n\\midrule\n", sep = "")
+  for (i in seq_len(nrow(df))) cat(paste(unlist(df[i, ]), collapse = " & "), " \\\\\n", sep = "")
+  cat("\\bottomrule\n\\end{tabular}\n")
+}
+```
+
+# Opening
+
+## Rebuilt from raw ENPH, SB demand is more price-responsive than first reported
+
+<!-- src: legacy value docs/Paper_20_1012_ElasticiBeverages.pdf Table 3 p. 20; rebuilt values from values.rds of the run -->
+
+Excise taxes act through prices, so projected revenue and health effects inherit any error in the elasticity \parencite{PowellMaciejewski2018Taxes, WorldBank2020SSBTaxes}.
+
+:::: columns
+::: {.column width="48%"}
+\midnumber{`r S$leg`}{\textbf{Earlier version}, full market\\ standard error `r fmt(legacy$pub_se_full, 3)`, read as bias-corrected}
+:::
+::: {.column width="48%"}
+\midnumber{`r S$m1c`}{\textbf{Rebuilt}, combined market (M1)\\ `r ci_pct` interval `r S$ci_c`}
+:::
+::::
+
+\begin{uncertaintyblock}{Boundary}
+Household purchases, not intake. Sweetened beverages (SB), not sugar-sweetened (SSB). Price differences across local markets, not a causal tax effect.
+\end{uncertaintyblock}
+
+\sourceline{Rebuilt: run `r run_id`, `r B$note`.`r draft_tag`}
+
+# A. The survey
+
+## The rebuilt sample keeps all `r N$enph` ENPH households, non-buyers included
+
+:::: columns
+::: {.column width="31%"}
+\midnumber{`r N$legacy`}{\textbf{Legacy file}\\ households with a beverage record and under 16 litres per adjusted member a day}
+:::
+::: {.column width="31%"}
+\midnumber{`r N$enph`}{\textbf{ENPH universe}\\ every household in the public file, representing `r N$wt_m` million}
+:::
+::: {.column width="31%"}
+\midnumber{`r N$elig`}{\textbf{Estimation-eligible}\\ `r N$urban` urban, `r N$rural` rural; `r N$nobev` with no beverage purchase stay as zeros}
+:::
+::::
+
+\sourceline{ENPH 2016--2017, collected July 2016 to June 2017 \parencite{DANE2018ENPH}. Sample flow of run `r run_id` (manuscript Table A1).}
+
+## Only two instruments record quantities, so only they yield unit values
+
+\begin{tabularx}{\textwidth}{@{}YcccL{2.75cm}@{}}
+\toprule
+Instrument & Spending & Quantity & Unit value & Role \\
+\midrule
+Urban household diary (14 days) & \yes & \yes & \yes & Price and share \\ \addlinespace[3pt]
+Rural household questionnaire (week) & \yes & \yes & \yes & Price and share \\ \addlinespace[3pt]
+Personal diaries (7 days) & \yes & \no & \no & Share only \\ \addlinespace[3pt]
+Away-from-home records (free text) & \yes & \no & \no & Share only \\ \addlinespace[3pt]
+Usual purchases by food group & \yes & \no & \no & Share only \\ \addlinespace[3pt]
+Monthly recall (spirits and wine) & \yes & \no & \no & Share only \\
+\bottomrule
+\end{tabularx}
+
+\sourceline{\yes{} recorded \quad \no{} not recorded: personal and away-from-home records give item counts, not volumes, and away-from-home spending enters only the combined market. Amounts are converted to a month with DANE's factors \parencite{DANE2020ENPHMetodologia}; they measure purchases, not intake.}
+
+## A text record counts as a drink purchase only if it names nothing else
+
+:::: columns
+::: {.column width="47%"}
+**Six groups, from COICOP codes and text** \parencite{UN2018COICOP}
+
+- **SB**: soft drinks, malt drinks, packaged juices and teas, energy drinks. Sugar and other sweeteners cannot be told apart.
+- Beer; spirits and wine; water.
+- Dairy drinks (litres) and hot drinks (kilograms at home), now kept apart.
+:::
+::: {.column width="49%"}
+\midnumber{`r N$textid`}{text records name one beverage and nothing else: counted}
+\midnumber{`r N$composite`}{name a drink with other items, such as a meal: not attributed}
+:::
+::::
+
+\sourceline{Text rule after \textcite{MaldonadoGarciaJimenez2022Consumption}, now requiring a pure beverage description. Text purchases add `r P$text_sb` of combined-market SB spending.}
+
+## Spending is not a price: no spirits or wine purchase records a quantity
+
+```{r fig-coverage, fig.height = 1.8}
+cov <- data.table(g = res$categories)
+cov[, `:=`(lab = factor(lab[g], levels = rev(lab[res$categories])),
+           q = vapply(g, function(x) v[[paste0("qcov_home_", x)]], 1))]
+cov[, txt := ifelse(q == 0, "0%: no quantity, so no unit value", paste0(round(100 * q), "%"))]
+ggplot(cov, aes(x = q, y = lab)) +
+  geom_col(fill = col_key, width = 0.62) +
+  geom_text(aes(label = txt, colour = q == 0), hjust = -0.08, size = 3.7, family = deck_font) +
+  scale_colour_manual(values = c(`TRUE` = col_alert, `FALSE` = "grey20"), guide = "none") +
+  scale_x_continuous(limits = c(0, 1.25), breaks = NULL) +
+  theme_deck + theme(panel.grid.major.x = element_blank(), axis.text.y = element_text(size = 11, colour = "grey15"))
+```
+
+Off-trade: purchases for the home. Combined: adds away-from-home spending at the same unit values, so no on-trade price response is identified.
+
+\sourceline{Share of off-trade spending in purchases with a recorded quantity; run `r run_id`. None of the `r N$sp_rec` spirits and wine purchase records has one.}
+
+# B. The audit
+
+## We recovered the original data steps; the elasticity tables did not reproduce
+
+<!-- src: docs/reproducibility_audit.md, revision 2, sections 0, 1.5, 1.6 and 2.13 -->
+
+:::: columns
+::: {.column width="32%"}
+\panel{statusgood}{Reproduced}{\pitem Coded beverage spending, exactly, for `r N$legacy` households \pitem Table 1: demographics and income \pitem Table 2, full market: `r aud$t2_full` of 25 cells}
+:::
+::: {.column width="32%"}
+\panel{statuspart}{Partly}{\pitem Table 2, off-trade: `r aud$t2_off` of 25 cells, after realigning one column \pitem Coded-only panels, water and text-recovered spending \pitem Expenditure elasticities: close for SB and dairy}
+:::
+::: {.column width="32%"}
+\panel{statusopen}{Not reproduced}{\pitem Own-price, cross-price and tercile elasticities \pitem Models 4 and 6: no code found \pitem Model 5 and on-trade: missing inputs}
+:::
+::::
+
+\sourceline{Unchanged legacy code, run with path and encoding shims only (code/replication). Reproducing an output does not validate its method.}
+
+## Same inputs, same scripts, different SB elasticities: the cause is still open
+
+<!-- src: docs/Paper_20_1012_ElasticiBeverages.pdf Table 3 p. 20; output/replication/legacy_run/duvm_total.log:584, duvm_hogar.log:583; audit sections 1.5, 1.6, 2.10 -->
+
+:::: columns
+::: {.column width="44%"}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+SB, Model 1 & Published & Rerun \\
+\midrule
+Full market & `r fmt(legacy$pub_full, 3)` & `r fmt(legacy$rerun_full, 3)` \\
+Off-trade & `r fmt(legacy$pub_off, 3)` & `r fmt(legacy$rerun_off, 3)` \\
+\bottomrule
+\end{tabular}
+
+\sourceline{Historical values, not the rebuilt estimates. The rerun uses inputs that reproduce Table 2, with WELCOM `r aud$welcom_audit`.}
+:::
+::: {.column width="52%"}
+**Evidence that is missing**
+
+- No `duvm` log or saved results; WELCOM `r aud$welcom_rep` is unavailable
+
+**Candidate explanations, untested**
+
+- WELCOM `r aud$welcom_rep` versus `r aud$welcom_audit`
+- `r aud$clus_rep` reported versus `r aud$clus_rebuilt` rebuilt clusters
+- Which output table was copied; an unseeded imputation draw
+:::
+::::
+
+## The audit points to four places where estimates needed firmer ground
+
+<!-- src: docs/reproducibility_audit.md sections 2.3, 2.6, 2.9, 2.10, 2.11; corrections log C-05 -->
+
+:::: columns
+::: {.column width="48%"}
+\panel{decknavy}{Prices that were never observed}{`r P$beer_pred` of beer “prices” were predictions for non-buyers, used as observed unit values; grams were read as litres.}
+
+\medskip
+
+\panel{decknavy}{Purchases recoded as zeros}{Trimming turned `r aud$trim`\% of buyers into non-buyers; meals with a drink counted as drinks.}
+:::
+::: {.column width="48%"}
+\panel{decknavy}{Two budgets in one equation}{Shares of the beverage basket were paired with a total-expenditure regressor.}
+
+\medskip
+
+\panel{decknavy}{Uncertainty understated}{The routine's bootstrap held its first stage fixed: SB standard errors of `r aud$se`.}
+:::
+::::
+
+## Clearer labels resolve several puzzles in the published tables
+
+<!-- src: docs/Paper_20_1012_ElasticiBeverages.pdf abstract, Tables 2, 5, 6; audit sections 1.6, 2.4, 2.11, 2.13 -->
+
+\begin{tabularx}{\textwidth}{@{}YY@{}}
+\toprule
+In the published tables & In the revision \\
+\midrule
+Off-trade consumption column permuted: beer, spirits and water values swapped & Every table is written from code output \\ \addlinespace[4pt]
+“Dairy” is milk plus hot drinks in one panel, milk only in another & Dairy drinks and hot drinks are two goods throughout \\ \addlinespace[4pt]
+“Income elasticities” computed with total expenditure & Named expenditure elasticities \\ \addlinespace[4pt]
+Abstract reads substitution toward alcohol; Table 5 shows negative responses to the SB price & Rows respond, columns change price; the claim is withdrawn \\
+\bottomrule
+\end{tabularx}
+
+\sourceline{The very small standard errors were real software output, not typing errors. More items in backup.}
+
+# C. The rebuilt estimates
+
+## Unit values mix price, quality and noise; markets help separate them
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[
+  cpart/.style={draw=decknavy!50, fill=decknavy!5, rounded corners=2pt, align=center, text width=3.5cm, minimum height=1.05cm, font=\small},
+  cuv/.style={draw=decknavy, fill=decknavy!14, rounded corners=2pt, align=center, text width=2.9cm, minimum height=1.3cm},
+  cout/.style={draw=statusgood!60, fill=statusgood!6, rounded corners=2pt, align=left, text width=4.9cm, minimum height=1.3cm, font=\small},
+  carr/.style={-{Stealth[length=2mm]}, draw=black!55, line width=0.6pt}]
+\node[cpart] (price) at (0, 1.35) {Market price,\\ shared within a local market};
+\node[cpart] (qual)  at (0, 0)    {Quality chosen,\\ rises with total spending};
+\node[cpart] (err)   at (0, -1.35){Measurement error};
+\node[cuv]   (uvn)   at (4.2, 0)  {\textbf{Unit value}\\ spending ÷ quantity};
+\node[cout]  (win)   at (9.4, 0.85) {\textbf{Within a market} the price is fixed, so household differences show quality and expenditure effects.};
+\node[cout]  (btw)   at (9.4, -0.85){\textbf{Between markets}, average shares against average unit values, net of quality and noise, show the price response.};
+\draw[carr] (price.east) -- (uvn.west);
+\draw[carr] (qual.east)  -- (uvn.west);
+\draw[carr] (err.east)   -- (uvn.west);
+\draw[carr] (uvn.east)   -- (win.west);
+\draw[carr] (uvn.east)   -- (btw.west);
+\end{tikzpicture}
+\end{center}
+```
+
+Key assumption: households in one municipality, area and quarter face the same price.
+
+\sourceline{Deaton's unit-value model \parencite{Deaton1988QualityQuantityPrice, Deaton1997HouseholdSurveys}, estimated with WELCOM's duvm \parencite{AraarEtAl2018WELCOM}. Equations in backup.}
+
+## Each correction answers an audit finding and leaves a stated limit
+
+\begin{tabularx}{\textwidth}{@{}YYY@{}}
+\toprule
+Legacy problem & Rebuilt pipeline & Still limited by \\
+\midrule
+Predicted “prices” for non-buyers & Unit values only where a quantity was recorded & Sparse beer, noisy water \\ \addlinespace[3pt]
+Buyers trimmed, non-buyers dropped & All households; zeros kept & No exclusion restriction for selection \\ \addlinespace[3pt]
+Basket shares, total-budget regressor & Both on DANE total expenditure & Unconditional, Marshallian only \\ \addlinespace[3pt]
+Clusters cut from a dwelling code & `r N$clus` markets: municipality × area × quarter & Prices vary across regions \\ \addlinespace[3pt]
+First stage fixed in the bootstrap & External bootstrap reruns all of WELCOM & `r n0(B$reps)` of `r n0(B$target)` replications; design not modelled \\
+\bottomrule
+\end{tabularx}
+
+\sourceline{WELCOM `r v$welcom_version` applies Deaton's quality and measurement-error corrections and imposes symmetry; weights enter as cluster averages, an approximation \parencite{AraarEtAl2018WELCOM, CameronGelbachMiller2008}.}
+
+## SB's own-price elasticity is `r S$m1c` in M1, and regional controls matter most
+
+```{r fig-sb-own, fig.height = 2.45}
+spec_lab <- c(M1 = "M1 Primary", M2 = "M2 No selection term", M3 = "M3 No weights",
+              M4 = "M4 No regional controls", M5 = "M5 Coded purchases only", M6 = "M6 Urban only (other population)")
+d <- res$est[spec %chin% names(spec_lab) & stat == "price" & row == "sb" & col == "sb",
+             .(spec, market, est = estimate, lo = ci_lo, hi = ci_hi)]
+d[, mk := factor(ifelse(market == "combined", "Combined market", "Off-trade market"), levels = c("Combined market", "Off-trade market"))]
+d[, y := factor(spec_lab[spec], levels = rev(spec_lab))]
+xlo <- -2; xhi <- 0.5
+d[, `:=`(lo_c = pmax(lo, xlo), hi_c = pmin(hi, xhi), cut_lo = lo < xlo)]
+d[, grp := fifelse(spec == "M1", "M1", fifelse(spec == "M4", "M4", "other"))]
+ggplot(d, aes(y = y)) +
+  geom_vline(xintercept = 0, colour = "grey45", linewidth = 0.3) +
+  geom_vline(xintercept = -1, colour = "grey60", linewidth = 0.3, linetype = "dashed") +
+  geom_segment(aes(x = lo_c, xend = hi_c, yend = y, colour = grp), linewidth = 0.7) +
+  geom_segment(data = d[cut_lo == TRUE], aes(x = lo_c + 0.2, xend = lo_c, yend = y, colour = grp),
+               arrow = arrow(length = unit(1.6, "mm"), type = "closed"), linewidth = 0.7) +
+  geom_point(aes(x = est, colour = grp), size = 2.3) +
+  geom_text(data = d[spec %in% c("M1", "M4")], aes(x = est, label = fmt(est), colour = grp),
+            vjust = -0.75, size = 3.4, family = deck_font, fontface = "bold") +
+  scale_colour_manual(values = c(M1 = col_key, M4 = col_m4, other = col_muted), guide = "none") +
+  scale_x_continuous(limits = c(xlo, xhi), breaks = c(-2, -1.5, -1, -0.5, 0, 0.5), labels = fmt(c(-2, -1.5, -1, -0.5, 0, 0.5), 1)) +
+  facet_wrap(~mk) + theme_deck + theme(axis.text.y = element_text(size = 10, colour = "grey15"), panel.spacing = unit(1.2, "lines"))
+m3 <- d[spec == "M3"]
+```
+
+\sourceline{Points: WELCOM estimates; bars: `r ci_pct` percentile intervals, `r B$note`; arrows: M3 intervals run on to `r fmt(m3[market == "combined", lo])` and `r fmt(m3[market == "home", lo])`. M2--M5 use M1's households.}
+
+## Expenditure elasticities hinge on the selection term: SB `r S$e1` vs `r S$e2`
+
+```{r fig-expenditure, fig.height = 1.9}
+e <- rbindlist(lapply(goods, function(g) data.table(g = g, m1 = expd("M1", "combined", g)$est, m2 = expd("M2", "combined", g)$est)))
+e[, lab := factor(lab[g], levels = rev(lab[goods]))]
+# value labels sit outside each pair of points, away from the connecting line
+e[, `:=`(x1 = m1 + ifelse(m1 < m2, -0.12, 0.12), h1 = ifelse(m1 < m2, 1, 0),
+         x2 = m2 + ifelse(m1 < m2, 0.12, -0.12), h2 = ifelse(m1 < m2, 0, 1))]
+ggplot(e, aes(y = lab)) +
+  geom_vline(xintercept = 0, colour = "grey45", linewidth = 0.3) +
+  geom_vline(xintercept = 1, colour = "grey60", linewidth = 0.3, linetype = "dashed") +
+  geom_segment(aes(x = m1, xend = m2, yend = lab), colour = "grey80", linewidth = 1.1) +
+  geom_point(aes(x = m1), shape = 21, fill = "white", colour = "grey35", size = 2.5, stroke = 0.9) +
+  geom_point(aes(x = m2), colour = col_key, size = 2.5) +
+  geom_text(aes(x = x1, label = fmt(m1), hjust = h1), colour = "grey35", size = 3.4, family = deck_font) +
+  geom_text(aes(x = x2, label = fmt(m2), hjust = h2), colour = col_key, size = 3.4, family = deck_font, fontface = "bold") +
+  scale_x_continuous(limits = c(min(e$m1, e$m2) - 0.9, max(e$m1, e$m2) + 0.9), breaks = NULL) +
+  coord_cartesian(clip = "off") +
+  theme_deck + theme(panel.grid.major.x = element_blank(), axis.text.y = element_text(size = 11, colour = "grey15"))
+```
+
+Open: M1, with WELCOM's selection term. Filled: M2, without. M1 stays primary; the manuscript reads M2 as the more interpretable expenditure response`r if (expd("M1", "combined", "beer")$est < 0) " and beer's negative M1 value as an artefact" else ""`.
+
+\sourceline{Combined market, same households. Elasticities of quantity with respect to total household expenditure, not income; the probit has no exclusion restriction \parencite{Heckman1979Selection}.}
+
+## Tercile and cross-price patterns are suggestive, not yet robust
+
+```{r tercile-cross}
+tc <- lapply(c("T1", "T2", "T3"), function(s) own(s, "combined", "sb"))
+te <- vapply(tc, function(x) x$est, 1)
+t_mono <- if (all(diff(te) > 0)) "Estimates shrink with income" else if (all(diff(te) < 0)) "Estimates grow with income" else "Estimates do not move monotonically with income"
+t_ovl  <- if (tc[[1]]$hi < tc[[3]]$lo || tc[[3]]$hi < tc[[1]]$lo) "the lowest and highest intervals do not overlap" else "the lowest and highest intervals overlap"
+cells <- CJ(r = goods, cc = goods)[r != cc]
+cells[, `:=`(est = mapply(function(a, b) crs("combined", a, b)$est, r, cc),
+             lo = mapply(function(a, b) crs("combined", a, b)$lo, r, cc),
+             hi = mapply(function(a, b) crs("combined", a, b)$hi, r, cc))]
+ns <- res$est[model_id == "M1_combined" & stat == "price_nosym" & row != col, .(r = row, cc = col, nosym = estimate)]
+cells <- merge(cells, ns, by = c("r", "cc"))
+X <- list(ncell = nrow(cells), nsig = cells[lo > 0 | hi < 0, .N], flip = cells[sign(est) != sign(nosym), .N])
+claim(X$ncell == length(goods) * (length(goods) - 1) && !anyNA(cells$nosym), "cross-price cells complete")
+```
+
+:::: columns
+::: {.column width="46%"}
+**SB own-price, by income tercile**
+
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Tercile & Estimate & `r ci_pct` interval \\
+\midrule
+Lowest & `r fmt(tc[[1]]$est)` & `r ci(tc[[1]])` \\
+Middle & `r fmt(tc[[2]]$est)` & `r ci(tc[[2]])` \\
+Highest & `r fmt(tc[[3]]$est)` & `r ci(tc[[3]])` \\
+\bottomrule
+\end{tabular}
+
+\medskip
+
+`r t_mono`, but `r t_ovl`.
+:::
+::: {.column width="50%"}
+**Cross-price, combined market**
+
+- `r X$nsig` of `r X$ncell` intervals exclude zero
+- `r X$flip` of `r X$ncell` change sign without the symmetry restriction
+- Beer rests on `r N$uvbeer` unit values and spirits are absent, so a shift toward alcohol cannot be assessed
+:::
+::::
+
+\sourceline{Combined market, M1. Rows: quantity that responds; columns: price that changes. Beer is left out of the tercile models.}
+
+# D. Next steps
+
+## The rebuild runs end to end; inference and data gaps remain open
+
+<!-- src: docs/blockers.md B-1 to B-14; docs/estimation_alternatives.md A-01 to A-17; bootstrap_status in results.rds -->
+
+:::: columns
+::: {.column width="32%"}
+\panel{statusgood}{Completed}{\pitem Pipeline rebuilt from the raw ENPH modules \pitem All `r N$models` models estimated \pitem Manuscript renders from run `r run_id` \pitem Legacy rerun scripted}
+:::
+::: {.column width="32%"}
+\panel{statuspart}{Awaiting verification}{\pitem Bootstrap: `r n0(B$reps)` of `r n0(B$target)` replications for `r B$nfin` models; `r B$sens_reps` of `r B$sens_target` for `r B$nsens` sensitivity models \pitem Documentation mismatches (backup)}
+:::
+::: {.column width="32%"}
+\panel{statusopen}{New analysis or data}{\pitem Prices for spirits and wine \pitem On-trade quantities; SSB split \pitem Selection, weight counts, survey design, symmetry tests}
+:::
+::::
+
+\sourceline{Nothing in the third column is filled with a proxy. Estimator alternatives are registered, not implemented.}
+
+## Spirits and wine need prices from outside ENPH, not another model run
+
+:::: columns
+::: {.column width="33%"}
+\midnumber{`r P$sp_prev`}{of households buy spirits or wine}
+\midnumber{`r N$sp_qty`}{of `r N$sp_rec` purchase records carry a quantity}
+:::
+::: {.column width="63%"}
+1. **Verify the source.** Monthly recall gives the amount paid, not a volume; separate true spirits and wine from beer once filed as spirits.
+2. **Review the old estimates.** Their “unit value” was spending per record.
+3. **Assess identification.** External prices must match city, month, product and channel.
+4. **Then decide on estimation.** An ENPH-only elasticity may not be feasible.
+:::
+::::
+
+\sourceline{Combined market, run `r run_id`. Blocker B-1; alternatives register A-08; corrections C-06 and C-22.}
+
+## Four decisions would unblock the next version
+
+<!-- src: docs/blockers.md B-4 (about 7 more hours), B-13; docs/estimation_alternatives.md A-01, A-03; Food Policy review comment 5 -->
+
+\begin{alertblock}{For the authors}
+\begin{enumerate}
+\item \textbf{Inference.} Resume the bootstrap to `r n0(B$target)` replications, about `r boot_hours` hours, before results circulate?
+\item \textbf{Spirits and wine.} Seek an external price source, or declare them out of scope?
+\item \textbf{Scope.} Keep WELCOM-only estimates, or add estimator alternatives and tax scenarios with intervals?
+\item \textbf{Repository.} Purge household data and the confidential review from git history before sharing?
+\end{enumerate}
+\end{alertblock}
+
+## {.standout}
+
+Where ENPH observes prices, SB purchases respond to them (`r S$m1c`; `r S$ci_c`). Spirits, wine and the SSB split need data this survey does not hold.
+
+# Backup
+
+## Published and rerun own-price elasticities diverge for Models 1--3
+
+<!-- src: docs/reproducibility_audit.md section 1.6 (rerun / manuscript); legacy WELCOM 2.30 logs in output/replication/legacy_run/ -->
+
+```{r bk-own-rerun, results = "asis"}
+# Typed once from the audit table (each cell: rerun / published). Historical values only.
+own_rerun <- data.table(
+  Model = c("Full, M1", "Full, M2", "Full, M3", "Off-trade, M1", "Off-trade, M2", "Off-trade, M3"),
+  SB      = c("-0.438 / -0.503", "-0.441 / -0.502", "-0.387 / -0.492", "-0.469 / -0.355", "-0.471 / -0.348", "-0.580 / -0.408"),
+  Beer    = c("-0.171 / -0.174", "-0.190 / -0.155", "-0.427 / +1.441", "-0.377 / -0.568", "-0.427 / -0.590", "-0.466 / -0.448"),
+  Spirits = c("-0.311 / -0.767", "-0.342 / -0.807", "-0.363 / -0.557", "-0.581 / -0.620", "-0.684 / -0.709", "-0.557 / -0.288"),
+  Water   = c("-2.039 / -1.473", "-2.105 / -1.528", "-1.749 / -1.563", "-1.895 / -1.492", "-2.018 / -1.521", "-1.594 / -1.490"),
+  Dairy   = c("-0.251 / -0.286", "-0.256 / -0.294", "-0.223 / -0.270", "-0.157 / -0.185", "-0.162 / -0.190", "-0.130 / -0.158"))
+for (j in 2:6) set(own_rerun, j = j, value = gsub("-", "\u2212", own_rerun[[j]], fixed = TRUE))
+cat("\\begin{center}\\small\\setlength{\\tabcolsep}{3pt}\n"); ltab(own_rerun, "@{}lrrrrr@{}"); cat("\\end{center}\n")
+```
+
+\sourceline{Each cell: legacy rerun / published. Rerun with WELCOM 2.30, unchanged do-files and the inputs that reproduce Table 2. Historical evidence, not current estimates.}
+
+## Rerun expenditure elasticities came close only for SB and dairy
+
+<!-- src: docs/reproducibility_audit.md section 1.6 (rerun / manuscript) -->
+
+```{r bk-exp-rerun, results = "asis"}
+exp_rerun <- data.table(
+  Model = c("Full, M1", "Full, M2", "Full, M3", "Off-trade, M1", "Off-trade, M2", "Off-trade, M3"),
+  SB      = c("0.895 / 0.88", "0.887 / 0.87", "0.832 / 0.81", "0.912 / 0.88", "0.912 / 0.90", "0.772 / 0.70"),
+  Beer    = c("3.311 / 3.32", "1.313 / 1.25", "2.496 / 2.39", "3.306 / 3.52", "1.299 / 1.24", "4.094 / 1.78"),
+  Spirits = c("3.442 / 3.22", "1.333 / 1.12", "3.215 / 2.96", "4.618 / 5.31", "1.368 / 1.18", "5.487 / 4.88"),
+  Water   = c("3.061 / 3.08", "1.146 / 1.12", "1.872 / 1.86", "2.919 / 2.04", "1.118 / 1.09", "1.149 / 1.35"),
+  Dairy   = c("0.859 / 0.86", "0.833 / 0.82", "0.851 / 0.84", "0.912 / 0.89", "0.878 / 0.86", "0.830 / 0.79"))
+cat("\\begin{center}\\small\n"); ltab(exp_rerun, "@{}lrrrrr@{}"); cat("\\end{center}\n")
+```
+
+\sourceline{Each cell: legacy rerun / published “income” elasticity, which is a total-expenditure elasticity computed on beverage-basket shares. Historical evidence only.}
+
+## Reporting issues differ in kind: transcription, definition and interpretation
+
+<!-- src: docs/Paper_20_1012_ElasticiBeverages.pdf pp. 7-8 and Tables 1-6 (checked in this session); audit sections 1.6, 2.4, 2.11, 2.13 -->
+
+\begin{center}\small
+\begin{tabularx}{\textwidth}{@{}YL{3.1cm}@{}}
+\toprule
+Finding in the earlier version & Kind \\
+\midrule
+Off-trade consumption column permuted (Stata printed q5 q1 q3 q4 q2) & Transcription \\
+Identical standard errors for different goods in Table 6 (off-trade SB and beer) & Transcription \\
+Text says 82\% of households are urban; Table 1 reports 0.22 rural & Transcription \\
+Off-trade SB purchase share 0.67 reported, 0.65 in the rerun & Unexplained, small \\
+Very small bootstrap standard errors & Real software output: a method issue \\
+“Dairy” is milk plus hot drinks (corrected panels) but milk only (coded panels) & Definition \\
+“Income elasticity” is a total-expenditure elasticity on beverage-basket shares & Label and estimand \\
+Model 5 also changed the outlier rule and the categories & Confounded comparison \\
+Matrix orientation unstated; abstract claims substitution toward alcohol & Interpretation \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+## The 2023 review asked mainly for context and policy use, not new estimators
+
+<!-- src: docs/FP Review.pdf (confidential; paraphrased, not quoted) -->
+
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}YY@{}}
+\toprule
+Review comment, paraphrased & Where the revision answers it \\
+\midrule
+Contribution judged too small as submitted & Measurement findings and specification sensitivity \\
+Describe ENPH and beverage spending in detail & Part A; manuscript Tables 1, 2, A1 and A2 \\
+Benchmark against earlier estimates & Earlier version and \textcite{Caro2017QUAIDSColombia} in the discussion \\
+Show what the elasticity means for a tax & Open: decision on tax scenarios \\
+Add literature and background; less jargon & Manuscript text \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\sourceline{Food Policy review of the earlier submission. Confidential: paraphrased here for the authors only.}
+
+## Monthly amounts follow DANE's frequency factors, module by module
+
+<!-- src: docs/methods.md section 3 (DANE, DSO-ENPH-MET-001 v2, section 2.1.5, Tablas 1-3 and 6); corrections log C-13, C-17 -->
+
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}L{6.2cm}Y@{}}
+\toprule
+Stated purchase frequency & Monthly factor \\
+\midrule
+Daily, several times a week, weekly, or missing & 30 / reference days (2.14 for 14 days; 4.29 for 7) \\
+Fortnightly & 2 \\
+Monthly, bimonthly, quarterly & 1, 0.5, 0.33 \\
+Sporadic & 1 for an observed purchase; excluded for usual-purchase records \\
+Monthly-recall module (previous month's total) & 1; divided by 2, 3, 6 or 12 if bought bimonthly, quarterly, half-yearly or yearly \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\sourceline{Factors from \textcite{DANE2020ENPHMetodologia}. The legacy code meant to apply the last row but set every factor to 1 (correction C-17). The main shopper's pocket spending covers 7 days (C-13).}
+
+## Deaton's model pairs a unit-value and a budget-share equation
+
+\begin{align*}
+\ln v_{ghc} &= \alpha^1_g + \beta^1_g \ln x_{hc} + \gamma^{1\prime}_g z_{hc} + \textstyle\sum_{j}\psi_{gj}\ln p_{jc} + u^1_{ghc}\\
+w_{ghc} &= \alpha^0_g + \beta^0_g \ln x_{hc} + \gamma^{0\prime}_g z_{hc} + \textstyle\sum_{j}\theta_{gj}\ln p_{jc} + f_{gc} + u^0_{ghc}
+\end{align*}
+
+Good $g$, household $h$, price cluster $c$; $v$ unit value, $w$ share of total expenditure $x$, $z$ household controls, $p$ prices common within a cluster. Within-cluster regressions give $\beta^1$ (quality) and $\beta^0$; cluster means of the residual parts, corrected for measurement error and quality, give the price responses. Expenditure elasticity: $1-\beta^1_g+\beta^0_g/\bar w_g$.
+
+\sourceline{\textcite{Deaton1990PriceElasticities}; \textcite{Deaton1997HouseholdSurveys}, chapter 5; manuscript section 2.1 and docs/welcom\_method.md.}
+
+## The main grid changes one element of M1 at a time; terciles re-estimate M1
+
+```{r bk-grid, results = "asis"}
+mg <- res$models[market == "combined" & spec %chin% c(paste0("M", 1:6), paste0("T", 1:3))]
+mg <- mg[order(match(spec, c(paste0("M", 1:6), paste0("T", 1:3))))]
+grid <- mg[, .(Model = spec, Change = label, Households = n0(n_households), Clusters = n0(n_clusters),
+               `M1's households` = ifelse(spec %chin% paste0("M", 1:5), "yes", "no"), Replications = n0(boot_completed))]
+cat("\\begin{center}\\small\n"); ltab(grid, "@{}llrrcr@{}"); cat("\\end{center}\n")
+```
+
+\sourceline{Combined market shown; the off-trade grid is the same. Earlier version: Models 4 and 6 had no code, and Model 5 also changed the outlier rule.}
+
+## Seven sensitivity models move SB between `r fmt(min(sapply(paste0("S", 1:7), function(s) own(s, "combined", "sb")$est)))` and `r fmt(max(sapply(paste0("S", 1:7), function(s) own(s, "combined", "sb")$est)))`
+
+```{r bk-sens, results = "asis"}
+sg <- res$models[market == "combined" & spec %chin% paste0("S", 1:7)][order(spec)]
+sens <- sg[, .(Model = spec, Change = label,
+               Combined = fmt(vapply(spec, function(s) own(s, "combined", "sb")$est, 1)),
+               `Off-trade` = fmt(vapply(spec, function(s) own(s, "home", "sb")$est, 1)))]
+sens <- rbind(data.table(Model = "M1", Change = "Primary specification", Combined = fmt(sb_c$est), `Off-trade` = fmt(sb_h$est)), sens)
+cat("\\begin{center}\\small\n"); ltab(sens, "@{}llrr@{}"); cat("\\end{center}\n")
+```
+
+\sourceline{SB own-price elasticities, point estimates only: the sensitivity models have `r B$sens_reps` of `r B$sens_target` bootstrap replications. S4 changes the sample.}
+
+## Water is price-elastic; dairy and hot drinks sit near −1, a sign of weak information
+
+```{r bk-own-all, results = "asis"}
+oa <- rbindlist(lapply(goods, function(g) {
+  a <- own("M1", "combined", g); b <- own("M1", "home", g)
+  data.table(Beverage = lab[[g]], c_est = fmt(a$est), c_ci = ci(a), h_est = fmt(b$est), h_ci = ci(b))
+}))
+cat("\\begin{center}\n")
+ltab(oa, "@{}lrrrr@{}", header = c("Beverage", "Combined", paste(ci_pct, "interval"), "Off-trade", paste(ci_pct, "interval")))
+cat("\\end{center}\n")
+wat <- own("M1", "combined", "water"); dai <- own("M1", "combined", "dairy"); hot <- own("M1", "combined", "hot")
+claim(wat$hi < -1 && dai$lo <= -1 && dai$hi >= -1 && hot$lo <= -1 && hot$hi >= -1, "Water is price-elastic; dairy and hot drinks sit near -1")
+```
+
+\sourceline{M1, `r B$note`. An elasticity of −1 is what the model returns when cluster shares do not move with cluster unit values, so intervals around −1 signal little information, not unit-elastic demand. Beer rests on `r N$uvbeer` unit values in `r N$clusbeer` of `r N$clus` clusters.}
+
+## Primary cross-price matrices: rows respond, columns change price
+
+```{r bk-matrix, results = "asis"}
+short <- c(sb = "SB", beer = "Beer", water = "Water", dairy = "Dairy", hot = "Hot")
+mat <- function(mk) {
+  m <- rbindlist(lapply(goods, function(r) {
+    cells <- vapply(goods, function(cc) { x <- crs(mk, r, cc); s <- fmt(x$est)
+      if (!is.na(x$lo) && (x$lo > 0 || x$hi < 0)) paste0("\\textbf{", s, "}") else s }, "")
+    as.data.table(as.list(c(short[[r]], cells)))
+  }))
+  setnames(m, c("", short[goods])); m
+}
+cat("\\begin{center}\\small\n\\begin{minipage}[t]{0.49\\linewidth}\\centering\\textbf{Combined market}\\par\\smallskip\n")
+ltab(mat("combined"), "@{}lrrrrr@{}")
+cat("\\end{minipage}\\hfill\n\\begin{minipage}[t]{0.49\\linewidth}\\centering\\textbf{Off-trade market}\\par\\smallskip\n")
+ltab(mat("home"), "@{}lrrrrr@{}")
+cat("\\end{minipage}\n\\end{center}\n")
+```
+
+\sourceline{M1 with Slutsky symmetry imposed. Bold: `r ci_pct` percentile interval excludes zero (`r B$note`). Orientation checked on simulated data (code/stata/90\_orientation\_check.do).}
+
+## Without the symmetry restriction, `r X$flip` of `r X$ncell` cross-price cells change sign
+
+```{r bk-sym, results = "asis"}
+fl <- cells[sign(est) != sign(nosym)][order(-abs(est - nosym))]
+symt <- fl[, .(`Quantity of` = unname(lab[r]), `Price of` = unname(lab[cc]), `With symmetry` = fmt(est), `Without` = fmt(nosym))]
+cat("\\begin{center}\\small\n"); ltab(symt, "@{}llrr@{}"); cat("\\end{center}\n")
+```
+
+\sourceline{Combined market, M1 (\texttt{price} and \texttt{price\_nosym} in the estimates files). Own-price effects barely move; cross-price signs are not robust.}
+
+## Local markets give SB, dairy and hot drinks more reliable mean unit values
+
+```{r bk-clusters, results = "asis"}
+rl <- rbindlist(lapply(goods, function(g) data.table(Beverage = lab[[g]], `Unit values` = n0(v[[paste0("n_uv_", g)]]),
+  `Markets with any` = paste0(n0(v[[paste0("clusters_uv_", g)]]), " of ", N$clus),
+  `Reliability, markets` = fmt(v[[paste0("reliability_", g)]]), `Reliability, segments` = fmt(v[[paste0("reliability_segment_", g)]]))))
+cat("\\begin{center}\n"); ltab(rl, "@{}lrrrr@{}"); cat("\\end{center}\n")
+claim(all(vapply(c("sb", "dairy", "hot"), function(g) v[[paste0("reliability_", g)]] > v[[paste0("reliability_segment_", g)]], TRUE)),
+      "Local markets give SB, dairy and hot drinks more reliable mean unit values")
+```
+
+\sourceline{Reliability: share of the variance of a cluster's mean unit value that is not sampling noise. With survey segments (S5) the SB elasticity is `r fmt(own("S5", "combined", "sb")$est)` combined and `r fmt(own("S5", "home", "sb")$est)` off-trade (point estimates).}
+
+## Inference is preliminary, and WELCOM's printed standard errors are not usable
+
+```{r bk-boot, results = "asis"}
+bs <- st[, .(Models = .N, Completed = paste(unique(range(completed)), collapse = "--"), Target = n0(max(target)), Failed = sum(failed)),
+         by = .(Class = fifelse(bootclass == "final", "Main and tercile models", "Sensitivity models"))]
+cat("\\begin{center}\n"); ltab(bs, "@{}lrrrr@{}"); cat("\\end{center}\n")
+nat <- res$native[model_id == "M1_combined" & row == "sb" & col == "sb"]
+nat_print <- nat[stat == "welcom_table09_as_printed", value]; nat_sd <- nat[stat == "welcom_boot_sd_correct_cell", value]
+```
+
+For the SB own-price elasticity (M1, combined) WELCOM prints `r fmt(nat_print, 3)`, the standard error of the mean of its replications; their standard deviation is `r fmt(nat_sd, 2)`, and the external bootstrap gives `r fmt(sb_c$se, 2)`.
+
+\sourceline{External bootstrap: price clusters resampled within region cells and all of duvm rerun \parencite{CameronGelbachMiller2008}. Resume with run\_pipeline.ps1 -Stage bootstrap,inference,report,manuscript -RunId `r run_id`.}
+
+## Spirits and wine: ENPH records spending, and estimation would need prices
+
+<!-- src: docs/blockers.md B-1; docs/methods.md section 3 (about 1,700 wine records); corrections log C-06, C-22; docs/estimation_alternatives.md A-08 -->
+
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}L{3.6cm}Y@{}}
+\toprule
+Question & Current evidence \\
+\midrule
+Where collected & Monthly-recall module (amount paid last month); on-trade drinks in away-from-home records \\
+Quantities & `r N$sp_qty` of `r N$sp_rec` purchase records \\
+Who buys & `r P$sp_prev` of households; COP `r N$sp_spend` a month among buyers (combined market) \\
+Category separation & Wine has its own code (about 1,700 records) but is reported with spirits; legacy code filed text beer and on-trade alcohol as spirits \\
+Earlier “unit values” & One unit per record, so spending per record, not a price \\
+What would help & City-month price series by product and channel, and an estimator that accepts price indices \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+## Run `r run_id` is the manuscript's run, and every number here comes from it
+
+```{r bk-prov, results = "asis"}
+cp <- man$completeness
+prov <- data.table(Item = c("Run and bundle", "Code", "Configuration", "Estimator", "Software", "Seeds", "Table cells", "Manuscript PDF"),
+  Value = c(sprintf("%s; bundle written %s", run_id, substr(man$created, 1, 16)),
+            sprintf("git %s%s", substr(man$git_commit, 1, 7), if (isTRUE(man$git_dirty)) " (uncommitted changes)" else ""),
+            sprintf("config %s; models %s", substr(man$config_sha256, 1, 10), substr(man$models_sha256, 1, 10)),
+            sprintf("WELCOM duvm %s (%s), sha256 %s", man$estimator$version, man$estimator$date, substr(man$estimator$duvm_sha256, 1, 10)),
+            sprintf("Stata %s; %s", man$estimator$stata, sub(" \\(.*", "", man$r$version)),
+            paste(unlist(man$seeds), collapse = ", "),
+            sprintf("%s required: %s available, %s not estimable, %s not measured, %s missing", cp$required_cells, cp$available, cp$not_estimable, cp$not_measured, cp$missing),
+            if (is.null(rinfo)) "not found" else sprintf("rendered %s, %s pages", substr(rinfo$rendered, 1, 16), rinfo$pages)))
+cat("\\begin{center}\\small\n\\begin{tabularx}{\\textwidth}{@{}L{3.2cm}Y@{}}\n\\toprule\nItem & Value \\\\\n\\midrule\n")
+for (i in seq_len(nrow(prov))) cat(prov$Item[i], " & ", gsub("_", "\\\\_", prov$Value[i]), " \\\\\n", sep = "")
+cat("\\bottomrule\n\\end{tabularx}\n\\end{center}\n")
+```
+
+\sourceline{Checks at render: one run id across manifest, values and results; configuration hashes match; bundle complete; inference available.}
+
+## Documentation mismatches to resolve before circulating
+
+\begin{center}\small
+\begin{tabularx}{\textwidth}{@{}L{5.4cm}Y@{}}
+\toprule
+Where & Mismatch \\
+\midrule
+docs/legacy\_to\_new\_map.md & Says the legacy cluster was replaced by the survey segment; the manuscript, methods and C-30 use local markets, with segments as S5 \\
+docs/welcom\_method.md, section 8 & Says segment-constant weights; section 5 and the code use market-constant weights \\
+Audit, section 2.13 & Reports Table 1 row labels shifted; the Table 1 in docs/Paper\_20\_1012 reads aligned \\
+dev/beautiful-deck.md & Missing; this deck follows dev/beautiful-deck-SKILL.md \\
+manuscript/references.bib & WELCOM2018Version21 lists the author as “Abdelkrim, Araar”; this deck cites the SSC entry instead \\
+\bottomrule
+\end{tabularx}
+\end{center}

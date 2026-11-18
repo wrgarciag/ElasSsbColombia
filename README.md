@@ -1,128 +1,114 @@
-# Elasticities of Alcoholic and Sugar-Sweetened Beverages in Colombia
+# Elasticities of Alcoholic and Sweetened Beverages in Colombia
 
-Revision repository for **Revisiting Elasticities of alcoholic and non-alcoholic Beverages in Colombia**, by Norman Maldonado and William García. It organizes replication, refinement of estimates, and responses to Food Policy reviewer comments, using **R for data processing** and **Stata for econometric estimation**.
+Analysis repository for **Revisiting Elasticities of Alcoholic and Non-alcoholic Beverages in Colombia** (Norman Maldonado and William García). It builds beverage purchases, unit values and budget shares from the ENPH 2016–2017 household budget survey, estimates own-price, cross-price and expenditure elasticities with WELCOM's Deaton unit-value model, and renders the manuscript from the saved estimates.
 
-## Research question and contribution
+- **R** loads the survey, builds and validates the data, and produces tables, figures and the manuscript.
+- **Stata** only estimates: it runs WELCOM's `duvm` on analysis-ready files and exports estimates and inference.
 
-How do purchases of alcoholic and sugar-sweetened beverages respond to changes in their own prices, other beverage prices, and household resources? The revised paper will emphasize **both beverage groups** and the implications of their joint demand for Colombia's tax reform debate.
+This is a new pipeline, not a replication of the earlier estimates. The earlier revision plan is kept in `dev/README.md`; the legacy code is frozen in `code/legacy/` (and `code/old/`), with a wrapper that reruns it unchanged in `code/replication/`.
 
-The proposed contribution combines own-price and cross-price estimates for beer, spirits, and sweetened beverages; a transparent assessment of measurement and specification choices; distributional heterogeneity; and illustrative tax scenarios with uncertainty. Novelty must be demonstrated against specific studies, without claiming to eliminate all sources of bias.
+## Run
 
-**Scope clarification:** the manuscript reports that the ENPH does not reliably distinguish sugar-sweetened beverages (SSB) from beverages containing non-sugar sweeteners (NSSB). The observable category **sweetened beverages (SB)** will therefore be retained where appropriate. A policy motivation concerning SSB taxation does not turn an SB elasticity into an SSB-specific elasticity. Beer and spirits should have dedicated results and discussion; water and dairy complete the demand system.
+From PowerShell (not Git Bash, which rewrites Stata's `/e` flag):
 
-## Current status
+```powershell
+powershell -ExecutionPolicy Bypass -File run_pipeline.ps1 -Stage all -RunId 20261117a
+```
 
-This is an **initial repository structure and revision plan**, ready to import into GitHub. It includes documentation, tracking matrices, data contracts, and R/Stata templates. It does not contain microdata, the original estimation programs, or recalculated estimates. Analysis scripts stop explicitly until the necessary inputs and original implementation are incorporated. No remote repository has been published.
+`all` runs the seven stages below in order. `-Stage` also takes one stage or a comma-separated list, run in the order given; `-Workers <n>` overrides the number of parallel bootstrap instances (`parallel_workers` in the configuration, 12).
 
-Source documents: the attached manuscript dated November 12, 2026, and the Food Policy review dated July 2023. Manuscript results are replication targets, not independently verified estimates. The original PDFs are not included in the repository export; retain them in a folder accessible to the research team.
+| Stage | What runs | Time on the development machine |
+|---|---|---|
+| `construct` | `Rscript code/R/00_run.R construct`: inventory, import, households, purchases, unit values, Stata files, checks, Tables 1–2 | 6 min |
+| `check` | Stata: `duvm` on simulated data with a known price response; stops if the matrix orientation (rows = quantity, columns = price) is wrong; result in `output/diagnostics/<run_id>/welcom_orientation_check.csv` | 15 min for `check` and `point` together |
+| `point` | Stata: one `duvm` call per model in `config/models.csv` (32 models: M1–M6, terciles T1–T3, sensitivity S1–S7, each for the off-trade and combined markets) | |
+| `bootstrap` | Stata: external cluster bootstrap, 12 parallel instances, resumable | about 8 hours for the full run (about 75 main replications an hour) |
+| `inference` | Stata: standard errors, percentile intervals, covariance matrices | 2 min |
+| `report` | `Rscript code/R/00_run.R report`: Tables 3–6 and A1–A8, figures, completeness check, manuscript bundle | 1 min |
+| `manuscript` | `Rscript code/R/00_run.R manuscript`: `manuscript/manuscript.Rmd` → PDF | 1 min |
 
-## Repository organization
+The bootstrap writes one file per replication, so it can be stopped and restarted with the same command, and `inference` + `report` + `manuscript` can be run on the replications completed so far (the tables state how many were used). Changing anything that alters the estimation files in `data/processed/estimation/` invalidates existing replications: delete them before rerunning.
+
+Individual R stages: `Rscript code/R/00_run.R <load|households|consumption|prices|validate|report|manuscript> --run-id=<id>` (`construct` runs `load` to `validate`). Individual Stata stages: `StataMP-64.exe /e do code/stata/00_master.do "<root>" <run_id> <check|point|boot|inference>`; batch Stata returns no exit code, so each stage writes `output/logs/<run_id>/stata_<stage>.ok` on success and the wrapper checks it. There are no unit tests: `validate`, `check` and the completeness check at the end of `report` are the checks.
+
+**Current run.** `20261117a` has run every stage. The bootstrap was stopped after the first pass at the authors' request: 100 replications for the 18 main and tercile models and 4 for the 14 sensitivity models, against a target of 500 (`docs/blockers.md`, B-4). Standard errors in Tables 3–6 are therefore preliminary, and Tables A3–A4 report point estimates only. To resume:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File run_pipeline.ps1 -Stage bootstrap,inference,report,manuscript -RunId 20261117a
+```
+
+Standalone manuscript render, after `report`:
+
+```powershell
+Rscript -e "rmarkdown::render('manuscript/manuscript.Rmd', params = list(run_id = '20261117a'), output_dir = 'output/manuscript/20261117a')"
+```
+
+The render stops if the bundle for that run is missing, belongs to another run, was built with a different `config/config.yml` or `config/models.csv`, or is incomplete or lacks bootstrap inference. For a draft, set `ALLOW_INCOMPLETE=1` before the `manuscript` stage (or pass `allow_incomplete = TRUE` in `params`).
+
+### Setup
+
+1. Put the ENPH `.sav` modules in `data-raw/enph/` (file names in `metadata/enph_modules.csv`).
+2. Copy `config/local.example.yml` to `config/local.yml` and set the Stata and Rscript executables, the pandoc folder and a local scratch folder for Stata.
+3. Software used: R 4.5.1 with the packages in `renv.lock`; Stata 17 MP; WELCOM 3.60 and estout, pinned in `code/stata/ado/` (no installation needed; see `code/stata/ado/WELCOM_VERSION.md`); TinyTeX with `booktabs`, `threeparttable`, `float`, `caption`, `setspace`, `pdflscape`; pandoc (the copy shipped with RStudio works).
+
+`renv.lock` was written from the installed library by `code/R/tools/write_renv_lock.R` without installing `renv`. The pipeline never installs or updates R, Stata or LaTeX packages. Python is needed only for `code/R/tools/write_alternatives_register.py`, which regenerates `metadata/alternatives_register.csv` and `docs/estimation_alternatives.md`.
+
+## Layout
 
 | Path | Contents |
-| --- | --- |
-| `code/R/` | Import, harmonization, classification, dataset construction, descriptive statistics, and external validation |
-| `code/stata/` | Replication, elasticities, inference, robustness, heterogeneity, and tax scenarios |
-| `config/` | Relative paths, specifications, and decisions requiring confirmation |
-| `data/raw/` | Immutable original microdata, excluded from Git |
-| `data/interim/` | Intermediate datasets, excluded from Git |
-| `data/processed/` | Harmonized dataset for Stata, excluded from Git |
-| `data/external/` | External surveys and other sources, excluded from Git |
-| `metadata/` | Data contracts, dictionaries, manifests, and classification rules |
-| `docs/` | Reviewer response, manuscript audit, literature, validation, and tax analysis plan |
-| `outputs/tables/`, `outputs/figures/` | Generated and reviewed results |
-| `outputs/logs/` | Local execution logs, excluded from Git |
-| `manuscript/` | Revised text, appendices, and response letter |
-| `.github/` | Issue and pull request templates |
+|---|---|
+| `config/config.yml` | Paths, parameters, seeds, replication counts. `config/models.csv`: model registry. `config/local.yml`: machine-specific, git-ignored. `config/stata_params.do`: generated from the two YAML files for Stata |
+| `metadata/` | Input manifest with checksums, module registry, COICOP and text classification rules, Capítulo C groups, frequency factors, unit conversions, variable dictionary, price-cluster definitions, table registry, alternatives register |
+| `data-raw/` | ENPH modules and questionnaires (immutable, git-ignored) |
+| `data/interim/01_import` … `04_prices` | Typed imports; households; classified transactions; household × category aggregates (git-ignored) |
+| `data/processed/estimation/` | Analysis-ready `.dta`/`.rds` files, dictionary and WELCOM contract (git-ignored) |
+| `data/processed/bootstrap/`, `estimation_samples/`, `manuscript/<run_id>/`, `stata_work/` | Bootstrap replications, sample identifiers, manuscript bundle, Stata working folders (git-ignored) |
+| `code/R/lib/` | Functions without side effects |
+| `code/R/01_load` … `07_manuscript` | Stages, in order |
+| `code/R/tools/` | `write_renv_lock.R`, `write_alternatives_register.py` |
+| `code/stata/` | `00_master.do`, setup, WELCOM wrappers, point estimates, bootstrap worker, inference, orientation check |
+| `code/stata/ado/` | Pinned WELCOM and estout with checksums |
+| `code/legacy/`, `code/old/` | Frozen legacy code (not edited) |
+| `code/replication/` | Reruns the legacy code unchanged (`run_legacy.ps1`); outputs in `output/replication/`. See its README |
+| `output/estimates/<run_id>/` | Point estimates, SEs, CIs, covariance matrices, model metadata |
+| `output/diagnostics/<run_id>/` | Classification, units, Capítulo C, clusters, validation checks |
+| `output/tables/<run_id>/`, `output/figures/<run_id>/` | Tables (CSV and LaTeX) and figures |
+| `output/manuscript/<run_id>/` | Rendered PDF and `.tex` |
+| `output/logs/<run_id>/` | R and Stata logs, stage manifests (git-ignored) |
+| `output/old/` | Outputs of the legacy estimation |
+| `manuscript/` | `manuscript.Rmd`, `preamble.tex`, `references.bib`; LaTeX scratch in `_render/` (git-ignored) |
+| `reports/` | Beamer preamble and APA citation style for slides |
+| `docs/` | Methods, WELCOM note, corrections log, legacy map, alternatives, blockers, earlier manuscript, DANE ENPH methodology |
+| `dev/` | Earlier revision plan and the briefs that produced the pipeline (historical) |
 
-## Quick start
+## What the pipeline produces
 
-1. Extract the ZIP and open a terminal in `work-personal-ssbelasticity/`.
-2. Review `docs/revision_plan.md`, assign owners in `docs/reviewer_response.csv`, and inventory the original programs.
-3. Place authorized inputs in `data/raw/`; record provenance, version, and permissions in `metadata/input_manifest.csv`.
-4. Complete variable and unit mappings in `metadata/`. Document any assumptions about the original variables.
-5. From the repository root, run the initial R check:
+| Table | Content | Source |
+|---|---|---|
+| 1 | Household demographics | R |
+| 2 | Purchase prevalence, spending, shares, unit values, quantities; four panels | R |
+| 3 | Own-price elasticities, six specifications, off-trade and combined | WELCOM |
+| 4 | Own-price elasticities by income tercile | WELCOM |
+| 5 | Own- and cross-price matrices (rows = quantity, columns = price) | WELCOM |
+| 6 | Expenditure elasticities, six specifications | WELCOM |
+| A1–A8 | Sample flow, measurement coverage, seven further sensitivity analyses, price clusters, model summary, confidence intervals, WELCOM's own bootstrap output | R and WELCOM |
 
-   ```bash
-   Rscript code/R/00_run.R preflight
-   ```
+Categories: SB, beer, spirits and wine, water, dairy drinks, hot drinks. Estimates are uncompensated price elasticities and elasticities with respect to total household expenditure, both unconditional on the beverage budget. `output/tables/<run_id>/table_completeness.csv` lists every required cell and its status.
 
-6. Implement and run data processing:
+## Documentation
 
-   ```bash
-   Rscript code/R/00_run.R process
-   ```
+| File | Purpose |
+|---|---|
+| `docs/methods.md` | What the data construction and estimation do |
+| `docs/welcom_method.md` | What `duvm` estimates, its input contract, how it is called and why inference is external |
+| `docs/corrections_log.md` | Every data-construction correction against the legacy code |
+| `docs/legacy_to_new_map.md` | Where each legacy operation went |
+| `docs/estimation_alternatives.md`, `metadata/alternatives_register.csv` | Estimator-level improvements flagged for later; none is implemented |
+| `docs/blockers.md` | Unresolved blockers |
+| `docs/reproducibility_audit.md` | Audit of the legacy pipeline that preceded this work |
+| `docs/Paper_20_1012_ElasticiBeverages.pdf` | Earlier version of the manuscript (source of the legacy tables) |
+| `docs/DSO-ENPH-MET-001-V2.pdf` | DANE's ENPH methodology |
 
-7. In Stata, from the repository root:
+## Data protection
 
-   ```stata
-   do code/stata/00_master.do preflight
-   do code/stata/00_master.do estimate
-   ```
-
-The initial check only verifies the folder structure. `process` and `estimate` stop while the analytical stages remain templates, preventing unfinished analyses from being presented as completed replication.
-
-### Reproducible environment
-
-The manuscript reports **Stata 17**, **WELCOM 2.1**, 354 clusters, and 100 bootstrap replications. These are starting points to audit against the original files, rather than a validated configuration. Confirm which clusters identify common prices and distinguish them from the survey's primary sampling units (PSUs).
-
-The R templates use only base R. When implementing processing, record the R version and dependencies; generate and verify `renv.lock` if packages are added. Exporting to `.dta` will require a tool such as `haven`, with its version recorded. Document the source, version, and help files of the Stata routines actually used; do not install or update packages silently. Retain the seed, specification, and execution log for each run.
-
-## Workflow
-
-### 1. Replicate before refining
-
-Recover and run the original version without substantive changes. Reconstruct the sample, categories, units, and markets. Reproduce manuscript tables using documented tolerances and record discrepancies. Reported benchmarks include an SB own-price elasticity of −0.50 for the expanded market and an elasticity labeled as income elasticity of 0.88. Verify whether the latter actually refers to total household expenditure.
-
-### 2. Process data in R
-
-- Reconcile household, individual, and expenditure modules without double-counting purchases.
-- Harmonize quantities, physical units, recall periods, expenditure, and purchase channels.
-- Keep coded purchases separate from purchases recovered from text, using versioned rules and reviewing ambiguous cases.
-- Preserve observed zeros and distinguish them from missing values, invalid quantities, and unidentified purchases.
-- Construct the complete household × category × market universe, including households with no purchases.
-- Export the dataset and dictionary for Stata; generate weighted descriptive statistics by income, region, and rural status, with explicit denominators.
-
-### 3. Estimate in Stata
-
-First replicate Deaton's unit value model and the original treatment of zeros. Audit assumptions concerning common prices within clusters, variation between clusters, quality, and measurement error. Verify the selection procedure and its identification; an inverse Mills ratio correction does not necessarily address every mechanism generating zeros.
-
-Produce own-price, cross-price, and expenditure/income elasticities with confidence intervals. Label matrices as **rows = category whose quantity responds; columns = category whose price changes**. State whether elasticities are Marshallian or Hicksian, and whether they are conditional on the beverage budget or relate to total expenditure. Do not impose symmetry on Marshallian elasticities without the appropriate transformation.
-
-### 4. Assess robustness and external validity
-
-Compare choices concerning classification, weighting, zeros, rural inclusion, extreme unit values, cluster definitions, and purchase channels. Re-estimate models on comparable samples to distinguish changes in sample composition from changes in method. Plan inference that respects the survey design and units supporting identification; increase bootstrap replications after assessing stability and feasibility.
-
-Treat ECV and ENSIN as **candidate sources** for comparing prevalence and patterns, after verifying questionnaires, access, years, and populations covered. Household purchases, individual consumption, and dietary intake are not interchangeable. Descriptive agreement between surveys does not independently validate a price elasticity. Assess other expenditure surveys or price sources before committing to external replication.
-
-### 5. Connect findings to the tax reform debate
-
-Present separate and joint scenarios for alcoholic and sugar-sweetened beverages, with explicit assumptions about tax pass-through and substitution. Start with hypothetical price changes; simulating a specific reform requires checking legislation, tax bases, rates, effective dates, and product composition against current official sources.
-
-Scenarios should distinguish changes in purchases, revenue, and monetary burdens across groups. Elasticities alone do not establish health or welfare effects. Interpretation must retain the limitations concerning SB versus SSB and beer purchased away from home. See `docs/tax_policy_plan.md`.
-
-## Reviewer comments and deliverables
-
-| Priority | Deliverable | Completion criterion |
-| --- | --- | --- |
-| P0 | Replication and audit | Sample and tables reconciled; discrepancies explained |
-| P0 | Alcohol and cross-price interpretation | Signs, direction, and conclusions are consistent |
-| P1 | Literature and contribution | Explicit comparison with previous studies covering both beverage groups |
-| P1 | ENPH description | Categories, design, units, descriptive statistics, and sample flow documented |
-| P1 | Robustness and inference | Traceable specifications and documented uncertainty |
-| P1 | Tax policy application | Transparent scenarios with identification limits stated |
-| P2 | External validation | Harmonized comparisons and discussion of discrepancies |
-| P2 | Manuscript and response letter | Every comment linked to revisions and supporting evidence |
-
-The tracking matrix distinguishes the reviewer's six numbered comments, the overall concern about contribution, the team's priorities, and inconsistencies identified while reading the manuscript. No task is marked as resolved.
-
-## Collaboration and quality standards
-
-Open one issue per comment or deliverable; use focused branches such as `revision/alcohol-literature` or `replication/unit-values`. Each analytical change should identify its inputs, rationale, affected results, and validation. Freeze the replication before modifying specifications; retain run identifiers and a decision log.
-
-Before submission, complete the response matrix, verify that numbers and narrative match generated outputs, review uncertainty and interpretation of signs, verify references and tax policy context, and execute the complete workflow in a clean environment. A difference between specifications does not by itself establish that one is biased.
-
-## Data, access, and publication
-
-Do not upload microdata, individual records, free-text survey responses, or confidential review documents. `.gitignore` excludes datasets and logs by default. Review aggregate outputs before committing them. Clarify ownership and permissions for the original code with the authors; this scaffold does not assign a license to third-party materials.
-
-To create the remote repository, start with an empty repository and follow `docs/github_import.md`. The ZIP exports the file tree without Git history or credentials.
+Microdata, household-level intermediates, estimation samples, bootstrap files, logs, `config/local.yml` and the review documents are git-ignored. Outputs under `output/estimates`, `output/tables`, `output/figures` and `output/diagnostics` are aggregates. Commit `7a51561` on `origin/main` still contains a household-level file, the confidential review and a licensed spreadsheet (see `docs/blockers.md`); the pipeline does not rewrite Git history.

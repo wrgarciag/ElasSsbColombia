@@ -1,0 +1,33 @@
+% ============================================================
+%  slides-handsoff-header.tex -- deck-local settings for
+%  reports/slides-handsoff.Rmd only (loaded after the preamble
+%  and beamer_addons.tex). Shared definitions stay untouched.
+% ============================================================
+
+% A 20-minute talk: no divider frames; the current part is shown in the footer.
+\sectiondividersfalse
+\renewcommand{\deckfootcenter}{ENPH beverage elasticities%
+  \ifx\insertsectionhead\empty\else\ \textperiodcentered\ \insertsectionhead\fi}
+
+% Observed / not observed markers for the measurement map
+\newcommand{\yes}{\tikz[baseline=-0.55ex]\fill[decknavy] (0,0) circle (0.75ex);}
+\newcommand{\no}{\tikz[baseline=-0.55ex]\draw[black!45, line width=0.6pt] (0,0) circle (0.7ex);}
+
+% A medium number for two or three numbers side by side
+\newcommand{\midnumber}[2]{%
+  \begin{center}
+    {\fontsize{30}{34}\selectfont\bfseries\textcolor{deckaccent}{#1}}\par\vspace{4pt}
+    {#2}\par
+  \end{center}}
+
+% Coloured panel with a heading: \panel{colour}{heading}{body}
+\newcommand{\panel}[3]{%
+  \colorbox{#1!16}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\strut\textbf{\textcolor{#1!75!black}{#2}}}}\par\nointerlineskip
+  \colorbox{#1!5}{\parbox[t]{\dimexpr\linewidth-2\fboxsep\relax}{\raggedright #3\strut}}\par}
+
+% A list inside a panel without beamer's itemize spacing
+\newcommand{\pitem}{\par\noindent\hangindent=0.9em\hangafter=1\strut\makebox[0.9em][l]{\textcolor{deckblue}{\textbullet}}}
+
+% Table cells: ragged right, no underfull boxes
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}

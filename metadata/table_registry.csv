@@ -1,0 +1,15 @@
+table_id,file_stem,title,source,models,script
+T1,table1_demographics,Household demographics,data/processed/estimation/est_primary_combined + households (R),"",code/R/06_report/02_tables.R
+T2,table2_consumption,Beverage purchase statistics,data/interim/04_prices/household_category (R),"",code/R/06_report/02_tables.R
+T3,table3_own_price,Own-price elasticities and specification sensitivity,"output/estimates/<run_id>/estimates_long.csv (Stata, WELCOM duvm)","M1-M6 x {home, combined}",code/R/06_report/02_tables.R
+T4,table4_terciles,Own-price elasticities by household income tercile,"output/estimates/<run_id>/estimates_long.csv (Stata, WELCOM duvm)","M1, T1-T3 x {home, combined}",code/R/06_report/02_tables.R
+T5,table5_price_matrix,Own- and cross-price elasticity matrices,"output/estimates/<run_id>/estimates_long.csv (Stata, WELCOM duvm)","M1 x {home, combined}",code/R/06_report/02_tables.R
+T6,table6_expenditure,Expenditure elasticities and specification sensitivity,"output/estimates/<run_id>/estimates_long.csv (Stata, WELCOM duvm)","M1-M6 x {home, combined}",code/R/06_report/02_tables.R
+A1,tableA1_sample_flow,Sample flow,R,"",code/R/06_report/02_tables.R
+A2,tableA2_measurement_coverage,Measurement coverage,R,"",code/R/06_report/02_tables.R
+A3,tableA3_sensitivity_own_price,Supplementary sensitivity: own-price elasticities,"output/estimates/<run_id>/estimates_long.csv (Stata, WELCOM duvm)","M1, S1-S6 x {home, combined}",code/R/06_report/02_tables.R
+A4,tableA4_sensitivity_expenditure,Supplementary sensitivity: expenditure elasticities,"output/estimates/<run_id>/estimates_long.csv (Stata, WELCOM duvm)","M1, S1-S6 x {home, combined}",code/R/06_report/02_tables.R
+A5,tableA5_price_clusters,Price-cluster diagnostics,R,"",code/R/06_report/02_tables.R
+A6,tableA6_model_summary,Model summary,output/estimates/<run_id>/model_meta.csv,all,code/R/06_report/02_tables.R
+A7,tableA7_confidence_intervals,Confidence intervals for the primary specification,output/estimates/<run_id>/estimates_long.csv,"M1 x {home, combined}",code/R/06_report/02_tables.R
+A8,tableA8_welcom_native_se,WELCOM's own bootstrap output compared with the external cluster bootstrap,output/estimates/<run_id>/welcom_native.csv,"M1 x {home, combined}",code/R/06_report/02_tables.R

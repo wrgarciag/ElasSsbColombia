@@ -1,0 +1,12 @@
+rule_version,freq_code,freq_label,primary_rule,primary_factor,note
+2026.11-v1,1,Diario,recall_base,,30 / recall days of the module
+2026.11-v1,2,Varias veces por semana,recall_base,,30 / recall days of the module
+2026.11-v1,3,Semanal,recall_base,,30 / recall days of the module
+2026.11-v1,4,Quincenal,fixed,2,Two purchases a month
+2026.11-v1,5,Mensual,fixed,1,One purchase a month
+2026.11-v1,6,Bimestral,fixed,0.5,One purchase every two months
+2026.11-v1,7,Trimestral,fixed,0.333333333,One purchase every three months
+2026.11-v1,8,Anual,fixed,0.083333333,Less-frequent module only: DANE Tabla 3 divides previous-month amounts by 12
+2026.11-v1,9,Esporadica,fixed,1,Undefined frequency: one purchase a month assumed for observed purchases (legacy rule kept); excluded for Capitulo C last-purchase values
+2026.11-v1,10,Semestral,fixed,0.166666667,Less-frequent module only: DANE Tabla 3 divides previous-month amounts by 6
+2026.11-v1,NA,(missing),recall_base,,30 / recall days of the module

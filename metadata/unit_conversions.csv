@@ -1,0 +1,9 @@
+rule_version,unit_code,unit_label,to_litre,to_kilogram,note
+2026.11-v1,1,Centimetros cubicos,0.001,,Volume
+2026.11-v1,2,Litro,1,,Volume
+2026.11-v1,3,Gramos,density,0.001,Weight: converted to litres only for liquid dairy drinks (1.03 kg per litre)
+2026.11-v1,4,Onzas,0.0295735,,Fluid ounces for beverages recorded by volume
+2026.11-v1,5,Libra,density,0.5,Colombian libra = 500 g
+2026.11-v1,6,Kilo,density,1,Weight
+2026.11-v1,7,Arroba,density,12.5,25 libras
+2026.11-v1,8,Otra,equivalence,equivalence,"Uses DANE's recorded equivalence of the purchase (total grams or cubic centimetres); records without an equivalence have no valid physical quantity"

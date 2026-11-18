@@ -1,0 +1,53 @@
+\begin{table}[!htbp]
+\centering
+\begin{threeparttable}
+\caption{Own-price elasticities by household income tercile}
+\label{tab:terciles}
+\footnotesize
+\begin{tabular}{lrrrr}
+\toprule
+ & All households & Tercile 1 & Tercile 2 & Tercile 3 \\
+\midrule
+\addlinespace\multicolumn{5}{l}{\textit{Off-trade (at home)}} \\
+SB & $-$0.808\textsuperscript{**} & $-$0.972\textsuperscript{**} & $-$0.686\textsuperscript{**} & $-$0.025 \\
+ & [0.208] & [0.217] & [0.212] & [0.447] \\
+Beer & $-$1.539 & n.e. & n.e. & n.e. \\
+ & [2.566] &  &  &  \\
+Spirits and wine & n.e. & n.e. & n.e. & n.e. \\
+Water & $-$1.986\textsuperscript{**} & $-$2.415\textsuperscript{**} & $-$1.931\textsuperscript{**} & $-$1.743\textsuperscript{**} \\
+ & [0.108] & [0.268] & [0.119] & [0.198] \\
+Dairy drinks & $-$1.055\textsuperscript{**} & $-$1.045\textsuperscript{**} & $-$1.023\textsuperscript{**} & $-$1.002\textsuperscript{**} \\
+ & [0.167] & [0.244] & [0.263] & [0.272] \\
+Hot drinks & $-$1.050\textsuperscript{**} & $-$1.055\textsuperscript{**} & $-$1.008\textsuperscript{**} & $-$0.971\textsuperscript{**} \\
+ & [0.093] & [0.086] & [0.104] & [0.193] \\
+\addlinespace
+Households & 87,198 & 25,654 & 30,586 & 30,958 \\
+Price clusters & 483 & 476 & 474 & 460 \\
+\addlinespace\multicolumn{5}{l}{\textit{Combined market (at home + away from home)}} \\
+SB & $-$0.890\textsuperscript{**} & $-$0.989\textsuperscript{**} & $-$0.868\textsuperscript{**} & $-$0.259 \\
+ & [0.177] & [0.173] & [0.181] & [0.367] \\
+Beer & $-$0.922 & n.e. & n.e. & n.e. \\
+ & [1.766] &  &  &  \\
+Spirits and wine & n.e. & n.e. & n.e. & n.e. \\
+Water & $-$1.980\textsuperscript{**} & $-$2.398\textsuperscript{**} & $-$1.921\textsuperscript{**} & $-$1.740\textsuperscript{**} \\
+ & [0.109] & [0.264] & [0.118] & [0.193] \\
+Dairy drinks & $-$1.046\textsuperscript{**} & $-$1.039\textsuperscript{**} & $-$1.017\textsuperscript{**} & $-$0.961\textsuperscript{**} \\
+ & [0.165] & [0.238] & [0.258] & [0.272] \\
+Hot drinks & $-$1.027\textsuperscript{**} & $-$1.057\textsuperscript{**} & $-$1.010\textsuperscript{**} & $-$0.902\textsuperscript{**} \\
+ & [0.095] & [0.084] & [0.101] & [0.165] \\
+\addlinespace
+Households & 87,197 & 25,654 & 30,586 & 30,957 \\
+Price clusters & 483 & 476 & 474 & 460 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item Uncompensated (Marshallian) own-price elasticities of quantity from Deaton's unit-value model as implemented in WELCOM 3.60 (quality-corrected, symmetry-restricted), unconditional on the beverage budget: budget shares and the expenditure regressor use total household current expenditure.
+\item Each tercile column is a separate WELCOM estimation of the primary specification on that tercile's households; no estimate is rescaled from the full sample.
+\item Terciles of per-capita total household income (DANE total income divided by household members), with cut-offs at COP 321,667 and COP 700,000 per month chosen so that each tercile holds one third of weighted households; households with zero income (369) are in tercile 1.
+\item Standard errors in brackets are standard deviations over 100 cluster-bootstrap replications in which price clusters are resampled within region cells and the whole WELCOM estimation is repeated (0 failed replications). \textsuperscript{**} $p<0.01$, \textsuperscript{*} $p<0.05$ (two-sided, normal approximation). The replication target set in the configuration has not been reached for every model; inference is preliminary.
+\item n.e.: not estimable. ENPH records no physical quantity for spirits and wine, so no unit value exists and the good cannot enter the unit-value model.
+\item Beer is not estimated in T1, T2, T3 (too few unit values in this model's sample). A good enters a model only if its unit value is observed in enough clusters of that model's sample; models compared with each other (the income terciles) use the same goods.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}

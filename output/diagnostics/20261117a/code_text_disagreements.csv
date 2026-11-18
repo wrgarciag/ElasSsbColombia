@@ -1,0 +1,13 @@
+code,category,text_category,N
+01220101,water,sb,6
+11110201,hot,beer,2
+11110201,hot,dairy,884
+11110201,hot,sb,17
+11110201,hot,water,7
+11110301,sb,beer,5
+11110301,sb,dairy,46
+11110301,sb,hot,159
+11110301,sb,spirits,1
+11110303,dairy,hot,1
+11110303,dairy,sb,1
+11110304,dairy,sb,2

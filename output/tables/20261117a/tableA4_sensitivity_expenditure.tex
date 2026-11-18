@@ -1,0 +1,52 @@
+\begin{table}[!htbp]
+\centering
+\begin{threeparttable}
+\caption{Supplementary sensitivity analyses: expenditure elasticities}
+\label{tab:sensexp}
+\footnotesize
+\begin{tabular}{lrrrrrrrr}
+\toprule
+ & M1 & S1 & S2 & S3 & S4 & S5 & S6 & S7 \\
+\midrule
+\addlinespace\multicolumn{9}{l}{\textit{Off-trade (at home)}} \\
+SB & 0.351\textsuperscript{**} & 0.406 & 0.363 & 0.292 & 0.350 & 0.546 & 0.305 & 0.351 \\
+ & [0.110] &  &  &  &  &  &  &  \\
+Beer & $-$6.113 & $-$6.113 & $-$6.097 & $-$6.391 & $-$6.103 & $-$2.794 & $-$4.512 & n.e. \\
+ & [3.516] &  &  &  &  &  &  &  \\
+Spirits and wine & n.e. & n.e. & n.e. & n.e. & n.e. & n.e. & n.e. & n.e. \\
+Water & $-$0.003 & $-$0.003 & $-$0.001 & 0.479 & $-$0.002 & 0.215 & 0.046 & $-$0.003 \\
+ & [0.558] &  &  &  &  &  &  &  \\
+Dairy drinks & 0.171\textsuperscript{*} & 0.171 & 0.187 & 0.121 & 0.171 & 0.297 & 0.158 & 0.171 \\
+ & [0.069] &  &  &  &  &  &  &  \\
+Hot drinks & 0.159 & 0.159 & 0.142 & 0.556 & 0.159 & 0.260 & 0.150 & 0.159 \\
+ & [0.179] &  &  &  &  &  &  &  \\
+\addlinespace
+Households & 87,198 & 87,198 & 87,198 & 87,197 & 87,187 & 87,198 & 87,198 & 87,198 \\
+Price clusters & 483 & 483 & 483 & 483 & 483 & 8,457 & 483 & 483 \\
+\addlinespace\multicolumn{9}{l}{\textit{Combined market (at home + away from home)}} \\
+SB & 0.521\textsuperscript{**} & 0.573 & 0.533 & 0.477 & 0.521 & 0.699 & 0.490 & 0.521 \\
+ & [0.062] &  &  &  &  &  &  &  \\
+Beer & $-$3.582 & $-$3.582 & $-$3.567 & $-$3.700 & $-$3.581 & 0.486 & $-$2.284 & n.e. \\
+ & [1.857] &  &  &  &  &  &  &  \\
+Spirits and wine & n.e. & n.e. & n.e. & n.e. & n.e. & n.e. & n.e. & n.e. \\
+Water & 0.030 & 0.030 & 0.032 & 0.490 & 0.031 & 0.271 & 0.104 & 0.030 \\
+ & [0.534] &  &  &  &  &  &  &  \\
+Dairy drinks & 0.201\textsuperscript{**} & 0.201 & 0.217 & 0.159 & 0.201 & 0.324 & 0.188 & 0.201 \\
+ & [0.064] &  &  &  &  &  &  &  \\
+Hot drinks & 0.371\textsuperscript{*} & 0.371 & 0.354 & 0.565 & 0.371 & 0.489 & 0.348 & 0.371 \\
+ & [0.149] &  &  &  &  &  &  &  \\
+\addlinespace
+Households & 87,197 & 87,197 & 87,197 & 87,196 & 87,191 & 87,197 & 87,197 & 87,197 \\
+Price clusters & 483 & 483 & 483 & 483 & 483 & 8,457 & 483 & 483 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item Elasticities of quantity with respect to total household current expenditure (not income) from WELCOM 3.60 \texttt{duvm}: $1-\beta^1_g+\beta^0_g/\bar w_g$, where $\beta^0_g$ and $\beta^1_g$ are the coefficients of log expenditure in the budget-share and unit-value regressions. Regional controls enter only the between-cluster stage, so M4 equals M1 by construction.
+\item S1 broad SB definition. S2 unit values from directly recorded units only. S3 reference-period scaling of recall periods. S4 extreme spenders excluded. S5 price clusters defined as survey segments. S6 raw household expansion factors passed to WELCOM (legacy calling convention). S7 beer left out of the system. S1--S3 change measurements on the same households; S4 changes the sample.
+\item Standard errors in brackets are standard deviations over 100 cluster-bootstrap replications in which price clusters are resampled within region cells and the whole WELCOM estimation is repeated (0 failed replications). \textsuperscript{**} $p<0.01$, \textsuperscript{*} $p<0.05$ (two-sided, normal approximation). S1, S2, S3, S4, S5, S6, S7: too few completed replications; point estimates only. The replication target set in the configuration has not been reached for every model; inference is preliminary.
+\item n.e.: not estimable. ENPH records no physical quantity for spirits and wine, so no unit value exists and the good cannot enter the unit-value model.
+\item Beer is not estimated in S7 (excluded by the model specification). A good enters a model only if its unit value is observed in enough clusters of that model's sample; models compared with each other (the income terciles) use the same goods.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}

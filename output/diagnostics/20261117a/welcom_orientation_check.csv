@@ -1,0 +1,5 @@
+cell,meaning,simulated_truth,duvm_no_symmetry
+a_a,quantity of a wrt price of a,-1.2,-1.1981991
+a_b,quantity of a wrt price of b,0,.00098439
+b_a,quantity of b wrt price of a,0.4,.40284217
+b_b,quantity of b wrt price of b,-1.2,-1.1994326

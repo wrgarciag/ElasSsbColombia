@@ -1,0 +1,12 @@
+module_id,rows,households,with_text,with_quantity,with_unit,with_value
+urb_diary,670130,74264,0,670130,670130,670130
+urb_meals_hh,504031,61774,504031,504031,0,504031
+urb_personal,114124,29683,0,114124,0,114124
+urb_meals_personal,475963,53641,475963,475963,0,475963
+lessfreq_items,16766,13136,0,0,0,16766
+rur_weekly,14134,4853,0,14134,13993,14134
+rur_meals_hh,3947,1678,3947,3947,0,3946
+rur_personal,427,370,0,427,0,427
+rur_meals_personal,1378,898,0,1378,0,1378
+urb_capc,325752,81438,0,0,0,55785
+rur_capc,23052,5763,0,0,0,7045
